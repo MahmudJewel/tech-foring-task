@@ -1,0 +1,85 @@
+.edit-notification .modal-dialog{
+    max-width: 85%;
+}
+#notificationRange{
+    display: inline !important;
+    width: 60% !important;
+}
+
+.dataTables_scrollBody::-webkit-scrollbar
+{
+    width: 10px;
+    background-color: #5bbc2e;
+}
+ 
+.dataTables_scrollBody::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #182f59;
+}
+
+.notifications-container .notification {
+    padding-left: 1rem;
+    background-color: #E1E6F1;
+    display: flex;
+    align-items: center;
+    margin-top: 0.25rem;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+}
+
+.notifications-container .notification .icon {
+    font-size: 1.3rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-bg-green {
+    background-color: #5bbc2e87;
+    color: #3c3c3c;
+}
+
+.icon-bg-gray {
+    background-color: #6c796787;
+    color: #3c3c3c;
+}
+
+.icon-bg-blue {
+    background-color: #22529e7a;
+    color: #3e307a;
+}
+
+.notification .col-1 button {
+    display: block;
+}
+
+.prev-heading {
+    overflow: hidden;
+    text-align: center;
+}
+
+.prev-heading:before,
+.prev-heading:after {
+    background-color: rgb(168, 168, 168);
+    content: "";
+    display: inline-block;
+    height: 2px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+}
+
+.prev-heading:before {
+    right: 0.5em;
+    margin-left: -50%;
+}
+
+.prev-heading:after {
+    left: 0.5em;
+    margin-right: -50%;
+}

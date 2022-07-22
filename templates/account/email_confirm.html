@@ -1,0 +1,93 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% load i18n %}
+{% block headercss %}
+<link rel="stylesheet" href="{% static 'tfcss/glide.core.css' %}" />
+<link rel="stylesheet" href="{% static 'tfcss/glide.theme.css' %}" />
+<link rel="stylesheet" href="{% static 'tfcss/slider/slick-theme.css' %}" />
+<link rel="stylesheet" href="{% static 'tfcss/slider/slick.css' %}" />
+<link rel="stylesheet" href="{% static 'tfcss/style.css' %}" />
+
+<style>
+    .thank-section {
+        width: 100%;
+        text-align: center;
+        padding: 30px 0px;
+    }
+
+    
+    .thank-section h4 {
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 30px;
+    }
+    
+    .thank-section i {
+        font-size: 70px;
+        color: #182f59;
+        margin: 20px 0px;
+    }
+</style>
+{% endblock headercss %}
+
+{% load i18n %}
+{% load account %}
+
+{% block head_title %}{% trans "Confirm E-mail Address" %}{% endblock %}
+
+
+{% block content %}
+<div class="container py-5 my-5 bg-light">
+    {% comment %} <h1>{% trans "Confirmation E-mail Address" %}</h1> {% endcomment %}
+
+    {% if confirmation %}
+    
+    {% user_display confirmation.email_address.user as user_display %}
+    
+    
+    <section class="thank-section">
+        <h4>{% blocktrans with confirmation.email_address.email as email %}Thank You for confirming <a href="mailto:{{ email }}">{{ email }}</a> is an e-mail address for user {{ user_display }}.{% endblocktrans %}</h4> 
+        <i class="fa fa-check-square"></i>
+    </section>
+
+    <form id="confirm-form" method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+    {% csrf_token %}
+    <div class="d-flex justify-content-center">
+        <div class="mr-3" role="status">
+            <h5>Please Wait</h5>
+        </div>
+        <div class="spinner-grow text-secondary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-secondary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-secondary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+        <button class="pro-save" type="submit">{% trans 'Confirm' %}</button>
+    </form>
+    
+    {% else %}
+    
+    {% url 'account_email' as email_url %}
+    
+    <p>{% blocktrans %}This e-mail confirmation link expired or is invalid. Please <a href="{{ email_url }}">issue a new e-mail confirmation request</a>.{% endblocktrans %}</p>
+    
+    {% endif %}
+
+</div>
+
+<script>
+let form= document.getElementById('confirm-form');
+if(form){
+    setTimeout(function(){
+        form.submit();
+    }, 3000);
+}
+</script>
+
+
+{% endblock %}

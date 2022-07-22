@@ -1,0 +1,55 @@
+{% extends 'base/blog_admin_base.html' %} {% load static %}
+{% load hosts %}
+
+{% block title %} Blog Admin Comment List
+{% endblock title %}
+
+{% block headercss %}
+<link rel="stylesheet" href="{% static 'tfcss/admin_panel/blog/dashboard.css' %}"/>
+{% endblock headercss %}
+{% block content %}
+<main>
+    <div class="container-fluid">
+        
+        <div class="row">
+            <div class="col-lg-12 position-relative" style="margin-bottom: 15rem;">
+                <h2 class="text-capitalize position-absolute my-4">comment list</h2>
+                <table id="commentList" class="table display" style="width: 100%">
+                    <thead>
+                        <tr>
+                            <th>Comment Title</th>
+                            <th>Post</th>
+                            <th>Commented By</th>
+                            <th>Date And Time</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for comment in comments %}
+                            <tr>
+                            <td><p class="part fw-bold">{{ comment.comment }}</p></td>
+                            <td><a href="{% host_url 'articles' name=comment.post.post_url %}" class="part fw-bold">{{ comment.post }}</a></td>
+                            <td>{{ comment.user }}</td>
+                            <td>{{ comment.comment_date }}</td>
+                            <td>
+                                <a href="{% host_url 'admin_comment_delete' id=comment.id %}" class="btn">
+                                    <i class="bi bi-trash-fill text-danger rounded-circle activites-icon"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock content %}
+{% block customjs %}
+    <!-- custom scripts -->
+    <script src="{% static 'tfjs/admin_panel/blog/dashboard.js' %}"></script>
+
+{% endblock customjs %}

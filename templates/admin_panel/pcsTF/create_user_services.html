@@ -1,0 +1,489 @@
+{% extends 'base/pcs_admin_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load my_filter %}
+{% load hosts %}
+{% block title %}
+    Services
+{% endblock title %}
+{% block content %}
+    <style>
+        form label{
+            text-transform: capitalize;
+            margin-top: 8px
+        }
+    </style>
+    <main>
+
+        <section class="services position-relative">
+            <h4 class="main-heading">All Personal Cybersecurity Services
+            </h4>
+
+            <button id="back-btn" class="btn btn-outline-success btn-sm d-none position-absolute top-sm-0 end-0">
+                <i class="icofont-long-arrow-left fw-bold"></i> Back to list
+            </button>
+
+
+            <div class="invisible customer-email">
+            <label for="addOrder" class="fw-bold">Add a Order for:</label>
+            <select name="user_info" id="addOrder" class="js-example-basic-single w-25">
+                <option disabled selected>----------------</option>
+                {% for user_list in user_lists %}
+                    <option value="{{ user_list.id }}">{{ user_list.email }}</option>
+                {% endfor %}
+            </select>
+
+            </div>
+            <div class="services-content">
+                <div class="content-detail pe-2">
+                    {% for category in service_category %}
+                        {% ifchanged %}
+                            <h5 class="mt-2 services-type">{{ category.category_name }}</h5>
+                            <div class="row mx-0 mb-4 gy-4 pt-4 justify-content-center">
+                                {% for service in category.service_category.all %}
+                                    {% if service in services %}
+                                        <div class="col-md-4 px-0 pe-md-5">
+                                            <div class="bg-lightgreen p-2 rounded shadow-md">
+                                                <div class="text-center">
+                                                    <img class="service-icon" src="{{ service.service_icon.url }}">
+                                                </div>
+                                                <div class="ps-2 mt-2 text-center">
+                                                    <h6 class="service-title">{{ service.service_title }}</h6>
+                                                    <p class="lh-1 fs-14">
+                                                        {{ service.short_description }}
+                                                    </p>
+                                                </div>
+                                                <div class="view-btn">
+                                                    <button class="{{ service.service_title|replacespace }}-pcs btn btn-sm">
+                                                        View
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+
+                                {% endfor %}
+                            </div>
+                        {% endifchanged %}
+                    {% endfor %}
+                </div>
+
+            </div>
+
+
+            <!-- modal for training program -->
+            <div class="modal fade" id="trainingModal" tabindex="-1" aria-labelledby="trainingModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-xl">
+                    <div class="modal-content border-0 bg-main">
+                        <div class="modal-header border-0">
+                            <button type="button" class="btn-close rounded-circle bg-green" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body px-5 pb-5">
+                            <h4 class="px-3 fw-bold text-center">Provide information to get a quotation for employee
+                                training program
+                            </h4>
+
+                            <form class="mt-4" action="/employee_training_program/" method="POST">
+                                {% csrf_token %}
+                                <div id="employee-number-btn">
+                                    <select disabled class="form-select bg-white" aria-label="Default select example">
+                                        <option selected>No. of Employees in your
+                                            organization?
+                                        </option>
+                                    </select>
+                                </div>
+                                <div id="employee-number-input" class="d-none w-100 p-2 mt-1 shadow border border-navy">
+                                    <div class="form-check">
+                                        <input required class="form-check-input" type="radio" name="exampleRadios"
+                                               id="exampleRadios1" value="">
+                                        <label class="form-check-label" for="exampleRadios1">
+                                            1 - 25
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="exampleRadios"
+                                               id="exampleRadios2" value="">
+                                        <label class="form-check-label" for="exampleRadios2">
+                                            26 - 50
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="exampleRadios"
+                                               id="exampleRadios3" value="">
+                                        <label class="form-check-label" for="exampleRadios3">
+                                            51 - 100
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="exampleRadios"
+                                               id="exampleRadios4" value="">
+                                        <label class="form-check-label" for="exampleRadios4">
+                                            Above 100
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div id="train-employee-btn">
+                                    <select disabled class="mt-4 form-select bg-white"
+                                            aria-label="Default select example">
+                                        <option selected>No. of Employees you want to train?</option>
+                                    </select>
+                                </div>
+                                <input required id="train-employee-input"
+                                       class="d-none form-control shadow mt-1 border border-navy"
+                                       placeholder="Enter the number of employess you want to train.." type="text"
+                                       maxlength="3" name="" autocomplete="off">
+
+                                <div id="employee-program-btn">
+                                    <select disabled class="mt-4 form-select bg-white"
+                                            aria-label="Default select example">
+                                        <option selected>Which training program you want to enroll?</option>
+                                    </select>
+                                </div>
+                                <div id="employee-program-input"
+                                     class="d-none w-100 p-2 mt-1 shadow border border-navy">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
+                                        <label class="form-check-label" for="flexCheckDefault1">
+                                            Program 1
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
+                                        <label class="form-check-label" for="flexCheckDefault2">
+                                            Program 2
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
+                                        <label class="form-check-label" for="flexCheckDefault3">
+                                            Program 3
+                                        </label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="mt-5 d-block mx-auto btn bg-navy px-5 py-2">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- services start  -->
+
+            {% for service in services %}
+                <div class="{{ service | replacespace }} preview-service-info pt-3 pb-5 d-none">
+                    <div class='d-none'>
+                        {{ service }}
+                    </div>
+                    <div class="row mx-0 bg-lightgreen shadow-md">
+
+                        <div class="col-md-12 ">
+                            <div class="py-2">
+                                <p class="mt-3 mb-0">{{ service.service_header|safe }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="my-3 py-4 px-3 bg-lightgreen shadow-md">
+                        <div class="mt-3">
+                            <h6 class="lh-base">
+                                {{ service.service_body|safe }}
+                            </h6>
+                        </div>
+                    </div>
+                    <div class="whom-we-serve my-3 py-4 px-3 bg-lightgreen shadow-md">
+                        <p class="mt-3">
+                            {{ service.service_footer|safe }}
+                        </p>
+                        <div class="mt-3">
+                            <ol class="row mx-0">
+                                {% for subservice in service.subservice_service.all %}
+                                    <li class="{{ subservice.service|replacespace }} short-info-li col-auto me-3 lh-base fw-bold">{{ subservice.title }}</li>
+                                {% endfor %}
+                            </ol>
+
+                        </div>
+                    </div>
+                    <div class="my-4 pt-5 px-3">
+                        <div class="d-flex flex-wrap justify-content-center justify-content-md-between">
+                            <button id="{{ service.id }}" type="button"
+                                    class="get-quotation btn bg-navy px-2 py-1 mb-3 mb-md-0">Provide information
+                                to
+                                get a quotation
+                            </button>
+
+
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+            <!-- preview services  -->
+            <div class="d-none preview-service px-2 py-3 rounded">
+                <h6 class="fw-bold"></h6>
+                <p class="lh-1"></p>
+            </div>
+
+            <div id="preview-form" class="d-none">
+
+            </div>
+        </section>
+    </main>
+{% endblock content %}
+
+{% block customjs %}
+
+    <script>
+        let selected;
+        let backBtn = document.getElementById('back-btn');
+        let servicesContent = document.querySelector('.services-content');
+        let previewServiceInfos = document.querySelectorAll('.preview-service-info');
+        let allBtn = document.querySelectorAll('.services-content .content-detail button');
+        let quotationBtns = document.querySelectorAll('.get-quotation');
+        let previewForm = document.getElementById('preview-form');
+        
+        let allServicesInputFrom;
+        let allServicesFromContainer;
+        let allServices;
+        let mainHeading = document.querySelector('.services .main-heading');
+        let mainHeadingText = 'All Business Cybersecurity Services';
+        let servicesHeading = {{ services_headings | safe }};
+
+        let check_validity = e => {
+
+            if(selected)
+            return true;
+            else{
+                alert('Please Select an User.')
+                return false;
+            }
+        }
+
+
+        quotationBtns.forEach((btn, index) => {
+            btn.addEventListener('click', e => {
+                previewServiceInfos.forEach(form => {
+                    form.classList.add('d-none');
+                });
+                previewForm.classList.remove('d-none');
+                previewForm.innerHTML = `<div id="progress" class="text-center">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        </div>`;
+
+                fetchData(`${mainOrigin}/api/bcs/sub_service/${btn.id}`)
+                    .then(function (data) {
+                        previewForm.removeChild(document.getElementById('progress'));
+
+                        let list = '<div class="col-md-4 sub-services shadow"> <h5 class="fw-bold">Choose your services:</h5>';
+                        let form = `<form method="POST" onsubmit="return check_validity();" enctype="multipart/form-data">{% csrf_token %}
+                        <input type='hidden' id='service_name' value='' name='service_name'/>
+                        <input type='hidden' id='customer' value='' name='customer'/>{{ order_price_form|crispy }}`;
+                        data.forEach((option, index) => {
+                            list += `<div class="form-check">
+                    <input class="form-check-input sub-services-check" type="checkbox" name="" id="sub-${option.id}" data-index="${index}" data-title="${option.title}" data-id="${option.id}">
+                    <label class="form-check-label" for="sub-${option.id}">${index + 1}. ${option.title}</label>
+                </div>`;
+                            previewForm.innerHTML = '<div class="row mx-0">' + list + '</div>' + '<div class="col-md-8 d-none form-container"><h5 class="fw-bold text-center border-bottom border-gray p-2">Please Provide Necessary Informations:</h5>' + form + '<div class="information-form"></div><button type="submit" class="submit-btn btn bg-navy mt-3">Submit</button></form> </div>';
+
+                        });
+
+                        //user selection
+                        document.querySelector('.customer-email').classList.add('py-3');
+                        document.querySelector('.customer-email').classList.remove('invisible');
+                        document.querySelector('.content-detail').classList.add('mt-5');
+
+                        console.log(document.getElementById('customer'));
+                        if(selected)
+                            document.getElementById('customer').value = selected;
+
+                        document.getElementById('service_name').value = mainHeading.textContent.trim();
+
+                        addHtml()
+                    }).catch(function (err) {
+                    console.log(err)
+                });
+
+                const addHtml = () => {
+                    const allServices = document.querySelectorAll('.sub-services-check');
+                    const formContainer = document.querySelector('.form-container');
+                    const formC = document.querySelector('.form-container form');
+                    const informationForm = document.querySelector('.information-form');
+                    const informationFormBtn = document.querySelector('.information-form .submit-btn');
+                    allServices.forEach((check, index) => {
+                        check.addEventListener('change', e => {
+                            if (check.checked) {
+                                document.querySelector('.form-container').classList.remove('d-none');
+                                optionId = e.target.getAttribute("data-id")
+                                optionIndex = e.target.getAttribute("data-index")
+                                optionTitle = check.getAttribute("data-title")
+                                const div = document.createElement("div")
+                                div.setAttribute("id", `sub-${optionId}-input`)
+                                let inputFields = '';
+                                // informationForm.children[optionIndex]
+                                formC.insertAdjacentHTML('beforebegin', `<p id="progress">Loading...</p>`);
+                                fetchData(`${mainOrigin}/api/bcs/sub_service_input/${optionId}`).then(function (fields) {
+                                    formContainer.removeChild(document.getElementById("progress"))
+                                    inputFields += `<div class="mt-5"data-position="${optionIndex}">  <h6 class="heading">${optionTitle}</h6>`;
+                                    fields.forEach(field => {
+                                        {#console.log("label ")#}
+                                        if (field.inputfield.type === 'select') {
+                                            fetchData(`${mainOrigin}/api/bcs/choice_field/${field.inputfield.id}`)
+                                                .then(function (data) {
+                                                    inputFields += `<label for="input-${field.inputfield.id}.${optionId}">${field.inputfield.placeholder}</label>`;
+                                                    inputFields += `<select required id="input-${field.inputfield.id}.${optionId}" name="${field.id}" class="form-select">`;
+                                                    data[0].choice_field.forEach(choice => {
+                                                        inputFields += ` <option value="${choice.choices}">${choice.choices}</option>`;
+                                                    });
+                                                    {#console.log("option ")#}
+                                                    inputFields += '</select>';
+                                                    inputFields += `</div>`;
+                                                    div.innerHTML = inputFields;
+                                                    informationForm.insertBefore(div, informationForm.children[optionIndex]);
+                                                }).catch(function (err) {
+                                                console.log(err)
+                                            });
+
+                                        } else {
+                                            inputFields += `<label for="input-${field.inputfield.id}.${optionId}">${field.inputfield.placeholder}</label>`;
+                                            inputFields += `<input class="form-control" type="${field.inputfield.type}" required
+                                        id="input-${field.inputfield.id}.${optionId}" name="${field.id}" placeholder="Type Here">`;
+                                            inputFields += `</div>`;
+                                            div.innerHTML = inputFields;
+                                            informationForm.insertBefore(div, informationForm.children[optionIndex]);
+                                            {#console.log("input ")#}
+                                        }
+
+                                    });
+
+                                }).catch(function (err) {
+                                    console.log(err)
+                                });
+                            } else {
+                                // console.log(e.target);
+                                informationForm.removeChild(document.getElementById(`sub-${e.target.getAttribute("data-id")}-input`))
+                                if (Array.from(document.querySelectorAll('.sub-services .form-check-input')).every(checkbox => checkbox.checked == false))
+                                    document.querySelector('.form-container').classList.add('d-none');
+
+                            }
+                        })
+                    });
+                }
+               
+
+            })
+        });
+
+        function fetchData(formUrl) {
+            return new Promise(function (resolve, reject) {
+                $.ajax({
+                    url: formUrl,
+                    type: 'get',
+                    xhrFields: {
+                        withCredentials: true
+                     },
+                     crossDomain: true,
+                    dataType: 'json',
+                    success: function (data) {
+                        resolve(data) // Resolve promise and go to then()
+                    },
+                    error: function (err) {
+                        reject(err) // Reject the promise and go to catch()
+                    }
+                });
+            });
+        }
+
+        allBtn = Array.from(allBtn);
+        if(document.querySelector('.more-services #pcs-preview-btn'))
+        allBtn.push(document.querySelector('.more-services #pcs-preview-btn'));
+
+        allBtn.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                servicesContent.classList.add('d-none');
+                document.querySelector(`div.${btn.classList[0]}`).classList.remove('d-none');
+                backBtn.classList.remove('d-none');
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+
+                mainHeading.textContent = document.querySelector(`div.${btn.classList[0]}`).children[0].textContent.split('-')[0];
+            });
+        });
+
+        let backBtnChanges = () => {
+            document.querySelector('.customer-email').classList.add('invisible');
+            document.querySelector('.customer-email').classList.remove('py-3');
+            document.querySelector('.content-detail').classList.remove('mt-5');
+            servicesContent.classList.remove('d-none');
+            previewServiceInfos.forEach(form => {
+                form.classList.add('d-none');
+            });
+            previewForm.classList.add('d-none');
+            backBtn.classList.add('d-none');
+
+            document.body.scrollTop = 10;
+            mainHeading.textContent = mainHeadingText;
+            conciergeCybersecurity.classList.remove('d-none');
+            subscriptionPackages.classList.add('d-none');
+            invitationContainer.classList.add('d-none');
+        }
+
+        backBtn.addEventListener('click', backBtnChanges);
+
+        document.body.addEventListener('keydown', (e) => {
+            if (e.key == 'Backspace' && e.target.tagName != 'INPUT') {
+                backBtnChanges();
+            }
+        });
+
+        let conciergeCybersecurity = document.getElementById('concierge-cybersecurity');
+        let subscriptionPackages = document.getElementById('subscription-packages');
+        let invitationContainer = document.querySelector('.invitation-container');
+
+        document.getElementById('subscription-package-btn').addEventListener('click', () => {
+            conciergeCybersecurity.classList.add('d-none');
+            subscriptionPackages.classList.remove('d-none');
+        });
+
+        document.querySelectorAll('.preview-service-info .package button').forEach(btn => {
+            btn.addEventListener('click', e => {
+                subscriptionPackages.classList.add('d-none');
+                document.querySelector('.invitation-container #package-name').textContent = e.target.parentNode.children[0].textContent;
+                invitationContainer.classList.remove('d-none');
+            });
+        });
+
+        let input = document.getElementById('train-employee-input');
+        document.getElementById('train-employee-btn').addEventListener('click', () => {
+            input.classList.toggle('d-none');
+            input.focus();
+        });
+        input.addEventListener('keyup', (e) => {
+            e.target.value = e.target.value.replace(/[^0-9]/gi, "");
+        });
+
+        document.getElementById('employee-program-btn').addEventListener('click', (e) => {
+            let trainInput = document.getElementById('employee-program-input');
+            trainInput.classList.toggle('d-none');
+            trainInput.focus();
+        });
+        document.getElementById('employee-number-btn').addEventListener('click', (e) => {
+            let numberInput = document.getElementById('employee-number-input');
+            numberInput.classList.toggle('d-none');
+            numberInput.focus();
+        });
+    </script>
+    <script>
+    // In your Javascript (external .js resource or <script> tag)
+    $(document).ready(function () {
+        $('.js-example-basic-single').select2();
+
+         $('.js-example-basic-single').on('select2:select', function (e) {
+                selected = e.params.data.text.trim();
+                document.getElementById('customer').value = selected;
+            });
+    });
+</script>
+{% endblock customjs %}

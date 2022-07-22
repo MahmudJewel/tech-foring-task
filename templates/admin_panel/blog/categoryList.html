@@ -1,0 +1,180 @@
+{% extends 'base/blog_admin_base.html' %} {% load static %}
+{% load hosts %}
+{% load crispy_forms_tags %}
+
+{% block title %} Blog Admin Category List
+{% endblock title %}
+
+{% block headercss %}
+    <link rel="stylesheet" href="{% static 'tfcss/admin_panel/blog/dashboard.css' %}"/>
+{% endblock headercss %}
+{% block content %}
+    <main>
+        <div class="container-fluid">
+            <button class="btn border-1 servicesBtn btn-primary my-4" data-bs-toggle="modal"
+                    data-bs-target="#categoryModal">Add Category
+            </button>
+            <div class="row">
+                <div class="col-lg-12 position-relative" style="margin-bottom: 15rem;">
+                    <h2 class="text-capitalize position-absolute my-4">Category list</h2>
+                    <table id="blogList" class="table display" style="width: 100%">
+                        <thead>
+                        <tr>
+                            <th>Category Name</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for category in categories %}
+                            <tr>
+                                <td><p class="fw-bold">{{ category.category }}</p></td>
+                                <td>
+                                    <a href="{% host_url 'category_delete' host 'blog' %}{{ category.id }}" class="btn">
+                                        <i class="bi bi-trash-fill text-danger rounded-circle activites-icon"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <button class="btn border-1 servicesBtn btn-primary my-4" data-bs-toggle="modal"
+                    data-bs-target="#subcategoryModal">Add SubCategory
+            </button>
+            <div class="row">
+                <div class="col-lg-12 position-relative" style="margin-bottom: 15rem;">
+                    <h2 class="text-capitalize position-absolute my-4">Sub Category list</h2>
+                    <table id="subCategoryList" class="table display" style="width: 100%">
+                        <thead>
+                        <tr>
+                            <th>Subcategory Name</th>
+                            <th>Category Name</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for sub_categorie in sub_categories %}
+                            <tr>
+                                <td><p class=" fw-bold">{{ sub_categorie.sub_category }}</p></td>
+                                <td><p class=" fw-bold">{% for sub in sub_categorie.category.all %}
+                                    {{ sub }},
+                                {% endfor %}
+                                </p></td>
+                                <td>
+                                    <a href="{% host_url 'subcategory_delete' host 'blog' %}{{ sub_categorie.id }}" class="btn">
+                                        <i class="bi bi-trash-fill text-danger rounded-circle activites-icon"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <button class="btn border-1 servicesBtn btn-primary my-4" data-bs-toggle="modal"
+                    data-bs-target="#filterModal">Add Filter Option
+            </button>
+            <div class="row">
+                <div class="col-lg-12 position-relative" style="margin-bottom: 15rem;">
+                    <h2 class="text-capitalize position-absolute my-4">Category list</h2>
+                    <table id="filterOptionList" class="table display" style="width: 100%">
+                        <thead>
+                        <tr>
+                            <th>Filter Option</th>
+                            <th>Subcategory</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for filter_option in filter_options %}
+                            <tr>
+                                <td><p class=" fw-bold">{{ filter_option.filter_name }}</p></td>
+                                <td><p class=" fw-bold">{% for filter in filter_option.sub_category.all %}
+                                    {{ filter }},
+                                {% endfor %}
+                                </p></td>
+                                <td>
+                                    <a href="{% host_url 'filter_delete' host 'blog' %}{{ filter_option.id }}" class="btn">
+                                        <i class="bi bi-trash-fill text-danger rounded-circle activites-icon"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Modal -->
+    <div class="modal fade" id="categoryModal" tabindex="-1" aria-labelledby="categoryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="POST">
+                        {{ form1|crispy }}
+                        {% csrf_token %}
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary" name="category-btn">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="subcategoryModal" tabindex="-1" aria-labelledby="subcategoryModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="POST">
+                        {{ form2|crispy }}
+                        {% csrf_token %}
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary" name="subcategory-btn">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="POST">
+                        {{ form3|crispy }}
+                        {% csrf_token %}
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary" name="filter-btn">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+{% block customjs %}
+    <!-- custom scripts -->
+    <script src="{% static 'tfjs/admin_panel/blog/dashboard.js' %}"></script>
+
+{% endblock customjs %}

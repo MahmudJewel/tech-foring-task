@@ -1,0 +1,319 @@
+{% extends 'base/main_admin_base.html' %} {% load static %}
+{% load hosts %}
+{% load crispy_forms_tags %}
+{% block title %} My Profile
+{% endblock title %} {% block headercss %}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'tfcss/admin_panel/mainTF/support.css' %}"/>
+    <style>
+        .select2-container {
+            width: 100% !important;
+        }
+
+        .select2-selection__rendered {
+            line-height: 31px !important;
+        }
+
+        .select2-container .select2-selection--single {
+            height: 35px !important;
+            border: 1px solid #ced4da;
+        }
+
+        .select2-selection__arrow {
+            height: 34px !important;
+        }
+    </style>
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.2.8/css/rowReorder.dataTables.min.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css"/> -->
+{% endblock headercss %}
+{% block content %}
+
+    <main>
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col">
+                    <div class="panel-box blue1">
+                        <h2>All STAFF</h2>
+                        <div class="panel-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="34.5" height="34.5" viewBox="0 0 34.5 34.5">
+                                <g id="user_icon" data-name="user icon" transform="translate(-853 -223)">
+                                    <path id="Path_8" data-name="Path 8"
+                                          d="M33.75,33.75H31.5V28.125A5.632,5.632,0,0,0,25.875,22.5V20.25a7.884,7.884,0,0,1,7.875,7.875Z"
+                                          transform="translate(853.75 223.75)" fill="#fff"/>
+                                    <path id="Path_9" data-name="Path 9"
+                                          d="M24.75,33.75H22.5V28.125A5.632,5.632,0,0,0,16.875,22.5h-6.75A5.632,5.632,0,0,0,4.5,28.125V33.75H2.25V28.125a7.884,7.884,0,0,1,7.875-7.875h6.75a7.884,7.884,0,0,1,7.875,7.875Z"
+                                          transform="translate(850.75 223.75)" fill="#fff"/>
+                                    <path id="Path_10" data-name="Path 10"
+                                          d="M22.5,2.25V4.5a5.625,5.625,0,0,1,0,11.25V18a7.875,7.875,0,1,0,0-15.75Z"
+                                          transform="translate(853.75 220.75)" fill="#fff"/>
+                                    <path id="Path_11" data-name="Path 11"
+                                          d="M13.5,4.5a5.625,5.625,0,1,1-5.625,5.625A5.625,5.625,0,0,1,13.5,4.5m0-2.25a7.875,7.875,0,1,0,7.875,7.875A7.875,7.875,0,0,0,13.5,2.25Z"
+                                          transform="translate(850.75 220.75)" fill="#fff"/>
+                                </g>
+                            </svg>
+                            <p>{{ admin_list.count }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="panel-box blue3">
+                        <h2>sales</h2>
+                        <div class="panel-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="34.5" height="34.5" viewBox="0 0 34.5 34.5">
+                                <g id="user_icon" data-name="user icon" transform="translate(-853 -223)">
+                                    <path id="Path_8" data-name="Path 8"
+                                          d="M33.75,33.75H31.5V28.125A5.632,5.632,0,0,0,25.875,22.5V20.25a7.884,7.884,0,0,1,7.875,7.875Z"
+                                          transform="translate(853.75 223.75)" fill="#fff"/>
+                                    <path id="Path_9" data-name="Path 9"
+                                          d="M24.75,33.75H22.5V28.125A5.632,5.632,0,0,0,16.875,22.5h-6.75A5.632,5.632,0,0,0,4.5,28.125V33.75H2.25V28.125a7.884,7.884,0,0,1,7.875-7.875h6.75a7.884,7.884,0,0,1,7.875,7.875Z"
+                                          transform="translate(850.75 223.75)" fill="#fff"/>
+                                    <path id="Path_10" data-name="Path 10"
+                                          d="M22.5,2.25V4.5a5.625,5.625,0,0,1,0,11.25V18a7.875,7.875,0,1,0,0-15.75Z"
+                                          transform="translate(853.75 220.75)" fill="#fff"/>
+                                    <path id="Path_11" data-name="Path 11"
+                                          d="M13.5,4.5a5.625,5.625,0,1,1-5.625,5.625A5.625,5.625,0,0,1,13.5,4.5m0-2.25a7.875,7.875,0,1,0,7.875,7.875A7.875,7.875,0,0,0,13.5,2.25Z"
+                                          transform="translate(850.75 220.75)" fill="#fff"/>
+                                </g>
+                            </svg>
+
+                            <p>{{ sales.count }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="panel-box blue4">
+                        <h2>blogger</h2>
+                        <div class="panel-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="34.5" height="34.5" viewBox="0 0 34.5 34.5">
+                                <g id="user_icon" data-name="user icon" transform="translate(-853 -223)">
+                                    <path id="Path_8" data-name="Path 8"
+                                          d="M33.75,33.75H31.5V28.125A5.632,5.632,0,0,0,25.875,22.5V20.25a7.884,7.884,0,0,1,7.875,7.875Z"
+                                          transform="translate(853.75 223.75)" fill="#fff"/>
+                                    <path id="Path_9" data-name="Path 9"
+                                          d="M24.75,33.75H22.5V28.125A5.632,5.632,0,0,0,16.875,22.5h-6.75A5.632,5.632,0,0,0,4.5,28.125V33.75H2.25V28.125a7.884,7.884,0,0,1,7.875-7.875h6.75a7.884,7.884,0,0,1,7.875,7.875Z"
+                                          transform="translate(850.75 223.75)" fill="#fff"/>
+                                    <path id="Path_10" data-name="Path 10"
+                                          d="M22.5,2.25V4.5a5.625,5.625,0,0,1,0,11.25V18a7.875,7.875,0,1,0,0-15.75Z"
+                                          transform="translate(853.75 220.75)" fill="#fff"/>
+                                    <path id="Path_11" data-name="Path 11"
+                                          d="M13.5,4.5a5.625,5.625,0,1,1-5.625,5.625A5.625,5.625,0,0,1,13.5,4.5m0-2.25a7.875,7.875,0,1,0,7.875,7.875A7.875,7.875,0,0,0,13.5,2.25Z"
+                                          transform="translate(850.75 220.75)" fill="#fff"/>
+                                </g>
+                            </svg>
+
+                            <p>{{ blogger.count }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="panel-box blue4">
+                        <h2>bcs head</h2>
+                        <div class="panel-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="34.5" height="34.5" viewBox="0 0 34.5 34.5">
+                                <g id="user_icon" data-name="user icon" transform="translate(-853 -223)">
+                                    <path id="Path_8" data-name="Path 8"
+                                          d="M33.75,33.75H31.5V28.125A5.632,5.632,0,0,0,25.875,22.5V20.25a7.884,7.884,0,0,1,7.875,7.875Z"
+                                          transform="translate(853.75 223.75)" fill="#fff"/>
+                                    <path id="Path_9" data-name="Path 9"
+                                          d="M24.75,33.75H22.5V28.125A5.632,5.632,0,0,0,16.875,22.5h-6.75A5.632,5.632,0,0,0,4.5,28.125V33.75H2.25V28.125a7.884,7.884,0,0,1,7.875-7.875h6.75a7.884,7.884,0,0,1,7.875,7.875Z"
+                                          transform="translate(850.75 223.75)" fill="#fff"/>
+                                    <path id="Path_10" data-name="Path 10"
+                                          d="M22.5,2.25V4.5a5.625,5.625,0,0,1,0,11.25V18a7.875,7.875,0,1,0,0-15.75Z"
+                                          transform="translate(853.75 220.75)" fill="#fff"/>
+                                    <path id="Path_11" data-name="Path 11"
+                                          d="M13.5,4.5a5.625,5.625,0,1,1-5.625,5.625A5.625,5.625,0,0,1,13.5,4.5m0-2.25a7.875,7.875,0,1,0,7.875,7.875A7.875,7.875,0,0,0,13.5,2.25Z"
+                                          transform="translate(850.75 220.75)" fill="#fff"/>
+                                </g>
+                            </svg>
+
+                            <p>{{ bcs_head.count }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="panel-box blue4">
+                        <h2>pcs head</h2>
+                        <div class="panel-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="34.5" height="34.5" viewBox="0 0 34.5 34.5">
+                                <g id="user_icon" data-name="user icon" transform="translate(-853 -223)">
+                                    <path id="Path_8" data-name="Path 8"
+                                          d="M33.75,33.75H31.5V28.125A5.632,5.632,0,0,0,25.875,22.5V20.25a7.884,7.884,0,0,1,7.875,7.875Z"
+                                          transform="translate(853.75 223.75)" fill="#fff"/>
+                                    <path id="Path_9" data-name="Path 9"
+                                          d="M24.75,33.75H22.5V28.125A5.632,5.632,0,0,0,16.875,22.5h-6.75A5.632,5.632,0,0,0,4.5,28.125V33.75H2.25V28.125a7.884,7.884,0,0,1,7.875-7.875h6.75a7.884,7.884,0,0,1,7.875,7.875Z"
+                                          transform="translate(850.75 223.75)" fill="#fff"/>
+                                    <path id="Path_10" data-name="Path 10"
+                                          d="M22.5,2.25V4.5a5.625,5.625,0,0,1,0,11.25V18a7.875,7.875,0,1,0,0-15.75Z"
+                                          transform="translate(853.75 220.75)" fill="#fff"/>
+                                    <path id="Path_11" data-name="Path 11"
+                                          d="M13.5,4.5a5.625,5.625,0,1,1-5.625,5.625A5.625,5.625,0,0,1,13.5,4.5m0-2.25a7.875,7.875,0,1,0,7.875,7.875A7.875,7.875,0,0,0,13.5,2.25Z"
+                                          transform="translate(850.75 220.75)" fill="#fff"/>
+                                </g>
+                            </svg>
+
+                            <p>{{ pcs_head.count }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="heading d-flex justify-content-between align-items-center">
+                <h2>SUPPORT TEAM MEMBERS</h2>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Support
+                    Stuff
+                </button>
+            </div>
+            <div class="table-container">
+                <table id="data-table" class="shadow-table table table-hover">
+                    <thead>
+                    <tr class="head-row">
+                        <th>Name</th>
+                        <th>Admin Type</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for admin in admin_list %}
+                        <tr class="data-row">
+                            <td>
+                                <a href="{% host_url 'main_admin_user' %}{{ admin.id }}" target="_blank"
+                                   class="staff-link">{{ admin.full_name }}</a>
+                            </td>
+                            <td>
+
+                                {% if admin.is_sales %}
+                                    <p>Sales</p>
+                                {% endif %}
+                                {% if admin.is_blogger %}
+                                    <p>Blogger</p>
+                                {% endif %}
+                                {% if admin.is_bcs_head %}
+                                    <p>BCS Head</p>
+                                {% endif %}
+                                {% if admin.is_pcs_head %}
+                                    <p>PCS Head</p>
+                                {% endif %}
+                                {% if admin.is_superuser %}
+                                    <p>Superuser</p>
+                                {% endif %}
+                            </td>
+                            {% if not admin.is_superuser %}
+                                <td><a href="{% host_url 'main_admin_user_edit' %}{{ admin.id }}">Edit</a></td>
+                            {% else %}
+                                <td></td>
+                            {% endif %}
+                            <td><a href="{% host_url 'main_admin_support_delete_view' id=admin.id %}">Delete</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1"
+             aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header ">
+                        <h5 class="modal-title w-100 text-center" id="exampleModalLabel">Add Support Stuff</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" id="employeeAddForm" method="POST" class="d-flex flex-column">
+                            <label for="user" style="font-weight: 700; margin-top: 1rem;">User*</label>
+                            <select required name="user_email" id="user"
+                                    class="js-example-basic-single form-control form-select">
+                                <option selected disabled>------------</option>
+                                {% for user_list in user_lists %}
+                                    <option value="{{ user_list.email }}">{{ user_list.email }}</option>
+                                {% endfor %}
+                            </select>
+                            <label for="user" style="font-weight: 700; margin-top: 1rem;">Permission*</label>
+                            <select multiple required name="user_permission"
+                                    class="form-control form-select admin_type">
+                                <option value="sales">Sales</option>
+                                <option value="blogger">Blogger</option>
+                                <option value="bcs_head">BCS Head</option>
+                                <option value="pcs_head">PCS Head</option>
+                            </select>
+
+                            {% csrf_token %}
+                            <button class="btn btn-primary" type="submit">Add Stuff</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}
+{% block customjs %}
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        // In your Javascript (external .js resource or <script> tag)
+        $(document).ready(function () {
+            $('.js-example-basic-single').select2({
+                dropdownParent: $("#exampleModal")
+            })
+
+            $('.admin_type').select2({
+                dropdownParent: $("#exampleModal")
+            })
+
+            
+            $('#data-table').DataTable();
+        });
+
+    </script>
+    <script src="{% static 'tfjs/admin_panel/mainTF/eventWebinar.js' %}"></script>
+    <!-- <script src="https://cdn.datatables.net/rowreorder/1.2.8/js/dataTables.rowReorder.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script> -->
+    <script>
+        let services = `{{ form|crispy }}`;
+
+        $('.admin_type').on('select2:select', function (e) {
+            let data = e.params.data;
+
+            ($(this).select2('data')).forEach(item => {
+                if (item.id == 'sales') {
+                    document.querySelectorAll('.select2-selection__rendered li').forEach(li => {
+                        if (li.title != 'Sales')
+                            li.outerHTML = '';
+                    })
+                }
+            })
+            if (data.text !== 'Sales') {
+                $('.admin_type option[value="sales"]').prop('disabled', true);
+
+                if (document.querySelector('.servicesList'))
+                    document.querySelector('.servicesList').outerHTML = '';
+            } else {
+                $(this).val(null).trigger('change');
+                $(this).val('sales').trigger('change');
+                $('.admin_type  option[value!="sales"]').prop('disabled', true);
+
+
+                if (!document.querySelector('.servicesList')) {
+                    document.querySelector('#employeeAddForm button[type="submit"]').insertAdjacentHTML('beforebegin', '<div class="servicesList">' + services + '</div>');
+                    $('.js-example-basic-multiple').select2({
+                        dropdownParent: $("#exampleModal")
+                    })
+                }
+
+            }
+
+        });
+
+        $('.admin_type').on('change', function (e) {
+
+            if ($(this).find('option:selected').length === 0) {
+                $('.admin_type  option').prop('disabled', false);
+                if (document.querySelector('.servicesList'))
+                    document.querySelector('.servicesList').outerHTML = '';
+            }
+
+
+        });
+
+    </script>
+{% endblock customjs %}

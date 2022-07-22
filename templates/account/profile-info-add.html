@@ -1,0 +1,130 @@
+{% extends 'base/user_info_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %} {{ title }} {% endblock title %}
+{% block headercss %}
+    <style>
+        label {
+            text-transform: capitalize;
+            font-weight: bold;
+        }
+
+        #id_phone_number_0 {
+            width: 30%;
+            border-radius: 0
+        }
+
+        #div_id_phone_number .select2-selection--single {
+            height: 40px
+        }
+
+        #id_phone_number_1 {
+            width: 70%;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-left: 0;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            top: 1px;
+            position: relative;
+            border-radius: 0 4px 4px 0
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            top: 6px !important;
+
+        }
+
+        .select2-container--default .select2-selection--single {
+            border-color: #d8dde2;
+            border-radius: 4px 0 0 4px;
+        }
+
+
+        input, select, .select2-selection, .select2 {
+            height: 40px !important
+        }
+
+        .select2-selection {
+            display: flex !important;
+            align-items: center !important
+        }
+
+        form > div {
+            width: 50%;
+            margin: 0 auto
+        }
+
+        @media (max-width: 500px) {
+            form > div {
+                width: 90%;
+                margin: 0 auto
+            }
+        }
+
+        form > div div {
+            margin-bottom: 5px
+        }
+    </style>
+{% endblock %}
+{% block content %}
+
+
+    <div class="profile-area p-md-5 mt-3">
+        {% if success %}
+            <h5 class="text-center text-green">{{ success }}</h5>
+        {% endif %}
+
+        <div class="p-md-5 py-3">
+            {% if message %}
+                {% include 'base/verification_check.html' %}
+            {% endif %}
+
+            {% if form %}
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="d-flex justify-content-center flex-column">
+                        {% if form.errors %}
+                            <div class="text-danger">{{ form.errors }}</div>
+                        {% endif %}
+                        {{ form|crispy }}
+                    </div>
+                    <div class="d-flex justify-content-center mt-3">
+                        <button type="submit" class="btn btn-navy">Save</button>
+                    </div>
+                </form>
+            {% endif %}
+
+
+        </div>
+    </div>
+{% endblock content %} {% block customjs %}
+        <script>
+
+            window.onload = function () {
+                let selected;
+                let country = document.getElementById('id_country');
+                $(document).ready(function () {
+                    $('.countryselectwidget').select2();
+                    $('.phoneprefixselect').select2();
+
+                    $('.phoneprefixselect').on('select2:select', function (e) {
+                        selected = e.params.data.text;
+                        country.value = selected.slice(0, selected.indexOf('+')).trim();
+                    });
+                });
+
+                if (country.style.display === 'none') {
+                    country.parentNode.parentNode.style.display = 'none'
+                }
+            }
+
+        </script>
+{% endblock customjs %}

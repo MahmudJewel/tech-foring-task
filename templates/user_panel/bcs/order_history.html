@@ -1,0 +1,59 @@
+{% extends 'base/bcs_user_base.html' %} {% load static %} {% load my_filter %} {% load hosts %} {% block title %}
+{{ message }} {% endblock title %} {% block content %}
+
+    <section class="orders pb-5">
+        <h4 class="pt-2 fw-bold border-bottom border-gray pb-14p">Your {{ message }} History</h4>
+        <div class="mt-5">&nbsp;</div>
+        {% if not orders.exists %}
+            <h3 class="text-center text-gray my-5 py-5 h-100">No {{ message }} History Found!</h3>
+            <div class="d-flex my-2 justify-content-center">
+                <a href="{% host_url 'bcs_user_services' host 'main' %}" class="btn btn-outline-navy">Get a Quotation</a>
+            </div>
+        {% else %}
+            <div class="table-responsive">
+                <table id="order-table" class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Order ID</th>
+                        <th>service</th>
+                        <th>user</th>
+                        <th>status</th>
+                        <th>View</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for order in orders %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ order.id }}</td>
+                            <td>{{ order.service }}</td>
+                            <td>{{ order.user }}</td>
+                            {% if order.order_status == 'new' %}
+                                <td><p class="badge bg-primary">{{ order.order_status|capitalize }}</p></td>
+                            {% elif order.order_status == 'assigned' %}
+                                <td><p class="badge bg-secondary">{{ order.order_status|capitalize }}</p></td>
+                            {% elif order.order_status == 'attending' %}
+                                <td><p class="badge bg-warning text-dark">{{ order.order_status|capitalize }}</p></td>
+                            {% elif order.order_status == 'on_progress' %}
+                                <td><p class="badge bg-info text-dark">{{ order.order_status|capitalize }}</p></td>
+                            {% elif order.order_status == 'completed' %}
+                                <td><p class="badge bg-success">{{ order.order_status|capitalize }}</p></td>
+                            {% elif order.order_status == 'canceled' %}
+                                <td><p class="badge bg-danger">{{ order.order_status|capitalize }}</p></td>
+                            {% endif %}
+    
+                            <td><a href="{% host_url 'bcs_user_order_details' host 'main' %}{{ order.id }}"><i
+                                    class="bi bi-eye-fill"></i></a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    </section>
+
+{% endblock content %} {% block customjs %}
+    <script>
+    </script>
+{% endblock customjs %}

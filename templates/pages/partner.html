@@ -1,0 +1,363 @@
+{% extends 'base/base.html' %} {% load static %} {% load hosts %} {% block title %} TechForing Partner Program | Cyber Security Solution Providers {% endblock title %} {% block headercss %}
+<link rel="stylesheet" href="{% static '' %}tfcss/glide.core.css" />
+<link rel="stylesheet" href="{% static '' %}tfcss/glide.theme.css" />
+<link rel="stylesheet" href="{% static '' %}tfcss/style.css" /> {% endblock headercss %} {% block content %}
+<section class="partner-banner">
+    <div class="container">
+        <h2 class="cb-title">Techforing partner network</h2>
+        <h2 class="cb-subtitle">Join The TechForing Partner Program</h2>
+        <a href="{% url 'bpartner' %}" target="_blank" class="tf-btn2 cb-btn">Become Our Partner</a
+        >
+      </div>
+    </section>
+    <section class="our-partner">
+      <div class="container">
+        <div class="fran-bar"></div>
+        <h2 class="tfh-title-right">Our Partners</h2>
+        <div class="row op-row">
+          <div class="col-md-6">
+            <div class="glide pslide">
+              <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                  <li class="glide__slide">
+                    <div class="opslide-box">
+                      <div class="row">
+                        <div class="col-4">
+                          <div class="pslide-logo">
+                            <img
+                              src="{%static ''%}tfimg/partner/microsoft logo.png"
+                              title="Techforing partner Microsoft"
+                              alt="cyber-security-provider-microsoft"
+                              longdesc="Microsoft is our proud partner"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-4">
+                          <div class="pslide-logo">
+                            <img
+                              src="{%static ''%}tfimg/partner/ibm logo.png"
+                              title="Techforing Partner IBM"
+                              alt="cyber-security-solution-provider-IBM"
+                              longdesc="IBM is our proud partner"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-4">
+                          <div class="pslide-logo pr-3 mt-3">
+                            <img
+                              src="{%static ''%}tfimg/partner/aws logo.png"
+                              title="Techforing partner AWS"
+                              alt="cyber-security-solution-partner-aws"
+                              longdesc="Amazon Web Services Partner with techforing"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-4">
+                          <div class="pslide-logo">
+                            <img
+                              src="{%static ''%}tfimg/bpartner/fortinet-logo.png"
+                              title="Techforing partner fortinet"
+                              alt="cyber-security-solution-partner-fortinet"
+                              longdesc="Amazon Web Services Partner with techforing"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- <li class="glide__slide"></li>
+                  <li class="glide__slide"></li>  -->
+                </ul>
+              </div>
+              <div class="glide__arrows" data-glide-el="controls">
+                <button
+                  class="glide__arrow glide__arrow--left"
+                  data-glide-dir="<"
+                >
+                  <img src="{%static ''%}tfimg/career/left-arrow.png" alt="" />
+                </button>
+                <button
+                  class="glide__arrow glide__arrow--right"
+                  data-glide-dir=">"
+                >
+                  <img src="{%static ''%}tfimg/career/left-arrow.png" alt="" />
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="op-text">
+              <p class="text-justify">
+                Techforing has put together a network of local and global partners, which enables us to provide our customers with the most personalized cybersecurity solutions. Our expertise lies in data security, risk management, incident response, and cybercrime investigation.
+                <br />
+                <br />
+                Long-term relationships are something we like to build with our partners. We allow them to consume Techforing’s offerings with their business solutions and also offer their customers the best technologies in the market. 
+                <br />
+                <br />
+                We ensure our partners’ success ratio with their customers is completely maintained. To achieve that, we provide dedicated training sessions and certification programs alongside customized support to respond to clients in the time of their need. That’s certainly a rare feat among cyber security solution providers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="tpp-section">
+      <div class="container">
+        <h2 class="tfh-title">TechForing Partner Program</h2>
+        <div class="tpp-img">
+          <img
+            src="{%static ''%}tfimg/partner/techforing partnership program.png"
+            title="Techforing Partnership Program"
+            alt="cyber-security-solution-provider"
+            longdesc="Techforing Partnership Program"
+          />
+          <h2 class="cg-title">TECHFORING IS THE KINGPIN, PIONEER, PARTNER</h2>
+          <p class="text-justify">
+            As a cybersecurity company, We partner with industry-leading tech services and solution providers. Our partners help us penetrate the market better for their existing and future clients. In exchange, we provide customized offers, share revenues, our resources, and expertise. Our goal is to help our partners to explore additional revenue streams without sweating over it and be more competitive in their own industry.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="pb-section">
+      <div class="container">
+        <div class="fran-bar"></div>
+        <h2 class="tfh-title-right">Partner Benefits</h2>
+        <div class="row pb-row">
+          <div class="col-md-6">
+            <div class="pb-img">
+              <img
+                src="{%static ''%}tfimg/partner/partner benefits.png"
+                title="Techforing partnership Program Benifits"
+                alt="cyber-security-solution-provider-program"
+                longdesc="Partnership program benifits of Techforing Partnership Program"
+              />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="pb-icons">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="pb-icon-box">
+                    <img src="{%static ''%}tfimg/partner/collaboration.png" alt="" />
+                    <h2 class="text-center">collaboration</h2>
+                    <p class="text-center">
+                      We provide you with data security, resources, and expertise for strategic support.
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="pb-icon-box">
+                    <img src="{%static ''%}tfimg/partner/enablement.png" alt="" />
+                    <h2 class="text-center">ENABLEMENT</h2>
+                    <p class="text-center">We infuse cybersecurity into your IT professionals.</p>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="pb-icon-box">
+                    <img src="{%static ''%}tfimg/partner/growth.png" alt="" />
+                    <h2 class="text-center">GROWTH</h2>
+                    <p class="text-center">
+                      We help you generate an additional revenue stream and achieve informational growth with adaptive strategies and security.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="sp-section">
+      <div class="container">
+        <div class="row row-inverse">
+          <div class="col-md-6">
+            <div class="sp-text">
+              <div class="fran-bar"></div>
+              <h2 class="tfh-title-right">Strategic Partner</h2>
+              <p class="text-justify">
+                Our strategic partners provide the logistics and process counseling from time to time. With their constant support and valuable suggestions, we have been able to penetrate the most far-end markets to reach our customers, who enjoy our robust cybersecurity solutions. We work to improve the resilience of our partners and their customers against cyber threats. <br /><br />Being true strategic partners to us, we are constantly advised on strategy and get solutions tailored to the information security industry. We manage their entire security operations as our partnership stays on in mutually beneficial collaboration.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="sp-img">
+              <img
+                src="{%static ''%}tfimg/partner/strategic partner.png"
+                title="Techforing Strategy Partnership Program"
+                alt="cyber-security-solution-provider-strategy-partnership"
+                longdesc="Techforing Strategic Partnership Program"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tp-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="sp-img">
+              <img
+                src="{%static ''%}tfimg/partner/technology partner.png"
+                title="Techforing Technology Partnership"
+                alt="cyber-security-solution-provider-technology-partnership"
+                longdesc="Techforing Technology Partnership Program"
+              />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="sp-text">
+              <div class="fran-bar"></div>
+              <h2 class="tfh-title-right">Technology Partner</h2>
+              <p class="text-justify">
+                Partnership with us enables our partners to have the tools and expertise required to bring integrated solutions. We provide innovative cybersecurity services customized to their customers’ needs. Whether you are a software development company, hosting provider, ISP, Telecom Company, tech service provider or web Development Company, we have room for everyone.
+                <br /><br />
+                Our search for the right partners continues until we can deliver smart data protection to our customers and clients.
+                <br /><br />
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="fran-member">
+      <div class="container">
+        <div class="fran-member-img">
+          <img
+            src="{%static ''%}tfimg/partner/become a member.png"
+            title="Become our Partner"
+            alt="cyber-security-solution-provider-become-our-partneship"
+            longdesc="become our partner with Techforing"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="hr-cta">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div class="hrc-box">
+              <h2>become a member of techforing network</h2>
+              <p>Our IT Security Resellers will help</p>
+              <a href="{% url 'bpartner' %}" target="_blank">Apply Now</a>
+    </div>
+    </div>
+    </div>
+    </div>
+</section>
+<section class="ccsp-resource">
+    <div class="container">
+        <div class="fran-bar"></div>
+        <h2 class="tfh-title-right">Important Resources</h2>
+    </div>
+    <div class="ccspr-outer">
+        <div class="container">
+            <div class="ccspr-row row">
+                <div class="col-md-4">
+                    <div class="ccspr-img">
+                        <img src="{%static ''%}tfimg/partner/faq.png" title="Partnership Program Case study 1" alt="cyber-security-solution-provider-case-study1" longdesc="Partnership Program Case Study 1" />
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="ccspr-right">
+                        <div class="fran-bar"></div>
+                        <h2>FAQ</h2>
+                        <p class="text-justify">
+                            In case you are unsure about our partnership program, how it works, cost, our extra offers, or anything that you wish to know right away without reaching out to us, visit this section. Here, we tried to clarify some of the most questions we receive.
+                        </p>
+                        <div class="text-right">
+                            <a href="{%url 'partner_faq'%}" class="ccspr-btn">Learn More</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ccspr-row row">
+            <div class="col-md-4">
+              <div class="ccspr-img">
+                <img
+                  src="{%static ''%}tfimg/partner/youtube channel.jpg"
+                  title="Partnership Progream Case study 2"
+                  alt="cyber-security-solution-provider-case-study2"
+                  longdesc="Techforing Yoututbe Channel"
+                />
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="ccspr-right">
+                <div class="fran-bar"></div>
+                <h2>youtube channel</h2>
+                <p class="text-justify">
+                  We have a dedicated YouTube channel with videos on the
+                  need-to-knows about cybersecurity, how-to Tutorials, and other
+                  topics like partnership program and franchise. Visit and
+                  subscribe to the channel and turn on the bell icon to never
+                  miss a thing!
+                </p>
+                <div class="text-right">
+                  <a
+                    href="https://www.youtube.com/channel/UCBP7xegSjtVXulfywJ2kPvQ"
+                    target="_blank"
+                    class="ccspr-btn"
+                    >Learn More</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ccspr-row row">
+            <div class="col-md-4">
+              <div class="ccspr-img">
+                <img
+                  src="{%static ''%}tfimg/partner/securitymania.jpg"
+                  title="Partnership Program Case study 3"
+                  alt="cyber-security-solution-provider-case-study3"
+                  longdesc="Partnership program case study 1"
+                />
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="ccspr-right">
+                <div class="fran-bar"></div>
+                <h2>securitymania</h2>
+                <p class="text-justify">
+                  We investigate reported cybercrimes to find out who-why-how thorough a comprehensive crime investigation procedure. In this section, we will regularly share some of the most exemplary case details to help you taste the real-world scenarios.
+                </p>
+                <div class="text-right">
+                  <a
+                    href="https://blog.techforing.com/"
+                    target="_blank"
+                    class="ccspr-btn"
+                    >Learn More</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock content %}
+
+{% block customjs %}
+     <script src="{%static ''%}tfjs/glide.js"></script>
+
+    <script src="{%static ''%}tfjs/career.js"></script>
+    <script>
+      new Glide(".pslide", {
+        type: "carousel",
+      }).mount();
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#my-header").load("header.html");
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#my-footer").load("footer.html");
+      });
+    </script>
+{% endblock customjs %}

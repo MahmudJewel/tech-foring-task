@@ -1,0 +1,84 @@
+{% extends 'base/bcs_user_base.html' %}
+{% load static %}
+{% load my_filter %}
+{% load hosts %}
+{% block title %}
+    Services Form
+{% endblock title %} {% block content %}
+
+    <style>
+        form label {
+            text-transform: capitalize;
+            margin-top: 8px
+        }
+
+        .package .info-btn {
+            border-radius: .3rem !important;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            background-color: #fff;
+            padding: .5rem .8rem;
+            margin-inline: auto;
+            margin-block-end: 10px;
+            box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;
+        }
+    </style>
+
+    <section class="services position-relative">
+        <div>
+            <h5 class="mt-2 services-type">{{ current_subscription_service.service_title }}</h5>
+        </div>
+        <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="modal-body">
+            <div id="preview-form" class="mx-5" >
+                {% comment %} {{ field_id }} {% endcomment %}
+            </div>
+            <button id="submitFormData" type="submit" class="mt-3 ms-5 btn btn-navy">Submit</button>
+        </div>
+    </form>
+    </section>
+
+{% endblock content %}
+{% block customjs %}
+<script>
+    $("document").ready(function(){
+        let previewForm = document.getElementById('preview-form');
+        const div = document.createElement("div")
+        fetch(`${location.origin}/api/bcs/subscription_input/{{ field_id }}`)
+        .then(res=>res.json())
+        .then(fields => {
+            let inputFields = ''
+            fields.forEach(field => {
+                if (field.inputfield.type === 'select') {
+                    fetch(`${location.origin}/api/bcs/choice_field/${field.inputfield.id}`)
+                    .then(res=>res.json())
+                        .then(function (data) {
+                            inputFields += `<label for="input-${field.inputfield.id}">${field.inputfield.placeholder}</label>`;
+                            inputFields += `<select required id="input-${field.inputfield.id}" name="${field.id}" class="form-select">`;
+                            data[0].choice_field.forEach(choice => {
+                                inputFields += ` <option value="${choice.choices}">${choice.choices}</option>`;
+                            });
+
+                            inputFields += '</select>';
+                            inputFields += `</div>`;
+                            div.innerHTML = inputFields;
+                        }).catch(function (err) {
+                        console.log(err)
+                    });
+                } else {
+                    inputFields += `<label for="input-${field.inputfield.id}">${field.inputfield.placeholder}</label>`;
+                    inputFields += `<input class="form-control" type="${field.inputfield.type}" required
+                id="input-${field.inputfield.id}" name="${field.id}" placeholder="Type here">`;
+                    inputFields += `</div>`;
+                    div.innerHTML = inputFields;
+                }
+            });
+            previewForm.appendChild(div)
+            $("#submitFormData").removeClass("d-none")
+        })
+    })
+</script>
+{% endblock customjs %}

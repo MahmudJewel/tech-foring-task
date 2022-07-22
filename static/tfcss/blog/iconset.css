@@ -1,0 +1,72 @@
+/*//TODO*/
+/* TEMPORARY */
+
+@font-face {
+  font-family: 'iconset';
+  src: url('iconset.tmp.woff?p7zmsr') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'iconset' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-mail:before,
+.icon-send-email:before {
+  content: "\e906";
+}
+.icon-share:before,
+.icon-web-share:before {
+  content: "\e909";
+}
+.icon-link:before,
+.icon-copy-link:before {
+  content: "\e90a";
+}
+.icon-facebook:before {
+  content: "\e956";
+}
+.icon-github:before {
+  content: "\e957";
+}
+.icon-google-hangout:before {
+  content: "\e958";
+}
+.icon-google-plus:before {
+  content: "\e959";
+}
+.icon-instagram:before {
+  content: "\e95a";
+}
+.icon-linkedin:before {
+  content: "\e95b";
+}
+.icon-messenger:before {
+  content: "\e95c";
+}
+.icon-skype:before {
+  content: "\e95d";
+}
+.icon-telegram:before {
+  content: "\e95e";
+}
+.icon-twitter:before {
+  content: "\e95f";
+}
+.icon-whatsapp:before {
+  content: "\e960";
+}
+.icon-wordpress:before {
+  content: "\e961";
+}
+.icon-youtube:before {
+  content: "\e962";
+}

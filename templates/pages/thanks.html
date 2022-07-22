@@ -1,0 +1,13 @@
+{% extends 'base/base.html' %} {% load static %} {% load hosts %} {% block title %} Thank You! {% endblock title %} {% block headercss %}
+<link rel="stylesheet" href="{% static '' %}tfcss/telephone.css" />
+<link rel="stylesheet" href="{% static '' %}tfcss/style.css" /> {% endblock headercss %} {% block content %}
+<!--Thanks Section-->
+<section class="thank-section">
+    <h2>Thank You!</h2>
+    <i class="far fa-check-square"></i>
+    <p>
+        Thank you very much for contact with us. We'll get back to you as soon as possible. Typical response time 12 hours.
+    </p>
+    <a href="{% host_url 'home'%}">Go back to our homepage</a>
+</section>
+{% endblock content %}

@@ -1,0 +1,916 @@
+{% extends 'base/bcs_user_base.html' %} {% load static %} {% load my_filter %} {% load hosts %} {% block title %}
+    Subscriptions {% endblock title %} {% block content %}
+
+    <div class="subscription-container position-relative px-0 px-md-2">
+
+        <div class="d-md-flex justify-content-around">
+            <div class="">
+                <h4 class="mt-5 fw-bold">All Subscriptions</h4>
+
+                <div class="mt-4 mb-5 subscription-list d-flex flex-column align-items-start">
+                    <!-- Services -->
+                    {% for service in services %}
+                        <button class="btn border-0 fs-5 bg-navy w-100 mb-2" onclick="handleSubscriptionNotice({{ service.id }})"
+                                data-bs-toggle="modal"
+                                data-bs-target="#{{ service.service_title|replacespace }}">
+                                <i class="icofont-cubes"></i>
+                                {{ service.service_title|upper }}
+                            </button>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="">
+                <h4 class="mt-5 fw-bold">All Courses</h4>
+
+                <div class="mt-4 mb-5 subscription-list d-flex flex-column align-items-start">
+                    <!-- Courses -->
+                    {% for course in subscription_courses %}
+                        <button class="btn border-0 fs-5 bg-navy w-100 mb-2" onclick="handleCoursesNotice({{ course.id }})"
+                                data-bs-toggle="modal"
+                                data-bs-target="#{{ course.course_name|replacespace }}">
+                                <i class="icofont-notebook"></i>
+                                {{ course.course_name|upper }}
+                            </button>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- Services -->
+        {% for service in services %}
+            <!-- Modal -->
+            <div class="modal fade" id="{{ service.service_title|replacespace }}" tabindex="-1"
+                 aria-labelledby="trainingModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header border-0">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body p-5 text-center noPurchaseNotice">
+                            <h4 class="fw-bold">First you need to make an one time purchase for
+                                your {{ service.service_title|capitalize }} service only then you will be eligible for
+                                monthly subscription</h4>
+                            <a href="{% host_url 'bcs_user_services' host 'main' %}" class="btn fs-5 mt-3 text-green">Please go
+                                to the
+                                service menu</a>
+                        </div>
+                        <div class="modal-body p-5 text-center">
+                            <div class="row g-3 showSubscriptionDetails">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        <!-- Courses -->
+        {% for service in subscription_courses %}
+            <!-- Modal -->
+            <div class="modal fade" id="{{ service.course_name|replacespace }}" tabindex="-1"
+                 aria-labelledby="trainingModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header border-0">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body p-5 text-center noPurchaseNotice">
+                            <h4 class="fw-bold">First you need to make an one time purchase for
+                                your {{ service.course_name|capitalize }} service only then you will be eligible for
+                                monthly subscription</h4>
+                            <a href="{% host_url 'bcs_user_services' host 'main' %}" class="btn fs-5 mt-3 text-green">Please go
+                                to the
+                                service menu</a>
+                        </div>
+                        <div class="modal-body p-5 text-center">
+                            <div class="row g-3 showSubscriptionDetails">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        {% comment %}
+        <div class="mt-4 mb-5 subscription-list d-flex flex-column align-items-start">
+            <button class="btn border-0 fs-5" data-bs-toggle="modal" data-bs-target="#plugAndPlayModal">PLUG & PLAY
+                CYBERSECURITY SOLUTION
+            </button>
+            <button class="btn border-0 fs-5" data-bs-toggle="modal" data-bs-target="#managedModal">MANAGED
+                CYBERSECURITY
+                SOLUTION
+            </button>
+            <button class="btn border-0 fs-5" data-bs-toggle="modal" data-bs-target="#businessModal">C-SUITE BUSINESS
+                EXECUTIVE
+            </button>
+            <button class="btn border-0 fs-5" data-bs-toggle="modal" data-bs-target="#trainingModal">EMPLOYEE
+                TRAINING
+            </button>
+        </div>
+        <!-- Modal for plug and play -->
+        <div class="modal fade" id="plugAndPlayModal" tabindex="-1" aria-labelledby="plugAndPlayModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold">PLUG & PLAY CYBERSECURITY SOLUTION</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <div class="package-details">
+                            <div class="row g-3 mx-0 d-flex justify-content-center">
+                                <div class="package col-sm-4 col-md-3">
+                                    <div class="bg-lightgreen shadow p-3 rounded h-100">
+                                        <h3 class="fw-bold fs-4">BASIC</h3>
+                                        <table class="mx-auto mb-3">
+                                            <tr>
+                                                <td>CyberSecurity & Privacy Program
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Risk Assesment
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Data Privacy & Protection
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Vendor Screening
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Incident Response Strategy
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Awareness & Training
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Continuous consultation
+
+                                                </td>
+                                                <td>&#9679;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Certification
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                        </table>
+
+                                        <div class="info-btn">
+                                            <p class="mb-0">
+                                                <i class="icofont-laptop fw-bold"></i> Max Workstations
+                                            </p>
+                                            <p class="mb-0 fw-bold">5</p>
+                                        </div>
+                                        <div class="mt-2 info-btn">
+                                            <p class="mb-0">
+                                                <i class="icofont-server"></i> Max Servers
+                                            </p>
+                                            <p class="mb-0 fw-bold">5</p>
+                                        </div>
+                                        <div class="mt-2 info-btn">
+                                            <p class="mb-0">
+                                                <i class="icofont-web"></i> Max Websites
+                                            </p>
+                                            <p class="mb-0 fw-bold">5</p>
+                                        </div>
+                                        <div class="mt-2 info-btn">
+                                            <p class="mb-0">
+                                                <i class="icofont-tag"></i> Price
+                                            </p>
+                                            <p class="mb-0 fw-bold">500$
+                                            </p>
+                                        </div>
+                                        <button class="mt-3 btn bg-navy px-3 py-1" data-bs-toggle="modal"
+                                                data-bs-target="#subscribeModal-1">Subscribe
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="package d-none d-sm-block col-sm-4 col-md-3">
+                                    <div class="bg-lightgreen shadow p-3 rounded h-100">
+                                        <h3 class="fw-bold fs-4">MEDIUM</h3>
+                                        <table class="mx-auto mb-3">
+                                            <tr>
+                                                <td>CyberSecurity & Privacy Program
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Risk Assesment
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Data Privacy & Protection
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Vendor Screening
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Incident Response Strategy
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Awareness & Training
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Continuous consultation
+
+                                                </td>
+                                                <td>&#9679;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Certification
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                        </table>
+
+                                        <div class="info-btn">
+                                            <p class="mb-0">
+                                                <i class="icofont-laptop fw-bold"></i> Max Workstations
+                                            </p>
+                                            <p class="mb-0 fw-bold">5</p>
+                                        </div>
+                                        <div class="mt-2 info-btn">
+                                            <p class="mb-0">
+                                                <i class="icofont-server"></i> Max Servers
+                                            </p>
+                                            <p class="mb-0 fw-bold">5</p>
+                                        </div>
+                                        <div class="mt-2 info-btn">
+                                            <p class="mb-0">
+                                                <i class="icofont-web"></i> Max Websites
+                                            </p>
+                                            <p class="mb-0 fw-bold">5</p>
+                                        </div>
+                                        <div class="mt-2 info-btn">
+                                            <p class="mb-0">
+                                                <i class="icofont-tag"></i> Price
+                                            </p>
+                                            <p class="mb-0 fw-bold">500$
+                                            </p>
+                                        </div>
+                                        <button class="mt-3 btn bg-navy px-3 py-1" data-bs-toggle="modal"
+                                                data-bs-target="#subscribeModal-1">Subscribe
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="package d-none d-md-block col-sm-4 col-md-3">
+                                    <div class="bg-lightgreen shadow p-3 rounded h-100">
+                                        <h3 class="fw-bold fs-4">PREMIUM</h3>
+                                        <table class="mx-auto mb-3">
+                                            <tr>
+                                                <td>CyberSecurity & Privacy Program
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Risk Assesment
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Data Privacy & Protection
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Vendor Screening
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Incident Response Strategy
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Awareness & Training
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Continuous consultation
+
+                                                </td>
+                                                <td>&#9679;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Certification
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                        </table>
+
+                                        <div class="info-btn">
+                                            <p class="mb-0">
+                                                <i class="icofont-laptop fw-bold"></i> Max Workstations
+                                            </p>
+                                            <p class="mb-0 fw-bold">5</p>
+                                        </div>
+                                        <div class="mt-2 info-btn">
+                                            <p class="mb-0">
+                                                <i class="icofont-server"></i> Max Servers
+                                            </p>
+                                            <p class="mb-0 fw-bold">5</p>
+                                        </div>
+                                        <div class="mt-2 info-btn">
+                                            <p class="mb-0">
+                                                <i class="icofont-web"></i> Max Websites
+                                            </p>
+                                            <p class="mb-0 fw-bold">5</p>
+                                        </div>
+                                        <div class="mt-2 info-btn">
+                                            <p class="mb-0">
+                                                <i class="icofont-tag"></i> Price
+                                            </p>
+                                            <p class="mb-0 fw-bold">500$
+                                            </p>
+                                        </div>
+                                        <button class="mt-3 btn bg-navy px-3 py-1" data-bs-toggle="modal"
+                                                data-bs-target="#subscribeModal-1">Subscribe
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="package d-none d-md-block col-sm-4 col-md-3">
+                                    <div class="bg-lightgreen shadow p-3 rounded h-100">
+                                        <h3 class="fw-bold fs-4 text-uppercase">Custom</h3>
+                                        <article class="custom-info fw-bold">
+                                            <p>
+                                                Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                industry. Lorem Ipsum has been the industry's standard dummy text ever
+                                                since the 1500s, when an unknown printer took a galley of type and
+                                                scrambled it to make a type specimen book. It has
+                                                survived not only five centuries, but also the leap into electronic
+                                                typesetting.
+                                            </p>
+                                        </article>
+                                        <li class="mt-4 mb-3 custom-info-listing"><span>Lorem Ipsum is simply dummy text of
+                                            the
+                                            printing.</span></li>
+                                        <li class="mt-4 mb-3 custom-info-listing"><span>Lorem Ipsum is simply dummy text of
+                                            the
+                                            printing.</span></li>
+                                        <li class="mt-4 mb-3 custom-info-listing"><span>Lorem Ipsum is simply dummy text of
+                                            the
+                                            printing.</span></li>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- if user has not subscribed any package -->
+                            <button class="mt-5 d-inline-block d-xl-none btn btn-outline-success px-3 fs-5"
+                                    id="package-change">
+                                <i class="icofont-exchange"></i>
+                            </button>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Modal for plug and play -->
+        <div class="modal fade" id="managedModal" tabindex="-1" aria-labelledby="managedModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold">MANAGED CYBERSECURITY SOLUTION</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <div class="package-details">
+                            <div class="row g-3 mx-0 d-flex justify-content-center">
+                                <div class="package col-sm-4 col-md-3">
+                                    <div class="bg-lightgreen shadow p-3 rounded h-100">
+                                        <h3 class="fw-bold fs-4">BASIC</h3>
+                                        <table class="mx-auto mb-3">
+                                            <tr>
+                                                <td>CyberSecurity & Privacy Program
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Risk Assesment
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Data Privacy & Protection
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Vendor Screening
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Incident Response Strategy
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Awareness & Training
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Continuous consultation
+
+                                                </td>
+                                                <td>&#9679;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Certification
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                        </table>
+
+                                        <div class="info-btn">
+                                            <p class="mb-0">
+                                                <i class="icofont-laptop fw-bold"></i> Max Workstations
+                                            </p>
+                                            <p class="mb-0 fw-bold">5</p>
+                                        </div>
+                                        <div class="mt-2 info-btn">
+                                            <p class="mb-0">
+                                                <i class="icofont-server"></i> Max Servers
+                                            </p>
+                                            <p class="mb-0 fw-bold">5</p>
+                                        </div>
+                                        <div class="mt-2 info-btn">
+                                            <p class="mb-0">
+                                                <i class="icofont-web"></i> Max Websites
+                                            </p>
+                                            <p class="mb-0 fw-bold">5</p>
+                                        </div>
+                                        <div class="mt-2 info-btn">
+                                            <p class="mb-0">
+                                                <i class="icofont-tag"></i> Price
+                                            </p>
+                                            <p class="mb-0 fw-bold">500$
+                                            </p>
+                                        </div>
+                                        <button class="mt-3 btn bg-navy px-3 py-1" data-bs-toggle="modal"
+                                                data-bs-target="#subscribeModal-1">Subscribe
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="package d-none d-sm-block col-sm-4 col-md-3">
+                                    <div class="bg-lightgreen shadow p-3 rounded h-100">
+                                        <h3 class="fw-bold fs-4">MEDIUM</h3>
+                                        <table class="mx-auto mb-3">
+                                            <tr>
+                                                <td>CyberSecurity & Privacy Program
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Risk Assesment
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Data Privacy & Protection
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Vendor Screening
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Incident Response Strategy
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Awareness & Training
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Continuous consultation
+
+                                                </td>
+                                                <td>&#9679;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Certification
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                        </table>
+
+                                        <div class="info-btn">
+                                            <p class="mb-0">
+                                                <i class="icofont-laptop fw-bold"></i> Max Workstations
+                                            </p>
+                                            <p class="mb-0 fw-bold">5</p>
+                                        </div>
+                                        <div class="mt-2 info-btn">
+                                            <p class="mb-0">
+                                                <i class="icofont-server"></i> Max Servers
+                                            </p>
+                                            <p class="mb-0 fw-bold">5</p>
+                                        </div>
+                                        <div class="mt-2 info-btn">
+                                            <p class="mb-0">
+                                                <i class="icofont-web"></i> Max Websites
+                                            </p>
+                                            <p class="mb-0 fw-bold">5</p>
+                                        </div>
+                                        <div class="mt-2 info-btn">
+                                            <p class="mb-0">
+                                                <i class="icofont-tag"></i> Price
+                                            </p>
+                                            <p class="mb-0 fw-bold">500$
+                                            </p>
+                                        </div>
+                                        <button class="mt-3 btn bg-navy px-3 py-1" data-bs-toggle="modal"
+                                                data-bs-target="#subscribeModal-1">Subscribe
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="package d-none d-md-block col-sm-4 col-md-3">
+                                    <div class="bg-lightgreen shadow p-3 rounded h-100">
+                                        <h3 class="fw-bold fs-4">PREMIUM</h3>
+                                        <table class="mx-auto mb-3">
+                                            <tr>
+                                                <td>CyberSecurity & Privacy Program
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Risk Assesment
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Data Privacy & Protection
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Vendor Screening
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Incident Response Strategy
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Awareness & Training
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Continuous consultation
+
+                                                </td>
+                                                <td>&#9679;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Certification
+
+                                                </td>
+                                                <td>&check;</td>
+                                            </tr>
+                                        </table>
+
+                                        <div class="info-btn">
+                                            <p class="mb-0">
+                                                <i class="icofont-laptop fw-bold"></i> Max Workstations
+                                            </p>
+                                            <p class="mb-0 fw-bold">5</p>
+                                        </div>
+                                        <div class="mt-2 info-btn">
+                                            <p class="mb-0">
+                                                <i class="icofont-server"></i> Max Servers
+                                            </p>
+                                            <p class="mb-0 fw-bold">5</p>
+                                        </div>
+                                        <div class="mt-2 info-btn">
+                                            <p class="mb-0">
+                                                <i class="icofont-web"></i> Max Websites
+                                            </p>
+                                            <p class="mb-0 fw-bold">5</p>
+                                        </div>
+                                        <div class="mt-2 info-btn">
+                                            <p class="mb-0">
+                                                <i class="icofont-tag"></i> Price
+                                            </p>
+                                            <p class="mb-0 fw-bold">500$
+                                            </p>
+                                        </div>
+                                        <button class="mt-3 btn bg-navy px-3 py-1" data-bs-toggle="modal"
+                                                data-bs-target="#subscribeModal-1">Subscribe
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="package d-none d-md-block col-sm-4 col-md-3">
+                                    <div class="bg-lightgreen shadow p-3 rounded h-100">
+                                        <h3 class="fw-bold fs-4 text-uppercase">Custom</h3>
+                                        <article class="custom-info fw-bold">
+                                            <p>
+                                                Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                industry. Lorem Ipsum has been the industry's standard dummy text ever
+                                                since the 1500s, when an unknown printer took a galley of type and
+                                                scrambled it to make a type specimen book. It has
+                                                survived not only five centuries, but also the leap into electronic
+                                                typesetting.
+                                            </p>
+                                        </article>
+                                        <li class="mt-4 mb-3 custom-info-listing"><span>Lorem Ipsum is simply dummy text of
+                                            the
+                                            printing.</span></li>
+                                        <li class="mt-4 mb-3 custom-info-listing"><span>Lorem Ipsum is simply dummy text of
+                                            the
+                                            printing.</span></li>
+                                        <li class="mt-4 mb-3 custom-info-listing"><span>Lorem Ipsum is simply dummy text of
+                                            the
+                                            printing.</span></li>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- if user has not subscribed any package -->
+                            <button class="mt-5 d-inline-block d-xl-none btn btn-outline-success px-3 fs-5"
+                                    id="package-change">
+                                <i class="icofont-exchange"></i>
+                            </button>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Modal for business executive -->
+        <div class="modal fade" id="businessModal" tabindex="-1" aria-labelledby="businessModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body p-5 text-center" >
+                        <h4 class="fw-bold">First you need to make an one time purchase for your employee data & privacy
+                            only then you will be eligible for monthly subscription</h4>
+                        <a href="{% host_url 'bcs_user_services' %}" class="btn fs-5 mt-3 text-green">Please go to the
+                            service menu</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Modal for employee training -->
+        <div class="modal fade" id="trainingModal" tabindex="-1" aria-labelledby="trainingModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body p-5 text-center">
+                        <h4 class="fw-bold">First you need to make an one time purchase for your employee training
+                            program only then you will be eligible for monthly subscription</h4>
+                        <a href="{% host_url 'bcs_user_services' %}" class="btn fs-5 mt-3 text-green">Please go to the
+                            service menu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endcomment %}
+
+    </div>
+
+{% endblock content %}
+{% block customjs %}
+    <script>
+        const handleSubscriptionNotice = id => {
+            fetch(`${mainOrigin}/api/bcs/package/${id}/`, {
+                credentials: 'include'
+            })
+                .then(response => response.json())
+                .then(result => {
+                    const packagesList = result;
+
+                    fetch(`${mainOrigin}/api/subscription_order_check/`)
+                        .then(res => res.json())
+                        .then(data => {
+                            const subscribedPackages = data.result;
+                            const purchaseAvailable = packagesList.filter(package => subscribedPackages.includes(package.id));
+                            {% comment %} console.log(purchaseAvailable.length) {% endcomment %}
+                            if (purchaseAvailable.length) {
+                                $(".noPurchaseNotice").addClass("d-none");
+                                $(".showSubscriptionDetails").empty();
+                                $(".showSubscriptionDetails").removeClass("d-none");
+                                let divHtml;
+                                packagesList.map(subscription => {
+                                    // max_user
+                                    const container = document.createElement("div")
+                                    const div = document.createElement("div")
+                                    container.classList.add("col-md-4")
+                                    div.classList.add("package", "bg-lightgreen", "shadow", "p-3", "rounded", "col-md-12", "d-flex", "flex-column", "justify-content-between")
+                                    divHtml = `<h3 class="fw-bold fs-4">${subscription.package_name}</h3> <div>`
+                                    subscription.feature_subscription?.map((item, index) => {
+                                        divHtml += `<div class="info-btn">
+                                    <p class="mb-0">
+                                    <i class="bi bi-box"></i> ${item.feature_name}
+                                    </p>
+                                    <p class="mb-0 fw-bold">${item.feature}</p>
+                                    </div>`
+                                    })
+                                    divHtml += `<div class="mt-2 info-btn">
+                                        <p class="mb-0"><i class="icofont-ui-user-group"></i> Max User</p>
+                                        <p class="mb-0 fw-bold">${subscription.max_user}</p>
+                                    </div>`
+                                    divHtml += `<div class="mt-2 info-btn">
+                                <p class="mb-0">
+                                <i class="icofont-tag"></i> Price
+                                </p>
+                                <p class="mb-0 fw-bold">${subscription.price}$ <span class="fw-bolder">/${subscription.duration_type}</span>
+                                </p>
+                                </div>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                <a href="{% host_url 'bcs_subscription_payment' host 'main' %}${subscription.id}" class="mt-3 btn bg-navy px-5 py-1 ${(subscribedPackages.includes(subscription.id)) && "d-none"}">Subscribe</a>
+                                <a href="{% host_url 'bcs_subscription_cancel' host 'main' %}${subscription.id}" class="mt-3 btn btn-danger px-5 py-1 ${!(subscribedPackages.includes(subscription.id)) && "d-none"}">Cancel</a>
+                                </div>`
+                                    div.innerHTML = divHtml;
+                                    container.appendChild(div)
+                                    $(".showSubscriptionDetails").append(container);
+                                })
+                            } else {
+                                $(".noPurchaseNotice").removeClass("d-none");
+                                $(".showSubscriptionDetails").addClass("d-none");
+                            }
+                        })
+                })
+        }
+
+        const handleCoursesNotice = id => {
+            console.log(id)
+            fetch(`${mainOrigin}/api/bcs/course_package/${id}/`, {
+                credentials: 'include'
+            })
+                .then(response => response.json())
+                .then(result => {
+                    const packagesList = result;
+                    console.log(packagesList);
+                    fetch(`${mainOrigin}/api/bcs/course_order_check/`)
+                        .then(res => res.json())
+                        .then(data => {
+                            const subscribedPackages = data.result;
+                            console.log(subscribedPackages);
+                            const purchaseAvailable = packagesList.filter(package => subscribedPackages.includes(package.id));
+                            console.log(purchaseAvailable.length)
+                            if (purchaseAvailable.length) {
+                                $(".noPurchaseNotice").addClass("d-none");
+                                $(".showSubscriptionDetails").empty();
+                                $(".showSubscriptionDetails").removeClass("d-none");
+                                let divHtml;
+                                packagesList.map(subscription => {
+                                    const container = document.createElement("div")
+                                    const div = document.createElement("div")
+                                    container.classList.add("col-md-4")
+                                    div.classList.add("package", "bg-lightgreen", "shadow", "p-3", "rounded", "col-md-12", "d-flex", "flex-column", "justify-content-between")
+                                    divHtml = `<h3 class="fw-bold fs-4">${subscription.package_name}</h3> <div>`
+                                    subscription.packagefeature_coursepackage?.map((item, index) => {
+                                        divHtml += `<div class="info-btn">
+                                    <p class="mb-0">
+                                    <i class="bi bi-box"></i> ${item.feature_name}
+                                    </p>
+                                    <p class="mb-0 fw-bold">${item.feature}</p>
+                                    </div>`
+                                    })
+                                    divHtml += `<div class="mt-2 info-btn">
+                                        <p class="mb-0"><i class="icofont-ui-user-group"></i> Max User</p>
+                                        <p class="mb-0 fw-bold">${subscription.max_user}</p>
+                                    </div>`
+                                    divHtml += `<div class="mt-2 info-btn">
+                                <p class="mb-0">
+                                <i class="icofont-tag"></i> Price
+                                </p>
+                                <p class="mb-0 fw-bold">${subscription.price}$ <span class="fw-bolder">/${subscription.duration_type}</span>
+                                </p>
+                                </div>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                <a href="{% host_url 'bcs_user_course_payment' host 'main' %}${subscription.id}" class="mt-3 btn bg-navy px-5 py-1 ${(subscribedPackages.includes(subscription.id)) && "d-none"}">Subscribe</a>
+                                <a href="{% host_url 'bcs_order_subscription_cancel' host 'main' %}${subscription.id}" class="mt-3 btn btn-danger px-5 py-1 ${!(subscribedPackages.includes(subscription.id)) && "d-none"}">Cancel</a>
+                                </div>`
+                                    div.innerHTML = divHtml;
+                                    container.appendChild(div)
+                                    $(".showSubscriptionDetails").append(container);
+                                })
+                            } else {
+                                $(".noPurchaseNotice").removeClass("d-none");
+                                $(".showSubscriptionDetails").addClass("d-none");
+                            }
+                        })
+                })
+        }
+    </script>
+    {% comment %} <script>
+        let activeState = 1;
+        let main = document.querySelector('.package-details .row');
+        let packages = document.querySelectorAll('.package-details .row .package');
+
+        document.getElementById('package-change').addEventListener('click', () => {
+
+            packages.forEach(package => {
+                if (!package.classList.contains('d-none')) {
+                    package.classList.add('d-none');
+                }
+            });
+
+            let width = document.body.offsetWidth;
+
+            if (692 < width && width < 1170) {
+                packages[activeState].classList.remove('d-none');
+                packages[activeState + 1].classList.remove('d-none');
+                packages[activeState + 2].classList.remove('d-none');
+                main.innerHTML = packages[activeState].outerHTML + packages[activeState + 1].outerHTML + packages[activeState + 2].outerHTML;
+            } else if (560 < width && width < 692) {
+                packages[activeState + 1].classList.remove('d-none');
+                packages[activeState + 2].classList.remove('d-none');
+                main.innerHTML = packages[activeState + 1].outerHTML + packages[activeState + 2].outerHTML;
+            } else if (width < 560) {
+                if (activeState > packages.length - 1)
+                    activeState = 0;
+                packages[activeState].classList.remove('d-none');
+                activeState++;
+            }
+        });
+    </script> {% endcomment %}
+{% endblock customjs %}

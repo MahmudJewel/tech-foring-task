@@ -1,0 +1,831 @@
+{% extends 'base/base.html' %} {% load static %} {% load hosts %} {% block title %} Enterprise Cybersecurity Solutions for Businesses | Techforing {% endblock title %} {% block meta %}
+<meta property="og:description" content="Techforing’s enterprise cybersecurity empowers all sizes of businesses to defend themselves with industry-grade cybersecurity programs. Our cyber security plan for small businesses includes risk assessment, incident response, compliances to protect against potential threats."
+/>
+<meta name="description" content="Techforing’s enterprise cybersecurity empowers all sizes of businesses to defend themselves with industry-grade cybersecurity programs. Our cyber security plan for small businesses includes risk assessment, incident response, compliances to protect against potential threats."
+/>
+<meta name="keywords" content="enterprise cybersecurity, protect digital assets, cyber security consulting firms, Risk Assessment, Incident Response, remove malware, digital forensic investigation, affordable cybersecurity solutions, cyber security plan for small business, SMB Solution, techforing, Compliances, cybersecurity consultation"
+/> {% endblock meta %} {% block headercss %}
+<link rel="stylesheet" href="{% static 'css/glide.core.css' %}" />
+<link rel="stylesheet" href="{% static 'css/glide.theme.css' %}" />
+<link rel="stylesheet" href="{% static 'css/style.css' %}" /> {% endblock headercss %} {% block content %}
+<section class="home-banner">
+    <div class="container">
+        <div class="banner-bar"></div>
+        <h2>PROTECT YOUR BUSINESS WITH ENTERPRISE CYBERSECURITY</h2>
+        <div class="hbanner-btn">
+            <a href="{% host_url 'get_start' %}" target="_blank">Request a call</a>
+        </div>
+    </div>
+</section>
+
+<section class="ps-report-slider">
+    <div class="glide">
+        <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
+                <li class="glide__slide">
+                    <div class="ps-report">
+                        <div class="container">
+                            <p>Report, Guide & Tool</p>
+                            <h2>
+                                A definitive guide to secure your business from external and internal cyberattacks.
+                            </h2>
+
+                            <a href="{% host_url 'bcs_form' host 'main' %}" class="psr-btn" target="_blank">Download Now</a
+                  >
+                </div>
+              </div>
+            </li>
+            <!-- <li class="glide__slide">
+              <div class="ps-report">
+                <div class="container">
+                  <p>Report, Guide & Tool</p>
+                  <h2>
+                    Assess your website for SQLI, XSS, CSRF and other common
+                    OWASP vulnerabilities, free tool.
+                  </h2>
+
+                  <a href="https://thirdeye.techforing.com" class="psr-btn"
+                    >Run Assessment</a
+                  >
+                </div>
+              </div>
+            </li> -->
+            <li class="glide__slide">
+              <div class="ps-report">
+                <div class="container">
+                  <p>Report, Guide & Tool</p>
+                  <h2>
+                    17 ways High Net Worth Individuals are being hacked & how to
+                    be safe.
+                  </h2>
+
+                  <a
+                    href="https://pcs.ebook.techforing.com/"
+                    class="psr-btn"
+                    target="_blank"
+                    >Download Now</a
+                  >
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div
+          class="glide__bullets ps-report-bullets"
+          data-glide-el="controls[nav]"
+        >
+          <button class="glide__bullet" data-glide-dir="=0"></button>
+          <button class="glide__bullet" data-glide-dir="=1"></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-service">
+      <div class="container">
+        <div class="home-bar"></div>
+        <h2 class="hs-title">Services we provide</h2>
+
+        <div class="hs-tab row">
+          <div class="col-md-5">
+            <div class="hs-tab-list">
+              <ul>
+                <li class="htab">RISK ASSESSMENT</li>
+                <li class="htab">incident response</li>
+                <li class="htab">SMB SOLUTION</li>
+                <li class="htab">COMPLIANCES</li>
+              </ul>
+            </div>
+          </div>
+          <div class="tab-bar"></div>
+          <div class="col-md-6">
+            <div class="hs-tab-box">
+              <div class="hs-tab-img hs-risk">
+                <img src="{% static 'img/home/Risk.png' %}" alt="risk img" />
+              </div>
+              <h2 class="text-start">
+                Locate the Endangered Information Assets to Prevent a Potential
+                Cyber Attack
+              </h2>
+              <p class="text-justify">
+                Many of the businesses give all-out information access to most of the employees. In such cases, it’s difficult to be sure about the effectiveness of your security controls. Putting security measures in place for testing their effectiveness is simply wasteful if you didn’t do a risk assessment. Our enterprise cybersecurity service provides a systematic method of threat detection and exposes vulnerabilities in each layer of your IT system.
+              </p>
+              <div class="hs-btn hs-btn-risk">
+                <a href="{% url 'cybersecurity_risk_assessment' %}" target="_blank"
+                  >Explore More</a
+                >
+              </div>
+            </div>
+            <div class="hs-tab-box">
+              <div class="hs-tab-img hs-incident">
+                <img
+                  src="{% static 'img/home/INCIDENT.png' %}"
+                  title="Business Cybersecurity Incident Response"
+                  title="Techforing Business Cybersecurity incident response service"
+                  alt="cyber-security-consulting-firms-cyber-security-consulting-firms"
+                />
+              </div>
+              <h2 class="text-start">
+                Identify, Contain, Eliminate Threats, and Inform How to Avoid
+                Further Occurrence
+              </h2>
+              <p class="text-justify">
+                Our cybersecurity team is the first one to respond to the hack attacks your business is facing. The affected website, workstation, data center, or server will be run through malware removal. Your stolen data will be recovered, and we will identify the culprit with a proven Digital Forensic crime investigation strategy.
+              </p>
+              <div class="hs-btn hs-btn-incident">
+                <a href="{% url 'incident_response_service' %}" target="_blank"
+                  >Explore More</a
+                >
+              </div>
+            </div>
+            <div class="hs-tab-box">
+              <div class="hs-tab-img hs-smb">
+                <img src="{% static 'img/home/SMB.png' %}" alt="smb img" />
+              </div>
+
+              <h2 class="text-start">
+                Fully Managed and Affordable Cybersecurity Solutions for Small
+                and Medium-sized Businesses
+              </h2>
+              <p class="text-justify">
+                Do you think small and medium businesses have nothing vital that can lure an intruder? In reality, this year, cyberattacks against SMBs are raised to 424%. The number of Ransomware attacks astounds the tech industry. TechForing empowers SMBs with enterprise-grade managed and turnkey cybersecurity solutions at an affordable rate.
+              </p>
+              <div class="hs-btn hs-btn-smb">
+                <a href="{% url 'small_business_cybersecurity' %}" target="_blank"
+                  >Explore More</a
+                >
+              </div>
+            </div>
+            <div class="hs-tab-box">
+              <div class="hs-tab-img hs-comp">
+                <img src="{% static 'img/home/compliances.png' %}" alt="compliances img" />
+              </div>
+
+              <h2 class="text-start">Stay Ahead of The Constantly Changing Compliances</h2>
+              <p class="text-justify">
+                The government body, regulatory bodies, and industry standards organizations enforce stringent compliance requirements, which are always developing. Industry-wise standards can overlap, which might confuse if a company follows a checklist-based approach. We are one of the best cyber security consulting firms to determine your organization's specific needs to suit frameworks like HIPAA, GDPR, PCI DSS, and ISO 27001.
+              </p>
+              <div class="hs-btn hs-btn-comp">
+                <a href="{% url 'compliance_consulting' %}" target="_blank"
+                  >Explore More</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="home-service-sm">
+      <div class="container">
+        <div class="home-bar"></div>
+        <h2 class="hs-title">Services we provide</h2>
+        <div class="hs-tab row">
+          <div class="col-md-5">
+            <div class="hs-tab-list">
+              <ul>
+                <li class="htab htab-sm">RISK ASSESSMENT</li>
+                <div class="hs-tab-box hs-tab-box-sm">
+                  <div class="hs-tab-img hs-risk">
+                    <img
+                      src="{% static 'img/home/Risk.png' %}"
+                      title="Risk Assessment Business Cybersecurity"
+                      longdesc="techforing business cybersecurity risk management service"
+                      alt="cyber-security-consulting-firms-cyber-security-monitoring-companies"
+                    />
+                  </div>
+                  <h2>
+                    Locate the Endangered information assets to prevent a
+                    potential cyber attack.
+                  </h2>
+                  <p>
+                    Many of the businesses give all-out information access to
+                    most of the employees. In such cases, it’s difficult to be
+                    sure about the effectiveness of your security controls.
+                    Putting security measures in place without testing their
+                    effectiveness is simply wasteful if you didn’t do a risk
+                    assessment. Our enterprise cybersecurity service provides a
+                    systematic method for threat detection and exposes
+                    vulnerabilities in each layer of your IT system.
+                  </p>
+                  <div class="hs-btn hs-btn-risk">
+                    <a href="{% url 'cybersecurity_risk_assessment' %}" target="_blank"
+                      >Explore More</a
+                    >
+                  </div>
+                </div>
+                <li class="htab htab-sm">incident response</li>
+                <div class="hs-tab-box hs-tab-box-sm">
+                  <div class="hs-tab-img hs-incident">
+                    <img src="{% static 'img/home/INCIDENT.png' %}" alt="incident img" />
+                  </div>
+                  <h2>
+                    Identify, Contain, Eliminate Threats, and Inform how to
+                    avoid further occurrence.
+                  </h2>
+                  <p>
+                    Our cybersecurity team is the first one to respond to the hack attacks your business is facing. The affected website, workstation, data center, or server will be run through malware removal. Your stolen data will be recovered, and we will identify the culprit with a proven Digital Forensic crime investigation strategy.
+                  </p>
+                  <div class="hs-btn hs-btn-incident">
+                    <a href="{% url 'incident_response_service' %}" target="_blank"
+                      >Explore More</a
+                    >
+                  </div>
+                </div>
+                <li class="htab htab-sm">SMB SOLUTION</li>
+                <div class="hs-tab-box hs-tab-box-sm">
+                  <div class="hs-tab-img hs-smb">
+                    <img
+                      src="{% static 'img/home/SMB.png' %}"
+                      title="Small Business Cybersecurity"
+                      alt="cyber-security-consulting-firms-enterprise-cybersecurity-solutions"
+                      longdesc="Techforing cybersecurity small business cyber risk management service"
+                    />
+                  </div>
+                  <h2>
+                    Fully managed and affordable cybersecurity solutions for
+                    small and medium-sized businesses.
+                  </h2>
+                  <p>
+                    Do you think small and medium businesses have nothing vital that can lure an intruder? In reality, this year, cyberattacks against SMBs are raised to 424%. The number of Ransomware attacks astounds the tech industry. TechForing empowers SMBs with enterprise-grade managed and turnkey cybersecurity solutions at an affordable rate.
+                  </p>
+                  <div class="hs-btn hs-btn-smb">
+                    <a href="{% url 'small_business_cybersecurity' %}" target="_blank"
+                      >Explore More</a
+                    >
+                  </div>
+                </div>
+                <li class="htab htab-sm">COMPLIANCES</li>
+                <div class="hs-tab-box hs-tab-box-sm">
+                  <div class="hs-tab-img hs-comp">
+                    <img
+                      src="{% static 'img/home/compliances.png' %}"
+                      alt="compliances img"
+                    />
+                  </div>
+                  <h2>Stay ahead of the Constantly Changing Compliances.</h2>
+                  <p>
+                    The government body, regulatory bodies, and industry standards organizations enforce stringent compliance requirements, which are always strengthening. Industry-wise standards can overlap, which might be confusing if a company follows a checklist-based approach. We are one of the best cyber security consulting firms to determine your organization's specific needs to suit frameworks like HIPAA, GDPR, PCI DSS, and ISO 27001.
+                  </p>
+                  <div class="hs-btn hs-btn-comp">
+                    <a href="{% url 'compliance_consulting' %}" target="_blank"
+                      >Explore More</a
+                    >
+                  </div>
+                </div>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="iws-section">
+      <div class="container">
+        <div class="home-bar"></div>
+        <h2 class="iws-title">Industries We Serve</h2>
+
+        <div class="row iws-row">
+          <div class="col-md-2 col-6">
+            <div class="iws-box">
+              <div class="iws-img iws1">
+                <img
+                  src="{% static 'img/home/software companies black.png' %}"
+                  class="iwsimg iwsimg1"
+                  alt=""
+                />
+                <img
+                  src="{% static 'img/home/Software compnaies blue.png' %}"
+                  class="iwsimg iwsimg01"
+                  alt=""
+                />
+              </div>
+              <p>Software<br />Companies</p>
+            </div>
+          </div>
+          <div class="col-md-2 col-6">
+            <div class="iws-box">
+              <div class="iws-img iws2">
+                <img
+                  src="{% static 'img/home/government agencies black.png' %}"
+                  class="iwsimg iwsimg2"
+                  alt=""
+                />
+                <img
+                  src="{% static 'img/home/government agencies blue.png' %}"
+                  class="iwsimg iwsimg02"
+                  alt=""
+                />
+              </div>
+              <p>
+                Government <br />
+                Agencies
+              </p>
+            </div>
+          </div>
+          <div class="col-md-2 col-6">
+            <div class="iws-box">
+              <div class="iws-img iws3">
+                <img
+                  src="{% static 'img/home/law enforcement black.png' %}"
+                  class="iwsimg iwsimg3"
+                  alt=""
+                />
+                <img
+                  src="{% static 'img/home/law enforcement blue.png' %}"
+                  class="iwsimg iwsimg03"
+                  alt=""
+                />
+              </div>
+              <p>
+                Law <br />
+                Enforcement
+              </p>
+            </div>
+          </div>
+          <div class="col-md-2 col-6">
+            <div class="iws-box">
+              <div class="iws-img iws4">
+                <img
+                  src="{% static 'img/home/financial institutes black.png' %}"
+                  class="iwsimg iwsimg4"
+                  alt=""
+                />
+                <img
+                  src="{% static 'img/home/financial institutes blue.png' %}"
+                  class="iwsimg iwsimg04"
+                  alt=""
+                />
+              </div>
+              <p>
+                Financial <br />
+                Institutes
+              </p>
+            </div>
+          </div>
+          <div class="col-md-2 col-6">
+            <div class="iws-box">
+              <div class="iws-img iws5">
+                <img
+                  src="{% static 'img/home/telecommunication black.png' %}"
+                  class="iwsimg iwsimg5"
+                  alt=""
+                />
+                <img
+                  src="{% static ''%}img/home/telecommunication companies blue.png"
+                  class="iwsimg iwsimg05"
+                  alt=""
+                />
+              </div>
+              <p>
+                Telecommunication <br />
+                Companies
+              </p>
+            </div>
+          </div>
+          <div class="col-md-2 col-6">
+            <div class="iws-box">
+              <div class="iws-img iws6">
+                <img
+                  src="{% static ''%}img/home/wealth management black.png"
+                  class="iwsimg iwsimg6"
+                  alt=""
+                />
+                <img
+                  src="{% static ''%}img/home/welath management blue.png"
+                  class="iwsimg iwsimg06"
+                  alt=""
+                />
+              </div>
+              <p>
+                Wealth <br />
+                management
+              </p>
+            </div>
+          </div>
+          <div class="col-md-2 col-6">
+            <div class="iws-box">
+              <div class="iws-img iws7">
+                <img
+                  src="{% static ''%}img/home/educationla institutes black.png"
+                  class="iwsimg iwsimg7"
+                  alt=""
+                />
+                <img
+                  src="{% static ''%}img/home/educationl institutes blue.png"
+                  class="iwsimg iwsimg07"
+                  alt=""
+                />
+              </div>
+              <p>
+                Educational <br />
+                Institutions
+              </p>
+            </div>
+          </div>
+          <div class="col-md-2 col-6">
+            <div class="iws-box">
+              <div class="iws-img iws8">
+                <img
+                  src="{% static ''%}img/home/isp companies black.png"
+                  class="iwsimg iwsimg8"
+                  alt=""
+                />
+                <img
+                  src="{% static ''%}img/home/isp companies blue.png"
+                  class="iwsimg iwsimg08"
+                  alt=""
+                />
+              </div>
+              <p>
+                ISP <br />
+                Companies
+              </p>
+            </div>
+          </div>
+          <div class="col-md-2 col-6">
+            <div class="iws-box">
+              <div class="iws-img iws9">
+                <img
+                  src="{% static ''%}img/home/ecommerce business black.png"
+                  class="iwsimg iwsimg9"
+                  alt=""
+                />
+                <img
+                  src="{% static ''%}img/home/ecommerce blue.png"
+                  class="iwsimg iwsimg09"
+                  alt=""
+                />
+              </div>
+              <p>
+                E- Commerce <br />
+                Business
+              </p>
+            </div>
+          </div>
+          <div class="col-md-2 col-6">
+            <div class="iws-box">
+              <div class="iws-img iws10">
+                <img
+                  src="{% static ''%}img/home/law firm black.png"
+                  class="iwsimg iwsimg10"
+                  alt=""
+                />
+                <img
+                  src="{% static ''%}img/home/law firm blue.png"
+                  class="iwsimg iwsimg010"
+                  alt=""
+                />
+              </div>
+              <p>Law Firm</p>
+            </div>
+          </div>
+          <div class="col-md-2 col-6">
+            <div class="iws-box">
+              <div class="iws-img iws11">
+                <img
+                  src="{% static ''%}img/home/small and mediu business black.png"
+                  class="iwsimg iwsimg11"
+                  alt=""
+                />
+                <img
+                  src="{% static ''%}img/home/small and medium business blue.png"
+                  class="iwsimg iwsimg011"
+                  alt=""
+                />
+              </div>
+              <p>
+                Small & Medium <br />
+                Business
+              </p>
+            </div>
+          </div>
+          <div class="col-md-2 col-6">
+            <div class="iws-box">
+              <div class="iws-img iws12">
+                <img
+                  src="{% static ''%}img/home/healthcare ins black.png"
+                  class="iwsimg iwsimg12"
+                  alt=""
+                />
+                <img
+                  src="{% static ''%}img/home/health care ins blue.png"
+                  class="iwsimg iwsimg012"
+                  alt=""
+                />
+              </div>
+              <p>
+                Health Care <br />
+                Institutes
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hstory-section">
+      <div class="container">
+        <div class="home-bar"></div>
+        <h2 class="story-title">customer success stories</h2>
+      </div>
+      <div class="hstory-row">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="story-box">
+                <div class="sb-img">
+                  <img src="{% static ''%}img/home/john-rainey 1.jpg" alt="client img" />
+                </div>
+                <img src="{% static ''%}img/home/quote-copy.png" alt="" class="sb-quote" />
+                <p class="text-justify">
+                  We were in deep water when our users could not get access to data. It was difficult to fathom the what and how. On top of that, someone was asking to get paid and giving threats to leak and erase the data. So we hired Techforing. Their security engineers were prompt in finding the weak link in the system and helped the workstation regain all the data. We felt we had got out of jail. GREAT JOB!
+                </p>
+                <h2 class="text-end">John Rainey (USA)</h2>
+                <i class="text-end">Owner, Kingdom Marketing Solutions, Inc.</i>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="story-box">
+                <div class="sb-img">
+                  <img
+                    src="{% static ''%}img/home/Israel-Sunchez-1.jpg"
+                    alt="client img"
+                  />
+                </div>
+                <img src="{% static ''%}img/home/quote-copy.png" alt="" class="sb-quote" />
+                <p class="text-justify">
+                  One of my crucial websites was showing ominous signs. We were being suspicious. Thankfully, we didn’t waste time and immediately asked my subordinate to look for somebody. He got us with Techforing. They did a thorough job and made some recommendations. I will definitely work with them again as they pointed out security holes no other tech had pointed out before. Thank you, Techforing!
+                </p>
+                <h2 class="text-end">Israel Sanchez (USA)</h2>
+                <i class="text-end">CEO, Integrated Healing and Strength Systems, Inc.</i>
+              </div>
+            </div>
+          </div>
+          <div class="story-btn">
+            <a href="{% url 'testimonial' %}" target="_blank"
+              >See all success stories</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="smb-client">
+      <div class="container">
+        <div class="c-line"></div>
+        <h2 class="smb-client-title">Our Valuable Clients</h2>
+      </div>
+      <hr />
+      <div class="container">
+        <div class="glide smb-glide">
+          <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
+              <li class="glide__slide">
+                <div class="ovc-img">
+                  <img src="{% static 'logos/ambient-tech.png'%}" alt="ovc-img" />
+                </div>
+                <div class="ovc-img">
+                  <img src="{% static 'logos/TCDD.png'%}" alt="ovc-img" />
+                </div>
+              </li>
+              <li class="glide__slide">
+                <div class="ovc-img">
+                  <img src="{% static 'logos/Defence-IT-Solutions.png'%}" alt="ovc-img" />
+                </div>
+                <div class="ovc-img">
+                  <img src="{% static 'logos/bdArmy.png'%}" alt="ovc-img" />
+                </div>
+              </li>
+              <li class="glide__slide">
+                <div class="ovc-img">
+                  <img src="{% static 'logos/color-fuzion-kimberly.png'%}" alt="ovc-img" />
+                </div>
+                <div class="ovc-img pt-4">
+                  <img src="{% static 'logos/IBM.png'%}" alt="ovc-img" />
+                </div>
+              </li>
+              <li class="glide__slide">
+                <div class="ovc-img">
+                  <img src="{% static 'logos/RailMedia.png'%}" alt="ovc-img" />
+                </div>
+                <div class="ovc-img">
+                  <img src="{% static 'logos/Defence-IT-Solutions.png'%}" alt="ovc-img" />
+                </div>
+              </li>
+              <li class="glide__slide">
+                <div class="ovc-img">
+                  <img src="{% static 'logos/Forexnation-garzotto.png'%}" alt="ovc-img" />
+                </div>
+                <div class="ovc-img">
+                  <img
+                    src="{% static 'logos/Best-quality-power-solution.png'%}"
+                    alt="ovc-img"
+                  />
+                </div>
+              </li>
+              <li class="glide__slide">
+                <div class="ovc-img">
+                  <img src="{% static 'logos/DCI-Consultancy.png'%}" alt="ovc-img" />
+                </div>
+                <div class="ovc-img">
+                  <img
+                    src="{% static 'logos/cloud-academy-stefanno.png'%}"
+                    alt="ovc-img"
+                  />
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="glide__arrows" data-glide-el="controls">
+            <button
+              class="glide__arrow glide__arrow--left home-arrow smb-left"
+              data-glide-dir=">"
+            >
+              <img src="{% static ''%}img/smb/previous.png" alt="previous" />
+            </button>
+            <button
+              class="glide__arrow glide__arrow--right home-arrow smb-right"
+              data-glide-dir=">"
+            >
+              <img src="{% static ''%}img/smb/next.png" alt="next" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="hdemo-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="hd-img">
+              <img
+                src="{% static ''%}img/home/Get-Started.png"
+                title="Get Started Business Cybersecurity"
+                alt="cyber-security-consulting-firms-it-security-startups"
+                longdesc="Techforing BCS get started"
+              />
+            </div>
+          </div>
+          <div class="col-md-6 test">
+            <div class="hd-box">
+              <div class="hd-box-inner">
+                <div class="home-bar"></div>
+                <h2 class="hd-subtitle">
+                  Book A Free Cybersecurity Consultation Now
+                </h2>
+                <h2 class="hd-title">
+                  Get an Enterprise-grade Cyber security for Your Business.
+                </h2>
+                <p class="text-justify">
+                  It’s high time your business needs to back up valuable data of its clients and employees to avoid cyber-attacks. Our enterprise cybersecurity will provide you with a customized and affordable action plan that will safeguard your digital assets and ensure their availability.
+                </p>
+                <div class="case-btn hdemo-btn">
+                  <a href="{% host_url 'get_start' host 'main' %}" target="_blank">LETS GET STARTED</a>
+                        </div>
+                    </div>
+                    <div class="hd-box-border"></div>
+        </div>
+    </div>
+    </div>
+    </div>
+</section>
+<section class="hcase-section">
+    <div class="container">
+        <div class="home-bar"></div>
+        <h2 class="hcase-title">Important Case Studies</h2>
+        <div class="row hcase-row">
+            <div class="col-md-4">
+                <div class="hcase-outer">
+                    <div class="hcase-box hcase1">
+                        <div class="hcase-top">
+                            <h2>enterprise cybersecurity</h2>
+                            <div class="hcase-bar"></div>
+                        </div>
+                        <div class="hcase-bottom">
+                            <h2>Vulnerability Assessment</h2>
+                            <p class="text-justify">
+                              One of our clients needed their entire website hack-proof. which was involved in a partnership with a credit bureau. The information was extremely sensitive, and it required detailed penetration and regression testing. How we went about it might interest you!
+                            </p>
+                            <a href="https://blog.techforing.com/case_studies/cybersecurity-vulnerability-assessment/" target="_blank">Read More</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="hcase-outer">
+              <div class="hcase-box hcase2">
+                <div class="hcase-top">
+                  <h2>enterprise cybersecurity</h2>
+                  <div class="hcase-bar"></div>
+                </div>
+                <div class="hcase-bottom">
+                  <h2 class="text-center">Penetration Testing</h2>
+                  <p class="text-justify">
+                    The client had an authentication engine. Because of the seriousness of this engine and multiple APIs being used, we had to carry out module-based penetration testing. We evaluated if each authentication mechanism in the authentication engine had at least two-factor authentication.
+                  </p>
+                  <a
+                    href="https://blog.techforing.com/case_studies/case-study-on-penetration-testing/"
+                    target="_blank"
+                    >Read More</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="hcase-outer">
+              <div class="hcase-box hcase3">
+                <div class="hcase-top">
+                  <h2>enterprise cybersecurity</h2>
+                  <div class="hcase-bar"></div>
+                </div>
+                <div class="hcase-bottom">
+                  <h2 class="text-center">Infrustructure Audit</h2>
+                  <p class="text-justify">
+                    A software service company had its services spread across various domains. So understanding the risks of each business domain and evaluating the software were some challenges we had to overcome. We used tools like Wireshark, TcpDump and many more.
+                  </p>
+                  <a
+                    href="https://blog.techforing.com/case_studies/it-infrastructure-audit/"
+                    target="_blank"
+                    >Read More</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="he-section re-section">
+      <div class="container">
+        <div class="se-line home-bar"></div>
+        <h2 class="text-center">WANT TO BE IN SYNC WITH OUR LATEST SECURITY OFFERINGS?</h2>
+        <p>
+          We arrange webinars where industry cybersecurity specialists speak about the ongoing IT security scene, newly used hacker techniques, and how to defend those. Stay in touch to learn first hand!
+
+        </p>
+        <form
+          action="https://app.getresponse.com/add_subscriber.html"
+          accept-charset="utf-8"
+          method="post"
+        >
+          <input
+            type="email"
+            name="email"
+            class="he-input"
+            placeholder="Enter your email address"
+          />
+          <input type="hidden" name="campaign_token" value="okoVq" />
+          <input
+            type="hidden"
+            name="thankyou_url"
+            value="https://techforing.com/pages/thanks_subscriber.html"
+          />
+          <input type="hidden" name="start_day" value="0" />
+          <button class="se-input-btn hm-input-btn" type="submit">
+            Subscribe Now
+          </button>
+        </form>
+      </div>
+    </section>
+{% endblock content %}
+
+{% block customjs %}
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <script src="{% static 'js/glide.js' %}"></script>
+    <script src="{% static 'js/home-tab.js' %}"></script>
+       <script>
+      new Glide(".glide", {
+        type: "carousel",
+        keyboard: true,
+        autoplay: 8000,
+        hoverpause: true,
+        perView: 1,
+      }).mount();
+    </script>
+    <script>
+      new Glide(".smb-glide", {
+        type: "carousel",
+        perView: 6,
+        autoplay: 8000,
+        breakpoints: {
+          800: {
+            perView: 2,
+          },
+        },
+      }).mount();
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#my-header").load("header.html");
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#my-footer").load("footer.html");
+      });
+    </script>
+{% endblock customjs %}

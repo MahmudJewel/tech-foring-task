@@ -1,0 +1,17 @@
+{% extends 'base/pcs_user_base.html' %} {% load static %} {% load hosts %} {% block title %} Thank You! {% endblock title %} {% block headercss %}
+<link rel="stylesheet" href="{% static 'tfcss/telephone.css' %}" />
+ {% endblock headercss %} {% block content %}
+<!--Thanks Section-->
+<section class="thank-section">
+    <h2>Thank You!</h2>
+    <i class="fa fa-check-square"></i>
+    <p>
+        We've received your information.  We'll get back to you as soon as possible. Typical response time 12 hours.
+    </p>
+    <div class="container mt-5 d-flex mx-auto justify-content-evenly">
+        <a class="btn bg-navy" href="{% host_url 'pcs_appointment' host 'mysecurity' %}">Schedule a Call With Our Expert</a>
+        <a class="btn bg-navy" href="{% host_url 'pcs_user_dashboard' host 'mysecurity' %}">Back to Dashboard</a>
+        <a class="btn bg-navy" href="{% host_url 'pcs_user_services' host 'mysecurity' %}">Request Another Quotation</a>
+    </div>
+</section>
+{% endblock content %}

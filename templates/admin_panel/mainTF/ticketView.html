@@ -1,0 +1,39 @@
+{% extends 'base/main_admin_base.html' %} {% load static %} {% block title %} Ticket View {% endblock title %} {% block headercss %}
+<link rel="stylesheet" href="{% static '' %}tfcss/admin_panel/mainTF/support.css" /> {% endblock headercss %} {% block content %}
+
+<main>
+    <div class="container">
+        <div class="row">
+            <h2 class="mb-3">Ticket 54321</h2>
+            <span><span class="fw-bold">User: </span>jhon doe</span>
+            <span><span class="fw-bold">Email: </span>jhondoe@email.com</span>
+            <span><span class="fw-bold">Asigned on: </span>03/05/20201 5:03pm</span>
+        </div>
+        <div class="row">
+            <h2 class="my-3">Service Name</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, quasi.</p>
+        </div>
+        <div class="row">
+            <h2 class="mb-3">Title</h2>
+            <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="row">
+            <h2 class="mb-3">Description</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, cum atque. Dolorum, tenetur rerum excepturi, ducimus maiores maxime voluptates consectetur doloremque cupiditate, dignissimos vitae eligendi sit enim libero praesentium illo?</p>
+        </div>
+        <div class="row">
+            <h2 class="mb-3">Attachment</h2>
+            <img src="https://via.placeholder.com/150" alt="ticket" style="width: 150px;">
+        </div>
+        <div class="row">
+            <form action="" class="mb-5 mt-4">
+                <label for="solution" class="h2">Solution</label>
+                <textarea name="solution" class="form-control" id="solution" cols="30" rows="10"></textarea>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock content %} {% block customjs %}
+<script src="{% static '' %}tfjs/admin_panel/mainTF/eventWebinar.js"></script>
+
+{% endblock customjs %}

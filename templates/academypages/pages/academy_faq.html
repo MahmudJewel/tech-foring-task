@@ -1,0 +1,289 @@
+{% extends 'base/academybase.html' %} {% load static %} {% load hosts %} {% block title %} {% endblock title %} {% block headercss %}
+<link rel="stylesheet" href="{% static '' %}" /> {% endblock headercss %} {% block content %}
+<section class="pf-banner">
+    <div class="container">
+        <h2>How can we help you?</h2>
+        <p>Find Out More about TechForing Academy Courses</p>
+        <!-- This section will come back -->
+        <!-- <div class="fsearch-box">
+          <input type="text" placeholder="Search for answers" />
+        </div> -->
+    </div>
+</section>
+<div class="container">
+    <section class="faq-section">
+        <h2 class="faq-title">
+            MOST FREQUENTLY ASKED QUESTIONS BY OUR CLIENTS
+        </h2>
+        <div class="row justify-content-between faq-row">
+            <div class="col-md-4">
+                <div class="faq-category">
+                    <h2>Professional Training</h2>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="ques-list">
+                    <button class="accordion">What is CCSP Course about?</button>
+                    <div class="fpanel">
+                        <p>
+                            The Certified Cybersecurity Professional (CCSP) course helps to develop the skills in the cybersecurity field with practical hands-on experience.
+                        </p>
+                    </div>
+
+                    <button class="accordion">
+            What is the experience required for the CCSP course?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            No previous experience or specific educational background needed to do this course
+                        </p>
+                    </div>
+
+                    <button class="accordion">
+            What will I learn from this course?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            Fundamentals of Ethical Hacking, Mobile Device Security, Basic Network Security, Wireless Security and other advance level topics of Ethical Hacking
+                        </p>
+                    </div>
+                    <button class="accordion">
+            What is the future career scope after completing this course?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            You can start your career as a Cybersecurity Specialist in any company or you can choose an online freelancing career.
+                        </p>
+                    </div>
+                    <button class="accordion">
+            Do I have to be an IT Professional to do this course?
+          </button>
+                    <div class="fpanel">
+                        <p>IT Background is not mandatory</p>
+                    </div>
+                    <button class="accordion">
+            Do you help with CEH or other high-level security
+            certifications?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            Our course modules are quite close to CEH certification. So, you can also prepare for the CEH exam by doing this course. We help our students with proper guidelines to earn high-level security certifications.
+                        </p>
+                    </div>
+                    <button class="accordion">
+            Does CCSP have International recognition?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            Yes, you can also apply for any jobs internationally with our certification.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-between faq-row">
+            <div class="col-md-4">
+                <div class="faq-category">
+                    <h2>Corporate Training</h2>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="ques-list">
+                    <button class="accordion">
+            What topics will be covered in this Corporate Training Module?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            There are two categories for Corporate Training Module. One for IT Professionals and another cybersecurity awareness program for non-IT Professionals. Please Download our Corporate Cybersecurity Training Module here (link curriculum link).
+                        </p>
+                    </div>
+
+                    <button class="accordion">What is the cost?</button>
+                    <div class="fpanel">
+                        <p>
+                            Please
+                            <a href="{% host_url 'findus' host 'main' %}" target="_blank">contact us</a> and our sales representative will get in touch.
+                        </p>
+                    </div>
+
+                    <button class="accordion">What is the course duration?</button>
+                    <div class="fpanel">
+                        <p>
+                            It depends on the level and type of course. Cybersecurity Awareness Program from Non-IT Professionals run for 5 working days where other programs for IT professionals can run from 2 to 8 weeks.
+                        </p>
+                    </div>
+                    <button class="accordion">
+            How fast can TechForing start training for my employees?
+          </button>
+                    <div class="fpanel">
+                        <p>Within 3 business days after confirmation.</p>
+                    </div>
+                    <button class="accordion">
+            Do you work with a Non-profit organization?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            Yes, we work with Non-Profit organizations and happy to serve a cause. Please contact us to know if your organization is eligible to redeem our free training.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-between faq-row">
+            <div class="col-md-4">
+                <div class="faq-category">
+                    <h2>Educational Instituion Training</h2>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="ques-list">
+                    <button class="accordion">
+            What is in this training module?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            The designed training program for educational institutions includes security awareness and hands on practical modules to build career in cybersecurity for next generation.
+                        </p>
+                    </div>
+
+                    <button class="accordion">
+            Is this training only for my IT department or for students too?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            The training can be provided for both students, the IT Department and other staff.
+                        </p>
+                    </div>
+
+                    <button class="accordion">What is the course duration?</button>
+                    <div class="fpanel">
+                        <p>
+                            Normally 1 week to 8 weeks depending on the program. Please contact us for detailed information.
+                        </p>
+                    </div>
+                    <button class="accordion">
+            How and where do students get in-person classroom instruction?
+          </button>
+                    <div class="fpanel">
+                        <p>In their own university.</p>
+                    </div>
+                    <button class="accordion">
+            What will be the cost for this training?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            The cost structure depends on the program. Please
+                            <a href="{% host_url 'findus' host 'main' %}" target="_blank">contact us</a> to find out more in detail.
+                        </p>
+                    </div>
+                    <button class="accordion">
+            Is there any special offer for Charity/ Church/ Special
+            Education School?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            Yes, we provide a free training program and arrange free seminars for special educational institutes. Please contact us to know if your organization is eligible to redeem our free training.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-between faq-row">
+            <div class="col-md-4">
+                <div class="faq-category">
+                    <h2>Law Enforcement Training</h2>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="ques-list">
+                    <button class="accordion">
+            How this training is different from Gov. Training?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            Cybersecurity is an ever-evolving domain. We provide up to date techniques, tools, and materials to enhance LE professional's skills in cybersecurity.
+                        </p>
+                    </div>
+
+                    <button class="accordion">
+            Is there any free trial or free course for LEA?
+          </button>
+                    <div class="fpanel">
+                        <p>Upon request, a trial class can be conducted.</p>
+                    </div>
+                    <button class="accordion">
+            What is the Sophistication (novice-expert) level?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            We have courses at all levels. Please get in touch to know more in detail.
+                        </p>
+                    </div>
+                    <button class="accordion">
+            Do you have Vendor Certification for your organization?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            TechForing provides certification under its own brand name.
+                        </p>
+                    </div>
+                    <button class="accordion">
+            Do you have government certification or License?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            We have regional offices in four countries (USA, UK, Turkey, BD) and have all necessary permissions/ licenses from all respectable government bodies.
+                        </p>
+                    </div>
+                    <button class="accordion">
+            Will it be online training or Physical Training?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            It depends on the client's choice. We can facilitate both.
+                        </p>
+                    </div>
+                    <button class="accordion">
+            How skilled are the instructors?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            We have cybersecurity experts worldwide with top security certifications like C|EH, CHFI, CISA, CISSP, Security+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<section class="pt-cta ft-cta">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="ftc-box ftca-box">
+                    <h2>STILL NEED HELP? SEND US A NOTE</h2>
+                    <a href="{% host_url 'findus' host 'main' %}" target="_blank">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %} {% block customjs %}
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("factive");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
+</script>
+{% endblock customjs %}

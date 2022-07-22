@@ -1,0 +1,620 @@
+{% extends 'base/blog_base.html' %} {% load static %}{% load hosts %} {% block title %} {{post.title}} {% endblock title %} {% block headercss %}
+
+
+<meta property="og:url" content="https://main.techforing.com/blog/{{category}}/{{post.post_url}}" />
+<meta property="article:author" content="rabi" />
+<meta property="article:section" content="Case Studies" />
+<meta property="og:image" content="https://main.techforing.com/media/{{post.feature_image}}" />
+<meta property="og:image:secure_url" content="https://main.techforing.com/media/{{post.feature_image}}" />
+<meta property="og:image:width" content="600" />
+<meta property="og:image:height" content="350" />
+<meta property="og:image:alt" content="feature-image" />
+<meta property="og:image:type" content="image/png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://main.techforing.com/media/{{post.feature_image}}" />
+<!-- Add the slick-theme.css if you want default styling -->
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<!-- Add the slick-theme.css if you want default styling -->
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
+<link rel="stylesheet" href="{% static 'tfcss/blog/post.css' %}">
+<style>
+    img {
+        max-width: 100%;
+    }
+    
+    .banner-1 {
+        position: relative;
+        height: 350px;
+        background: rgb(2, 0, 36);
+        background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(24, 47, 89, 1) 0%, rgba(0, 0, 0, 1) 100%);
+    }
+  
+    .banner-desc{
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+        opacity: 0;
+        transition: all 3s ease-in-out;
+    }
+    
+    #feature-img {
+        width: 100%;
+        position: relative;
+        bottom: -120px;
+        padding-right: 50px;
+        transition: all 1.5s ease-in-out;
+    }
+    
+    .banner-1 img {
+        transform: translateX(200%);
+    }
+    
+    .post-title {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-weight: bold;
+    }
+    a[title="cta"],a[title="CTA"]{
+        color: white;
+        background-color: #00b734;
+        padding: 15px 30px;
+        border-radius: 25rem;
+        font-size: 20px;
+        font-style: normal;
+    }
+    a[title="cta"]:hover,a[title="CTA"]:hover{
+        text-decoration: underline;
+        color: white
+    }
+    .comment {
+        padding: 0.5rem;
+        border-radius: 9px;
+        display: grid;
+        grid-template-columns: 35px 1fr; 
+        grid-gap: 1rem;
+        align-items: center;
+        border-bottom: 1px solid gainsboro;
+        font-size: 14px;
+    }
+
+    .comment:hover {
+        box-shadow: 0px 0px 14px 1px #182f5966;
+    }
+    
+    .comment-author {
+        font-weight: 800;
+    }
+    
+    .comment-img img {
+        width: 100%;
+    }
+    
+    .comment-time {
+        text-transform: capitalize;
+        color: #182f59ad;
+        margin-inline-start: 1rem;
+    }
+    
+    .comment-time span {
+        font-weight: 600;
+    }
+    
+    .comment-author {
+        color: #182f59;
+    }
+    
+    #list-example a {
+        text-transform: lowercase;
+        text-overflow: ellipsis;
+        {% comment %} white-space: nowrap; {% endcomment %}
+        overflow: hidden;
+        width: 100%;
+    }
+    
+    #list-example a::first-letter {
+        text-transform: uppercase;
+    }
+    
+    @media only screen and (max-width: 850px) {
+        .tags a{
+            margin-bottom: 10px;
+        }
+        .banner-1 img {
+            min-width: 100%;
+        }
+        .banner-1{
+            background-image: url('{{post.feature_image.url}}');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            background-blend-mode: darken, luminosity;
+            background-color: #00000057;
+        }
+    }
+    .slick-prev:before, .slick-next:before {
+        font-size: 40px;
+        color: var(--navy)
+    }
+.slick-prev:before {
+    position: relative;
+    left: -20px
+}
+.slick-next {
+    right: 0 !important;
+}
+.slick-prev {
+    left: 0 !important;
+}
+.related-post img{
+    max-height: 150px;
+}
+.slick-slide{
+    height: 250px !important;
+}
+</style>
+<!-- for social share icons  -->
+
+
+<link rel="stylesheet" href="{% static 'tfcss/blog/share.css' %}" />
+<link rel="stylesheet" href="{% static 'tfcss/blog/iconset.css' %}" /> {% endblock headercss %} {% block content %}
+
+<div class="position-relative overflow-hidden">
+    <div id="liveAlertPlaceholder"></div>
+    <section class="banner-1 row mx-0">
+        <div class="col-md-6 banner-desc ps-md-5">
+            <h3 class="post-title">{{post.title}}</h3>
+            <div>
+                <div class="mt-4 align-items-center">
+                    <span class="me-3">{{post.date|date}}</span>
+                    <span class="me-3">{{post.reading_time}} read</span>
+                </div>
+                <br>
+                <div class="d-flex position-relative">
+                    <button type="button" class="share-btn btn me-3" title="Share Post">
+                        <i class="bi bi-share-fill me-1"></i> Share
+                    </button>
+                    <div class="social-share-container d-none shadow text-dark">
+                        <h6 class="fw-bold">Share this post to:</h6>
+                        <div class="social-share" data-social-share></div>
+                    </div>
+                    {% if user.is_authenticated %}
+                    {% if post.id in reading_lists %}
+                    <a href="{% host_url 'add_to_reading_list' host 'blog' %}{{ post.id }}" class="me-3">
+                        <button class="btn btn-danger rounded-pill fs-6" title="Add to my reading list">
+                            <i class="bi bi-dash-circle me-1"></i>
+                            Remove
+                        </button>
+                    </a>
+                        
+                        {% else %}
+                        <a href="{% host_url 'add_to_reading_list' host 'blog' %}{{ post.id }}" class="add-to-list me-3">
+                        <button class="btn fs-6" title="Add to my reading list">
+                            <i class="bi bi-plus-circle me-1"></i>
+                            Save
+                        </button>
+                    </a>
+                    {% endif %}
+                    {% endif %}
+                    
+
+
+                </div>
+                {% if post.comment_option == 'senabled'%}
+                <div>
+                    <button onclick="window.scrollTo(0,document.body.scrollHeight);" class="leave-comment-btn btn p-0 text-green">Leave a Comment</button>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-6 d-none d-md-block">
+            <img src="{{post.feature_image.url}}" id="feature-img" alt="feature-image">
+        </div>
+    </section>
+
+
+
+    <section class="container-xl main-post-container">
+        <section class="mt-3 mb-5">
+            <div class="tags d-flex flex-wrap">
+                {% for tag in tags  %}
+                <a href="{% host_url 'related_posts' host 'blog' %}{{tag}}">  {{tag}}</a>
+                {% endfor %}
+            </div>
+        </section>
+        <div class="row mx-0 pt-3">
+            <div class="sticky-top d-none d-md-block col-md-2 post-content">
+                <h6 class="title">Table of Content:</h6>
+                <div id="list-example" class="mt-3 list-group fs-7">
+
+                </div>
+            </div>
+            <div class="col-md-10 main-content position-relative" data-bs-spy="scroll" data-bs-target="#list-example" data-bs-offset="0" tabindex="0">
+                <div class="d-flex justify-content-between align-items-center">
+                    
+                    {% if user.is_staff or user.is_superuser %}
+                    <a href="{% host_url 'admin_blog_form_edit' host 'blog' %}{{post.id}}" class="btn btn-navy px-3"><i
+                            class="bi bi-pencil-square"></i></a> {% endif %}
+                </div>
+
+                {{post.content|safe}} {% if post.comment_option == 'enabled'%}
+                <button id="open-comment-btn" class="my-5 btn btn-navy">
+                    <i class="bi bi-chat-square-dots"></i>
+                    Post Comments
+                </button>
+
+                <div id="comment-box" class="d-none my-3">
+                {% if user.is_authenticated %}
+                    <h6 class="fw-bold">Leave a Comment</h6>
+                    <p> We'd love to hear from you! Your comment(s) will appear instantly on the live site. Your email address will not be published.
+                    </p>
+                    <form action="" method="POST">
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" required></textarea>
+                            <label for="floatingTextarea2">Comments</label>
+                        </div>
+                        {% csrf_token %}
+                        <button type="button" class="mt-3 btn commentSubmit btn-navy">Post a Comment</button>
+                    </form>
+                </div>
+
+                <section class="comments-container">
+                    <div class="comments-heading">
+                        <h2 class="">Comments</h2>
+                        <small> <span class="commentCount"></span>{{comments_count}} Comment</small>
+                    </div>
+                    <hr> {% for comment in comments %}
+                    <div class="comment">
+                        <div class="comment-mg">
+                            <img src="{% static 'tfimg/blog/Clip.jpg' %}" alt="">
+                        </div>
+                        <div class="comment-body">
+                            <div class="comment-info">
+                                <span class="comment-author">{{comment.user}}</span>
+                                <small class="comment-time">{{comment.comment_date}}</small>
+                            </div>
+                            <p>
+                                {{comment.comment}}
+                            </p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </section>
+                <!-- load more data  -->
+                    <section class="my-5 container d-flex justify-content-center">
+                        <button id="load-more-btn" class="btn btn-navy rounded-pill">Load More</button>
+                    </section>
+                    {% else %}
+                        <a href="{%host_url 'account_login'%}"><h6 class="fw-bold">Please Login First</h6></a>
+                    {% endif %}
+
+                {% endif %}
+            </div>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" />
+            <div class="mt-5 related-post">
+                <h6 class="fw-bold border-bottom border-secondary text-center pb-2">RELATED POST</h6>
+                <div class="center">
+                    {% for post in related_posts %}
+                    <div class="bg-lightnavy p-3 mx-3" style="height: 235px;">
+                        <div class="card bg-transparent border-0">
+                            <img src="{{post.feature_image.url}}" class="card-img-top" alt="...">
+                            <div class="card-body pt-2 p-0">
+                                <a href="{% host_url category host 'blog' %}{{post.post_url}}">
+                                    <h6 class="fw-bold fs-7">{{post.title|truncatechars:30}}</h6>
+                                </a>
+                                <p class="fs-7 lh-sm">
+                                {{ post.short_description|truncatechars:80 }}
+                            </p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+
+    </div>
+
+
+    {% endblock content %} {% block customjs %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{% static 'tfjs/blog/share.js' %}"></script>
+    <!-- <script src="{% static 'tfjs/blog/tool-tip.js' %}"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous"></script>
+
+    {% if post.comment_option == 'enabled'%}
+    <script>
+        const postId = '{{post.id}}'
+        const userId = '{{user.id}}'
+        const csrf_token = document.querySelector("input[name='csrfmiddlewaretoken']")
+        let commentBox = document.getElementById('comment-box');
+        let openCommentBtn = document.getElementById('open-comment-btn');
+        openCommentBtn.addEventListener('click', () => {
+            openCommentBtn.style.display = 'none';
+            commentBox.classList.toggle('d-none');
+        });
+        const commentSubmit = document.querySelector(".commentSubmit")
+        const commentContainer = document.querySelector(".comments-container")
+        const commentCount = document.querySelector(".commentCount")
+        const commentDetail = document.querySelector("#floatingTextarea2")
+
+        commentSubmit.addEventListener("click", (e) => {
+            e.preventDefault()
+            const requestBody = {
+                    comment: commentDetail.value,
+                    user: parseInt(userId),
+                    post: parseInt(postId)
+                }
+                // console.log(csrf_token.value);
+            fetch(`${mainOrigin}/api/blogs/comment/${postId}`, {
+                    method: 'POST',
+                    credentials: 'include',
+                    body: JSON.stringify(requestBody),
+                    headers: {
+                        'Content-type': 'application/json',
+                        'X-CSRFToken': csrf_token.value,
+                    },
+                })
+                .then((response) => response.json())
+                .then((comment) => {
+                    const commentBody = document.createElement("div")
+                    commentBody.classList.add("comment")
+                    commentBody.innerHTML = `<div class="comment-mg">
+                            <img src="{% static 'tfimg/blog/Clip.jpg' %}" alt="">
+                        </div>
+                        <div class="comment-body">
+                            <div class="comment-info">
+                                <span class="comment-author">${comment.author}</span>
+                                <small class="comment-time">${moment(comment.comment_date).format('MMMM Do YYYY, h:mm a')}</small>
+                            </div>
+                            <p>
+                                ${comment.comment}
+                            </p>
+                        </div>`;
+                    commentContainer.appendChild(commentBody)
+                })
+                .catch((error) => {
+                    console.log(error)
+                });
+
+
+                document.getElementById('floatingTextarea2').value='';
+               window.scrollBy(0, 200);
+        });
+
+        let pageNo = 2;
+         document.getElementById('load-more-btn').addEventListener('click', e => {
+            fetch(`${mainOrigin}/api/blogs/comment/${postId}?limit=5&page=${pageNo}`,{
+                credentials: 'include'
+            })
+             .then(response => response.json())
+             .then(result => {
+                 if(!result.results){
+                     e.target.style.display='none';
+                     e.stopPropagation();
+                 }
+                 result?.results?.forEach(comment => {
+                     let commentBody = `<div class="comment">
+                            <div class="comment-mg">
+                             <img src="{% static 'tfimg/blog/Clip.jpg' %}" alt="">
+                         </div>
+                         <div class="comment-body">
+                             <div class="comment-info">
+                                 <span class="comment-author">${comment.author}</span>
+                                 <small class="comment-time">${moment(comment.comment_date).format('MMMM   Do YYYY, h:mm a')}</small>
+                             </div>
+                             <p>
+                                 ${comment.comment}
+                             </p>
+                         </div>
+                         </div>`;
+                     commentContainer.insertAdjacentHTML('beforeend', commentBody);
+                 })
+             })
+             .catch(err=> alert(err.message));
+
+            pageNo++;
+        });
+
+      
+    </script>
+    {% endif %}
+    <script>
+        var alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+        var alertTrigger = document.querySelector('.add-to-list button')
+
+        function alert(message, type) {
+            document.querySelector('.alert') && document.querySelector('.alert').remove();
+            var wrapper = document.createElement('div')
+            wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+
+            alertPlaceholder.append(wrapper)
+            $(".alert").fadeTo(2000, 500).slideUp(500, function() {
+                $(".alert").slideUp(500);
+            });
+        }
+
+        if (alertTrigger) {
+            alertTrigger.addEventListener('click', function() {
+                alert('You have added this post to your reading list.', 'success')
+            })
+        }
+        window.onload = function() {
+            $('.center').slick({
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                centerMode: true,
+                centerPadding: '10px',
+                dots: true,
+                speed: 300,
+                responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+
+            });
+            document.querySelector('nav .container').style.width = "95%";
+            document.querySelector('main.container-xl').style.maxWidth = "100%";
+            document.querySelector('section.banner-1 .banner-desc').style.opacity = "1";
+            document.querySelector('section.banner-1 img').style.transform = "translateX(0)";
+            document.querySelector('.update-container').classList.add('container')
+
+            let allSections = document.querySelectorAll('.main-content div');
+            let contents = document.querySelector('.post-content #list-example');
+            let allContentsLink = document.querySelectorAll('.mce-toc a');
+
+            allContentsLink.forEach(content => {
+                content.classList.add('list-group-item');
+                content.classList.add('list-group-item-action');
+                content.setAttribute('title', content.textContent);
+
+                contents.innerHTML += content.outerHTML;
+            });
+            var scrollSpy = new bootstrap.ScrollSpy(document.body, {
+                offset: 300,
+                target: '#list-example'
+            });
+            document.querySelector('.mce-toc').outerHTML = '';
+        }
+
+        let shareBtn = document.querySelector('.share-btn');
+        let socialShareContainer = document.querySelector('.social-share-container');
+
+        shareBtn.addEventListener('click', () => {
+            socialShareContainer.classList.toggle('d-none');
+        });
+        document.addEventListener('click', e => {
+            if (!e.target.className.includes('social-share-container') &&
+                !e.target.className.includes('share-icon') &&
+                !e.target.className.includes('share-btn') &&
+                !e.target.parentNode.className.includes('share-btn'))
+                socialShareContainer.classList.add('d-none');
+        });
+
+        window.addEventListener('scroll', (event) => {
+            let position = document.documentElement.scrollTop;
+            if (position > document.querySelector('.main-content').offsetHeight + 300)
+                document.querySelector('.post-content').style.visibility = "hidden";
+            else
+                document.querySelector('.post-content').style.visibility = "visible";
+        });
+
+
+
+        // initializing ensemble share
+        const element = document.querySelector('.social-share');
+        new ensemble.SocialShare(element);
+        new ensemble.SocialShare(element, {
+            ns: 'share',
+            fx: true,
+
+            // root element
+            root: 'main',
+
+            // default classname
+            className: 'social-share',
+
+            // link to share
+            // defaults to location.href
+            link: '',
+
+            // page title to share
+            // defaults to window.title
+            title: '',
+
+            // description to share
+            description: '',
+
+            // actions to display
+            displays: null,
+
+            // action intents
+            intents: {
+                'facebook': 0,
+                'twitter': 0,
+                'whatsapp': 1,
+                'linkedin': 0,
+                'copy-link': 3,
+            },
+
+            // URI strings
+            uriform: {
+                'facebook': 'https://facebook.com/sharer.php?u=%url%',
+                'twitter': 'https://twitter.com/share?url=%url%&text=%title%',
+                'whatsapp': 'https://api.whatsapp.com/send?text=%text%',
+                'linkedin': 'https://www.linkedin.com/sharing/share-offsite?mini=true&url=%url%&title=%title%&ro=false&summary=%summary%'
+            },
+
+            // selector to find link
+            selectorLink: {
+                element: 'link[rel="canonical"]',
+                attribute: 'href'
+            },
+
+            // selector to find title
+            selectorTitle: null,
+
+            // selector to find description
+            selectorDescription: {
+                element: 'meta[name="description"]',
+                attribute: 'content'
+            },
+
+            // Custom parameters for label
+            label: {},
+
+        });
+        new ensemble.SocialShare(element, {
+
+            locale: {
+                label: 'Share',
+                share: 'Share on %s',
+                send: 'Send to %s',
+                subject: 'An interesting thing',
+                text: 'Hi! There is something may interesting you: %s',
+                email: 'Send via email',
+                copy: 'Copy link',
+                copied: 'Copied link!',
+                'whatsapp': 'WhatsApp',
+                'linkedin': 'LinkedIn'
+            },
+
+        });
+        new ensemble.SocialShare(element, {
+            onInit: function() {},
+            onIntent: function() {}
+        });
+    </script>
+    {% endblock customjs %}

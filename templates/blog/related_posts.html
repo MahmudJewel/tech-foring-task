@@ -1,0 +1,50 @@
+{% extends 'base/blog_base.html' %} {% load static %} {% load hosts %}{% load my_filter %} {% block title %} Related Posts {% endblock title %} {% block headercss %}
+<link rel="stylesheet" href="{% static 'tfcss/blog/index.css' %}"> {% endblock headercss %} {% block content %}
+
+
+<section class="my-4 p-2">
+    <h4 class="fw-bold">Related Posts:</h4>
+
+    {% for post in posts %}
+    <div class="row mb-3 mx-0 bg-lightnavy">
+        <div class="col-md-3 p-2 d-flex align-items-center">
+            <img src="{{post.feature_image.url}}" class="img-fluid " alt="... ">
+        </div>
+        <div class="col-md-9 py-2 d-flex align-items-center">
+            <div>
+                <a href="{% host_url 'articles' host 'blog' %}{{post.post_url}}">
+                    <h6 class="fw-bold">{{post.title}}</h6>
+                </a>
+                <p class="my-2 mb-0 fs-7 lh-sm">{{post.short_description}}</p>
+                <div class="info-area mt-2">
+                    <span class="p-0 me-3 text-green">
+                        <i class="bi bi-calendar"></i>
+                        {{post.date|date}}
+                    </span>
+                    <span class="p-0 me-3 text-green" title="Reading Time">
+                        <i class="bi bi-stopwatch"></i>
+                        {{post.reading_time}}
+                    </span> {% if post.id not in reading_lists %}
+                    <a href="{% host_url 'add_to_reading_list' host 'blog' %}{{ post.id }}" class="p-0 me-3 text-green" title="Add Reading List">
+                        <i class="bi bi-plus-circle"></i> Add
+                    </a>
+                    {% else %}
+                    <a href="{% host_url 'add_to_reading_list' host 'blog' %}{{ post.id }}" class="p-0 me-3 text-danger" title="Remove From Reading List">
+                        <i class="bi bi-dash-circle"></i> Remove
+                    </a>
+                    {% endif %}
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+
+{% endblock content %} {% block customjs %}
+
+<script>
+</script>
+{% endblock customjs %}

@@ -1,0 +1,537 @@
+{% extends 'base/team_user_base.html' %} {% load static %} {% block title %} Services {% endblock title %} {% block content %}
+
+<section class="services position-relative">
+    <h4 class="fw-bold border-bottom border-gray pb-14p">All Personal Cybersecurity Services
+    </h4>
+
+    <button id="back-btn" class="btn btn-outline-success btn-sm d-none position-absolute top-sm-0 end-0">
+        <i class="icofont-long-arrow-left fw-bold"></i> Back to list
+    </button>
+
+    <div class="row services-content gy-4 mt-4">
+        <div class="col-12 col-lg-4 mb-5 mb-md-0">
+            <h5 class="fw-bold">Data and Privacy Protection</h5>
+            <div class="row mt-4 bg-lightgreen g-0 px-2 py-3 rounded shadow-md d-flex justify-content-between">
+                <div class="col-1">
+                    <img src="{% static '' %}tfimg/user_panel/user.png" alt="">
+                </div>
+                <div class="col-11 ps-2">
+                    <h6 class="fw-bold">Concierge Cybersecurity</h6>
+                    <p class="lh-1 fs-14">Personal information security from cyber criminals and unknown entities
+                    </p>
+                </div>
+                <div class="col-12 d-flex justify-content-end">
+                    <button class="bg-navy btn btn-sm px-3 text-white">View</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-12 col-lg-4 mb-5 mb-md-0">
+            <h5 class="fw-bold">Cyber Investigation</h5>
+            <div class="row mt-4 bg-lightgreen g-0 px-2 py-3 rounded shadow-md d-flex justify-content-between">
+                <div class="col-1">
+                    <img src="{% static '' %}tfimg/user_panel/remove.png" alt="">
+                </div>
+                <div class="col-11 ps-2">
+                    <h6 class="fw-bold">Open Source Intelligence</h6>
+                    <p class="lh-1 fs-14">Personal information security from cyber criminals and unknown entities
+                    </p>
+                </div>
+                <div class="col-12 d-flex justify-content-end">
+                    <button class="bg-navy btn btn-sm px-3 text-white">View</button>
+                </div>
+            </div>
+            <div class="row mt-4 bg-lightgreen g-0 px-2 py-3 rounded shadow-md d-flex justify-content-between">
+                <div class="col-1">
+                    <img src="{% static '' %}tfimg/user_panel/investigation.png" alt="">
+                </div>
+                <div class="col-11 ps-2">
+                    <h6 class="fw-bold">Crime Investigation</h6>
+                    <p class="lh-1 fs-14">Personal information security from cyber criminals and unknown entities
+                    </p>
+                </div>
+                <div class="col-12 d-flex justify-content-end">
+                    <button class="bg-navy btn btn-sm px-3 text-white">View</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-12 col-md-12 col-lg-4 mb-5 mb-md-0">
+            <h5 class="fw-bold">INCIDENT RESPONSE</h5>
+            <div class="row mt-4 bg-lightgreen g-0 px-2 py-3 rounded shadow-md d-flex justify-content-between">
+                <div class="col-1">
+                    <img src="{% static '' %}tfimg/user_panel/web-browser.png" alt="">
+                </div>
+                <div class="col-11 ps-2">
+                    <h6 class="fw-bold">Hack Recovery</h6>
+                    <p class="lh-1 fs-14">Personal information security from cyber criminals and unknown entities
+                    </p>
+                </div>
+                <div class="col-12 d-flex justify-content-end">
+                    <button class="bg-navy btn btn-sm px-3 text-white">View</button>
+                </div>
+            </div>
+            <div class="row mt-4 bg-lightgreen g-0 px-2 py-3 rounded shadow-md d-flex justify-content-between">
+                <div class="col-1">
+                    <img src="{% static '' %}tfimg/user_panel/malware.png" alt="">
+                </div>
+                <div class="col-11 ps-2">
+                    <h6 class="fw-bold">Virus Removal</h6>
+                    <p class="lh-1 fs-14">Personal information security from cyber criminals and unknown entities
+                    </p>
+                </div>
+                <div class="col-12 d-flex justify-content-end">
+                    <button class="bg-navy btn btn-sm px-3 text-white">View</button>
+                </div>
+            </div>
+            <div class="row mt-4 bg-lightgreen g-0 px-2 py-3 rounded shadow-md d-flex justify-content-between">
+                <div class="col-1">
+                    <img src="{% static '' %}tfimg/user_panel/folder.png" alt="">
+                </div>
+                <div class="col-11 ps-2">
+                    <h6 class="fw-bold">Data Removal</h6>
+                    <p class="lh-1 fs-14">Personal information security from cyber criminals and unknown entities
+                    </p>
+                </div>
+                <div class="col-12 d-flex justify-content-end">
+                    <button class="bg-navy btn btn-sm px-3 text-white">View</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Concierge Cybersecurity -->
+    <div class="preview-form pt-3 d-none">
+        <div class="row mx-0 bg-lightgreen shadow-md">
+            <div class="col-md-3 py-4">
+                <img src="{% static '' %}tfimg/user_panel/cc.png" class="img-fluid d-block mx-auto" alt="...">
+            </div>
+            <div class="col-md-9 d-flex flex-column justify-content-center align-items-center">
+                <div>
+                    <h4 class="fw-bold">Concierge Cybersecurity</h4>
+                    <h6 class="fw-semi text-start fontAwesome mt-3">SECURE YOUR DIGITAL LIFE
+                    </h6>
+                    <p class="mt-3">We protect High-Net-Worth Individuals, Corporate Executives & Their household with White-Glove Cybersecurity & Threat Detection Solutions. Our personal cybersecurity services will protect you and your family in cyberspace, always.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="my-5 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">Concierge Cybersecurity Services</h5>
+            <div class="mt-4">
+                <h6 class="fw-bold text-gray">Prevent Hackers at All Times</h6>
+                <p>Personal information security from cyber criminals and unknown entities. Total safeguarding your Phone, iPad, android and computer devices. Your cloud storage will be the most secure cloud storage for personal use.</p>
+
+                <h6 class="fw-bold text-gray">Protect Digital Assets</h6>
+                <p>We ensure your Digital Asset Security across all devices including iMac, MacBook, Mac Mini, PCs and Mobile. Personal Cloud account security for iCloud, Google Drive, Dropbox etc make us stand out among most private security companies.
+                </p>
+
+                <h6 class="fw-bold text-gray">Secure Communication Channels</h6>
+                <p>Facebook, Instagram , snapchat, twitter and other social media accounts are secured and updated. Ensuring your virtual life is not disrupted. Keeping your personal and business email accounts secure and encrypted beyond regular.
+                </p>
+
+                <h6 class="fw-bold text-gray">Guard Your Privacy Online</h6>
+                <p>Concierge Cybersecurity protects you online from attacks like ransomware, phishing, malware, spyware and insider threat. Facebook, Google or Microsoft, we hide your digital trace from all tech companies to keep your privacy intact.
+                </p>
+            </div>
+        </div>
+
+        <div class="whom-we-serve my-5 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">Whom We Serve</h5>
+            <div class="mt-4">
+                <div class="d-flex justify-content-between flex-wrap">
+                    <h6 class="lh-base">HIGH-NET-WORTH INDIVIDUALS</h6>
+                    <h6 class="lh-base">BUSINESS EXECUTIVES</h6>
+                    <h6 class="lh-base">POLITICAL LEADERS</h6>
+                    <h6 class="lh-base">CELEBRITIES & MEDIA PERSONALITIES
+                    </h6>
+                </div>
+
+            </div>
+        </div>
+        <div class="my-5 pt-5 px-3">
+            <div class="row gy-5 d-flex justify-content-lg-between">
+                <div class="col-md-5 text-start">
+                    <a href=" " class="fw-bold btn bg-navy px-2 py-1">Provide information to get a quotation</a>
+                </div>
+                <div class="col-md-5 text-end">
+                    <a href=" " class="fw-bold btn bg-navy px-2 py-1">Talk to one of our
+                        representatives</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Open Source Intelligence -->
+    <div class="preview-form pt-3 d-none">
+        <div class="row mx-0 bg-lightgreen shadow-md">
+            <div class="col-md-3 py-4">
+                <img src="{% static '' %}tfimg/user_panel/osi.png" class="img-fluid d-block mx-auto" alt="...">
+            </div>
+            <div class="col-md-9 d-flex flex-column justify-content-center align-items-center">
+                <div>
+                    <h4 class="fw-bold">Open Source Intelligence</h4>
+                    <h6 class="fw-semi text-start fontAwesome mt-3">OSINT INVESTIGATIONS- PROTECT YOUR PRIVATE INFORMATION
+                    </h6>
+                    <p class="mt-3">OSINT investigations are searching and skimming out data from publicly available sources to gather intelligence about an entity. Businesses, organizations, and even individuals approach us looking for background information about someone,
+                        helping them make a better decision.</p>
+                </div>
+            </div>
+        </div>
+        <div class="mt-5 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">Open Source Intelligence Services</h5>
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <ol start="1">
+                        <li class="lh-lg">Background check</li>
+                        <li class="lh-lg">Personal information audit</li>
+                        <li class="lh-lg">Identifying security gaps</li>
+                    </ol>
+                </div>
+                <div class="col-md-4">
+                    <ol start="4">
+                        <li class="lh-lg">Accurate and actionable findings</li>
+                        <li class="lh-lg">Expose the intruders and his motive</li>
+                        <li class="lh-lg">Fight information leaks</li>
+                    </ol>
+                </div>
+                <div class="col-md-4">
+                    <ol start="7">
+                        <li class="lh-lg">Surveillance and private monitoring</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="my-5 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">Who needs it</h5>
+            <div class="mt-4">
+                <ul class="d-grid gap-3">
+                    <li>To move up professionally, sometimes C-level Executives need to ensure they have a spotless record online. As some organizations do background checks on who they are recruiting, a candidate better keeps track of whether a disgruntled
+                        x-colleague put anything negative about him on the internet. </li>
+                    <li>Take a person who and his family has been harassed online by an unknown entity. Making prank calls, reporting social media profiles, publishing scandalous articles indicate cyber harassment.
+                    </li>
+                    <li>When it comes to marrying someone, some families need a background check about the person their son or daughter will marry. It requires checking on family backgrounds and criminal and educational records, reputation in the workplace,
+                        and educational institutes.</li>
+
+                    <li> We also had to collect information ranging from character traits to his relationships, who he is meeting after office hours, if he is having an affair or not, etc.</li>
+                    <li>Open source intelligence websites, there are government reports, newspapers, radio, TV, blogs, and forums that are also more useful than meets the eyes.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="my-5 pt-5 px-3">
+            <div class="row gy-5 d-flex justify-content-lg-between">
+                <div class="col-md-5 text-start">
+                    <a href=" " class="fw-bold btn bg-navy px-2 py-1">Provide information to
+                        get a quotation</a>
+                </div>
+                <div class="col-md-5 text-end">
+                    <a href=" " class="fw-bold btn bg-navy px-2 py-1">Talk to one of our
+                        representatives</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Crime Investigation -->
+    <div class="preview-form pt-3 d-none">
+        <div class="row mx-0 bg-lightgreen shadow-md">
+            <div class="col-md-3 py-4">
+                <img src="{% static '' %}tfimg/user_panel/ci.png" class="img-fluid d-block mx-auto" alt="...">
+            </div>
+            <div class="col-md-9 d-flex flex-column justify-content-center align-items-center">
+                <div>
+                    <h4 class="fw-bold">Crime Investigation</h4>
+                    <h6 class="fw-semi text-start fontAwesome mt-3">BE WISE DECIDE QUICKLY PREVENT CYBERCRIMES
+                    </h6>
+                    <p class="mt-3">When a crime happens in a computer system, the technical complications are increased exponentially. You need a computer crime investigator who can report on reliable evidence findings with a threat prevention plan for the future.</p>
+                </div>
+            </div>
+        </div>
+        <div class="mt-5 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">Cybercrime Services</h5>
+            <div class="row mt-4">
+                <div class="col-md-3">
+                    <ol start="1" class="mb-0">
+                        <li class="lh-lg">Cyber Harassment</li>
+                        <li class="lh-lg">Privacy Invasion</li>
+                    </ol>
+                </div>
+                <div class="col-md-3">
+                    <ol start="3" class="mb-0">
+                        <li class="lh-lg">Cyber Bullying</li>
+                        <li class="lh-lg">Phishing Scams</li>
+                    </ol>
+                </div>
+                <div class="col-md-3">
+                    <ol start="5" class="mb-0">
+                        <li class="lh-lg">Hack Incident</li>
+                        <li class="lh-lg">Cyber Scamming</li>
+                    </ol>
+                </div>
+                <div class="col-md-3" class="mb-0">
+                    <ol start="7">
+                        <li class="lh-lg">Identity Theft</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="my-5 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">WHO NEEDS IT</h5>
+            <div class="mt-4">
+                <ul class="d-grid gap-3 ps-3">
+                    <li>Have you ever been bullied or scammed online? Is your reputation on the line? If cybercrime happens to you, you must report the incident to the local police and obtain the police report or case number. A thorough cybercrime investigation
+                        may save you from further damage to your digital assets. </li>
+                    <li>Cyberbullying typically involves tweens and teens. But any individual adult can experience public shaming, which is considered "cyber harassment.” For example, when a minor harasses an adult, it falls under cyber harassment. If anyone
+                        happens to spreads lies about or posts embarrassing content on social media about you, You can consider yourself a victim of Cyberbullying.
+                    </li>
+                    <li>According to the anti-phishing working groups, almost 100 thousand attempts are reported monthly worldwide. There was an email with a message offering the recipient a healthy financial gain in the notorious Nigerian Prince Scam.</li>
+
+                    <li> These incidents naturally cause mental or physical harm, loss to the victim directly or indirectly. Also, hacking like cyberbullying, invoice fraud, email scams, social media fraud, privacy invasion, phishing, cyber harassment can
+                        lead to significant damage like financial drainage, defamation, etc.
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="my-5 pt-5 px-3">
+            <div class="row gy-5 d-flex justify-content-lg-between">
+                <div class="col-md-5 text-start">
+                    <a href=" " class="fw-bold btn bg-navy px-2 py-1">Provide information to
+                        get a quotation</a>
+                </div>
+                <div class="col-md-5 text-end">
+                    <a href=" " class="fw-bold btn bg-navy px-2 py-1">Talk to one of our
+                        representatives</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hack Recovery -->
+    <div class="preview-form pt-3 d-none">
+        <div class="row mx-0 bg-lightgreen shadow-md">
+            <div class="col-md-3 py-4">
+                <img src="{% static '' %}tfimg/user_panel/hr.png" class="img-fluid d-block mx-auto" alt="...">
+            </div>
+            <div class="col-md-9 d-flex flex-column justify-content-center align-items-center">
+                <div>
+                    <h4 class="fw-bold">Hack Recovery</h4>
+                    <h6 class="fw-semi text-start fontAwesome mt-3">GOT HACKED? WE GET YOUR ACCOUNT AND DATA BACK.
+                    </h6>
+                    <p class="mt-3">If you believe your device or account is hacked, make a decision fast to prevent hackers from causing further damage. our cyber consultant team is all set to give you a quick and smart solution.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="mt-5 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">Hack Recovery Services</h5>
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <ol start="1" class="mb-0">
+                        <li class="lh-lg">Social media hack recovery</li>
+                        <li class="lh-lg">Device hack recovery</li>
+                    </ol>
+                </div>
+                <div class="col-md-4">
+                    <ol start="3" class="mb-0">
+                        <li class="lh-lg">Email hack recovery</li>
+                        <li class="lh-lg">Financial account recovery</li>
+                    </ol>
+                </div>
+                <div class="col-md-4">
+                    <ol start="5" class="mb-0">
+                        <li class="lh-lg">Personal cloud hack recovery</li>
+                    </ol>
+                </div>
+
+            </div>
+        </div>
+        <div class="my-5 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">WHO NEEDS IT</h5>
+            <div class="mt-4">
+                <ul class="d-grid gap-3">
+                    <li>Is your email hacked or do you suspect it is being compromised? If your contacts complain about suspicious emails from your account, your email account is possibly compromised. Hackers have gained access, sending spam, using it for
+                        their own benefit. You may encounter data loss, password changed, unexpected password reset emails, login from unusual IP addresses or devices. We can help to restore your email accounts.
+                    </li>
+                    <li>Security breaches in consumer cloud accounts like Apple iCloud breach, amazon data breach, dropbox leaked scenarios are quite prevalent among high-net-worth individuals. This is more than a little unsettling. But as always, we have
+                        your back!
+                    </li>
+                    <li>Android is known to be the most vulnerable operating system beside windows. Macs and Linux are hackable too. Hackers tend to exploit it by accessing a system or network and you start to encounter various issues with your OS. Battery
+                        dying on you frequently, system lagging, unwanted applications running in the background are just some of the symptoms. That means the OS needs a recovery.</li>
+
+                    <li> Let's get the bitter truth out of the way, you won’t get your money back! Sometimes, even bank accounts are hacked directly or through online payment systems like PayPal. We can help you salvage your online payment system.
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="my-5 pt-5 px-3">
+            <div class="row gy-5 d-flex justify-content-lg-between">
+                <div class="col-md-5 text-start">
+                    <a href=" " class="fw-bold btn bg-navy px-2 py-1">Provide information to
+                        get a quotation</a>
+                </div>
+                <div class="col-md-5 text-end">
+                    <a href=" " class="fw-bold btn bg-navy px-2 py-1">Talk to one of our
+                        representatives</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Virus Removal -->
+    <div class="preview-form pt-3 d-none">
+        <div class="row mx-0 bg-lightgreen shadow-md">
+            <div class="col-md-3 py-4">
+                <img src="{% static '' %}tfimg/user_panel/vr.png" class="img-fluid d-block mx-auto" alt="...">
+            </div>
+            <div class="col-md-9 pt-2 d-flex flex-column justify-content-center align-items-center">
+                <div>
+                    <h4 class="fw-bold">Virus Removal</h4>
+                    <h6 class="fw-semi text-start fontAwesome mt-3">WE CLEAN YOUR SYSTEM WITH TAUT MALWARE REMOVAL SOLUTION
+                    </h6>
+                    <p class="mt-3">Is your PC slowing down? Can't get rid of annoying pop-ups? Computer crashes randomly? It could mean you are affected by malware, which is short for Malicious software. Virus is one kind of malware. But there are other kinds of malware,
+                        which simply destroys data and a seriously harmful element to operating systems. </p>
+                </div>
+            </div>
+        </div>
+        <div class="mt-5 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">How We Help You</h5>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <ol start="1" class="mb-0">
+                        <li class="lh-lg">Remove malware from PC</li>
+                        <li class="lh-lg">Remove spyware & ransomware</li>
+                    </ol>
+                </div>
+                <div class="col-md-6">
+                    <ol start="3" class="mb-0">
+                        <li class="lh-lg">Remove adware from MAC</li>
+                        <li class="lh-lg">Clean up viruses on phone</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="process-of-cleaning my-5 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">PROCESS OF CLEANING</h5>
+            <div class="mt-4">
+                <p>We check for symptoms of a malware infection, enter safe mode and back up your files except the program files, as those might be infected. Afterwards, we run the scan, detect malwares and remove them. Finally, the old files are restored
+                    and the malware cleaning process is completed.</p>
+                <div class="pe-md-4 d-flex justify-content-between flex-wrap">
+                    <h6 class="lh-base">CHECK</h6>
+                    <h6 class="lh-base">DETECT</h6>
+                    <h6 class="lh-base">REMOVE</h6>
+                    <h6 class="lh-base">RESTORE</h6>
+                    <h6 class="lh-base">PREVENT</h6>
+                </div>
+
+            </div>
+        </div>
+        <div class="my-5 pt-5 px-3">
+            <div class="row gy-5 d-flex justify-content-lg-between">
+                <div class="col-md-5 text-start">
+                    <a href=" " class="fw-bold btn bg-navy px-2 py-1">Provide information to
+                        get a quotation</a>
+                </div>
+                <div class="col-md-5 text-end">
+                    <a href=" " class="fw-bold btn bg-navy px-2 py-1">Talk to one of our
+                        representatives</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Data Removal -->
+    <div class="preview-form pt-3 d-none">
+        <div class="row mx-0 bg-lightgreen shadow-md">
+            <div class="col-md-3 py-4">
+                <img src="{% static '' %}tfimg/user_panel/dr.png" class="img-fluid d-block mx-auto" alt="...">
+            </div>
+            <div class="col-md-9 pt-2 d-flex flex-column justify-content-center align-items-center">
+                <div>
+                    <h4 class="fw-bold">Data Removal</h4>
+                    <h6 class="fw-semi text-start fontAwesome mt-3">HACKERS ARE AFTER YOUR PERSONAL DATA. HOW DO YOU DEFEND IT?
+                    </h6>
+                    <p class="mt-3">We are one of the leading companies that remove personal information from the internet. Our privacy experts come to a common ground with big data brokers and find a permanent way out. Thus, we can save you from further internet defamation.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="my-5 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">Methods techforing follows to identify, remove and protect client’s personal information
+            </h5>
+            <div class="mt-4">
+                <ul class="d-grid gap-3 ps-3">
+                    <li>We track down clients’ personal data from search engines, data aggregators and deep web. </li>
+                    <li>We come to a common ground with big broker sites and search engines and convince them to remove personal data from the internet.
+                    </li>
+                    <li>We ensure deleted data never reappears.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="whom-we-serve my-5 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">Why You Need This</h5>
+            <div class="mt-4">
+                <p>According to the General Data Protection Regulation (GDPR), You have a right to keep your private data and web portals from being subject to automated decision making.
+                </p>
+                <p class="h6 fw-bold">Despite this, you may appear in several bad links in the form of:
+                </p>
+                <div class="mt-3 d-flex justify-content-between flex-wrap">
+                    <h6 class="lh-base">Misrepresented in Articles</h6>
+                    <h6 class="lh-base">Financial Information leak</h6>
+                    <h6 class="lh-base">Scandalous Photos and Videos</h6>
+                    <h6 class="lh-base">Fake Dating Profiles</h6>
+                    <h6 class="lh-base">Links revealing your personal information like phone number and email address
+                    </h6>
+                </div>
+
+            </div>
+        </div>
+        <div class="my-5 pt-5 px-3">
+            <div class="row gy-5 d-flex justify-content-lg-between">
+                <div class="col-md-5 text-start">
+                    <a href=" " class="fw-bold btn bg-navy px-2 py-1">Provide information to
+                        get a quotation</a>
+                </div>
+                <div class="col-md-5 text-end">
+                    <a href=" " class="fw-bold btn bg-navy px-2 py-1">Talk to one of our
+                        representatives</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endblock content %} {% block customjs %}
+<script>
+    let backBtn = document.getElementById('back-btn');
+    let servicesContent = document.querySelector('.services-content');
+    let previewForms = document.querySelectorAll('.preview-form');
+    let allBtn = document.querySelectorAll('.services-content button');
+
+
+    allBtn.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+            servicesContent.classList.add('d-none');
+            previewForms[index].classList.remove('d-none');
+            backBtn.classList.remove('d-none');
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        });
+    });
+
+    let backBtnChanges = () => {
+        servicesContent.classList.remove('d-none');
+        previewForms.forEach(form => {
+            form.classList.add('d-none');
+        });
+        backBtn.classList.add('d-none');
+
+        document.body.scrollTop = 10;
+    }
+
+    backBtn.addEventListener('click', backBtnChanges);
+
+    document.body.addEventListener('keydown', (e) => {
+        if (e.key == 'Backspace') {
+            backBtnChanges();
+        }
+    });
+</script>
+{% endblock customjs %}

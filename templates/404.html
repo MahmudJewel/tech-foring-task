@@ -1,0 +1,15 @@
+{% extends 'base/base.html' %} {% load static %} {% load hosts %} {% block title %} Thank You! {% endblock title %} {% block headercss %}
+<link rel="stylesheet" href="{% static '' %}tfcss/telephone.css" />
+<link rel="stylesheet" href="{% static '' %}tfcss/style.css" /> {% endblock headercss %} {% block content %}
+<!--Thanks Section-->
+<section class="pn-section">
+	<div class="container">
+	<img src="{% static 'tfimg/404/Vector Smart Object@1X.png' %}" alt="" />
+	<h2>Page not found</h2>
+	<p>
+	Go back to our home
+	<a href="/">techforing.com</a>
+	</p>
+	</div>
+	</section>
+{% endblock content %}

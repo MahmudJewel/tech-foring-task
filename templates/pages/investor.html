@@ -1,0 +1,31 @@
+{% extends 'base/base.html' %} {% load static %} {% load hosts %} {% block title %} Investor Relation {% endblock title %} {% block headercss %}
+<link rel="stylesheet" href="{% static 'tfcss/style.css' %}" /> {% endblock headercss %} {% block content %}
+<section class="investor-banner">
+    <div class="container">
+        <h2>investor relation</h2>
+    </div>
+</section>
+
+<section class="investor-main">
+    <div class="container">
+        <h2>TechForing Ltd is a privately held company</h2>
+        <p>We invite like-minded investors to learn more about us</p>
+        <img src="{% static ''%}tfimg/investor/investor relations.png" alt="" />
+        <h1>Please contact info@techforing.com to schedule a meeting</h1>
+    </div>
+</section>
+{% endblock content %} {% block customjs %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/tfjs/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+<script src="{% static ''%}tfjs/career.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#my-header").load("header.html");
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $("#my-footer").load("footer.html");
+    });
+</script>
+{% endblock customjs %}

@@ -1,0 +1,206 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load hosts %}
+
+{% block title %}
+Product and Service
+{% endblock title %}
+
+{% block headercss %}
+<link rel="stylesheet" href="{% static '' %}tfcss/style.css" />
+{% endblock headercss %}
+
+{% block content %}
+<section class="pro-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="user-img">
+          {% if user_data.profile_img %}
+          <img src="{{user_data.profile_img.url}}" alt="" />
+          {% else %}
+          <img src="{%static ''%}tfimg/about/Header.png" />
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="user-basic">
+          <h2>{{ user_data }}</h2>
+          <p>{{ user_data.business_email }}</p>
+          <p>{{ user_data.business_phone_no }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="pro-menu">
+  <div class="container">
+    <ul>
+      <li><a href="{%url 'user_profile'%}">Profile</a></li>
+      <li><a href="{%url 'event_webniar'%}">Events & Webinars</a></li>
+      <li><a href="{%url 'reading'%}">reading list</a></li>
+      <li><a href="{%url 'product_service'%}">products & services</a></li>
+      <li><a href="{%url 'cart'%}">Your Cart</a></li>
+      <li><a href="{%url 'order_history'%}">Order History</a></li>
+      <li><a href="{%url 'subscription'%}">Subscription</a></li>
+      <li><a href="#">Support</a></li>
+    </ul>
+  </div>
+</section>
+<section class="p-s-section">
+  <div class="container">
+    <h2 class="p-s-title">Services</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="p-s-img">
+          <img src="{% static '' %}tfimg/profile/pcsService.png" alt="" />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-s-box">
+          <h2>Personal Cybersecurity</h2>
+          <ul class="ps-ul">
+            <li class="d-flex">
+              <i class="fas fa-circle"></i>Data and privacy protection
+            </li>
+            <ul>
+              <li>Concierge Cybersecurity</li>
+            </ul>
+            <li class="d-flex">
+              <i class="fas fa-circle"></i>Cyber Investigation
+            </li>
+            <ul>
+              <li>Open Source Intelligence</li>
+              <li>Cyber Crime Investigation</li>
+            </ul>
+            <li class="d-flex">
+              <i class="fas fa-circle"></i>Incident Response
+            </li>
+            <ul>
+              <li>Hack recovery</li>
+              <li>Virus Removal</li>
+              <li>Data Removal</li>
+            </ul>
+          </ul>
+
+          <a href="#" target="_blank">Explore More</a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="p-s-img">
+          <img src="{% static '' %}tfimg/profile/bcsService.png" alt="" />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-s-box">
+          <h2>Business Cybersecurity</h2>
+          <ul class="ps-ul">
+            <li class="d-flex">
+              <i class="fas fa-circle"></i>Risk Assessment
+            </li>
+            <ul>
+              <li>Vulnerability Assessment</li>
+              <li>Penetration Testing</li>
+            </ul>
+            <li class="d-flex">
+              <i class="fas fa-circle"></i>Incident Response
+            </li>
+            <ul>
+              <li>Hack Recovery</li>
+              <li>Malware Removal</li>
+              <li>Crime and Digital Forensic Investigation</li>
+            </ul>
+            <li class="d-flex">
+              <i class="fas fa-circle"></i>Security Compliance
+            </li>
+            <ul>
+              <li>ISO 27001</li>
+              <li>PCI DSS</li>
+              <li>GDPR</li>
+              <li>HIPPA</li>
+            </ul>
+            <li class="d-flex">
+              <i class="fas fa-circle"></i>SMB Solution
+            </li>
+            <ul>
+              <li>Managed Security Solution</li>
+              <li>Plug and play program</li>
+            </ul>
+          </ul>
+          <a href="#" target="_blank">Explore More</a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="p-s-img">
+          <img src="{% static '' %}tfimg/profile/academyservice.png" alt="" />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-s-box">
+          <h2>Academy</h2>
+          <ul class="ps-ul ps-ul-aca">
+            <li class="d-flex">
+              <i class="fas fa-circle"></i>Professional Training
+            </li>
+
+            <li class="d-flex">
+              <i class="fas fa-circle"></i>Educational Training
+            </li>
+            <li class="d-flex">
+              <i class="fas fa-circle"></i>Law Enforcement Agency Training
+            </li>
+            <li class="d-flex">
+              <i class="fas fa-circle"></i>Corporate Training
+            </li>
+          </ul>
+          <a href="#" target="_blank">Explore More</a>
+        </div>
+      </div>
+    </div>
+    <h2 class="p-s-title2">Products</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="p-s-img">
+          <img src="{% static '' %}tfimg/profile/lawService.png" alt="" />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-s-box">
+          <h2>vulnerability assessment tool</h2>
+          <h3>The Third Eye</h3>
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy
+            text ever since the 1500s, when an unknown printer took a galley
+            of type and scrambled it to make a type specimen book. It has
+            survived not only five centuries, but also the leap into
+            electronic typesetting, remaining essentially unchanged. It was
+            popularised in the 1960s with the release of Letraset sheets
+            containing Lorem Ipsum passages, and more recently with desktop.
+          </p>
+          <a href="#" target="_blank">Explore More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}
+
+{% block customjs %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/tfjs/bootstrap.bundle.min.js"
+  integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<script>
+  $(document).ready(function () {
+    $("#my-header").load("header.html");
+  });
+</script>
+<script>
+  $(document).ready(function () {
+    $("#my-footer").load("footer.html");
+  });
+</script>
+{% endblock customjs %}

@@ -1,0 +1,1507 @@
+{% extends 'base/bcs_user_base.html' %} {% load static %} {% load hosts %} {% block title %} Services {% endblock title %} {% block content %}
+
+<section class="services position-relative">
+    <h4 class="main-heading">All Business Cybersecurity Services
+    </h4>
+
+    <button id="back-btn" class="btn btn-outline-success btn-sm d-none position-absolute top-sm-0 end-0">
+        <i class="icofont-long-arrow-left fw-bold"></i> Back to list
+    </button>
+
+
+    <div class="services-content">
+        <div class="content-detail pe-2 mt-5">
+            <h5 class="mt-2 services-type">Risk assessment</h5>
+            <div class="row mx-0 mb-4 gy-4 pt-4">
+                <div class="col-md-6 px-0 pe-md-5">
+                    <div class="bg-lightgreen p-2 rounded shadow-md">
+                        <div class="text-center">
+                            <img class="service-icon" src="{% static '' %}tfimg/user_panel/services/vulnerability.png">
+                        </div>
+                        <div class="ps-2 mt-2">
+                            <h6 class="service-title">Vulnerability Assessment</h6>
+                            <p class="lh-1 fs-14">Personal information security from cyber criminals and unknown entities
+                            </p>
+                        </div>
+                        <div class="view-btn">
+                            <button class="btn btn-sm">View</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 px-0 ps-md-5">
+                    <div class="bg-lightgreen p-2 rounded shadow-md">
+                        <div class="text-center">
+                            <img class="service-icon" src="{% static '' %}tfimg/user_panel/services/testing.png">
+                        </div>
+                        <div class="ps-2 mt-2">
+                            <h6 class="service-title">Penetration Testing</h6>
+                            <p class="lh-1 fs-14">Personal information security from cyber criminals and unknown entities
+                            </p>
+                        </div>
+                        <div class="view-btn">
+                            <button class="btn btn-sm">View</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="services-type py-4">Incident Response</h5>
+            <div class="row gx-3 gy-4 mb-4">
+                <div class="col-md-4">
+                    <div class="bg-lightgreen p-2 rounded shadow-md">
+                        <div class="text-center">
+                            <img class="service-icon" src="{% static '' %}tfimg/user_panel/services/hacker.png">
+                        </div>
+                        <div class="ps-2 mt-2">
+                            <h6 class="service-title">Hack Recovery</h6>
+                            <p class="lh-1 fs-14">Personal information security from cyber criminals and unknown entities
+                            </p>
+                        </div>
+                        <div class="view-btn">
+                            <button class="btn btn-sm">View</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="bg-lightgreen p-2 rounded shadow-md">
+                        <div class="text-center">
+                            <img class="service-icon" src="{% static '' %}tfimg/user_panel/services/malware.png">
+                        </div>
+                        <div class="ps-2 mt-2">
+                            <h6 class="service-title">Malware Removal</h6>
+                            <p class="lh-1 fs-14">Personal information security from cyber criminals and unknown entities
+                            </p>
+                        </div>
+                        <div class="view-btn">
+                            <button class="btn btn-sm">View</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="bg-lightgreen p-2 rounded shadow-md">
+                        <div class="text-center">
+                            <img class="service-icon" src="{% static '' %}tfimg/user_panel/services/identity.png">
+                        </div>
+                        <div class="ps-2 mt-2">
+                            <h6 class="service-title">Digital Forensic Investigation</h6>
+                            <p class="lh-1 fs-14">Personal information security from cyber criminals and unknown entities
+                            </p>
+                        </div>
+                        <div class="view-btn">
+                            <button class="btn btn-sm">View</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="services-type py-4">Security Compliance</h5>
+            <div class="row gx-3 gy-4 mb-4">
+                <div class="col-md-3">
+                    <div class="bg-lightgreen p-2 rounded shadow-md">
+                        <div class="text-center">
+                            <img class="service-icon" src="{% static '' %}tfimg/user_panel/services/iso.png">
+                        </div>
+                        <div class="ps-2 mt-2">
+                            <h6 class="service-title">ISO 27001</h6>
+                            <p class="lh-1 fs-14">Personal information security from cyber criminals and unknown entities
+                            </p>
+                        </div>
+                        <div class="view-btn">
+                            <button class="btn btn-sm">View</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="bg-lightgreen p-2 rounded shadow-md">
+                        <div class="text-center">
+                            <img class="service-icon" src="{% static '' %}tfimg/user_panel/services/pci dss.png">
+                        </div>
+                        <div class="ps-2 mt-2">
+                            <h6 class="service-title">PCI DSS</h6>
+                            <p class="lh-1 fs-14">Personal information security from cyber criminals and unknown entities
+                            </p>
+                        </div>
+                        <div class="view-btn">
+                            <button class="btn btn-sm">View</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="bg-lightgreen p-2 rounded shadow-md">
+                        <div class="text-center">
+                            <img class="service-icon" src="{% static '' %}tfimg/user_panel/services/HIPAA-compliance-icon.png">
+                        </div>
+                        <div class="ps-2 mt-2">
+                            <h6 class="service-title">HIPAA</h6>
+                            <p class="lh-1 fs-14">Personal information security from cyber criminals and unknown entities
+                            </p>
+                        </div>
+                        <div class="view-btn">
+                            <button class="btn btn-sm">View</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="bg-lightgreen p-2 rounded shadow-md">
+                        <div class="text-center">
+                            <img class="service-icon" src="{% static '' %}tfimg/user_panel/services/gdpr.png">
+                        </div>
+                        <div class="ps-2 mt-2">
+                            <h6 class="service-title">GDPR</h6>
+                            <p class="lh-1 fs-14">Personal information security from cyber criminals and unknown entities
+                            </p>
+                        </div>
+                        <div class="view-btn">
+                            <button class="btn btn-sm">View</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h5 class="services-type">SMB Solution</h5>
+            <div class="row mx-0 gy-4 mb-4 pt-4">
+                <div class="col-md-6 px-0 pe-md-5">
+                    <div class="bg-lightgreen p-2 rounded shadow-md">
+                        <div class="text-center">
+                            <img class="service-icon" src="{% static '' %}tfimg/user_panel/services/managed.png">
+                        </div>
+                        <div class="ps-2 mt-2">
+                            <h6 class="service-title">Managed Security Solution</h6>
+                            <p class="lh-1 fs-14">Personal information security from cyber criminals and unknown entities
+                            </p>
+                        </div>
+                        <div class="view-btn">
+                            <button class="btn btn-sm">View</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 px-0 ps-md-5">
+                    <div class="bg-lightgreen p-2 rounded shadow-md">
+                        <div class="text-center">
+                            <img class="service-icon" src="{% static '' %}tfimg/user_panel/services/plug and play.png">
+                        </div>
+                        <div class="ps-2 mt-2">
+                            <h6 class="service-title">Plug & Play Program</h6>
+                            <p class="lh-1 fs-14">Personal information security from cyber criminals and unknown entities
+                            </p>
+                        </div>
+                        <div class="view-btn">
+                            <button class="btn btn-sm">View</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h5 class="mt-5 services-type">Program For Your Employees</h5>
+        <!-- more services -->
+        <div class="row mx-0 g-3 more-services">
+            <div class="col-md-6 ps-md-0">
+                <div class="mt-4 bg-lightgreen px-2 py-3 rounded shadow-md">
+                    <h6 class="mb-3 fw-bold text-uppercase">Personal Cybersecurity for Your Employees</h6>
+                    <div class="d-flex">
+                        <img class="service-icon" src="{% static '' %}tfimg/user_panel/services/user.png" alt="">
+                        <div class="ps-2">
+                            <h6 class="fw-bold">Concierge Cybersecurity</h6>
+                            <p class="lh-1 fs-6">Our personal cybersecurity services will protect your employee and employees family in cyberspace always.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button id="pcs-preview-btn" class="bg-navy btn btn-sm px-5 text-white">View</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 pe-md-0">
+                <div class="mt-4 bg-lightgreen px-2 py-3 rounded shadow-md">
+                    <h6 class="mb-3 fw-bold text-uppercase">Training Program for Your Employees</h6>
+                    <div class="d-flex">
+                        <img class="service-icon" src="{% static '' %}tfimg/user_panel/services/online-course.png" alt="">
+                        <div class="ps-2">
+                            <h6 class="fw-bold">Leading Ethical Hacking Course</h6>
+                            <p class="lh-1 fs-6">Our personal cybersecurity services will protect your employee and employees family in cyberspace always.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button data-bs-toggle="modal" data-bs-target="#trainingModal" class="bg-navy btn btn-sm px-5 text-white">View</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- modal for training program -->
+    <div class="modal fade" id="trainingModal" tabindex="-1" aria-labelledby="trainingModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content border-0 bg-main">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn-close rounded-circle bg-green" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body px-5 pb-5">
+                    <h4 class="px-3 fw-bold text-center">Provide information to get a quotation for employee training program
+                    </h4>
+
+                    <form class="mt-4" action="/employee_training_program/" method="POST">
+                        {% csrf_token %}
+                        <div id="employee-number-btn">
+                            <select disabled class="form-select bg-white" aria-label="Default select example">
+                                <option selected>No. of Employees in your
+                                    organization?</option>
+                            </select>
+                        </div>
+                        <div id="employee-number-input" class="d-none w-100 p-2 mt-1 shadow border border-navy">
+                            <div class="form-check">
+                                <input required class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="">
+                                <label class="form-check-label" for="exampleRadios1">
+                                    1 - 25
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="">
+                                <label class="form-check-label" for="exampleRadios2">
+                                    26 - 50
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="">
+                                <label class="form-check-label" for="exampleRadios3">
+                                    51 - 100
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="">
+                                <label class="form-check-label" for="exampleRadios4">
+                                    Above 100
+                                </label>
+                            </div>
+                        </div>
+
+                        <div id="train-employee-btn">
+                            <select disabled class="mt-4 form-select bg-white" aria-label="Default select example">
+                                <option selected>No. of Employees you want to train?</option>
+                            </select>
+                        </div>
+                        <input required id="train-employee-input" class="d-none form-control shadow mt-1 border border-navy" placeholder="Enter the number of employess you want to train.." type="text" maxlength="3" name="" autocomplete="off">
+
+                        <div id="employee-program-btn">
+                            <select disabled class="mt-4 form-select bg-white" aria-label="Default select example">
+                                <option selected>Which training program you want to enroll?</option>
+                            </select>
+                        </div>
+                        <div id="employee-program-input" class="d-none w-100 p-2 mt-1 shadow border border-navy">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
+                                <label class="form-check-label" for="flexCheckDefault1">
+                                    Program 1
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
+                                <label class="form-check-label" for="flexCheckDefault2">
+                                    Program 2
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
+                                <label class="form-check-label" for="flexCheckDefault3">
+                                    Program 3
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="mt-5 d-block mx-auto btn bg-navy px-5 py-2">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- services start  -->
+
+    <!-- Vulnerability Assessment -->
+    <div class="preview-service-info pt-3 pb-5 d-none">
+        <div class="row mx-0 bg-lightgreen shadow-md">
+            <div class="col-md-3 service-img">
+                <img src="{% static '' %}tfimg/user_panel/vulnerability_assesment.png" class="img-fluid d-block mx-auto" alt="...">
+            </div>
+            <div class="col-md-9 service-body">
+                <div class="py-2">
+                    <h4 class="fw-bold">Vulnerability Assessment</h4>
+                    <h6 class="fw-semi text-start fontAwesome mt-3">UNCOVER AND MITIGATE CYBER THREATS BY VULNERABILITY ASSESSMENT
+                    </h6>
+                    <p class="mt-3 mb-0">Most businesses take steps to evaluate their network security after experiencing an unfortunate event or because they are concerned about potential future threats. Active steps for prevention are better than any cure, and information
+                        security is no different. Any networked IT infrastructure is potentially vulnerable, so anyone managing a corporate or commercial network needs to know its weak points in order to address protecting it. We offer a unique approach
+                        to security and specifically to vulnerability assessment to protect your business from harm, secure it from intrusion maintain the confidentiality of your data, and seclude commercial information from prying eyes. </p>
+                </div>
+            </div>
+        </div>
+        <div class="my-3 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">Our Focus</h5>
+            <div class="mt-3">
+                <h6 class="lh-base">OSWAP top 10 – A reference list of the 10 most critical web application security risks.
+                </h6>
+                <h6 class="lh-base">SANS top 20 critical security controls – A reference list of the common errors in software’s and apps.</h6>
+                <h6 class="lh-base">CVE (Common Vulnerabilities and Exposures) –A reference list of the publicly known security vulnerabilities.</h6>
+                <h6 class="lh-base">Application Program Development – Including Zero day attacks.</h6>
+                <h6 class="lh-base">Assessment tools: Both open source and paid tools.</h6>
+            </div>
+        </div>
+        <div class="whom-we-serve my-3 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">Our Approach</h5>
+            <p class="mt-3">Our vulnerability assessment services are expressly designed to test your organization’s internal and external infrastructure against known vulnerabilities and exposures. Once identified, you are able to efficiently fix the issues. Our first
+                step is to study in detail all the threats that apply specifically to you in your protected environment. We work from the point-of view of an adversary. During this process, we figure out all potential avenues which adversaries might take
+                to infiltrate, exploit, surveil, steal or attack your organization
+            </p>
+            <div class="mt-3">
+                <ol class="row mx-0">
+                    <li class="col-auto me-3 lh-base fw-bold">Social engineering testing</li>
+                    <li class="col-auto me-3 lh-base fw-bold">Internal breach assessment</li>
+                    <li class="col-auto me-3 lh-base fw-bold">External breach assessment</li>
+                    <li class="col-auto me-3 lh-base fw-bold">Wireless network testing</li>
+                    <li class="col-auto me-3 lh-base fw-bold">Penetration testing</li>
+                    <li class="col-auto lh-base fw-bold">Assessment Report</li>
+                </ol>
+
+            </div>
+        </div>
+        <div class="my-4 pt-5 px-3">
+            <div class="d-flex flex-wrap justify-content-center justify-content-md-between">
+                <button type="button" class="get-quotation btn bg-navy px-2 py-1 mb-3 mb-md-0">Provide information to
+                    get a quotation</button>
+                <a href="{% host_url 'bcs_appointment' %}" class="btn bg-navy px-2 py-1">Talk to one of our
+                    representatives</a>
+
+            </div>
+        </div>
+    </div>
+    <!-- PENETRATION TESTING -->
+    <div class="preview-service-info pt-3 pb-5 d-none">
+        <div class="row mx-0 bg-lightgreen shadow-md">
+            <div class="col-md-3 service-img">
+                <img src="{% static '' %}tfimg/user_panel/penetration_testing.png" class="img-fluid d-block mx-auto" alt="...">
+            </div>
+            <div class="col-md-9 service-body">
+                <div class="py-2">
+                    <h4 class="d-none fw-bold">Penetration Testing</h4>
+                    <h6 class="fw-semi text-start fontAwesome mt-3">RED TEAM PENETRATION TESTING TO DETERMINE YOUR SECURITY SYSTEM WEAKNESS
+                    </h6>
+                    <p class="mt-3 mb-0">Everywhere we look, organizations are being hacked. Many believe that firewalls and anti-virus products are sufficient protection. Unfortunately, this is not true. Techforing.com provides a comprehensive Penetration Test service that
+                        identifies the vulnerabilities within systems and infrastructure and determines the exposure to cyber threats such as DDoS attacks, malware, data theft, and many more. The Penetration Test results in an in-depth report that includes
+                        actionable recommendations of suitable and proactive countermeasures.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="my-3 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">Industries We Serve</h5>
+            <div class="mt-3 d-flex justify-content-between flex-wrap">
+                <h6 class="lh-base">Retail
+                </h6>
+                <h6 class="lh-base">Transport</h6>
+                <h6 class="lh-base">Education</h6>
+                <h6 class="lh-base">Banking</h6>
+                <h6 class="lh-base">Healthcare</h6>
+                <h6 class="lh-base">Hospitality</h6>
+                <h6 class="lh-base">Information Technology</h6>
+            </div>
+        </div>
+
+        <div class="my-3 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">Our Mathodology</h5>
+            <p class="mt-3">At Techforing.com we use real people to perform system breaches. At the same time, we leverage sophisticated tools along with the same methods that a malicious hacker would. In this way, we make the test as realistic as possible. Our overall
+                process of penetration testing can be broken down into a series of four phases identified highlighted below. When put together, these phases form a comprehensive methodology for completing a successful Penetration Test.
+            </p>
+            <div class="mt-3">
+                <ol class="d-flex justify-content-between flex-wrap">
+                    <li class="lh-base fw-bold">Scoping and Exploration</li>
+                    <li class="lh-base fw-bold">Discovery and Analysis</li>
+                    <li class="lh-base fw-bold">Notification and Reporting</li>
+                    <li class="lh-base fw-bold">Exploitation</li>
+                </ol>
+
+            </div>
+        </div>
+        <div class="my-3 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">Our Focus
+            </h5>
+            <h6 class="fw-bold">Our Penetration Testing services focus on:</h6>
+            <div class="mt-4">
+                <ol class="d-grid gap-3">
+                    <li>Networks/Firewalls </li>
+                    <li>Wireless network testing
+                    </li>
+                    <li>Physical security testing</li>
+
+                    <li>Web applications such as HTTP / HTTPS (SSL)</li>
+                    <li>Technical testing of your cloud based infrastructure.</li>
+                    <li>Technical testing of your internal network infrastructure</li>
+                    <li>Networking gear including routers, switches, access points and more</li>
+                    <li>Technical testing on any other IT system or peripheral that may pose security vulnerability in a client’s environment</li>
+                    <li>Technical testing of your internally accessible infrastructure such as workstations, mobile devices, DNS services, email servers, databases, VOIP services, etc</li>
+                    <li>Technical testing of your externally accessible infrastructure such as servers in your DMZ, RDP (Remote Desktop Protocol), VPN, IPsec end points, web applications, etc.
+                    </li>
+
+                </ol>
+            </div>
+        </div>
+
+        <div class="my-4 pt-5 px-3">
+            <div class="d-flex flex-wrap justify-content-center justify-content-md-between">
+                <button type="button" class="get-quotation btn bg-navy px-2 py-1 mb-3 mb-md-0">Provide information to
+                    get a quotation</button>
+                <a href="{% host_url 'bcs_appointment' %}" class="btn bg-navy px-2 py-1">Talk to one of our
+                    representatives</a>
+            </div>
+        </div>
+    </div>
+    <!-- Hack Recovery -->
+    <div class="preview-service-info pt-3 pb-5 d-none">
+        <div class="row mx-0 bg-lightgreen shadow-md">
+            <div class="col-md-3 service-img">
+                <img src="{% static '' %}tfimg/user_panel/hack_recovery.png" class="img-fluid d-block mx-auto" alt="...">
+            </div>
+            <div class="col-md-9 service-body">
+                <div>
+                    <h4 class="fw-bold">Hack Recovery</h4>
+                    <h6 class="fw-semi text-start fontAwesome mt-3">HACK RECOVERY SERVICE - STAY ONE STEP AHEAD
+                    </h6>
+                    <p class="mt-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                        specimen book. It has survived not only five centuries.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="my-3 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">DIGITAL ASSET HACKS WE HANDLE</h5>
+            <div class="mt-3">
+                <ol class="hack-recovery-service d-flex justify-content-between flex-wrap">
+                    <li class="lh-base fw-bold">Website Recovery</li>
+                    <li class="lh-base fw-bold">Work station & office network</li>
+                    <li class="lh-base fw-bold">Server & Data center</li>
+                    <li class="lh-base fw-bold">Cloud Infrastructure</li>
+                </ol>
+            </div>
+        </div>
+        <div class="my-4 pt-5 px-3">
+            <div class="d-flex flex-wrap justify-content-center justify-content-md-between">
+                <button type="button" class="get-quotation btn bg-navy px-2 py-1 mb-3 mb-md-0">Provide information to
+                    get a quotation</button>
+                <a href="{% host_url 'bcs_appointment' %}" class="btn bg-navy px-2 py-1">Talk to one of our
+                    representatives</a>
+            </div>
+        </div>
+    </div>
+    <!-- Malware Removal -->
+    <div class="preview-service-info pt-3 pb-5 d-none">
+        <div class="row mx-0 bg-lightgreen shadow-md">
+            <div class="col-md-3 service-img">
+                <img src="{% static '' %}tfimg/user_panel/malware_removal.png" class="img-fluid d-block mx-auto" alt="...">
+            </div>
+            <div class="col-md-9 service-body">
+                <div class="py-2">
+                    <h4 class="fw-bold">Malware Removal</h4>
+                    <h6 class="fw-semi text-start fontAwesome mt-3">BEST MALWARE REMOVAL SERVICE
+                    </h6>
+                    <p class="mt-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                        specimen book. It has survived not only five centuries.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="my-3 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">OUR APPROACH</h5>
+            <p class="mt-3">Websites, servers, data centers, and office networks can often get infected with malware, rootkits, and ransomware. We take a step by step approach for malware removal, our steps include:-
+            </p>
+            <div class="mt-3">
+                <ol class="d-flex justify-content-between flex-wrap">
+                    <li class="lh-base fw-bold me-3">Detect infection</li>
+                    <li class="lh-base fw-bold me-3">Contain the damage</li>
+                    <li class="lh-base fw-bold me-3">Remove malware & spyware</li>
+                    <li class="lh-base fw-bold me-3">Restore operational functionality</li>
+                    <li class="lh-base fw-bold me-3">Notify the authorities</li>
+                    <li class="lh-base fw-bold">Regain secured access</li>
+
+                </ol>
+            </div>
+        </div>
+        <div class="my-3 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">OUR MALWARE & RANSOMWARE SERVICE COVERS</h5>
+            <div class="mt-3">
+                <ol class="malware-removal-service d-flex justify-content-between flex-wrap">
+                    <li class="lh-base fw-bold">Web Malware</li>
+                    <li class="lh-base fw-bold">Work station & office network Ransomware</li>
+                    <li class="lh-base fw-bold">Server & Data Center Malware</li>
+                </ol>
+            </div>
+        </div>
+        <div class="my-4 pt-5 px-3">
+            <div class="d-flex flex-wrap justify-content-center justify-content-md-between">
+                <button type="button" class="get-quotation btn bg-navy px-2 py-1 mb-3 mb-md-0">Provide information to
+                    get a quotation</button>
+                <a href="{% host_url 'bcs_appointment' %}" class="btn bg-navy px-2 py-1">Talk to one of our
+                    representatives</a>
+            </div>
+        </div>
+    </div>
+    <!-- Crime & Digital Forensic Investigation -->
+    <div class="preview-service-info pt-3 pb-5 d-none">
+        <div class="row mx-0 bg-lightgreen shadow-md">
+            <div class="col-md-3 service-img">
+                <img src="{% static '' %}tfimg/user_panel/crime_and_digital.png" class="img-fluid d-block mx-auto" alt="...">
+            </div>
+            <div class="col-md-9 service-body">
+                <div class="py-2">
+                    <h4 class="fw-bold">Crime & Digital Forensic Investigation</h4>
+                    <h6 class="fw-semi text-start fontAwesome mt-3">WE UNCOVER THE CRIME AND THE CRIMINAL
+                    </h6>
+                    <p class="mt-3">Very few forensic cases match with each other. Intruders steal computer data, and hackers break into websites and wreak havoc. Our cyber crime investigators effectively detect cyber crimes and try to track down the perpetrators.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="my-3 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">OUR APPROACH</h5>
+            <p class="mt-3">Very few forensic cases match with each other. Intruders steal computer data, and hackers break into websites and wreak havoc. Our cyber crime investigators effectively detect cyber crimes and try to track down the perpetrators.
+            </p>
+            <div class="mt-3">
+                <ol class="d-flex justify-content-between flex-wrap">
+                    <li class="lh-base fw-bold me-3">Search for Physical Evidence</li>
+                    <li class="lh-base fw-bold me-3">Tracking Traces left by the hacker</li>
+                    <li class="lh-base fw-bold me-3">Understand The Ultimate Motive</li>
+                    <li class="lh-base fw-bold me-3">Reveal whereabouts of the guilty</li>
+                    <li class="lh-base fw-bold me-3">Check for any backdoors.</li>
+                </ol>
+            </div>
+        </div>
+        <div class="my-3 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">CYBERCRIME WE INVESTIGATE</h5>
+            <div class="mt-3">
+                <ol class="crime-investigation-service d-flex justify-content-between flex-wrap">
+                    <li class="lh-base fw-bold">Business Fraud Investigation</li>
+                    <li class="lh-base fw-bold">Internal Data Theft Investigation</li>
+                    <li class="lh-base fw-bold">External Hacking & Data Theft Investigation</li>
+                </ol>
+            </div>
+        </div>
+        <div class="my-4 pt-5 px-3">
+            <div class="d-flex flex-wrap justify-content-center justify-content-md-between">
+                <button type="button" class="get-quotation btn bg-navy px-2 py-1 mb-3 mb-md-0">Provide information to
+                    get a quotation</button>
+                <a href="{% host_url 'bcs_appointment' %}" class="btn bg-navy px-2 py-1">Talk to one of our
+                    representatives</a>
+            </div>
+        </div>
+    </div>
+    <!-- ISO 27001 COMPLIANCE -->
+    <div class="preview-service-info pt-3 pb-5 d-none">
+        <div class="row mx-0 bg-lightgreen shadow-md">
+            <div class="col-md-3 service-img">
+                <img src="{% static '' %}tfimg/user_panel/iso 27001 complaince.png" class="img-fluid d-block mx-auto" alt="...">
+            </div>
+            <div class="col-md-9 service-body">
+                <div class="py-2">
+                    <h4 class="fw-bold">ISO 27001 COMPLIANCE</h4>
+                    <h6 class="fw-semi text-start fontAwesome mt-3">ENSURE YOUR IT SECURITY COMPLIANCE WITH ISO 27001
+                    </h6>
+                    <p class="mt-3">ISO 27001 consists of standards to help keep information assets secure and safe. This aids in organizing, managing, and maintaining the security of an organization’s assets; such as financial information, employee details, and intellectual
+                        property.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="my-3 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">OUR APPROACH</h5>
+            <p class="mt-3 fw-bold">We break down every critical step into several sections and subsections, and take a methodical approach, as mentioned below:
+            </p>
+            <div class="mt-3">
+                <ol class="ps-4">
+                    <li class="lh-base">ISMS Policy</li>
+                    <li class="lh-base">ISMS Scope</li>
+                    <li class="lh-base">Security Risk Evaluation</li>
+                    <li class="lh-base">Remediation for Risks</li>
+                    <li class="lh-base">SOA – Statement of Applicability</li>
+                    <li class="lh-base">Documentation and Risk Treatment</li>
+                    <li class="lh-base">Quantify the Controls</li>
+                    <li class="lh-base">Implement Controls</li>
+                    <li class="lh-base">Training</li>
+                    <li class="lh-base">Work on ISMS Controls</li>
+                    <li class="lh-base">Monitor and Reiterate</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="my-3 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">Why Us</h5>
+            <div class="mt-4 ps-2">
+                <ul class="d-grid gap-3">
+                    <li>It is important that the ISO 27001 is performed by a recognized accreditation body which is a member of IAF – International Accreditation Forum. This requires identifying a valid accreditation body, as well as, defining the scope of
+                        ISO 27001. For ISMS policy evaluation and risk identification, an organization requires skillsets to work continuously on ISMS related audits.
+                    </li>
+                    <li>We are trained to deal with ISO 27001 audits. We have professionals constantly working with security evaluations, and who are trained to manage and handle ISO 27001 audits. TechForing follows a detailed and systematic approach when
+                        handling audits, and we understand the severity of ISO 27001 audits.
+                    </li>
+                    <li>We aim to continuously work with your team throughout the audit period, to ensure successful completion, and acquisition of ISO 27001 compliance. Our team also helps with the renewal of ISO 27001 compliance. We cater to every detail,
+                        as per ISO 27001 standards, and make your ISO 27001 audit our top priority to ensure successful completion.
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="my-4 pt-5 px-3">
+            <div class="d-flex flex-wrap justify-content-center justify-content-md-between">
+                <button type="button" class="get-quotation btn bg-navy px-2 py-1 mb-3 mb-md-0">Provide information to
+                    get a quotation</button>
+                <a href="{% host_url 'bcs_appointment' %}" class="btn bg-navy px-2 py-1">Talk to one of our
+                    representatives</a>
+            </div>
+        </div>
+    </div>
+    <!-- PCI DSS COMPLIANCE -->
+    <div class="preview-service-info pt-3 pb-5 d-none">
+        <div class="row mx-0 bg-lightgreen shadow-md">
+            <div class="col-md-3 service-img">
+                <img src="{% static '' %}tfimg/user_panel/pci dss compliance.png" class="img-fluid d-block mx-auto" alt="...">
+            </div>
+            <div class="col-md-9 service-body">
+                <div class="py-2">
+                    <h4 class="fw-bold">PCI DSS COMPLIANCE</h4>
+                    <h6 class="fw-semi text-start fontAwesome mt-3">VALIDATE YOUR CREDIT CARD DATA SECURITY WITH PCI COMPLIANCE
+                    </h6>
+                    <p class="mt-3">PCI DSS stands for Payment Card Industry Data Security Standard. PCI DSS is a compliance security standard specially designed for safe credit card transactions. It is implemented to ensure that companies that accept, store, and process
+                        credit card information maintain an extremely secure environment.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="my-3 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">THE WAY WE PROCESS</h5>
+            <p class="mt-3 fw-bold">The 10 requirements can be broadly classified into the below-defined guidelines and in each step we guide you through the process-
+            </p>
+            <div class="mt-3">
+                <ol class="ps-4">
+                    <li class="lh-base">Implement Firewall Configuration</li>
+                    <li class="lh-base">Eliminate Default Configurations</li>
+                    <li class="lh-base">Protect Data</li>
+                    <li class="lh-base">Encryption</li>
+                    <li class="lh-base">Updated Antivirus Software</li>
+                    <li class="lh-base">Maintain Secure Applications</li>
+                    <li class="lh-base">Track Network</li>
+                    <li class="lh-base">Testing</li>
+                    <li class="lh-base">Implement Stronger Access Control Measures</li>
+                    <li class="lh-base">Maintain Information Security Policy</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="my-3 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">Why Us</h5>
+            <div class="mt-4 ps-2">
+                <ul class="d-grid gap-3">
+                    <li>TechForing provides end to end guidance in helping you achieve Attestation of Compliance for Payment Card Industry from a QSA. We have a team of qualified experts and PCIP – Payment Card Industry Professionals, constantly supporting
+                        changes required for PCI audits. Our team helps you successfully achieve your Report on Compliance – ROC.
+                    </li>
+                    <li>We have successfully worked with multiple small and large organizations to gain PCI DSS compliance through our security and vulnerability evaluations. Rigorous tests are performed to ensure the organization meets the required PCI guidelines,
+                        and remediation measures are provided to abide by the PCI requirements. We help you define the scope of documents and also support in maintaining, updating, and making required amendments to these documents, as per PCI scope.
+                    </li>
+                    <li>TechForing provides cost-effective solutions and manages all of your PCI compliance related activities. This includes network scans, architecture evaluation, security policy evaluations, environment isolation, documentation, and acquiring
+                        the PCI compliance report. We provide round the clock support for renewal of PCI compliance, and annual and bi-annual PCI audits.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="my-4 pt-5 px-3">
+            <div class="d-flex flex-wrap justify-content-center justify-content-md-between">
+                <button type="button" class="get-quotation btn bg-navy px-2 py-1 mb-3 mb-md-0">Provide information to
+                    get a quotation</button>
+                <a href="{% host_url 'bcs_appointment' %}" class="btn bg-navy px-2 py-1">Talk to one of our
+                    representatives</a>
+            </div>
+        </div>
+    </div>
+    <!-- HIPAA COMPLIANCE -->
+    <div class="preview-service-info pt-3 pb-5 d-none">
+        <div class="row mx-0 bg-lightgreen shadow-md">
+            <div class="col-md-3 service-img">
+                <img src="{% static '' %}tfimg/user_panel/hipaa compliance.png" class="img-fluid d-block mx-auto" alt="...">
+            </div>
+            <div class="col-md-9 service-body">
+                <div class="py-2">
+                    <h4 class="fw-bold">HIPAA COMPLIANCE</h4>
+                    <h6 class="fw-semi text-start fontAwesome mt-3">HIPAA COMPLIANCE CONSULTING FOR HEALTHCARE PROFESSIONALS
+                    </h6>
+                    <p class="mt-3">HIPAA stands for Health Insurance Portability and Accountability Act of 1996. It is United States legislation which acts on implementing data privacy and security measures to safeguard medical information. This act is especially important
+                        due to the increase in health data breaches from cyber attacks. The fundamental goal of HIPAA is to make it easier to maintain health insurance, and ensure confidentiality and security of healthcare information.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="my-3 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">OUR APPROACH</h5>
+            <p class="mt-3 fw-bold">We help you with HIPAA compliance in a step by step manner as described below:
+            </p>
+            <div class="mt-3">
+                <ol class="ps-4">
+                    <li class="lh-base">HIPAA Entity Identification</li>
+                    <li class="lh-base">PHI</li>
+                    <li class="lh-base">Identify HIPAA Rules</li>
+                    <li class="lh-base">Maintain Privacy</li>
+                    <li class="lh-base">NPP</li>
+                    <li class="lh-base">Required Access Controls</li>
+                    <li class="lh-base">Administrative Safeguard</li>
+                    <li class="lh-base">Technical Safeguards</li>
+                    <li class="lh-base">Physical Safeguard</li>
+                    <li class="lh-base">Key Roles</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="my-3 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">Why Us</h5>
+            <div class="mt-4 ps-2">
+                <ul class="d-grid gap-3">
+                    <li>HIPAA compliance by itself is a vast subject and it is a complex procedure to identify if you need to be HIPAA compliant or not. Identifying and becoming HIPAA compliant is crucial to the continuity of your business. HIPAA is mandatory
+                        as per the US Department of Health and Human Services – HSS. HSS governs all healthcare related activities by ensuring healthcare organizations implement secure electronic access to all health-relevant data. This also includes
+                        remaining compliant with the privacy regulations established by HSS.
+                    </li>
+                    <li>Falling victim to a healthcare data breach can have long-term repercussions and also attract heavy fines. These fines can vary from unknowingly violating HIPAA to willful negligence of HIPAA. HIPAA violations fines vary between $100
+                        and $50,000 per violation, depending on the severity of the offense.
+                    </li>
+                    <li>TechForing helps you identify and define a roadmap to become HIPAA compliant. We have experts in the field to support you throughout the journey, and also help you make the required amendments in terms of identifying the risk factors.
+                        Our support extends to identifying, acquiring, and renewal of HIPAA for individuals and businesses. We strive to ensure a hassle-free process is in place, while helping you become HIPAA compliant.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="my-4 pt-5 px-3">
+            <div class="d-flex flex-wrap justify-content-center justify-content-md-between">
+                <button type="button" class="get-quotation btn bg-navy px-2 py-1 mb-3 mb-md-0">Provide information to
+                    get a quotation</button>
+                <a href="{% host_url 'bcs_appointment' %}" class="btn bg-navy px-2 py-1">Talk to one of our
+                    representatives</a>
+            </div>
+        </div>
+    </div>
+    <!-- GDPR COMPLIANCE -->
+    <div class="preview-service-info pt-3 pb-5 d-none">
+        <div class="row mx-0 bg-lightgreen shadow-md">
+            <div class="col-md-3 service-img">
+                <img src="{% static '' %}tfimg/user_panel/gdpr compliance.png" class="img-fluid d-block mx-auto" alt="...">
+            </div>
+            <div class="col-md-9 service-body">
+                <div class="py-2">
+                    <h4 class="fw-bold">GDPR COMPLIANCE</h4>
+                    <h6 class="fw-semi text-start fontAwesome mt-3">GET DATA PROTECTION CREDIBILITY WITH GDPR COMPLIANCE
+                    </h6>
+                    <p class="mt-3">GDPR stands for General Data Protection Regulation. GDPR is a compliance security standard specially designed for personal data and privacy protection of users. It allows detailed requirements for businesses on personal data collection,
+                        storage, and management while applying both to individuals in the EU, and corporations outside the EU.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="my-3 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">OUR APPROACH</h5>
+            <p class="mt-3 fw-bold">Our Consultative services to achieve GDPR compliance:</p>
+            <div class="mt-3">
+                <ol class="ps-4">
+                    <li class="lh-base">Gap Analysis</li>
+                    <li class="lh-base">Rapid detection and Threat Response</li>
+                    <li class="lh-base">Enrich security policies and workplace awareness</li>
+                    <li class="lh-base">Report Data Breach within 72 hours</li>
+                    <li class="lh-base">Check what other vendors are doing</li>
+                    <li class="lh-base">Analyze Data Storage And Usage</li>
+                    <li class="lh-base">Prevent Data Leakage</li>
+                    <li class="lh-base">Data Privacy Assessment</li>
+                </ol>
+            </div>
+        </div>
+        <div class="my-3 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">Why Us</h5>
+            <div class="mt-4 ps-2">
+                <ul class="d-grid gap-3">
+                    <li>TechForing provides end to end guidance in becoming GDPR compliant by offering seamlessly responding technologies and thinking heads to the most complicated GDPR requirements. We have a team of qualified experts and Data Protection
+                        Professionals, constantly updating themselves for GDPR audits.
+                    </li>
+                    <li>Consulting small businesses have been our forte to gain GDPR compliance to them through our cybersecurity solutions. A large number of tests were performed to ensure businesses meet the required compliance guidelines. As per GDPR scope,
+                        we support you in maintaining, renewing, updating, and making required amendments to the documents.
+                    </li>
+                    <li>Our solutions are cost-effective, and our audits are annual and bi-annual.</li>
+                    <li>Techforing offers a Risk Intelligence platform. This platform scans any network and evaluates the Personally Identifiable Information, which helps in data mapping and prioritizing the security efforts by identifying any unsecured PII.</li>
+                    <li>The Managed Security Service reduces any threat that ransomware or other malicious code poses. As data loss is fatal for businesses, our service allows fast backup, recovery, and storage security, all in one cloud structure.</li>
+                    <li>We provide robust email security and encryption, including an email archive for you to have free access to users’ emails whenever you need them.</li>
+                    <li>We have the tools you need to monitor your business remotely.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="my-4 pt-5 px-3">
+            <div class="d-flex flex-wrap justify-content-center justify-content-md-between">
+                <button type="button" class="get-quotation btn bg-navy px-2 py-1 mb-3 mb-md-0">Provide information to
+                    get a quotation</button>
+                <a href="{% host_url 'bcs_appointment' %}" class="btn bg-navy px-2 py-1">Talk to one of our
+                    representatives</a>
+            </div>
+        </div>
+    </div>
+    <!-- MANAGED CYBERSECURITY -->
+    <div class="preview-service-info pt-3 pb-5 d-none">
+        <div class="row mx-0 bg-lightgreen shadow-md">
+            <div class="col-md-3 service-img">
+                <img src="{% static '' %}tfimg/user_panel/managed cybersecurity.png" class="img-fluid d-block mx-auto" alt="...">
+            </div>
+            <div class="col-md-9 service-body">
+                <div class="py-2">
+                    <h4 class="fw-bold">MANAGED CYBERSECURITY</h4>
+                    <h6 class="fw-semi text-start fontAwesome mt-3">PROTECT YOUR BUSINESS AND DATA WITH TECHFORING MANAGED SECURITY SERVICE</h6>
+                    <p class="mt-3">Techforing managed cybersecurity services allow small and medium-sized businesses to detect, protect, and respond to unknown online attacks through best-in-class management and monitoring of security systems and devices.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="my-3 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">CYBERSECURITY WE MANAGE</h5>
+            <div class="mt-3">
+                <ol class="d-flex justify-content-between flex-wrap">
+                    <li class="lh-base fw-bold">Website</li>
+                    <li class="lh-base fw-bold">Network & Infrastructure</li>
+                    <li class="lh-base fw-bold">Cloud Services</li>
+                    <li class="lh-base fw-bold">Server & Data Centers</li>
+                </ol>
+            </div>
+        </div>
+        <div class="my-3 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">HOW WE WORK</h5>
+            <div class="mt-4 ps-2">
+                <ul class="d-grid gap-3">
+                    <li>We discuss and assess client’s requirements and provide the best-fit solutions based on their pain points and business objectives.
+                    </li>
+                    <li>Our cybersecurity consultants will train your IT team in understanding and defending against present or imminent cyber-dangers.
+                    </li>
+                    <li>In emergency cases, we can provide remote support to your security in-charge through secured video conference calls.</li>
+                    <li>We deliver monthly reports as per the deal with individual businesses. Our hands-on solutions are always available to download</li>
+                </ul>
+            </div>
+        </div>
+        <div class="my-4 pt-5 px-3">
+            <div class="d-flex flex-wrap justify-content-center justify-content-md-between">
+                <button type="button" class="get-quotation btn bg-navy px-2 py-1 mb-3 mb-md-0">Provide information to
+                    get a quotation</button>
+                <a href="{% host_url 'bcs_appointment' %}" class="btn bg-navy px-2 py-1">Talk to one of our
+                    representatives</a>
+            </div>
+        </div>
+    </div>
+    <!-- PLUG AND PLAY PROGRAM -->
+    <div class="preview-service-info pt-3 pb-5 d-none">
+        <div class="row mx-0 bg-lightgreen shadow-md">
+            <div class="col-md-3 service-img">
+                <img src="{% static '' %}tfimg/user_panel/plug n play.png" class="img-fluid d-block mx-auto" alt="...">
+            </div>
+            <div class="col-md-9 service-body">
+                <div class="py-2">
+                    <h4 class="fw-bold">PLUG AND PLAY PROGRAM</h4>
+                    <h6 class="fw-semi text-start fontAwesome mt-3">A CONCEPTUAL PLUG-AND-PLAY CYBER SECURITY PROGRAM FOR YOUR BUSINESS</h6>
+                    <p class="mt-3">Plug and Play Cyber Security Program simplifies security complexities delivering quick and reliable IT protection for new businesses or small-scale deployments. With virtually zero configuration time and minimal integration attempt,
+                        it allows businesses to enjoy a ready-made fixed price action plan depending on the company size and the respective industry.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="my-3 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">INDUSTRY WE SERVE</h5>
+            <div class="mt-3">
+                <ol class="d-flex justify-content-between flex-wrap">
+                    <li class="lh-base fw-bold me-md-3">Financial Institutes</li>
+                    <li class="lh-base fw-bold me-md-3">Educational Institutes</li>
+                    <li class="lh-base fw-bold me-md-3">E-Commerce Business</li>
+                    <li class="lh-base fw-bold me-md-3">Law Firm</li>
+                    <li class="lh-base fw-bold me-md-3">Small & Medium Business</li>
+                    <li class="lh-base fw-bold me-md-3">Software Companies</li>
+                </ol>
+            </div>
+        </div>
+        <div class="my-3 py-4 px-3 bg-lightgreen shadow-md">
+            <h5 class="fw-bold">WHAT WE DO</h5>
+            <div class="mt-3">
+                <ol class="ps-4">
+                    <li class="lh-base">Cybersecurity & Privacy Program</li>
+                    <li class="lh-base">Risk Assessment</li>
+                    <li class="lh-base">Data Privacy & Protection</li>
+                    <li class="lh-base">Vendor Screening</li>
+                    <li class="lh-base">Incident Response Strategy</li>
+                    <li class="lh-base">Awareness & Training</li>
+                    <li class="lh-base">Continuous consultation</li>
+                    <li class="lh-base">Certification</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="my-4 pt-5 px-3">
+            <div class="d-flex flex-wrap justify-content-center justify-content-md-between">
+                <button type="button" class="get-quotation btn bg-navy px-2 py-1 mb-3 mb-md-0">Provide information to
+                    get a quotation</button>
+                <a href="{% host_url 'bcs_appointment' %}" class="btn bg-navy px-2 py-1">Talk to one of our
+                    representatives</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- preview for pcs employees -->
+    <div class="preview-service-info py-3 d-none">
+        <div id="subscription-packages" class="d-none">
+            <h4 class="px-3 fw-bold text-center">General Subscription packages FOR C-SUIT executive to get a quotation
+            </h4>
+            <div class="mt-4 row text-dark mx-0 d-flex justify-content-center justify-content-sm-between">
+                <div class="package col-12 col-sm-3 px-2">
+                    <div class="bg-lightgreen shadow p-2 rounded">
+                        <h5 class="fw-bold text-center">MICRO</h5>
+                        <table class="mx-auto mb-3">
+                            <tr>
+                                <td>Phone Security
+                                    <br> (Per user)
+                                </td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Business Email Security
+                                    <br>(Per user)
+
+                                </td>
+                                <td>1</td>
+                            </tr>
+
+                            <tr>
+                                <td>Social Media Security
+                                    <br>(Per User)
+
+                                </td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>PC/ MAC Security
+                                    <br>(Per user)
+
+                                </td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Financial Account Security
+                                    <br>(Per user)
+                                </td>
+                                <td>1</td>
+                            </tr>
+                        </table>
+
+                        <div class="info-btn">
+                            <p class="mb-0">
+                                <i class="icofont-laptop fw-bold"></i> Max Device
+                            </p>
+                            <p class="mb-0 fw-bold">5</p>
+                        </div>
+                        <button class="mt-3 d-block mx-auto text-center btn bg-navy px-3 py-1">Submit</button>
+                    </div>
+                </div>
+                <div class="package mt-4 mt-sm-0 col-12 col-sm-3 px-2">
+                    <div class="bg-lightgreen shadow p-2 rounded">
+                        <h5 class="fw-bold text-center">SMALL</h5>
+                        <table class="mx-auto mb-3">
+                            <tr>
+                                <td>Phone Security
+                                    <br> (Per user)
+                                </td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Business Email Security
+                                    <br>(Per user)
+
+                                </td>
+                                <td>1</td>
+                            </tr>
+
+                            <tr>
+                                <td>Social Media Security
+                                    <br>(Per User)
+
+                                </td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>PC/ MAC Security
+                                    <br>(Per user)
+
+                                </td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Financial Account Security
+                                    <br>(Per user)
+                                </td>
+                                <td>1</td>
+                            </tr>
+                        </table>
+
+                        <div class="info-btn">
+                            <p class="mb-0">
+                                <i class="icofont-laptop fw-bold"></i> Max Device
+                            </p>
+                            <p class="mb-0 fw-bold">10</p>
+                        </div>
+                        <button class="mt-3 d-block mx-auto text-center btn bg-navy px-3 py-1">Submit</button>
+                    </div>
+                </div>
+                <div class="package mt-4 mt-sm-0 col-12 col-sm-3 px-2">
+                    <div class="bg-lightgreen shadow p-2 rounded">
+                        <h5 class="fw-bold text-center">MEDIUM</h5>
+                        <table class="mx-auto mb-3">
+                            <tr>
+                                <td>Phone Security
+                                    <br> (Per user)
+                                </td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Business Email Security
+                                    <br>(Per user)
+
+                                </td>
+                                <td>1</td>
+                            </tr>
+
+                            <tr>
+                                <td>Social Media Security
+                                    <br>(Per User)
+
+                                </td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>PC/ MAC Security
+                                    <br>(Per user)
+
+                                </td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Financial Account Security
+                                    <br>(Per user)
+                                </td>
+                                <td>1</td>
+                            </tr>
+                        </table>
+
+                        <div class="info-btn">
+                            <p class="mb-0">
+                                <i class="icofont-laptop fw-bold"></i> Max Device
+                            </p>
+                            <p class="mb-0 fw-bold">15</p>
+                        </div>
+                        <button class="mt-3 d-block mx-auto text-center btn bg-navy px-3 py-1">Submit</button>
+                    </div>
+                </div>
+                <div class="package mt-4 mt-sm-0 col-12 col-sm-3 px-2">
+                    <div class="bg-lightgreen shadow p-2 rounded">
+                        <h5 class="fw-bold text-center">CUSTOM</h5>
+                        <div class="mx-auto mb-3">
+                            <h6 class="fw-bold fs-7 my-2">Select on any types of security then enter the number of users.
+                            </h6>
+                            <tr>
+                                <td>
+                                    <div class="form-check px-1" onclick="showInputField(this,'package-inp-1')">
+                                        <input class="form-check-input float-end" type="checkbox" name="" id="package-1">
+                                        <label class="form-check-label fw-light fs-7" for="package-1">Phone
+                                            Security</label>
+                                    </div>
+                                    <input id="package-inp-1" class="d-none mt-2 form-control form-control-sm" type="number" name="" placeholder="Per User">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check px-1" onclick="showInputField(this,'package-inp-2')">
+                                        <input class="form-check-input float-end" type="checkbox" name="" id="package-2">
+                                        <label class="form-check-label fw-light fs-7" for="package-2">Business Email
+                                            Security</label>
+                                    </div>
+                                    <input id="package-inp-2" class="d-none mt-2 form-control form-control-sm" type="number" name="" placeholder="Per User">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check px-1" onclick="showInputField(this,'package-inp-3')">
+                                        <input class="form-check-input float-end" type="checkbox" name="" id="package-3">
+                                        <label class="form-check-label fw-light fs-7" for="package-3">Social Media
+                                            Security</label>
+                                    </div>
+                                    <input id="package-inp-3" class="d-none mt-2 form-control form-control-sm" type="number" name="" placeholder="Per User">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check px-1" onclick="showInputField(this,'package-inp-4')">
+                                        <input class="form-check-input float-end" type="checkbox" name="" id="package-4">
+                                        <label class="form-check-label fw-light fs-7" for="package-4">PC/ MAC
+                                            Security</label>
+                                    </div>
+                                    <input id="package-inp-4" class="d-none mt-2 form-control form-control-sm" type="number" name="" placeholder="Per User">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check px-1" onclick="showInputField(this,'package-inp-5')">
+                                        <input class="form-check-input float-end" type="checkbox" name="" id="package-5">
+                                        <label class="form-check-label fw-light fs-7" for="package-5">Financial Account
+                                            Security</label>
+                                    </div>
+                                    <input id="package-inp-5" class="d-none mt-2 form-control form-control-sm" type="number" name="" placeholder="Per User">
+                                </td>
+                            </tr>
+
+                        </div>
+
+                        <div class="info-btn">
+                            <p class="mb-0">
+                                <i class="icofont-laptop fw-bold me-2"></i> Max Device
+                                <input type="number" class="w-100" name="" placeholder="Type number">
+                            </p>
+                        </div>
+                        <button class="mt-3 d-block mx-auto text-center btn bg-navy px-3 py-1">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="invitation-container d-none py-5">
+            <h5 class="fw-bold text-center text-navy">THANK YOU FOR CHOOSING C-SUIT <span id="package-name"></span> PACKAGE.
+            </h5>
+            <div class="mt-5 d-flex align-items-center flex-wrap flex-md-nowrap justify-content-center">
+                <h5 class="text-center me-2 me-md-5">To invite members for your team</h5>
+                <a href="{% host_url 'bcs_user_my_team' %}" class="btn btn-outline-navy">Click Here</a>
+            </div>
+        </div>
+        <!-- Concierge Cybersecurity -->
+        <div id="concierge-cybersecurity" class="bg-main">
+            <div class="row mx-0 bg-lightgreen shadow-md">
+                <div class="col-md-3 py-4">
+                    <img src="{% static '' %}tfimg/user_panel/cc.png" class="img-fluid d-block mx-auto" alt="...">
+                </div>
+                <div class="col-md-9 d-flex flex-column justify-content-center align-items-center">
+                    <div>
+                        <h6 class="fw-semi text-start fontAwesome mt-3">SECURE YOUR DIGITAL LIFE
+                        </h6>
+                        <p class="mt-3">We protect High-Net-Worth Individuals, Corporate Executives & Their household with White-Glove Cybersecurity & Threat Detection Solutions. Our personal cybersecurity services will protect you and your family in cyberspace, always.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="my-4 py-4 px-3 bg-lightgreen shadow-md">
+                <h5 class="fw-bold">Concierge Cybersecurity Services</h5>
+                <div class="mt-4">
+                    <h6 class="fw-bold text-gray">Prevent Hackers at All Times</h6>
+                    <p>Personal information security from cyber criminals and unknown entities. Total safeguarding your Phone, iPad, android and computer devices. Your cloud storage will be the most secure cloud storage for personal use.
+                    </p>
+
+                    <h6 class="fw-bold text-gray">Protect Digital Assets</h6>
+                    <p>We ensure your Digital Asset Security across all devices including iMac, MacBook, Mac Mini, PCs and Mobile. Personal Cloud account security for iCloud, Google Drive, Dropbox etc make us stand out among most private security companies.
+                    </p>
+
+                    <h6 class="fw-bold text-gray">Secure Communication Channels</h6>
+                    <p>Facebook, Instagram , snapchat, twitter and other social media accounts are secured and updated. Ensuring your virtual life is not disrupted. Keeping your personal and business email accounts secure and encrypted beyond regular.
+                    </p>
+
+                    <h6 class="fw-bold text-gray">Guard Your Privacy Online</h6>
+                    <p>Concierge Cybersecurity protects you online from attacks like ransomware, phishing, malware, spyware and insider threat. Facebook, Google or Microsoft, we hide your digital trace from all tech companies to keep your privacy intact.
+                    </p>
+                </div>
+            </div>
+
+            <div class="whom-we-serve my-4 py-4 px-3 bg-lightgreen shadow-md">
+                <h5 class="fw-bold">Whom We Serve</h5>
+                <div class="mt-4">
+                    <div class="d-flex justify-content-between flex-wrap">
+                        <h6 class="lh-base">HIGH-NET-WORTH INDIVIDUALS</h6>
+                        <h6 class="lh-base">BUSINESS EXECUTIVES</h6>
+                        <h6 class="lh-base">POLITICAL LEADERS</h6>
+                        <h6 class="lh-base">CELEBRITIES & MEDIA PERSONALITIES
+                        </h6>
+                    </div>
+
+                </div>
+            </div>
+            <div class="my-4 pt-5 px-3">
+                <div class="d-flex flex-wrap justify-content-center justify-content-md-between">
+                    <button type="button" id="subscription-package-btn" type="button" class="btn bg-navy px-2 py-1 mb-3 mb-md-0">Get Subscription Packages</button>
+                    <a href="{% host_url 'bcs_appointment' %}" class="btn bg-navy px-2 py-1">Talk to one of our
+                        representatives</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- preview services  -->
+    <div class="d-none preview-service px-2 py-3 rounded">
+        <h6 class="fw-bold"></h6>
+        <p class="lh-1"></p>
+    </div>
+
+    <div id="preview-form" class="d-none">
+
+    </div>
+</section>
+
+{% endblock content %} {% block customjs %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+    let backBtn = document.getElementById('back-btn');
+    let servicesContent = document.querySelector('.services-content');
+    let previewServiceInfos = document.querySelectorAll('.preview-service-info');
+    let allBtn = document.querySelectorAll('.services-content .content-detail button');
+    let quotationBtns = document.querySelectorAll('.get-quotation');
+    let previewForm = document.getElementById('preview-form');
+    let formJsAdded = false;
+    let allForms = ['vulnerability', 'penetration', 'hack_recovery', 'malware_removal', 'digital_forensic', 'iso',
+        'pci', 'hippa', 'gdpr', 'managed_security', 'plug_and_play', 'concierge_cybersecurity'
+    ];
+    let allServicesInputFrom;
+    let allServicesFromContainer;
+    let allServices;
+    quotationBtns.forEach((btn, index) => {
+        btn.addEventListener('click', e => {
+            previewServiceInfos.forEach(form => {
+                form.classList.add('d-none');
+            });
+            previewForm.classList.remove('d-none');
+            previewForm.innerHTML = `<div id="progress" class="text-center">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        </div>`;
+
+            let formName = allForms[index];
+            let formUrl = `/bcs_services_form/${formName}`;
+
+            fetchForm(formUrl).then(function(data) {
+                previewForm.innerHTML = previewForm.innerHTML + data;
+                previewForm.removeChild(document.getElementById('progress'));
+                if (formJsAdded)
+                    document.body.removeChild(document.getElementById('form-js'));
+
+                var formScript = document.createElement('script');
+
+                formScript.setAttribute('src', "{%static ''%}tfjs/user_panel/bcs/forms.js");
+                formScript.setAttribute('id', "form-js");
+                formJsAdded = true;
+                document.body.appendChild(formScript);
+                dropdown(bootstrap);
+
+            }).catch(function(err) {
+                console.log(err)
+            })
+
+        })
+    });
+
+    function fetchForm(formUrl) {
+        return new Promise(function(resolve, reject) {
+            $.ajax({
+                url: formUrl,
+                type: 'get',
+                dataType: 'json',
+                success: function(data) {
+                    resolve(data) // Resolve promise and go to then()
+                },
+                error: function(err) {
+                    reject(err) // Reject the promise and go to catch()
+                }
+            });
+        });
+    }
+
+    let showInputField = (target, id) => {
+        if (target.children[0].checked)
+            document.getElementById(id).classList.remove('d-none');
+        else
+            document.getElementById(id).classList.add('d-none');
+    }
+    let takeOthersPlatformInput = (id, visible) => {
+        if (visible)
+            document.getElementById(id).classList.toggle('d-none');
+        else
+            document.getElementById(id).classList.add('d-none');
+
+    }
+
+    let noOfServer = (id) => {
+        document.getElementById(id).classList.toggle('d-none');
+    }
+
+    let takeApiInfo = (id, visible) => {
+        if (visible)
+            document.querySelector(id).classList.remove('d-none');
+        else
+            document.querySelector(id).classList.add('d-none');
+
+    }
+    let hostedWebsite = (id, visible) => {
+        if (visible)
+            document.querySelector(id).classList.remove('d-none');
+        else
+            document.querySelector(id).classList.add('d-none');
+
+    }
+    let servicesInformation = {
+        hackRecoveryService: [
+            websiteRecovery = {
+                title: 'WEBSITE RECOVERY',
+                description: 'A Website is the frontend of a business, the very reason why regardless of its CMS like WordPress or Joomla or highly sophisticated (Java or Python) code-driven, hackers love to test their hacking skills by breaking into sites and pages. To make their tasks difficult, we scan the website for malware as part of a security check and tighten the security controls by upgrades to plugins, passwords, and overall CMS if necessary.'
+            },
+            workstation = {
+                title: 'WORK STATION & OFFICE NETWORK',
+                description: 'In coordinated attacks, hackers co-opt Business workstations and make these "slave" machines for data theft. Office networks are compromised by attacks like malware implants, phishing emails, a man in the middle attacks, and packet sniffing. If you collect customer data for your business, you need to minimize the damage by making a hack recovery followed by putting necessary security controls. We can do that for you!'
+            },
+            dataCenter = {
+                title: 'SERVER & DATA CENTER',
+                description: 'System administrators tend to install OS in default settings leading to unwanted services. They are often turned on, which causes unwanted traffic to the server and possibly a gateway for opportunist attackers. If you suspect any malfunctioning in the data center, please contact us to provide you a Hack Recovery Service that will restore your server to full working order.'
+            },
+            cloudInfrastructure = {
+                title: 'CLOUD INFRASTRUCTURE',
+                description: 'Sixty percent of top US companies have been hit by cloud infrastructure penetrations that led to a severe cloud data breach. Google Cloud, Amazon Web Services, and Microsoft’s Azure usually manage security for the underlying infrastructure, where users are responsible for securing the applications and databases. If you think your company cloud server is affected this way, we have your back! We stop the flood of breaches!'
+            }
+        ],
+        malwareRemovalService: [
+            webMalware = {
+                title: 'WEB MALWARE',
+                description: 'Standard CMS like WordPress and Joomla are often hacked due to the low maintenance and security level. Attackers are experts in dodging detection and gain unauthorized access to websites. They steal client’s credit card information, inject spam content and redirects and cause website defacements. We clean all kinds of websites regardless of their platform.'
+            },
+            workstation = {
+                title: 'WORK STATION & OFFICE NETWORK',
+                description: 'Business organization workstations are easy targets for ransomware attackers as office or adobe documents and email servers are used there regularly. And hackers can write arbitrary code in those files, which ends up executing on the system. This means you have to find a path to avoid infected files getting into the system. Otherwise, very often, sensitive information and customer data will be leaked and cause embarrassment for your business. Firstly, to protect workstations and networks, you need to harden them. We restore infected data and remove ransomware for you!'
+            },
+            dataCenter = {
+                title: 'SERVER & DATA CENTER',
+                description: 'Many data centers have JAVA on their white lists, allowing them to get past server protection walls. Hackers use malware to spread as much as possible to cripple operations to both Windows and Linux Servers. That’s why exposing servers to the internet is a bad practice. If you happen to find your office data center compromised by malware, we have the best malware removal service that will recover and clean it to avoid future threats.'
+            }
+        ],
+        crimeInvestigationService: [
+            businessFraudInvestigation = {
+                title: 'BUSINESS FRAUD INVESTIGATION',
+                description: 'Cases like Intruders deceiving employees into paying through spam emails, customers not getting the service after they completed payment are some of the business frauds we investigate and try to find the perpetrator. It also includes all types of cyber frauds, like expense reimbursement fraud, consumer fraud, BEC scams, etc. Our digital forensic investigation experts work alongside public law enforcement and sometimes bring the guilty party under the justice system.'
+            },
+            internalHackInvestigation = {
+                title: 'INTERNAL DATA THEFT INVESTIGATION',
+                description: 'Suppose any of your business employees share crucial information with the rival company or an intruder, who can access and erase that data or put a rootkit in place that restricts others’ access to the server. In that case, this case falls under internal data theft. We investigate and get to the bottom of such cyber crimes with the overall goal of mitigation and procedure improvement.'
+            },
+            externalHackInvestigation = {
+                title: 'EXTERNAL HACKING & DATA THEFT INVESTIGATION',
+                description: 'Intruder penetrates business networks or applications and encrypts the critical data, then blackmails the business for releasing it. Another case can be a hacker using an external network to penetrate a system and sell that data to some other party. All these are some sort of data theft that can be monetarily harmful to companies. Techforing Digital forensic investigation experts analyze such scenarios and write reports to a court of law.'
+            }
+        ],
+    };
+
+    let showPreviewServices = (serviceElement, name) => {
+        serviceElement.forEach((li, index) => {
+            li.addEventListener('mouseover', e => {
+                console.log(servicesInformation[name][index].title);
+                previewService.children[0].textContent = servicesInformation[name][index].title;
+                previewService.children[1].textContent = servicesInformation[name][index].description;
+                previewService.classList.remove('d-none');
+
+                let positionTop = e.target.parentNode.offsetTop + 50;
+                previewService.style.top = `${positionTop}px`;
+                previewService.style.left = `${17 * index}%`;
+            });
+        });
+    }
+    let previewService = document.querySelector('.preview-service');
+
+    showPreviewServices(document.querySelectorAll('.hack-recovery-service li'), 'hackRecoveryService');
+    showPreviewServices(document.querySelectorAll('.malware-removal-service li'), 'malwareRemovalService');
+    showPreviewServices(document.querySelectorAll('.crime-investigation-service li'), 'crimeInvestigationService');
+
+
+    document.body.addEventListener('click', e => {
+        if (!e.target.classList.contains('preview-service') && !e.target.parentNode.classList.contains('preview-service'))
+            previewService.classList.add('d-none');
+    });
+    let mainHeading = document.querySelector('.services .main-heading');
+    let mainHeadingText = 'All Business Cybersecurity Services';
+    let servicesHeading = ['Vulnerability Assessment', 'Penetration Testing',
+        'Hack Recovery', 'Malware Removal', 'Crime & Digital Forensic Investigation',
+        'ISO 27001 COMPLIANCE', 'PCI DSS COMPLIANCE', 'HIPAA COMPLIANCE', 'GDPR COMPLIANCE',
+        'MANAGED CYBERSECURITY', 'PLUG AND PLAY PROGRAM', 'Concierge Cybersecurity'
+    ];
+
+
+    allBtn = Array.from(allBtn);
+    allBtn.push(document.querySelector('.more-services #pcs-preview-btn'));
+    allBtn.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+            servicesContent.classList.add('d-none');
+            previewServiceInfos[index].classList.remove('d-none');
+            backBtn.classList.remove('d-none');
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+            mainHeading.textContent = servicesHeading[index];
+        });
+    });
+
+    let backBtnChanges = () => {
+        servicesContent.classList.remove('d-none');
+        previewServiceInfos.forEach(form => {
+            form.classList.add('d-none');
+        });
+        previewForm.classList.add('d-none');
+        backBtn.classList.add('d-none');
+
+        document.body.scrollTop = 10;
+        mainHeading.textContent = mainHeadingText;
+        conciergeCybersecurity.classList.remove('d-none');
+        subscriptionPackages.classList.add('d-none');
+        invitationContainer.classList.add('d-none');
+    }
+
+    backBtn.addEventListener('click', backBtnChanges);
+
+    document.body.addEventListener('keydown', (e) => {
+        if (e.key == 'Backspace' && e.target.tagName != 'INPUT') {
+            backBtnChanges();
+        }
+    });
+
+    let conciergeCybersecurity = document.getElementById('concierge-cybersecurity');
+    let subscriptionPackages = document.getElementById('subscription-packages');
+    let invitationContainer = document.querySelector('.invitation-container');
+
+    document.getElementById('subscription-package-btn').addEventListener('click', () => {
+        conciergeCybersecurity.classList.add('d-none');
+        subscriptionPackages.classList.remove('d-none');
+
+    });
+
+
+    document.querySelectorAll('.preview-service-info .package button').forEach(btn => {
+        btn.addEventListener('click', e => {
+            subscriptionPackages.classList.add('d-none');
+            document.querySelector('.invitation-container #package-name').textContent = e.target.parentNode.children[0].textContent;
+            invitationContainer.classList.remove('d-none');
+        });
+    });
+
+    let input = document.getElementById('train-employee-input');
+    document.getElementById('train-employee-btn').addEventListener('click', () => {
+        input.classList.toggle('d-none');
+        input.focus();
+    });
+    input.addEventListener('keyup', (e) => {
+        e.target.value = e.target.value.replace(/[^0-9]/gi, "");
+    });
+
+    document.getElementById('employee-program-btn').addEventListener('click', (e) => {
+        let trainInput = document.getElementById('employee-program-input');
+        trainInput.classList.toggle('d-none');
+        trainInput.focus();
+    });
+    document.getElementById('employee-number-btn').addEventListener('click', (e) => {
+        let numberInput = document.getElementById('employee-number-input');
+        numberInput.classList.toggle('d-none');
+        numberInput.focus();
+    });
+</script>
+{% endblock customjs %}

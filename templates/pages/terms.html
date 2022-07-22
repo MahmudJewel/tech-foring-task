@@ -1,0 +1,111 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load hosts %}
+
+{% block title %}
+    Terms
+{% endblock title %}
+
+{% block headercss %}
+    <link rel="stylesheet" href="{% static '' %}tfcss/style.css" />
+{% endblock headercss %}
+
+{% block content %}
+    <section class="terms-banner">
+      <div class="container">
+        <h2>TechForing terms of use</h2>
+      </div>
+    </section>
+    <div class="container terms-text">
+      <h2 class="tfh-title-right">Terms and Conditions</h2>
+      <small>Last updated: December 2020</small>
+      <p class="text-justify">
+        Please read these Terms and Conditions carefully before using the https://www.techforing.com website operated by TechForing Ltd.
+        <br />
+        We condition your access to and use of the Service on your acceptance of and compliance with these terms. These Terms apply to all visitors, users, and others who access or use the Service.
+      </p class="text-justify">
+      <b
+        >By accessing or using the Service, you agree to be bound by these Terms. If you disagree with any part of the terms, then you may not access the Service.</b
+      >
+    </div>
+    <section class="terms-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="terms-box">
+              <div class="fran-bar"></div>
+              <h2 class="terms-title">Purchases</h2>
+              <p class="text-justify">
+                If you wish to purchase any product or service made available through the Service, you may be asked to supply certain information relevant to your Purchase including, without limitation, your name, email, phone number, address, credit card info, bank info, etc.
+              </p>
+            </div>
+            <div class="terms-box">
+              <div class="fran-bar"></div>
+              <h2 class="terms-title">Subscriptions</h2>
+              <p class="text-justify">
+                Some parts of the Service are billed on a subscription basis. You will be billed in advance on a recurring weekly, monthly, half yearly or yearly basis.
+              </p>
+            </div>
+            <div class="terms-box">
+              <div class="fran-bar"></div>
+              <h2 class="terms-title">Content</h2>
+              <p class="text-justify">
+                Our Service allows you to post, link, store, share, and otherwise make certain information, text, graphics, videos, or other material. You are responsible for the posting.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="terms-box">
+              <div class="fran-bar"></div>
+              <h2 class="terms-title">Links To Other Websites</h2>
+              <p class="text-justify">
+                Our Service may contain links to third-party websites or services that are not owned or controlled by TechForing Ltd.
+                <br /><br />
+                We reserve the right, at our sole discretion, to change or replace these Terms at any time. If a revision is a material, we will try to provide at least 15 days’ notice prior to any new terms taking effect. What makes up a material change will be determined at our sole discretion.
+              </p>
+            </div>
+            <div class="terms-box">
+              <div class="fran-bar"></div>
+              <h2 class="terms-title">Changes</h2>
+              <p class="text-justify">
+                We reserve the right, at our sole discretion, to modify or
+                replace these Terms at any time. If a revision is a material we
+                will try to provide at least 15 days' notice prior to any new
+                terms taking effect. What constitutes a material change will be
+                determined at our sole discretion.
+              </p>
+            </div>
+            <div class="terms-box">
+              <div class="fran-bar"></div>
+              <h2 class="terms-title">Contact Us</h2>
+              <p class="text-justify">
+                If you have questions about these Terms, please
+                <a href="{% host_url 'findus'  %}">contact us.</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock content %}
+
+{% block customjs %}
+     <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/tfjs/bootstrap.bundle.min.js"
+      integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="{%static ''%}tfjs/career.js"></script>
+    <script src="{%static ''%}tfjs/find.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#my-header").load("header.html");
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#my-footer").load("footer.html");
+      });
+    </script>
+{% endblock customjs %}

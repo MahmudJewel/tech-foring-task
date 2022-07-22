@@ -1,0 +1,34 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+    TechForing Appointment Calendar
+{% endblock title %}
+
+{% block headercss %}
+    <link rel="stylesheet" href="{% static '' %}tfcss/style.css" />
+{% endblock headercss %}
+
+{% block content %}
+    <!--Appointment Section-->
+    <section class="appointment">
+      <div class="container">
+        <!-- Calendly inline widget begin -->
+        <div
+          class="calendly-inline-widget"
+          data-url="https://calendly.com/techforing/appointment"
+          style="min-width: 320px; height: 630px"
+        ></div>
+        <script
+          type="text/javascript"
+          src="https://assets.calendly.com/assets/external/widget.js"
+          async
+        ></script>
+        <!-- Calendly inline widget end -->
+      </div>
+    </section>
+{% endblock content %}
+
+{% block customjs %}
+    <script src="{% static '' %}tfjs/career.js"></script>
+{% endblock customjs %}

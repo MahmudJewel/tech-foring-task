@@ -1,0 +1,25 @@
+table thead th {
+    font-size: 15px !important;
+}
+.part {
+    white-space: nowrap;
+    width: 35ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.dataTables_filter{
+    margin-bottom: 2rem;
+    float: right;
+    width: 60%;
+}
+.dataTables_filter label {
+    padding: .5rem 1rem;
+    width: 100%;
+    border: 1px solid #707070;
+}
+.dataTables_filter input {
+    display: inline !important;
+    border-color: transparent !important;
+    width: 90%;
+    padding: 0 .75rem !important;
+}

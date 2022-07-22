@@ -1,0 +1,164 @@
+{% extends 'base/main_admin_base.html' %} {% load static %}
+{% load hosts %}
+{% block title %} Support Stuff {% endblock title %} {% block headercss %}
+<link rel="stylesheet" href="{% static '' %}tfcss/admin_panel/mainTF/support.css" /> {% endblock headercss %} {% block content %}
+
+<main>
+    <div class="container">
+        <h2 class="heading">ASSIGNED TICKETS ( 4 )</h2>
+        <div class="table-container">
+            <table class="shadow-table mb-5">
+                <tr class="head-row">
+                    <th>Ticket</th>
+                    <th>User</th>
+                    <th>Assigned On</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                <tr class="data-row">
+                    <td>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <g id="ticket" transform="translate(0 0)">
+                                    <path id="Path_50" data-name="Path 50"
+                                        d="M15.918,5.383,15.9,5.371,13.946,3.413a.979.979,0,0,1-1.357-1.358L10.618.083a.283.283,0,0,0-.4,0L.083,10.218h0a.282.282,0,0,0,0,.4h0l1.972,1.97a.979.979,0,0,1,1.358,1.357L5.36,15.89a.235.235,0,0,0,.023.028.282.282,0,0,0,.4,0h0L15.918,5.781a.282.282,0,0,0,0-.4Zm-2.234.4-7.9,7.9a.282.282,0,0,1-.4,0L2.318,10.618a.282.282,0,0,1,0-.4l7.9-7.9a.282.282,0,0,1,.4,0l3.066,3.066a.282.282,0,0,1,0,.4Z" />
+                                    <path id="Path_51" data-name="Path 51"
+                                        d="M22.292,18.548l-2.456-1.173.3-2.568a.185.185,0,0,0-.314-.152L17.986,16.49l-2.4-1.144a.184.184,0,0,0-.246.245l1.144,2.4-1.835,1.835a.184.184,0,0,0,.151.313l2.568-.3,1.174,2.456a.185.185,0,0,0,.345-.035l.673-2.691,2.692-.674a.187.187,0,0,0,.139-.161.185.185,0,0,0-.1-.184Z"
+                                        transform="translate(-10.353 -10.353)" />
+                                </g>
+                            </svg> 75869
+                    </td>
+                    <td>Jhon Saheb</td>
+                    <td>30 minutes ago</td>
+                    <td>Completed</td>
+                    <td>
+                        <a href="{% host_url 'main_admin_tickets_detail' %}" class="me-2">View</a>
+                        <select name="ticket-action" id="ticket-action">
+                                <option value="pending">Pending</option>
+                                <option value="inprogress">In Progress</option>
+                                <option value="completed">Completed</option>
+                            </select>
+                    </td>
+                </tr>
+                <tr class="data-row">
+                    <td>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <g id="ticket" transform="translate(0 0)">
+                                    <path id="Path_50" data-name="Path 50"
+                                        d="M15.918,5.383,15.9,5.371,13.946,3.413a.979.979,0,0,1-1.357-1.358L10.618.083a.283.283,0,0,0-.4,0L.083,10.218h0a.282.282,0,0,0,0,.4h0l1.972,1.97a.979.979,0,0,1,1.358,1.357L5.36,15.89a.235.235,0,0,0,.023.028.282.282,0,0,0,.4,0h0L15.918,5.781a.282.282,0,0,0,0-.4Zm-2.234.4-7.9,7.9a.282.282,0,0,1-.4,0L2.318,10.618a.282.282,0,0,1,0-.4l7.9-7.9a.282.282,0,0,1,.4,0l3.066,3.066a.282.282,0,0,1,0,.4Z" />
+                                    <path id="Path_51" data-name="Path 51"
+                                        d="M22.292,18.548l-2.456-1.173.3-2.568a.185.185,0,0,0-.314-.152L17.986,16.49l-2.4-1.144a.184.184,0,0,0-.246.245l1.144,2.4-1.835,1.835a.184.184,0,0,0,.151.313l2.568-.3,1.174,2.456a.185.185,0,0,0,.345-.035l.673-2.691,2.692-.674a.187.187,0,0,0,.139-.161.185.185,0,0,0-.1-.184Z"
+                                        transform="translate(-10.353 -10.353)" />
+                                </g>
+                            </svg> 75869
+                    </td>
+                    <td>William Mia</td>
+                    <td>15 minutes ago</td>
+                    <td>In Progress</td>
+                    <td>
+                        <a href="{% host_url 'main_admin_tickets_detail' %}" class="me-2">View</a>
+                        <select name="ticket-action" id="ticket-action">
+                                <option value="pending">Pending</option>
+                                <option value="inprogress">In Progress</option>
+                                <option value="completed">Completed</option>
+                            </select>
+                    </td>
+                </tr>
+                <tr class="data-row">
+                    <td>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <g id="ticket" transform="translate(0 0)">
+                                    <path id="Path_50" data-name="Path 50"
+                                        d="M15.918,5.383,15.9,5.371,13.946,3.413a.979.979,0,0,1-1.357-1.358L10.618.083a.283.283,0,0,0-.4,0L.083,10.218h0a.282.282,0,0,0,0,.4h0l1.972,1.97a.979.979,0,0,1,1.358,1.357L5.36,15.89a.235.235,0,0,0,.023.028.282.282,0,0,0,.4,0h0L15.918,5.781a.282.282,0,0,0,0-.4Zm-2.234.4-7.9,7.9a.282.282,0,0,1-.4,0L2.318,10.618a.282.282,0,0,1,0-.4l7.9-7.9a.282.282,0,0,1,.4,0l3.066,3.066a.282.282,0,0,1,0,.4Z" />
+                                    <path id="Path_51" data-name="Path 51"
+                                        d="M22.292,18.548l-2.456-1.173.3-2.568a.185.185,0,0,0-.314-.152L17.986,16.49l-2.4-1.144a.184.184,0,0,0-.246.245l1.144,2.4-1.835,1.835a.184.184,0,0,0,.151.313l2.568-.3,1.174,2.456a.185.185,0,0,0,.345-.035l.673-2.691,2.692-.674a.187.187,0,0,0,.139-.161.185.185,0,0,0-.1-.184Z"
+                                        transform="translate(-10.353 -10.353)" />
+                                </g>
+                            </svg> 75869
+                    </td>
+                    <td>Jacob Patowary</td>
+                    <td>40 minutes ago</td>
+                    <td>Pending</td>
+                    <td>
+                        <a href="{% host_url 'main_admin_tickets_detail' %}" class="me-2">View</a>
+                        <select name="ticket-action" id="ticket-action">
+                                <option value="pending">Pending</option>
+                                <option value="inprogress">In Progress</option>
+                                <option value="completed">Completed</option>
+                            </select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <h2 class="heading">Resolved TICKETS ( 4 )</h2>
+        <div class="table-container">
+            <table class="shadow-table mb-5">
+                <tr class="head-row">
+                    <th>Ticket</th>
+                    <th>User</th>
+                    <th>Resolved On</th>
+                    <th>Action</th>
+                </tr>
+                <tr class="data-row">
+                    <td>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <g id="ticket" transform="translate(0 0)">
+                                    <path id="Path_50" data-name="Path 50"
+                                        d="M15.918,5.383,15.9,5.371,13.946,3.413a.979.979,0,0,1-1.357-1.358L10.618.083a.283.283,0,0,0-.4,0L.083,10.218h0a.282.282,0,0,0,0,.4h0l1.972,1.97a.979.979,0,0,1,1.358,1.357L5.36,15.89a.235.235,0,0,0,.023.028.282.282,0,0,0,.4,0h0L15.918,5.781a.282.282,0,0,0,0-.4Zm-2.234.4-7.9,7.9a.282.282,0,0,1-.4,0L2.318,10.618a.282.282,0,0,1,0-.4l7.9-7.9a.282.282,0,0,1,.4,0l3.066,3.066a.282.282,0,0,1,0,.4Z" />
+                                    <path id="Path_51" data-name="Path 51"
+                                        d="M22.292,18.548l-2.456-1.173.3-2.568a.185.185,0,0,0-.314-.152L17.986,16.49l-2.4-1.144a.184.184,0,0,0-.246.245l1.144,2.4-1.835,1.835a.184.184,0,0,0,.151.313l2.568-.3,1.174,2.456a.185.185,0,0,0,.345-.035l.673-2.691,2.692-.674a.187.187,0,0,0,.139-.161.185.185,0,0,0-.1-.184Z"
+                                        transform="translate(-10.353 -10.353)" />
+                                </g>
+                            </svg> 75869
+                    </td>
+                    <td>Jhon Saheb</td>
+                    <td>30 minutes ago</td>
+                    <td>
+                        <a href="{% host_url 'main_admin_tickets_detail' %}" class="me-2">View</a>
+                    </td>
+                </tr>
+                <tr class="data-row">
+                    <td>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <g id="ticket" transform="translate(0 0)">
+                                    <path id="Path_50" data-name="Path 50"
+                                        d="M15.918,5.383,15.9,5.371,13.946,3.413a.979.979,0,0,1-1.357-1.358L10.618.083a.283.283,0,0,0-.4,0L.083,10.218h0a.282.282,0,0,0,0,.4h0l1.972,1.97a.979.979,0,0,1,1.358,1.357L5.36,15.89a.235.235,0,0,0,.023.028.282.282,0,0,0,.4,0h0L15.918,5.781a.282.282,0,0,0,0-.4Zm-2.234.4-7.9,7.9a.282.282,0,0,1-.4,0L2.318,10.618a.282.282,0,0,1,0-.4l7.9-7.9a.282.282,0,0,1,.4,0l3.066,3.066a.282.282,0,0,1,0,.4Z" />
+                                    <path id="Path_51" data-name="Path 51"
+                                        d="M22.292,18.548l-2.456-1.173.3-2.568a.185.185,0,0,0-.314-.152L17.986,16.49l-2.4-1.144a.184.184,0,0,0-.246.245l1.144,2.4-1.835,1.835a.184.184,0,0,0,.151.313l2.568-.3,1.174,2.456a.185.185,0,0,0,.345-.035l.673-2.691,2.692-.674a.187.187,0,0,0,.139-.161.185.185,0,0,0-.1-.184Z"
+                                        transform="translate(-10.353 -10.353)" />
+                                </g>
+                            </svg> 75869
+                    </td>
+                    <td>William Mia</td>
+                    <td>15 minutes ago</td>
+                    <td>
+                        <a href="{% host_url 'main_admin_tickets_detail' %}" class="me-2">View</a>
+                    </td>
+                </tr>
+                <tr class="data-row">
+                    <td>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <g id="ticket" transform="translate(0 0)">
+                                    <path id="Path_50" data-name="Path 50"
+                                        d="M15.918,5.383,15.9,5.371,13.946,3.413a.979.979,0,0,1-1.357-1.358L10.618.083a.283.283,0,0,0-.4,0L.083,10.218h0a.282.282,0,0,0,0,.4h0l1.972,1.97a.979.979,0,0,1,1.358,1.357L5.36,15.89a.235.235,0,0,0,.023.028.282.282,0,0,0,.4,0h0L15.918,5.781a.282.282,0,0,0,0-.4Zm-2.234.4-7.9,7.9a.282.282,0,0,1-.4,0L2.318,10.618a.282.282,0,0,1,0-.4l7.9-7.9a.282.282,0,0,1,.4,0l3.066,3.066a.282.282,0,0,1,0,.4Z" />
+                                    <path id="Path_51" data-name="Path 51"
+                                        d="M22.292,18.548l-2.456-1.173.3-2.568a.185.185,0,0,0-.314-.152L17.986,16.49l-2.4-1.144a.184.184,0,0,0-.246.245l1.144,2.4-1.835,1.835a.184.184,0,0,0,.151.313l2.568-.3,1.174,2.456a.185.185,0,0,0,.345-.035l.673-2.691,2.692-.674a.187.187,0,0,0,.139-.161.185.185,0,0,0-.1-.184Z"
+                                        transform="translate(-10.353 -10.353)" />
+                                </g>
+                            </svg> 75869
+                    </td>
+                    <td>Jacob Patowary</td>
+                    <td>40 minutes ago</td>
+                    <td>
+                        <a href="{% host_url 'main_admin_tickets_detail' %}" class="me-2">View</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</main>
+
+{% endblock content %} {% block customjs %}
+<script src="{% static '' %}tfjs/admin_panel/mainTF/eventWebinar.js"></script>
+
+{% endblock customjs %}

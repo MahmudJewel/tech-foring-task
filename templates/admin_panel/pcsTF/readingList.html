@@ -1,0 +1,84 @@
+{% extends 'base/pcs_admin_base.html' %} {% load static %} {% load hosts %}
+
+{% block title %} PCS Admin Reading List
+{% endblock title %}
+
+{% block headercss %}
+    <!-- custom css -->
+    <link rel="stylesheet" href="{% static 'tfcss/admin_panel/bcsTF/nav.css' %}" />
+    <link rel="stylesheet" href="{% static 'tfcss/admin_panel/bcsTF/service.css' %}" />
+{% endblock headercss %}
+{% block content %}
+    <!-- main section starts -->
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12" style="margin-block-start: .5rem; margin-block-end: 15rem; position: relative;">
+                   <div class="table-container">
+                        <h2 class="float-start position-absolute table-heading text-uppercase">Reading List</h2>
+                        <table id="reading-list" class="table display service">
+                            <thead>
+                                <tr>
+                                    <th>SL</th>
+                                    <th>User Name</th>
+                                    <th>List Title</th>
+                                    <th>Link</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Afsana</td>
+                                    <td> 
+                                       <li class="fw-bold part" style="list-style: none;"> CASE STUDY ON PENETRATION TESTING OF A AUTHENTICATION ENGINE: 4 CATEGORIZED PROCESS AND REMEDIATION</li>
+                                    </td>
+                                    <td> 
+                                        <a href="https://main.techforing.com/blog/case_studies/case-study-on-penetration-testing/"> https://blog.techforing.com/...</a>
+                                    </td>
+                                    <td>Lorem Ipsum is simply dummy text of the printing.... </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Afsana</td>
+                                    <td> 
+                                       <li class="fw-bold part" style="list-style: none;"> Online Dating Scam -Love Trap in 21st Century</li>
+                                    </td>
+                                    <td> 
+                                        <a href="https://main.techforing.com/blog/case_studies/concierge_cybersecurity/"> https://blog.techforing.com/...</a>
+                                    </td>
+                                    <td>Lorem Ipsum is simply dummy text of the printing.... </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Azharul</td>
+                                    <td> 
+                                       <li class="fw-bold part" style="list-style: none;"> SMARTPHONE GOT HACKED WITH SPYWARE- CASE STUDY ON ZERO-DAY EXPLOIT</li>
+                                    </td>
+                                    <td> 
+                                        <a href="https://main.techforing.com/blog/blogs/smartphone-got-hacked-with-spyware/"> https://blog.techforing.com/...</a>
+                                    </td>
+                                    <td>Lorem Ipsum is simply dummy text of the printing.... </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Rajon</td>
+                                    <td> 
+                                       <li class="fw-bold part" style="list-style: none;"> Online Dating Scam -Love Trap in 21st Century</li>
+                                    </td>
+                                    <td> 
+                                        <a href="https://main.techforing.com/blog/case_studies/concierge_cybersecurity/"> https://blog.techforing.com/...</a>
+                                    </td>
+                                    <td>Lorem Ipsum is simply dummy text of the printing.... </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}
+{% block customjs %}
+    <script src="{% static '' %}tfjs/admin_panel/bcsTF/service.js"></script>
+{% endblock customjs %}

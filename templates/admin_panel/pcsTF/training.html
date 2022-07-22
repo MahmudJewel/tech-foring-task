@@ -1,0 +1,154 @@
+{% extends 'base/pcs_admin_base.html' %} {% load static %}
+{% load hosts %}
+{% load my_filter %}
+{% load crispy_forms_tags %}
+{% block title %} PCS Training
+{% endblock title %}
+
+{% block headercss %}
+    <!-- Data table select style -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.3/css/select.dataTables.min.css" />
+    <!-- custom style -->
+    <link rel="stylesheet" href="{% static 'tfcss/admin_panel/pcsTF/training.css' %}" />
+    <!-- charts js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+    <!-- filepond styles -->
+    <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+    <link href="https://releases.transloadit.com/uppy/v2.1.1/uppy.min.css" rel="stylesheet">
+{% endblock headercss %}
+{% block content %}
+    <!-- main section starts -->
+<main>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn border-1 border-1 border-dark servicesBtn float-end my-4" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
+                        Add Training Course
+                        <i class="bi bi-plus-circle-fill"></i></button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12" style="margin-bottom: 15rem;">
+                    <h2 class="text-capitalize my-4">Training Course list</h2>
+                    <table id="training-list" class="table display" style="width: 100%">
+                        <thead>
+                            <tr>
+                                <th>SL</th>
+                                <th>Course Name</th>
+                                <th>Duration</th>
+                                <th>Total Lectures</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for course in courses %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>
+                                    <a href="{% host_url 'pcs_admin_course_detail' host 'mysecurity' %}{{ course.id }}">{{ course.course_name }}</a>
+                                </td>
+                                <td>{{ course.duration|capitalize }}</td>
+                                <td>40 Lectures</td>
+                                <td>
+                                    <a href="{% host_url 'pcs_admin_training_edit' host 'mysecurity' %}{{ course.id }}?next={{ request.path|urlencode }}" class="btn">
+                                        <i class="icofont-edit text-primary rounded-circle activites-icon"></i>
+                                        Edit
+                                    </a>
+                                    <a href="{% host_url 'pcs_admin_training_delete' host 'mysecurity' %}{{ course.id }}" class="btn trash">
+                                        <i class="bi bi-trash-fill text-danger rounded-circle activites-icon"></i>
+                                        Delete
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- course body -->
+                        <div class="main-course">
+                            <h3>Add Course</h3>
+                            <form action="" method="POST">
+                                {{ form.media }}
+                                {{ form|crispy }}
+                                {% csrf_token %}
+                                <div class="d-flex justify-content-between">
+                                    <button type="submit" class="btn btn-primary mainCourseAdd">
+                                        Save
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- course body -->
+                        <div class="main-course">
+                            <h3>Add Course</h3>
+                            <form action="">
+                                <div class="col-auto mb-3">
+                                    <label for="serviceName">Course Name</label>
+                                    <input type="text" class="form-control" id="serviceName"
+                                        placeholder="Enter Service Category Name" />
+                                </div>
+                                <div class="col-auto mb-3">
+                                    <label for="serviceName">Duration</label>
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected></option>
+                                        <option value="1">One Month</option>
+                                        <option value="2">Two Month</option>
+                                        <option value="3">Three Month</option>
+                                    </select>
+                                </div>
+                                <div class="col-auto mb-3">
+                                    <label for="description">Short Description</label>
+                                    <textarea name="shortdescription" id="description" class="form-control" cols="30"
+                                        rows="10" style=" height: 25px;"></textarea>
+                                </div>
+                                <div class="col-auto mb-3">
+                                    <label for="description">Long Description</label>
+                                    <textarea name="longdescription" id="longDescription" class="form-control"></textarea>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <!-- <button type="button" class="btn btn-primary addMulti">
+                                        Save and add another
+                                    </button> -->
+                                    <button type="submit" class="btn btn-primary">
+                                        Save
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}
+{% block customjs %}
+    <!-- FilePond scripts -->
+    <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+    <script src="https://releases.transloadit.com/uppy/v2.1.1/uppy.min.js"></script>
+    <script src="{% static 'tfjs/admin_panel/pcsTF/training.js' %}"></script>
+{% endblock customjs %}

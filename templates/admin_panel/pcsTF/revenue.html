@@ -1,0 +1,104 @@
+{% extends 'base/pcs_admin_base.html' %} {% load static %} {% load hosts %}
+
+{% block title %} PCS Admin Revenue
+{% endblock title %}
+
+{% block headercss %}
+    <!-- date range picker css -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+    <link rel="stylesheet" href="{% static 'tfcss/admin_panel/bcsTF/dashboard.css' %}" />
+    <!-- charts js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+{% endblock headercss %}
+{% block content %}
+    <!-- main section starts -->
+    <main>
+        <section>
+            <div class="container">
+                <div class="revenue-stat">
+                    <div class="revenue user-stat-bubble">
+                        <h4>TOTAL BCS REVENUE</h4>
+                        <p>$65216</p>
+                    </div>
+                    <div class="revenue user-stat-bubble">
+                        <div class="info-user-stat-bubble">
+                            <h4>REVENUE OF MARCH</h4>
+                            <p>$7536</p>
+                        </div>
+                    </div>
+                    <div class="revenue user-stat-bubble">
+                        <div class="info-user-stat-bubble">
+                            <h4>AVG REVENUE PER MONTHs</h4>
+                            <p>$5621</p>
+                        </div>
+                    </div>
+                    <div class="shadow p-4 mt-4" style="vertical-align: middle;">
+                        <h4>Monthly Revenue</h4>
+                        <canvas id="revenue-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="info">
+            <div class="container">
+                <div class="row my-5">
+
+                    <div class="col-md-6">
+                        <div class="multiselect">
+                            <div class="selectBox"
+                                onclick="showCheckboxes(checkboxes)">
+                                <select>
+                                    <option>Select an option</option>
+                                </select>
+                                <div class="overSelect"></div>
+                            </div>
+                            <div id="checkboxes">
+                                <label for="one">
+                                    <input type="checkbox" id="one" name="one">Concierge</label>
+                                <label for="two">
+                                    <input type="checkbox" id="two" name="one">OSINT</label>
+                                <label for="three">
+                                    <input type="checkbox" id="three" name="one">Hack Recovery</label>
+                                <label for="three">
+                                    <input type="checkbox" id="three" name="one">Data Removal</label>
+                                <label for="three">
+                                    <input type="checkbox" id="three" name="one">Virus Removal</label>
+                                <label for="three">
+                                    <input type="checkbox" id="three" name="one">Crime Investigation</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" id="daterange" value="Select By Time range" name="daterange">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" id="daterange" value="Compare By Time range" name="daterange">
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <h3>OVERVIEW OF PCS REVENUE</h3>
+                        <canvas id="info-chart"></canvas>
+
+                        <div class="filter-options d-flex w-85 float-end justify-content-between mb-3">
+                            <button class="btn btn-secondary mx-2 rounded-pill d-small-none">1d</button>
+                            <button class="btn btn-secondary mx-2 rounded-pill d-small-none active">1w</button>
+                            <button class="btn btn-secondary mx-2 rounded-pill">1mo</button>
+                            <button class="btn btn-secondary mx-2 rounded-pill">3mo</button>
+                            <button class="btn btn-secondary mx-2 rounded-pill">6mo</button>
+                            <button class="btn btn-secondary mx-2 rounded-pill">1y</button>
+                            <button class="btn btn-secondary mx-2 rounded-pill">all</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock content %}
+{% block customjs %}
+    <script src="{% static 'tfjs/admin_panel/bcsTF/revenue.js' %}"></script>
+    <script src="{% static 'tfjs/admin_panel/bcsTF/dashboard.js' %}"></script>
+{% endblock customjs %}

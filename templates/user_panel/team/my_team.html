@@ -1,0 +1,336 @@
+{% extends 'base/team_user_base.html' %} {% load static %} {% block headercss %}
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script> -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css"> {% endblock headercss %} {% block title %} My Team {% endblock title %} {% block content %}
+
+<div class="team-container">
+    <section class="team-statistics">
+        <div class="border-bottom border-gray pb-2 d-flex justify-content-between align-items-center">
+            <h4 class="fw-bold mb-0">Create your team</h4>
+            <button data-bs-toggle="modal" data-bs-target="#addNew" class="btn bg-navy">
+                <i class="fa fa-plus-circle"></i>
+                    Invite User</button>
+        </div>
+        <div class="modal fade" id="addNew" tabindex="-1" aria-labelledby="trainingModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content border-0 bg-main">
+                    <div class="modal-header border-0">
+                        <button type="button" class="btn-close rounded-circle bg-green" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body px-5 pb-5">
+                        <h4 class="px-3 fw-bold text-center">INVITE USERS FOR TRAINING PROGRAM
+                        </h4>
+                        <h5 class="text-green text-center">You can invite 15(max.) colleagues as per quotation</h5>
+
+                        <h5 class="mt-3">Email(Required):</h5>
+                        <form action="/email_invitation/" method="post" onkeydown="return event.key != 'Enter';">
+                            {% csrf_token %}
+                            <div class="email-container d-flex flex-wrap justify-content-start align-items-start align-content-start border border-dark fs-7 p-2 h-200p">
+                                <div class="email">
+                                    <span>biyogafsana@gmail.com <span class="remove-email">&Cross;</span></span>
+                                </div>
+                                <div class="email">
+                                    <span>salekin.techforing@gmail.com <span class="remove-email">&Cross;</span></span>
+                                </div>
+                                <div class="h-25p">
+                                    <input autocomplete="off" class="email-input" maxlength="30" type="email" placeholder="Type an email">
+                                    <button type="button" class="add-email btn p-0"><i class="icofont-plus-circle"></i></button>
+                                </div>
+                            </div>
+
+                            <h6 class="mt-3 fw-bold">Set Level:</h6>
+                            <div class="mt-2 d-flex justify-content-between align-items-center">
+                                <div class="form-check">
+                                    <input required class="form-check-input" type="radio" name="level" id="level1" value="">
+                                    <label class="form-check-label" for="level1">Standard</label>
+                                </div>
+                                <div class="form-check">
+                                    <input required class="form-check-input" type="radio" name="level" id="level2" value="">
+                                    <label class="form-check-label" for="level2">Administrator</label>
+                                </div>
+
+                                <select class="form-select w-50" aria-label="Default select example">
+                                    <option selected disabled>Give Access To (Service)</option>
+                                    <option value="1">Crime Investigation</option>
+                                    <option value="2">Open Source Intelligence</option>
+                                    <option value="3">Hack Recovery</option>
+                                  </select>
+                            </div>
+                            <button type="submit" class="mt-4 btn bg-navy p-1 px-3">INVITE</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mt-3">
+        <div class="shadow p-2 d-flex flex-column">
+
+            <div class="d-flex justify-content-evenly flex-wrap">
+                <div class="bg-navy py-2 px-4 rounded text-center text-white">
+                    <h6 class="fw-bold">Total User</h6>
+                    <h6>
+                        <i class="bi bi-people"></i> 10
+                    </h6>
+                </div>
+                <div class="bg-dark py-2 px-4 rounded text-center text-white">
+                    <h6 class="fw-bold">New User</h6>
+                    <h6>
+                        <i class="bi bi-people"></i> 2
+                    </h6>
+                </div>
+                <div class="mt-4 mt-md-0 bg-green py-2 px-4 rounded text-center text-white">
+                    <h6 class="fw-bold">Pending User</h6>
+                    <h6>
+                        <i class="bi bi-people"></i> 5
+                    </h6>
+                </div>
+            </div>
+
+
+            <h6 class="text-center mt-4 fw-bold fs-6">My Team</h6>
+            <div class="my-team-img">
+                <img class="img-logo" src="{%static ''%}tfimg/user_panel/anjelina.jpg" alt="">
+                <img class="img-logo" src="{%static ''%}tfimg/user_panel/anjelina.jpg" alt="">
+                <img class="img-logo" src="{%static ''%}tfimg/user_panel/anjelina.jpg" alt="">
+                <img class="img-logo" src="{%static ''%}tfimg/user_panel/anjelina.jpg" alt="">
+                <div class="img-logo bg-navy d-flex align-items-center justify-content-center">+15</div>
+            </div>
+            <!-- <div class="col-md-9 mt-3 mt-md-0">
+                <div class="user-chart-box">
+                    <canvas id="user-chart" height="100"></canvas>
+                </div>
+            </div> -->
+        </div>
+    </section>
+
+    <section class="mt-5">
+        <table id="myTable" class="display mt-5 table text-center border border-gray">
+            <thead class="border border-gray">
+                <tr class="fw-bold text-navy border border-gray">
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Invited In</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mr. Islam</td>
+                    <td>islam@gmail.com</td>
+                    <td>Active</td>
+                    <td>Training Program (CCSP)
+                    </td>
+                    <td><button class="del-btn btn btn-outline-danger btn-sm">
+                        <i class="bi bi-trash"></i>  Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Neruz Afreen</td>
+                    <td>neruz@gmail.com</td>
+                    <td>Active</td>
+                    <td>Training Program</td>
+                    <td><button class="del-btn btn btn-outline-danger btn-sm">
+                        <i class="bi bi-trash"></i>  Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Afsana Khan</td>
+                    <td>afsana@gmail.com</td>
+                    <td class="text-green">Invited</td>
+                    <td>Personal CyberSecurity (Concierge Cybersecurity)</td>
+                    <td><button class="del-btn btn btn-outline-danger btn-sm">
+                        <i class="bi bi-trash"></i>  Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Foyjul Islam</td>
+                    <td>foyjul@gmail.com</td>
+                    <td class="text-green">Invited</td>
+                    <td>Training Program</td>
+                    <td><button class="del-btn btn btn-outline-danger btn-sm">
+                        <i class="bi bi-trash"></i>  Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Serajus Salekin</td>
+                    <td>salekin@gmail.com</td>
+                    <td class="text-green">Invited</td>
+                    <td>Training Program</td>
+                    <td><button class="del-btn btn btn-outline-danger btn-sm">
+                        <i class="bi bi-trash"></i>  Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mr. Araf</td>
+                    <td>araf@gmail.com</td>
+                    <td>Active</td>
+                    <td>Training Program</td>
+                    <td><button class="del-btn btn btn-outline-danger btn-sm">
+                        <i class="bi bi-trash"></i>  Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mr. Islam</td>
+                    <td>islam@gmail.com</td>
+                    <td class="text-green">Invited</td>
+                    <td>Training Program</td>
+                    <td><button class="del-btn btn btn-outline-danger btn-sm">
+                        <i class="bi bi-trash"></i>  Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Neruz Afreen</td>
+                    <td>neruz@gmail.com</td>
+                    <td>Active</td>
+                    <td>Training Program</td>
+                    <td><button class="del-btn btn btn-outline-danger btn-sm">
+                        <i class="bi bi-trash"></i>  Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Afsana Khan</td>
+                    <td>afsana@gmail.com</td>
+                    <td class="text-green">Invited</td>
+                    <td>Training Program</td>
+                    <td><button class="del-btn btn btn-outline-danger btn-sm">
+                        <i class="bi bi-trash"></i>  Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Foyjul Islam</td>
+                    <td>foyjul@gmail.com</td>
+                    <td class="text-green">Invited</td>
+                    <td>Training Program</td>
+                    <td><button class="del-btn btn btn-outline-danger btn-sm">
+                        <i class="bi bi-trash"></i>  Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Serajus Salekin</td>
+                    <td>salekin@gmail.com</td>
+                    <td class="text-green">Invited</td>
+                    <td>Training Program</td>
+                    <td><button class="del-btn btn btn-outline-danger btn-sm">
+                        <i class="bi bi-trash"></i>  Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mr. Araf</td>
+                    <td>araf@gmail.com</td>
+                    <td>Active</td>
+                    <td>Training Program</td>
+                    <td><button class="del-btn btn btn-outline-danger btn-sm">
+                        <i class="bi bi-trash"></i>  Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+{% endblock content %} {% block customjs %}
+
+<!-- <script src="{%static ''%}tfjs/user_panel/team/chart.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script>
+    let emailInput = document.querySelector('.team-statistics .email-input');
+    document.querySelector('.team-statistics .email-container').addEventListener('click', () => {
+        emailInput.focus();
+    });
+
+    function ValidateEmail(email) {
+        let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        return email.match(validRegex) ? true : false;
+    }
+
+    let addEmail = (email) => {
+        let allEmail = document.querySelectorAll('.email-container .email');
+
+        if (ValidateEmail(email) && allEmail.length < 16) {
+            let newEmail = `<div class="email">
+                                        <span>${email} <span class="remove-email">&Cross;</span></span>
+                                        </div>`;
+
+            if (allEmail.length == 0) {
+                emailInput.parentNode.insertAdjacentHTML('beforebegin', newEmail);
+            } else {
+                let lastEmail = allEmail[allEmail.length - 1];
+                lastEmail.insertAdjacentHTML('afterend', newEmail);
+            }
+
+            emailInput.value = '';
+            removeEmail();
+        }
+    }
+    let removeEmail = () => {
+        document.querySelectorAll('.email-container .remove-email').forEach(email => {
+            email.addEventListener('click', e => {
+                document.querySelector('.email-container').removeChild(e.target.parentNode.parentNode);
+            });
+        });
+    }
+
+    emailInput.addEventListener('keydown', (e) => {
+        let email = e.target.value;
+        if (e.key == 'Enter') {
+            addEmail(email);
+        }
+    });
+    emailInput.addEventListener('keyup', (e) => {
+        if (e.key != 'Enter') {
+            if (ValidateEmail(e.target.value)) {
+                e.target.style.backgroundColor = '#28a745';
+                e.target.style.color = 'white';
+            } else {
+                e.target.style.backgroundColor = '#dc3545';
+                e.target.style.color = 'white';
+            }
+        } else {
+            e.target.style.backgroundColor = 'white';
+            e.target.style.color = 'black';
+        }
+    });
+    document.querySelector('.email-container .add-email').addEventListener('click', e => {
+        let newEmail = e.target.parentNode.parentNode.children[0];
+        newEmail.style.backgroundColor = 'white';
+        newEmail.style.color = 'black';
+        addEmail(newEmail.value);
+    });
+
+    removeEmail();
+
+    document.querySelectorAll('.my-team-img .img-logo').forEach((img, index) => {
+        let value = `-${20*index}px`;
+        img.style.left = value;
+    });
+
+    $(document).ready(function() {
+        var table = $('#myTable').DataTable({
+            responsive: true,
+            "order": []
+        });
+        $('#myTable tbody').on('click', '.del-btn', function() {
+            table
+                .row($(this).parents('tr'))
+                .remove()
+                .draw();
+        });
+    });
+
+    // document.querySelectorAll('#myTable .del-btn').forEach(btn => {
+    //     btn.addEventListener('click', e => {
+    //         let currentRow = e.target.parentNode.parentNode;
+    //         if (e.target.parentNode.parentNode.tagName == 'TD')
+    //             currentRow = e.target.parentNode.parentNode.parentNode;
+
+    //         document.querySelector('#myTable tbody').removeChild(currentRow);
+    //         $('#myTable').DataTable({
+    //             responsive: true,
+    //             "order": []
+    //         });
+    //     });
+    // });
+</script>
+{% endblock customjs %}

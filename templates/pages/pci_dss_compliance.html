@@ -1,0 +1,635 @@
+{% extends 'base/base.html' %} {% load static %} {% load hosts %} {% block title %} PCI DSS Compliance Consulting | TechForing Limited {% endblock title %} {% block meta %}
+<meta property="og:description" content="All payment card companies are subjected to PCI DSS compliance. It’s a Data Security Standard that keeps changing with the evolution of technologies. So Governing bodies regularly update these that TechForing keeps track of and advise companies to remain PCI DSS compliant."
+/>
+<meta name="description" content="All payment card companies are subjected to PCI DSS compliance. It’s a Data Security Standard that keeps changing with the evolution of technologies. So Governing bodies regularly update these that TechForing keeps track of and advise companies to remain PCI DSS compliant."
+/>
+<meta name="keywords" content="PCI DSS Compliance, PCI DSS, PCI compliance, data security standard, TechForing compliance" /> {% endblock meta %} {% block headercss %}
+<link rel="stylesheet" href="{% static '' %}css/glide.core.css" />
+<link rel="stylesheet" href="{% static '' %}css/glide.theme.css" />
+<link rel="stylesheet" href="{% static '' %}css/style.css" /> {% endblock headercss %} {% block content %}
+<section class="pci-banner">
+    <div class="container">
+        <h2>VALIDATE YOUR CREDIT CARD DATA SECURITY WITH PCI COMPLIANCE</h2>
+    </div>
+</section>
+<section class="comp-slider">
+    <div class="container">
+        <div class="glide">
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    <li class="glide__slide">
+                        <div class="c-outer-box">
+                            <div class="c-inner-box">
+                                <h2 class="rs-title">Report, Guide & Tool</h2>
+                                <p class="rs-text">
+                                    A definitive guide to secure your business from external and internal cyberattacks.
+                                </p>
+                                <a href="{% host_url 'bcs_form' host 'main' %}" class="rs-btn" target="_blank">Download Now</a
+                    >
+                  </div>
+                </div>
+              </li>
+              <!-- <li class="glide__slide">
+                <div class="c-outer-box">
+                  <div class="c-inner-box">
+                    <h2 class="rs-title">Report, Guide & Tool</h2>
+                    <p class="rs-text">
+                      Assess your website for SQLI, XSS, CSRF and other common
+                      OWASP vulnerabilities, free tool.
+                    </p>
+                    <a
+                      href="https://thirdeye.techforing.com"
+                      class="rs-btn"
+                      target="_blank"
+                      >Run Assessment</a
+                    >
+                  </div>
+                </div>
+              </li> -->
+              <li class="glide__slide">
+                <div class="c-outer-box">
+                  <div class="c-inner-box">
+                    <h2 class="rs-title">Report, Guide & Tool</h2>
+                    <p class="rs-text">
+                      17 ways High Net Worth Individuals are being hacked & how
+                      to be safe.
+                    </p>
+                    <a
+                      href="https://personal.techforing.com/ebook"
+                      class="rs-btn"
+                      target="_blank"
+                      >Download Now</a
+                    >
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="glide__bullets rs-bullets" data-glide-el="controls[nav]">
+            <button class="glide__bullet" data-glide-dir="=0"></button>
+            <button class="glide__bullet" data-glide-dir="=1"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="pt-about">
+      <div class="container">
+        <div class="pci-bar"></div>
+        <h2 class="pt-title">PCI DSS Compliance</h2>
+        <p class="text-justify">
+          PCI DSS stands for Payment Card Industry Data Security Standard. PCI
+          DSS is a compliance security standard specially designed for safe
+          credit card transactions. It is implemented to ensure that companies
+          that accept, store, and process credit card information maintain an
+          extremely secure environment. It fundamentally helps companies achieve
+          safe and secure transaction modes, thereby protecting sensitive and
+          private information of the cardholders.
+        </p>
+        <div class="row pcia-row ei-row-invers">
+          <div class="col-md-6">
+            <div class="pcia-box">
+              <ul>
+                <li class="d-flex">
+                  <i class="fas fa-circle text-justify"></i>
+                  With growing business demands and advent of newer
+                  technologies, there is a rise in the credit card transactions.
+                  Every company which deals with credit card transactions should
+                  ensure to maintain PCI DSS compliance. Any e-commerce
+                  business, banks, or retail businesses constantly dealing with
+                  credit card transactions need to follow PCI DSS compliance to
+                  ensure robust payment methods and prevent identity theft.
+                  Timely PCI assessments should be done by a Qualified Security
+                  Assessor – QSA.
+                </li>
+                <li class="d-flex">
+                  <i class="fas fa-circle text-justify"></i>
+                  Any entity dealing with card payments requires being PCI DSS
+                  compliancy to ensure secure card transactions. Not having the
+                  required compliance standards poses risks of private and
+                  confidential information leakage, and possible repercussions
+                  of identity theft and fraudulent card transactions.
+                </li>
+                <li class="d-flex">
+                  <i class="fas fa-circle text-justify"></i>
+                  PCI DSS is important for all scale service providers, banks,
+                  sellers, and any organization that deals with credit card
+                  payments. This is equally important for businesses that deals
+                  with a mobile app having an integrated payment model. PCI DSS
+                  plays a crucial role in establishing a company’s credibility
+                  to maintain and safeguard user’s card related information.
+                  Additionally, it ensures safe card usage by providing tight
+                  and restrictive controls around the storage and transmission
+                  of cardholder data.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="pta-img">
+              <img
+                src="{%static ''%}img/pci/pci dss compliance.png"
+                title="PCI DSS Compliance Service"
+                alt="pci-dss-compliance-service-consulting"
+                longdesc="techforing PCI DSS consutancy service"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="pt-approch">
+      <div class="container">
+        <div class="pci-bar"></div>
+        <h2 class="pt-title">our approach</h2>
+        <p class="text-justify">
+          TechForing chooses a systematic approach to enable any company to
+          achieve PCI DSS compliance. We follow a formal process, involving
+          experts, to evaluate and cater to the required PCI DSS compliance
+          guidelines <br /><br />
+          Our approach while dealing with PCI DSS compliance support is:
+        </p>
+        <div class="dss-box">
+          <h2>SAQ:</h2>
+          <p class="text-justify">
+            A typical PCI DSS cycle requires businesses to complete a
+            Self-Assessment Questionnaire or SAQ which is created by the PCI
+            Security Standards Council. We at TechForing guide you through
+            completing the SAQ.
+          </p>
+        </div>
+        <div class="dss-box">
+          <h2>Identify Levels of PCI:</h2>
+          <p class="text-justify">
+            PCI compliance has 4 identified levels purely based on transaction
+            volumes. Each of these levels requires you to undergo a different
+            set of validations. Below are the levels and the requirements:
+          </p>
+        </div>
+        <div class="pci-level">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="pcil-box">
+                <h2>Level 1</h2>
+                <p>
+                  Processing volume of 6 million cards or more transactions per
+                  year
+                </p>
+                <ol>
+                  <li>
+                    Requires annual Report of Compliance- ROC by a QSA
+                    (Qualified Security Assessor) or an internal auditor, if
+                    signed by an officer of the company
+                  </li>
+                  <li>
+                    Quarterly approved network scan by an Approved Scan Vendor-
+                    ASV
+                  </li>
+                  <li>Attestation of compliance form</li>
+                </ol>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="pcil-box">
+                <h2>Level 2</h2>
+                <p>
+                  Processing volume between 1 and 6 million transactions per
+                  year
+                </p>
+                <ol>
+                  <li>Requires SAQ</li>
+                  <li>Quarterly network scan by ASV</li>
+                  <li>Attestation of compliance form</li>
+                </ol>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="pcil-box">
+                <h2>Level 3</h2>
+                <p>
+                  Processing volume between 20,000 and 1 million transactions
+                  per year. This has a requirement similar to level 2.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="pcil-box">
+                <h2>Level 4</h2>
+                <p>
+                  Volume is lesser than 20,000 transactions per year. This has a
+                  requirement similar to level 2.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="text-justify">
+          Finding the compliance level is the first step. Our team helps to
+          validate your compliance level through a detailed SAQ. Based on the
+          level, we provide technical support around this. There are a total of
+          12 requirements to be satisfied for PCI compliance.
+        </p>
+        <div class="pci-hexa">
+          <div class="hexa hexa1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="180px"
+              height="150px"
+            >
+              <polygon points="40,1 1,75 40,149 140,149 179,75 140,1" />
+            </svg>
+            <h2>
+              Protect Card <br />
+              Holder Data
+            </h2>
+          </div>
+          <div class="hexa hexa2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="180px"
+              height="150px"
+            >
+              <polygon points="40,1 1,75 40,149 140,149 179,75 140,1" />
+            </svg>
+            <h2>
+              Develop & <br />
+              Apply Access <br />
+              Control Policy
+            </h2>
+          </div>
+          <div class="hexa hexa3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="180px"
+              height="150px"
+            >
+              <polygon points="40,1 1,75 40,149 140,149 179,75 140,1" />
+            </svg>
+            <h2>
+              Secure the <br />
+              infrastructure <br />
+              & Monitor
+            </h2>
+          </div>
+          <div class="hexa hexa4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="180px"
+              height="150px"
+            >
+              <polygon points="40,1 1,75 40,149 140,149 179,75 140,1" />
+            </svg>
+            <h2>
+              Find & Fix <br />
+              Vulnerabilities
+            </h2>
+          </div>
+          <div class="hexa hexa5">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="180px"
+              height="150px"
+            >
+              <polygon points="40,1 1,75 40,149 140,149 179,75 140,1" />
+            </svg>
+            <h2>Train Employees</h2>
+          </div>
+        </div>
+        <h2 class="hexa-title">The way we process</h2>
+        <p class="pci-12 text-center">
+          <b
+            >The 10 requirements can be broadly classified into the
+            below-defined guidelines and in each step we guide you through the
+            process-</b
+          >
+        </p>
+        <div class="row iso-row">
+          <div class="col-md-6">
+            <div class="iso-appr">
+              <h1>1</h1>
+              <h2>Implement Firewall Configuration</h2>
+              <p class="text-justify">
+                Help to establish, implement, and configure firewalls and
+                routers based on specific configuration standards. Provide
+                network architecture diagrams to summarize the tightening of
+                access controls, and help you build firewalls between the
+                internal and untrusted network in a card access environment.
+                Check open networks to add and manage firewall restrictions.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="iso-appr">
+              <h1>2</h1>
+              <h2>Eliminate Default Configurations</h2>
+              <p class="text-justify">
+                Provide help to scan and eliminate usage of default passwords
+                provided by vendors while accessing third party applications,
+                software, or systems.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row iso-row">
+          <div class="col-md-6">
+            <div class="iso-appr">
+              <h1>3</h1>
+              <h2>Protect Data</h2>
+              <p class="text-justify">
+                Ensure effective and restrictive network access. Add
+                restrictions on inbound and outbound traffic, thereby allowing
+                to closely monitor network traffic. Prevent direct access
+                without proper authentication and authorization. Inspect and
+                implement packet filtering. Provide help to isolate cardholder
+                data environment.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="iso-appr">
+              <h1>4</h1>
+              <h2>Encryption</h2>
+              <p class="text-justify">
+                Apply strong encryption algorithms and encrypt the transmission
+                of cardholder data via the public and open network.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row iso-row">
+          <div class="col-md-6">
+            <div class="iso-appr">
+              <h1>5</h1>
+              <h2>Updated Antivirus Software</h2>
+              <p class="text-justify">
+                Ensure regular software updates, patch updates, and install
+                antivirus on all the core system components.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="iso-appr">
+              <h1>6</h1>
+              <h2>Maintain Secure Applications</h2>
+              <p class="text-justify">
+                Check for all known security vulnerabilities and ensure to
+                incorporate well-known configuration standards. Ensure system
+                hardening as per hardening standards such as CIS- Center for
+                Internet Security, ISO- International Organization for
+                Standardization, NIST- National Institute of Standards
+                Technology, and SANS- SysAdmin Audit Network Security Institute.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row iso-row">
+          <div class="col-md-6">
+            <div class="iso-appr">
+              <h1>7</h1>
+              <h2>Track Network</h2>
+              <p class="text-justify">Monitor access to the complete network and cardholder data.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="iso-appr">
+              <h1>8</h1>
+              <h2>Testing</h2>
+              <p class="text-justify">
+                Help to maintain system component standards as per PCI
+                requirements and have regular tests for security systems and
+                processes.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row iso-row">
+          <div class="col-md-6">
+            <div class="iso-appr">
+              <h1>9</h1>
+              <h2>Implement Stronger Access Control Measures</h2>
+              <p class="text-justify">
+                We help you manage these controls. This can be broadly divided
+                as-
+              </p>
+              <ul>
+                <li class="d-flex">
+                  <i class="fas fa-circle"></i>Restrict access to cardholder
+                  data based on business.
+                </li>
+                <li class="d-flex">
+                  <i class="fas fa-circle"></i>Access allocation to every
+                  individual concerned with cardholder information.
+                </li>
+                <li class="d-flex">
+                  <i class="fas fa-circle"></i>Physical access restrictions to
+                  cardholder environment.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="iso-appr">
+              <h1>10</h1>
+              <h2>Maintain Information Security Policy</h2>
+              <p class="text-justify">
+                Handle all information security related policies for your
+                organization. Evaluate the security of protocols being used.
+                Help to document business justification for use of these
+                protocols. Document details about port and security measures
+                taken while implementing any insecure Ensure security policies
+                pertaining to IP address masking, allowed and restricted ports,
+                and firewall and proxy servers are documented as per PCI
+                guidelines. Ensure detailed documentation of security policies
+                and enough evidence to prove these security factors.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="pci-12-box">
+          <div class="pci-top">
+            <img src="{%static ''%}img/pci/icon6.png" alt="" />
+            <div class="pci-top-box">
+              <h2>Maintain Information Security Policy:</h2>
+            </div>
+          </div>
+
+          <div class="pci-12-point">
+            <p>
+              Handle all information security related policies for your
+              organization. Evaluate the security of protocols being used. Help
+              to document business justification for use of these protocols.
+              Document details about port and security measures taken while
+              implementing any insecure Ensure security policies pertaining to
+              IP address masking, allowed and restricted ports, and firewall and
+              proxy servers are documented as per PCI guidelines. Ensure
+              detailed documentation of security policies and enough evidence to
+              prove these security factors.
+            </p>
+          </div>
+        </div> -->
+      </div>
+    </section>
+    <section class="pt-why">
+      <div class="container">
+        <img
+          src="{%static ''%}img/pci/why us.jpg"
+          title="PCI DSS Consulting Services Why Us"
+          alt="pci-dss-compliance-service-consulting-why-us"
+          longdesc="Why techforing PCI DSS compliance consultancy service"
+        />
+        <div class="pci-bar"></div>
+        <h2 class="pt-title">why us</h2>
+        <div class="isow-box">
+          <ul>
+            <li class="d-flex">
+              <i class="fas fa-circle text-justify"></i>
+              TechForing provides end to end guidance in helping you achieve
+              Attestation of Compliance for Payment Card Industry from a QSA. We
+              have a team of qualified experts and PCIP – Payment Card Industry
+              Professionals, constantly supporting changes required for PCI
+              audits. Our team helps you successfully achieve your Report on
+              Compliance – ROC.
+            </li>
+            <li class="d-flex">
+              <i class="fas fa-circle text-justify"></i>
+              We have successfully worked with multiple small and large
+              organizations to gain PCI DSS compliance through our security and
+              vulnerability evaluations. Rigorous tests are performed to ensure
+              the organization meets the required PCI guidelines, and
+              remediation measures are provided to abide by the PCI
+              requirements. We help you define the scope of documents and also
+              support in maintaining, updating, and making required amendments
+              to these documents, as per PCI scope.
+            </li>
+            <li class="d-flex">
+              <i class="fas fa-circle text-justify"></i>
+              TechForing provides cost-effective solutions and manages all of
+              your PCI compliance related activities. This includes network
+              scans, architecture evaluation, security policy evaluations,
+              environment isolation, documentation, and acquiring the PCI
+              compliance report. We provide round the clock support for renewal
+              of PCI compliance, and annual and bi-annual PCI audits.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="pci-cta mt-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div class="pcic-box">
+              <h2>Need PCI DSS compliance service?</h2>
+              <p>Our Team is Ready to Help</p>
+              <a href="{% host_url 'get_start' host 'main' %}" target="_blank">Secure Now</a>
+                            </div>
+                        </div>
+            </div>
+        </div>
+</section>
+
+<section class="pt-blog">
+    <div class="container">
+        <div class="pci-bar"></div>
+        <h2 class="pt-title">important resources</h2>
+    </div>
+    <div class="pt-blog-row">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="pt-blog-box">
+                        <img src="{%static ''%}img/va/case1.png" title="PCI DSS Consulting Services Blog 1" alt="pci-dss-compliance-service-consulting-blog-1" longdesc="PCI DSS compliance consultancy blog 1" />
+                        <div class="pci-bar"></div>
+                        <h2 class="text-center">
+                            Cyber Attacks on Financial Institutions- Hackers Stealing Data, not Money
+                        </h2>
+                        <p class="text-justify">
+                            Financial institutions like Banks, brokerage firms, mortgage companies often become the target of hackers, who are after financial data to perform phishing attacks, DDOS, etc. Data is more valuable than money and such cyberattacks cost banks millions!
+                        </p>
+                        <div class="cs-box-btn">
+                            <a href="https://blog.techforing.com/blogs/cyber-attacks-on-financial-services/" target="_blank">Read More</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="pt-blog-box">
+                <img
+                  src="{%static ''%}img/va/case2.png"
+                  title="PCI DSS Consulting Services Blog 2"
+                  alt="pci-dss-compliance-service-consulting-blog-2"
+                  longdesc="PCI DSS compliance consultancy blog 2"
+                />
+                <div class="pci-bar"></div>
+                <h2 class="text-center">
+                  Cybersecurity tips for work from home users - coping up with
+                  the new normal
+                </h2>
+                <p class="text-justify">
+                  Working from home makes life easy for hackers to infiltrate
+                  not so secure IT system used by the employees. Therefore,
+                  organizations' data security largely depends on how safely the
+                  coworkers can operate workplace digital assets. This blog has
+                  the right tips you can use!
+                </p>
+                <div class="cs-box-btn">
+                  <a
+                    href="https://blog.techforing.com/blogs/cybersecurity-tips-for-work-from-home/"
+                    target="_blank"
+                    >Read More</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="pt-blog-box">
+                <img
+                  src="{%static ''%}img/va/case3.png"
+                  title="PCI DSS Consulting Services Blog 3"
+                  alt="pci-dss-compliance-service-consulting-blog-3"
+                  longdesc="PCI DSS compliance consultancy blog 3"
+                />
+                <div class="pci-bar"></div>
+                <h2 class="text-center">How to design a secure office network</h2>
+                <p class="text-justify">
+                  To ensure safe communications via routers, switches, servers,
+                  and hosts, defense-in-depth approach security is mandatory for
+                  each organization. This article provides a comprehensive view
+                  of designing a secure office network that you can implement in
+                  your workplace.
+                </p>
+                <div class="cs-box-btn">
+                  <a
+                    href="https://blog.techforing.com/blogs/how-to-design-a-secure-office-network/"
+                    target="_blank"
+                    >Read More</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock content %}
+
+{% block customjs %}
+    <script src="{%static ''%}js/custom.js"></script>
+    <script src="{%static ''%}js/glide.js"></script>
+    <script>
+      new Glide(".glide", {
+        type: "carousel",
+        autoplay: 8000,
+      }).mount();
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#my-header").load("header.html");
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#my-footer").load("footer.html");
+      });
+    </script>
+
+{% endblock customjs %}

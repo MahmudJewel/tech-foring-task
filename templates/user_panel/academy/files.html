@@ -1,0 +1,214 @@
+{% extends 'base/academy_user_base.html' %} {% load static %} {% load my_filter %} {% load hosts %} {% block title %} My
+    Files {% endblock title %} {% block content %}
+
+
+    {% for content in page_obj %}
+        <section class="my-files-container px-2">
+            <h4 class="fw-bold border-bottom border-gray pb-14p">{{ course.course_name }}</h4>
+            <div class="materials">
+                <div class="row g-3">
+                    <h5 class="mt-4 mb-2 fw-bold">{{ content.section }}</h5>
+                    <div class="col-md-6" style="min-height: 380px;">
+                        <div class="module-instruction py-5">
+                            <div class="module-video">
+                                <video controls class="w-100" preload="metadata" type="video/mp4"
+                                       src="{{ content.course_video.url }}"></video>
+                                <h5>{{ content }}</h5>
+                            </div>
+                            <button type="button" class="modal-btn btn p-1 border-bottom" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                {{ content }}.txt
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                 aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Instruction</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body" title="{{ content.text_instruction.url }}">
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                Close
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center" style="height: 380px;overflow-y: auto;">
+                        <div class="d-none px-3">
+                            <input class="form-control me-2 rounded-pill shadow-sm fontAwesome" type="search"
+                                   placeholder="&#xf002; Search..." aria-label="Search">
+                        </div>
+                        <h4 class="fw-bold mb-3">Course Contents</h4>
+                        <div class="accordion accordion-flush" id="course-section">
+                            {% if course_type == 'pcs' %}
+                                {% for section in course.section_course.all %}
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="section-{{ section|replacespace }}">
+                                            <button class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse"
+                                                    data-bs-target="#section-collapse-{{ section|replacespace }}"
+                                                    aria-expanded="false"
+                                                    aria-controls="section-collapse-{{ section|replacespace }}">
+                                                {{ section }}
+                                            </button>
+                                        </h2>
+
+                                        <div id="section-collapse-{{ section|replacespace }}"
+                                             class="accordion-collapse collapse {% if content.section == section %} show {% endif %}"
+                                             aria-labelledby="section-{{ section|replacespace }}"
+                                             data-bs-parent="#course-section">
+                                            <div class="accordion-body">
+                                                <div class="course-info">
+                                                    <div class="accordion accordion-flush" id="course-module">
+                                                        {% for content_section in section.content_section.all %}
+                                                            <div class="accordion-item">
+                                                                <h2 class="accordion-header" id="material-heading-1-1">
+                                                                    <button class="accordion-button collapsed"
+                                                                            type="button"
+                                                                            data-bs-toggle="collapse"
+                                                                            data-bs-target="#material-{{ content_section.section.id }}-{{ content_section.id }}"
+                                                                            aria-expanded="false"
+                                                                            aria-controls="material-{{ content_section.section.id }}-{{ content_section.id }}">
+                                                                        {{ content_section }}
+                                                                    </button>
+                                                                </h2>
+                                                                <div id="material-{{ content_section.section.id }}-{{ content_section.id }}"
+                                                                     class="accordion-collapse collapse {% if content == content_section %} show {% endif %}"
+                                                                     aria-labelledby="material-heading-1-1"
+                                                                     data-bs-parent="#course-module">
+                                                                    <div class="accordion-body text-start px-3 bg-light">
+                                                                        <a href="
+                                                                                {% host_url 'academy_user_files' host 'academy' %}{{ course.id }}?page="
+                                                                           class="btn p-0 bg-white pe-3 course_video">
+                                                                            <i class="icofont-video-alt text-green"></i>
+                                                                            {{ content_section.lecture_name }}
+                                                                        </a>
+                                                                        <a href="{{ content_section.resource_file.url }}"
+                                                                           download="File" class="btn p-0">
+                                                                            <i class="fa fa-check-circle text-green"></i>
+                                                                            Download
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% elif course_type == 'bcs' %}
+                                {% for section in course.bcssection_bcscourse.all %}
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="section-{{ section|replacespace }}">
+                                            <button class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse"
+                                                    data-bs-target="#section-collapse-{{ section|replacespace }}"
+                                                    aria-expanded="false"
+                                                    aria-controls="section-collapse-{{ section|replacespace }}">
+                                                {{ section }}
+                                            </button>
+                                        </h2>
+
+                                        <div id="section-collapse-{{ section|replacespace }}"
+                                             class="accordion-collapse collapse {% if content.section == section %} show {% endif %}"
+                                             aria-labelledby="section-{{ section|replacespace }}"
+                                             data-bs-parent="#course-section">
+                                            <div class="accordion-body">
+                                                <div class="course-info">
+                                                    <div class="accordion accordion-flush" id="course-module">
+                                                        {% for content_section in section.bcscontent_bcssection.all %}
+                                                            <div class="accordion-item">
+                                                                <h2 class="accordion-header" id="material-heading-1-1">
+                                                                    <button class="accordion-button collapsed"
+                                                                            type="button"
+                                                                            data-bs-toggle="collapse"
+                                                                            data-bs-target="#material-{{ content_section.section.id }}-{{ content_section.id }}"
+                                                                            aria-expanded="false"
+                                                                            aria-controls="material-{{ content_section.section.id }}-{{ content_section.id }}">
+                                                                        {{ content_section }}
+                                                                    </button>
+                                                                </h2>
+                                                                <div id="material-{{ content_section.section.id }}-{{ content_section.id }}"
+                                                                     class="accordion-collapse collapse {% if content == content_section %} show {% endif %}"
+                                                                     aria-labelledby="material-heading-1-1"
+                                                                     data-bs-parent="#course-module">
+                                                                    <div class="accordion-body text-start px-3 bg-light">
+                                                                        <a href="
+                                                                                {% host_url 'academy_user_files' host 'academy' %}{{ course.id }}?page="
+                                                                           class="btn p-0 bg-white pe-3 course_video">
+                                                                            <i class="icofont-video-alt text-green"></i>
+                                                                            {{ content_section.lecture_name }}
+                                                                        </a>
+                                                                        <a href="{{ content_section.resource_file.url }}"
+                                                                           download="File" class="btn p-0">
+                                                                            <i class="fa fa-check-circle text-green"></i>
+                                                                            Download
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endfor %}
+
+
+    <div class="course-nav-container">
+        <div class="pagination">
+         <span class="step-links">
+                                {% if page_obj.has_previous %}
+                                    <a href="?page=1" class="btn"
+                                       style="background-color: white; color: black; width: 100px;border: 1px solid gray;border-radius: 50rem;margin-right: 0rem;">&laquo; first</a>
+                                    <a href="?page={{ page_obj.previous_page_number }}" class="btn"
+                                       style="background-color: #5bc2ae;color: white;width: 100px;border-radius: 50rem;">previous</a>
+                                {% endif %}
+
+             <span class="current">
+                                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                                </span>
+
+             {% if page_obj.has_next %}
+                 <a href="?page={{ page_obj.next_page_number }}" class="btn"
+                    style="background-color: #5bc2ae;color: white;width: 100px;border-radius: 50rem;">next</a>
+                 <a href="?page={{ page_obj.paginator.num_pages }}" class="btn"
+                    style="background-color: white; color: black; width: 100px;border: 1px solid gray;border-radius: 50rem;margin-right: 0rem;">last &raquo;</a>
+             {% endif %}
+                            </span>
+        </div>
+    </div>
+{% endblock content %} {% block customjs %}
+    <script>
+        document.querySelectorAll('.course_video').forEach((video, index) => {
+            video.href += index + 1;
+        })
+
+        fetch(location.origin + document.querySelector('.modal-body').title)
+            .then(response => response.text())
+            .then(text => {
+                document.querySelector('.modal-body').innerHTML = text;
+            })
+    </script>
+{% endblock customjs %}

@@ -1,0 +1,464 @@
+{% extends 'base/base.html' %} {% load static %} {% load hosts %} {% block title %} Find Us {% endblock title %} {% block headercss %}
+<link rel="stylesheet" href="{% static 'css/telephone.css' %}" />
+<link rel="stylesheet" href="{% static 'tfcss/style.css' %}" />
+
+<!-- style for bitrix form  -->
+<style>
+    .iti__selected-flag {
+        border-right: none;
+    }
+    
+    .b24-form-field-phone .b24-form-control-label {
+        top: 10px !important;
+        font-size: 14px !important;
+    }
+    
+    input[type='tel'] {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    
+    .b24-form {
+        font-family: "Roboto Slab", serif !important;
+    }
+    
+    .b24-form-header-padding {
+        padding: 0 !important;
+    }
+    
+    .b24-form-padding-side {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    
+    form .b24-form-field:not(:first-child):not(:last-child) {
+        width: 50% !important;
+        display: inline-block !important;
+    }
+    
+    .b24-form-field:nth-child(2n):not(:last-child) {
+        padding-right: 10px !important;
+    }
+    
+    .b24-form-field:nth-child(2n+1):not(:first-child) {
+        padding-left: 10px !important;
+    }
+    
+    .b24-form-btn {
+        background-color: #182f59 !important;
+        color: white !important;
+        font-family: "Roboto Slab", serif !important;
+        text-transform: uppercase !important;
+        border-radius: 0 !important;
+        font-weight: 400 !important;
+        font-size: 20px !important;
+        padding: 0 30px !important;
+        width: auto !important;
+        display: block !important;
+        margin: 0 auto !important;
+    }
+    
+    .b24-form-btn:hover {
+        background-color: #182f59 !important;
+        padding: 0 40px !important;
+    }
+    
+    .b24-form-control-string .b24-form-control {
+        background-color: #ffffff99 !important;
+    }
+    
+    .b24-form-control-label {
+        opacity: 1 !important;
+    }
+    
+    .b24-form-control {
+        border-radius: 0 !important;
+    }
+    
+    .b24-form-field {
+        margin-bottom: 10px !important;
+    }
+    
+    .b24-form-control-alert {
+        margin-bottom: 8px;
+    }
+    
+    .b24-form-field:nth-child(3) {
+        top: 8px;
+        position: relative;
+    }
+    
+    .b24-form-field-phone input {
+        margin-top: 0;
+    }
+</style>
+{% endblock headercss %} {% block content %}
+<section class="find-banner">
+    <div class="container">
+        <h2>find us</h2>
+    </div>
+</section>
+
+<section class="trust-main">
+    <div class="container">
+        <h2>get in touch</h2>
+        <p class="mt-1">We would love to secure your Cyberspace</p>
+    </div>
+</section>
+<section class="find-tab-section find-tab-lg">
+    <div class="tab-list">
+        <div class="container">
+            <ul>
+                <li>
+                    <p class="tab-link link-active link-lg">america</p>
+                </li>
+                <li>
+                    <p class="tab-link link-lg">europe</p>
+                </li>
+                <li>
+                    <p class="tab-link link-lg">middle east</p>
+                </li>
+                <li>
+                    <p class="tab-link link-lg">South Asia</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="tab-box default-tab tab-lg">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="find-img">
+                        <img src="{% static '' %}tfimg/findus/usa.png" alt="" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="find-add">
+                        <h2>Contact Details</h2>
+                        <p class="d-flex">
+                            <img src="{% static '' %}tfimg/findus/address@1X.png" alt="" /> 96 west 15th, Suite 205, Holland, Michigan, 49423, USA
+                        </p>
+                        <p class="d-flex">
+                            <img src="{% static '' %}tfimg/findus/phone-numbers-call@1X.png" alt="" /> +1 616 795 9535
+                        </p>
+                        <p class="d-flex">
+                            <img src="{% static '' %}tfimg/findus/email (1)@1X.png" alt="" /> info@techforing.com
+                        </p>
+                        <div class="w-100" data-aos="zoom-in" data-aos-delay="100">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2928.226658091459!2d-86.11350828527554!3d42.78355801624514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8819f302eafa2b63%3A0x3a37ffcb87e23826!2sTechForing%20Ltd.!5e0!3m2!1sen!2sbd!4v1634793435956!5m2!1sen!2sbd"
+                                width="500" height="100" style="border:0;width:100%;margin:0 auto;display: block;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-box tab-lg">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="find-img">
+                        <img src="{% static '' %}tfimg/findus/uk.png" alt="" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="find-add">
+                        <h2>Contact Details</h2>
+                        <p class="d-flex">
+                            <img src="{% static '' %}tfimg/findus/address@1X.png" alt="" /> Kemp House, 160 City Road, London
+                        </p>
+                        <p class="d-flex">
+                            <img src="{% static '' %}tfimg/findus/phone-numbers-call@1X.png" alt="" /> +442035751289
+                        </p>
+                        <p class="d-flex">
+                            <img src="{% static '' %}tfimg/findus/email (1)@1X.png" alt="" /> info@techforing.com
+                        </p>
+                        <div class="w-100" data-aos="zoom-in" data-aos-delay="100">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.23113391377!2d-0.08924289441280271!3d51.527320365652585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761ca66e312795%3A0x7ffd0edc82aa7573!2sTechforing%20Ltd.!5e0!3m2!1sen!2sbd!4v1634793417906!5m2!1sen!2sbd"
+                                width="500" height="100" style="border:0;width:100%;margin:0 auto;display: block;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-box tab-lg">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="find-img">
+                        <img src="{% static '' %}tfimg/findus/turkey.png" alt="" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="find-add">
+                        <h2>Contact Details</h2>
+                        <p class="d-flex">
+                            <img src="{% static '' %}tfimg/findus/address@1X.png" alt="" /> Kampyolu Caddesi, Kartal, Istanbul, Turkey
+                        </p>
+                        <p class="d-flex">
+                            <img src="{% static '' %}tfimg/findus/phone-numbers-call@1X.png" alt="" /> +905523376330
+                        </p>
+                        <p class="d-flex">
+                            <img src="{% static '' %}tfimg/findus/email (1)@1X.png" alt="" /> info@techforing.com
+                        </p>
+                        <div class="w-100" data-aos="zoom-in" data-aos-delay="100">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3015.4611306782335!2d29.157482514652514!3d40.90563403368507!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac366f23bf157%3A0x8e4dea29bace64e5!2sTechForing%20Ltd.!5e0!3m2!1sen!2sbd!4v1634796295823!5m2!1sen!2sbd"
+                                width="500" height="100" style="border:0;width:100%;margin:0 auto;display: block;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-box tab-lg">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="find-img">
+                        <img src="{% static '' %}tfimg/findus/bd.png" alt="" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="find-add">
+                        <h2>Contact Details</h2>
+                        <p class="d-flex">
+                            <img src="{% static '' %}tfimg/findus/address@1X.png" alt="" /> Lane 1, Building 149, Suite 04, Baridhara DOHS, Dhaka
+                        </p>
+                        <p class="d-flex">
+                            <img src="{% static '' %}tfimg/findus/phone-numbers-call@1X.png" alt="" /> +8801318205752
+                        </p>
+                        <p class="d-flex">
+                            <img src="{% static '' %}tfimg/findus/email (1)@1X.png" alt="" /> info@techforing.com
+                        </p>
+                        <div class="w-100" data-aos="zoom-in" data-aos-delay="100"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.38626450783!2d90.35626231414334!3d23.76925579397449!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c164817819b3%3A0x6056fe3699c5fd4e!2sTechForing%20Ltd!5e0!3m2!1sen!2sbd!4v1634555966148!5m2!1sen!2sbd"
+                                width="500" height="100" style="border:0;width:100%;margin:0 auto;display: block;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="find-tab-section find-tab-sm">
+    <div class="tab-list">
+        <div class="container">
+            <ul>
+                <li>
+                    <p class="tab-link link-active link-sm">america</p>
+                    <div class="tab-box default-tab tab-sm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="find-img">
+                                    <img src="{% static '' %}tfimg/findus/usa.png" alt="" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="find-add">
+                                    <h2>Contact Details</h2>
+                                    <p class="d-flex">
+                                        <img src="{% static '' %}tfimg/findus/address@1X.png" alt="" /> 96 west 15th, Suite 205, Holland, Michigan, 49423, USA
+                                    </p>
+                                    <p class="d-flex">
+                                        <img src="{% static '' %}tfimg/findus/phone-numbers-call@1X.png" alt="" /> +1 616 795 9535
+                                    </p>
+                                    <p class="d-flex">
+                                        <img src="{% static '' %}tfimg/findus/email (1)@1X.png" alt="" /> info@techforing.com
+                                    </p>
+                                    <div class="w-100" data-aos="zoom-in" data-aos-delay="100">
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2928.226658091459!2d-86.11350828527554!3d42.78355801624514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8819f302eafa2b63%3A0x3a37ffcb87e23826!2sTechForing%20Ltd.!5e0!3m2!1sen!2sbd!4v1634793435956!5m2!1sen!2sbd"
+                                            width="500" height="100" style="border:0;width:100%;margin:0 auto;display: block;" allowfullscreen="" loading="lazy"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <p class="tab-link link-sm">europe</p>
+                    <div class="tab-box tab-sm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="find-img">
+                                    <img src="{% static '' %}tfimg/findus/uk.png" alt="" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="find-add">
+                                    <h2>Contact Details</h2>
+                                    <p class="d-flex">
+                                        <img src="{% static '' %}tfimg/findus/address@1X.png" alt="" /> Kemp House, 160 City Road, London
+                                    </p>
+                                    <p class="d-flex">
+                                        <img src="{% static '' %}tfimg/findus/phone-numbers-call@1X.png" alt="" /> +442035751289
+                                    </p>
+                                    <p class="d-flex">
+                                        <img src="{% static '' %}tfimg/findus/email (1)@1X.png" alt="" /> info@techforing.com
+                                    </p>
+                                    <div class="w-100" data-aos="zoom-in" data-aos-delay="100">
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.23113391377!2d-0.08924289441280271!3d51.527320365652585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761ca66e312795%3A0x7ffd0edc82aa7573!2sTechforing%20Ltd.!5e0!3m2!1sen!2sbd!4v1634793417906!5m2!1sen!2sbd"
+                                            width="500" height="100" style="border:0;width:100%;margin:0 auto;display: block;" allowfullscreen="" loading="lazy"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <p class="tab-link link-sm">middle east</p>
+                    <div class="tab-box tab-sm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="find-img">
+                                    <img src="{% static '' %}tfimg/findus/turkey.png" alt="" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="find-add">
+                                    <h2>Contact Details</h2>
+                                    <p class="d-flex">
+                                        <img src="{% static '' %}tfimg/findus/address@1X.png" alt="" /> Kampyolu Caddesi, Kartal, Istanbul, Turkey
+                                    </p>
+                                    <p class="d-flex">
+                                        <img src="{% static '' %}tfimg/findus/phone-numbers-call@1X.png" alt="" /> +905523376330
+                                    </p>
+                                    <p class="d-flex">
+                                        <img src="{% static '' %}tfimg/findus/email (1)@1X.png" alt="" /> info@techforing.com
+                                    </p>
+                                    <div class="w-100" data-aos="zoom-in" data-aos-delay="100">
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3015.4611306782335!2d29.157482514652514!3d40.90563403368507!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac366f23bf157%3A0x8e4dea29bace64e5!2sTechForing%20Ltd.!5e0!3m2!1sen!2sbd!4v1634796295823!5m2!1sen!2sbd"
+                                            width="500" height="100" style="border:0;width:100%;margin:0 auto;display: block;" allowfullscreen="" loading="lazy"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <p class="tab-link link-sm">South Asia</p>
+                    <div class="tab-box tab-sm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="find-img">
+                                    <img src="{% static '' %}tfimg/findus/bd.png" alt="" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="find-add">
+                                    <h2>Contact Details</h2>
+                                    <p class="d-flex">
+                                        <img src="{% static '' %}tfimg/findus/address@1X.png" alt="" /> Lane 1, Building 149, Suite 04, Baridhara DOHS, Dhaka
+                                    </p>
+                                    <p class="d-flex">
+                                        <img src="{% static '' %}tfimg/findus/phone-numbers-call@1X.png" alt="" /> +8801318205752
+                                    </p>
+                                    <p class="d-flex">
+                                        <img src="{% static '' %}tfimg/findus/email (1)@1X.png" alt="" /> info@techforing.com
+                                    </p>
+                                    <div class="w-100" data-aos="zoom-in" data-aos-delay="100"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.38626450783!2d90.35626231414334!3d23.76925579397449!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c164817819b3%3A0x6056fe3699c5fd4e!2sTechForing%20Ltd!5e0!3m2!1sen!2sbd!4v1634555966148!5m2!1sen!2sbd"
+                                            width="500" height="100" style="border:0;width:100%;margin:0 auto;display: block;" allowfullscreen="" loading="lazy"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="find-form">
+    <div class="container">
+        <h2 class="notify"></h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="find-form-img">
+                    <img src="{% static '' %}tfimg/findus/message us 2.png" alt="" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="fu-form">
+                    <div id="myForm">
+
+                        <h2>Want to get in touch? </h2>
+                        <p>Share your quries in the form below and your request will be directed to the right person</p>
+                        <script data-b24-form="inline/74/6yo0yy" data-skip-moving="true">
+                            (function(w, d, u) {
+                                var s = d.createElement('script');
+                                s.async = true;
+                                s.src = u + '?' + (Date.now() / 180000 | 0);
+                                var h = d.getElementsByTagName('script')[0];
+                                h.parentNode.insertBefore(s, h);
+                            })(window, document, 'https://cdn.bitrix24.com/b15773863/crm/form/loader_74.js');
+                        </script>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %} {% block customjs %}
+<script src="{% static '' %}tfjs/career.js"></script>
+<script src="{% static '' %}tfjs/find.js"></script>
+<script src="{% static '' %}js/telephone.js"></script>
+<script>
+    if (localStorage.hasOwnProperty('b24-form-field-stored-values'))
+        localStorage.removeItem('b24-form-field-stored-values');
+
+    let timer = 0;
+    let country = 'us';
+    let countryData;
+
+    fetch('https://reallyfreegeoip.org/json/')
+        .then(res => res.json())
+        .then(data => {
+            country = data.country_code.toLowerCase();
+            ipLocation();
+        });
+
+    function ipLocation() {
+        function addCode() {
+
+            let input = document.querySelectorAll("input[type='tel']");
+
+            input.forEach(elem => {
+                let currInput = intlTelInput(elem, {
+                    initialCountry: country
+                });
+
+                countryData = currInput.getSelectedCountryData();
+                elem.value = '+' + countryData.dialCode;
+
+                let dialCode = '+' + countryData.dialCode;
+                document.addEventListener('click', e => {
+                    let elemClass = e.target.classList;
+                    if (elemClass.contains('iti__country')) {
+                        dialCode = e.target.children[2].innerHTML;
+                        elem.value = dialCode;
+                    } else if (elemClass.contains('iti__flag-box') ||
+                        elemClass.contains('iti__country-name') ||
+                        elemClass.contains('iti__dial-code')) {
+                        dialCode = e.target.parentNode.children[2].innerHTML;
+                        elem.value = dialCode;
+                    }
+                });
+            });
+            timer++;
+            if (timer > 30)
+                clearInterval(interval);
+        }
+
+        let interval = setInterval(addCode, 500);
+
+        document.querySelectorAll('.bitrix-form-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                timer = 0;
+                interval = setInterval(addCode, 500);
+            });
+        });
+
+        let classes = ['b24-form', 'b24-form-control', 'iti__flag', 'iti__arrow', 'iti__selected-flag'];
+        document.body.addEventListener('click', e => {
+            if (classes.includes(e.target.classList[0]))
+                clearInterval(interval);
+        });
+    }
+</script>
+
+{% endblock customjs %}

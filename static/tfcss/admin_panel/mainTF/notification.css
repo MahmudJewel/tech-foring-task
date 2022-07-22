@@ -1,0 +1,28 @@
+.edit-notification .modal-dialog{
+    max-width: 70%;
+}
+#notificationRange{
+    display: inline !important;
+    width: 60% !important;
+}
+
+.dataTables_scrollBody::-webkit-scrollbar
+{
+    width: 10px;
+    background-color: #5bbc2e;
+}
+ 
+.dataTables_scrollBody::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #182f59;
+}
+@media (max-width:769px){
+    .form-select{
+        margin-bottom: 1rem;
+    }
+    .addBtn{
+        margin-top: 1rem;
+    }
+}

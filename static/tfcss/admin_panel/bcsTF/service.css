@@ -1,0 +1,146 @@
+.servicesBtn,.servicesBtn:hover{
+    border-color: #707070;
+    background: #182f59;
+    color: white;
+}
+.servicesBtn i{
+    color: #fff;
+}
+.service{
+    font-size: 14px;
+    width: 100% !important;
+    margin-bottom: 0;
+}
+
+.service tbody{
+    text-align: center;
+}
+
+.service thead{
+    background-color: hsla(221, 58%, 22%, 0.1);
+}
+
+.service th,.service td{
+    padding-block-start: 27px;
+    padding-block-end: 16.5px;
+}
+.service tbody tr{
+    border-bottom: 1px solid #707070;
+}
+
+.service{
+    color: #000000;
+}
+#reading-list th{
+    font-size: 15px !important;
+    text-align: start;
+}
+#reading-list td{
+    font-size: 14px !important;
+    text-align: start;
+}
+
+#sub-service-list th{
+    font-size: 15px !important;
+}
+#sub-service-list td{
+    font-size: 14px !important;
+}
+
+#sub-service-list_wrapper .row:first-child .col-lg-6{
+    align-items: center;
+    align-content: center;
+}
+
+#sub-service-list_filter, #reading-list_filter{
+    margin-bottom: 2rem;
+    float: right;
+    width: 60%;
+}
+#sub-service-list_filter label, #reading-list_filter label{
+    padding: .5rem 1rem;
+    width: 100%;
+    border: 1px solid #707070;
+}
+#sub-service-list_filter input, #reading-list_filter input{
+    display: inline !important;
+    border-color: transparent;
+    width: 90%;
+    padding: 0 .75rem;
+}
+.dataTables_scrollHeadInner{
+    padding-right: 0;
+    margin-right: 0 !important;
+    width: 100% !important;
+}
+.dataTables_scrollHeadInner table thead th{
+    font-size: 15px !important;
+}
+.dataTables_scroll{
+    border: 1px solid #707070;
+}
+
+/* .dataTables_scrollBody::-webkit-scrollbar
+{
+    width: 10px;
+    background-color: #f2f2f2;
+}
+
+.dataTables_scrollBody::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px #707070;
+    background-color: #F2F3F7;
+} */
+.short-textarea{
+    height: 45px;
+}
+.tox-notifications-container{
+    display: none;
+}
+#service-list tbody{
+    text-align: center;
+}
+.form-close-back{
+    border: 1px solid #182f59;
+}
+
+@media (max-width:1241px) {
+    #sub-service-list_filter{
+        width: 100%;
+    }
+    
+    .dataTables_scrollHeadInner table thead th{
+        font-size: 13px !important;
+    }
+}
+
+#reading-list thead th, #reading-list tbody td{
+    text-align: center;
+}
+#reading-list thead th:nth-child(2){
+    min-width: 135px;
+}
+#reading-list tbody td:nth-child(2){
+    min-width: 135px;
+}
+
+.part{
+    white-space: nowrap;
+    width: 35ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 769px) {
+    #sub-service-list_filter, #reading-list_filter {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 501px) {
+    .serviceHeading{
+        position: static !important;
+    }
+}

@@ -1,0 +1,99 @@
+{% extends 'base/pcs_admin_base.html' %} {% load static %}
+{% load crispy_forms_tags %}
+{% load my_filter %}
+{% load hosts %}
+
+{% block title %} All Tickets {% endblock title %}
+{% block headercss %}
+    <link rel="stylesheet" href="{% static 'tfcss/admin_panel/mainTF/support.css' %}"/>
+    <style>
+        /* data table pagination style */
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding-inline: 0.3rem;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+            background: transparent;
+            border-color: transparent;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding-inline: 0.3rem;
+        }
+
+        .page-link {
+            border-radius: 8px;
+        }
+
+        .page-item.active .page-link {
+            background-color: var(--var-primary-color);
+            border-color: var(--var-primary-color);
+        }
+
+        thead {
+            font-size: 1.125rem;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        table.dataTable tbody td,
+        table.dataTable thead th {
+            text-align: center;
+        }
+    </style>
+{% endblock headercss %}
+
+{% block content %}
+    <main>
+        {% if not tickets.exists %}
+            <div class="text-center py-5 my-5">
+                <i class="icofont-box fs-4 bg-navy rounded-circle p-1"></i>
+                <h4 class="mt-2">No ticket yet!</h4>
+            </div>
+        {% else %}
+            <table id="order-table" class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Ticket ID</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Issue</th>
+                    <th>Type</th>
+                    <th>status</th>
+                    <th>Date</th>
+                    <th>Mark as</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for ticket in tickets %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ ticket.id }}</td>
+                        <td><a href="
+                                {% host_url 'pcs_admin_tickets_detail' host 'mysecurity' %}{{ ticket.id }}">{{ ticket.ticket_title }}</a>
+                        </td>
+                        <td>{{ ticket.ticket_category }}</td>
+                        <td>{{ ticket.issue_category|capitalize }}</td>
+                        <td>{{ ticket.category_choice|upper }}</td>
+                        <td>{{ ticket.ticket_status }}</td>
+                        <td>{{ ticket.ticket_date }}</td>
+                        <td>
+                            {% if ticket.ticket_status == 'open' %}
+                                <a href="{% host_url 'ticket_status_change' host 'mysecurity' %}{{ ticket.id }}" class="btn btn-primary">Close</a>
+                            {% else %}
+                                <a href="{% host_url 'ticket_status_change' host 'mysecurity' %}{{ ticket.id }}" class="btn btn-primary">Open</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </main>
+{% endblock content %}
+
+{% block customjs %}
+    <script src="{% static 'tfjs/admin_panel/mainTF/eventWebinar.js' %}"></script>
+{% endblock customjs %}

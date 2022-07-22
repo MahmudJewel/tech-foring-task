@@ -1,0 +1,863 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load hosts %}
+
+{% block title %}
+Profile
+{% endblock title %}
+
+{% block headercss %}
+<link rel="stylesheet" href="{% static '' %}tfcss/telephone.css" />
+<link rel="stylesheet" href="{% static '' %}tfcss/style.css" />
+{% endblock headercss %}
+
+{% block content %}
+<section class="pro-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="user-img">
+          {% if user_data.profile_img %}
+          <img src="{{user_data.profile_img.url}}" alt="" />
+          {% else %}
+          <img src="{%static ''%}tfimg/about/Header.png" />
+          {% endif %}
+        </div>
+
+        <form class="image-upload-form" action="{% url 'user_profile' %}" enctype = "multipart/form-data" method="POST" class="mt-3" >
+          {% csrf_token %}
+          <label for="photo">Update Your Photo</label>
+          <!-- <input type="file" name="photo" id="photo" accept="image/*" style="color: black" /> -->
+
+          {{form.profile_img}}
+          <input type="submit" value="Update" class="mt-3" name="image_update" />
+        </form>
+      </div>
+      <div class="col-md-4">
+        <div class="user-basic">
+          <h2>{{user_data}}</h2>
+          <p>{{user_data.business_email}}</p>
+          <p>{{ user_data.business_phone_no }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="pro-menu">
+  <div class="container">
+    <ul>
+      <li><a href="{%url 'user_profile'%}">Profile</a></li>
+      <li><a href="{%url 'event_webniar'%}">Events & Webinars</a></li>
+      <li><a href="{%url 'reading'%}">reading list</a></li>
+      <li><a href="{%url 'product_service'%}">products & services</a></li>
+      <li><a href="{%url 'cart'%}">Your Cart</a></li>
+      <li><a href="{%url 'order_history'%}">Order History</a></li>
+      <li><a href="{%url 'subscription'%}">Subscription</a></li>
+      <li><a href="#">Support</a></li>
+    </ul>
+  </div>
+</section>
+<section class="pro-category-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="pro-category">
+          <ul>
+            <li class="pro-tab-link pro-tab-active">
+              Personal Information
+            </li>
+            <li class="pro-tab-link">Language & Location</li>
+            <li class="pro-tab-link">Social Accounts</li>
+            <li class="pro-tab-link">Areas of Interest</li>
+            <li class="pro-tab-link">Notications</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="pro-tab pro-tab-default" title="personal information">
+        <form action="{% url 'user_profile' %}" method="post">
+          {% csrf_token %}
+          <h2 class="pro-tab-title">Personal</h2>
+          <br />
+          <div class="row">
+            <div class="col-md-6">
+              <div class="pro-input">
+                <label for="">First Name</label>
+                <input type="text" name="full_name" value="{{user_data.full_name}}" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="pro-input">
+                <label for="">Personal Email Address</label>
+                <input type="email" name="personal_email" value="{{user_data.personal_email}}" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="pro-input">
+                <label for="">Phone Number</label>
+                <input id="per_phone" type="tell" name="personal_phone_no" value="{{user_data.personal_phone_no}}" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="pro-input">
+                <label for="address1">Address 1</label>
+                <input type="text" name="personal_address_1" value="{{user_data.personal_address_1}}" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="pro-input">
+                <label for="address1">Address 2</label>
+                <input type="text" name="personal_address_2" value="{{user_data.personal_address_2}}" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="pro-input">
+                <label for="gender">Gender</label>
+                <select name="gender" id="">
+                  {% if user_data.gender == 'Male' %}
+                  <option value=""></option>
+                  <option value="Male" selected>Male</option>
+                  <option value="Female">Female</option>
+                  {% elif user_data.gender == 'Female'%}
+                  <option value=""></option>
+                  <option value="Male">Male</option>
+                  <option value="Female" selected>Female</option>
+                  {% else %}
+                  <option value=""></option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  {% endif %}
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="pro-input">
+                <label for="dateofbirth">Date Of Birth</label>
+                <!-- <input type="date" value="2021-02-02"/> -->
+                <input type="date" name="date_of_birth" id="" value="{{ user_data.date_of_birth }}">
+              </div>
+            </div>
+          </div>
+          <div class="pro-tab-double">
+            <h2 class="pro-tab-title mb-4">Professional</h2>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="pro-input">
+                  <label for="company">Company Name</label>
+                  <input type="text" name="business_name" value="{{ user_data.business_name }}" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="pro-input">
+                  <label for="position">Position</label>
+                  <input type="text" name="position" value="{{ user_data.position }}" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="pro-input">
+                  <label for="email">Business Email</label>
+                  <input type="email" name="business_email" value="{{ user_data.business_email }}" disabled/>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="pro-input">
+                  <label for="phone">Phone Number</label>
+                  <input type="tell" id="phone" name="business_phone_no" value="{{ user_data.business_phone_no}}" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="pro-input">
+                  <label for="bsize">Business Size</label>
+                  <select name="business_size" id="">
+                    {% if user_data.business_size == 'Large (Avobe 200 employees)' %}
+                    <option value=""></option>
+                    <option value="Large (Avobe 200 employees)" selected>
+                      Large (Avobe 200 employees)
+                    </option>
+                    <option value="Medium (50 to 200 employees)">
+                      Medium (50 to 200 employees)
+                    </option>
+                    <option value="Small (Below 50 employees)">
+                      Small (Below 50 employees)
+                      {% elif user_data.business_size == 'Medium (50 to 200 employees)'%}
+                    <option value=""></option>
+                    <option value="Large (Avobe 200 employees)">
+                      Large (Avobe 200 employees)
+                    </option>
+                    <option value="Medium (50 to 200 employees)" selected>
+                      Medium (50 to 200 employees)
+                    </option>
+                    <option value="Small (Below 50 employees)">
+                      Small (Below 50 employees)
+                      {% elif user_data.business_size == 'Small (Below 50 employees)'%}
+                    <option value=""></option>
+                    <option value="Large (Avobe 200 employees)">
+                      Large (Avobe 200 employees)
+                    </option>
+                    <option value="Medium (50 to 200 employees)">
+                      Medium (50 to 200 employees)
+                    </option>
+                    <option value="Small (Below 50 employees)" selected>
+                      Small (Below 50 employees)
+                      {% else %}
+                    <option value=""></option>
+                    <option value="Large (Avobe 200 employees)">
+                      Large (Avobe 200 employees)
+                    </option>
+                    <option value="Medium (50 to 200 employees)">
+                      Medium (50 to 200 employees)
+                    </option>
+                    <option value="Small (Below 50 employees)">
+                      Small (Below 50 employees)
+                      {% endif %}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="pro-input">
+                  <label for="Website">Website URL</label>
+                  <input type="url" name="website_url" value="{{ user_data.website_url }}" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="pro-input">
+                  <label for="industry">Industry</label>
+                  <input type="text" name="industry" value="{{ user_data.industry }}" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="pro-input">
+                  <label for="address">Address</label>
+                  <input type="text" name="business_address" value="{{ user_data.business_address }}" />
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="pro-tab-double">
+                <h2 class="pro-tab-title mb-4">User Details</h2>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="pro-input">
+                      <label for="email">Email</label>
+                      <input type="email" value="biyogafsana@gmail.com" />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="pro-input">
+                      <label for="password">Password</label>
+                      <input type="password" value="***********12" />
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+          <!-- <button class="pro-save">Save Changes</button> -->
+          <input type="submit" class="pro-save" value="Save Changes" name="info_update">
+        </form>
+        </div>
+
+        <div class="pro-tab" title="Language&Location">
+          <form action="{% url 'user_profile' %}" method="post" name="Language&Location">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-md-6">
+                <div class="pro-input">
+                  <label for="language">Language</label>
+                  <select name="language" id="">
+                    {% if user_data.language == 'English' %}
+                    <option value="English" selected>English</option>
+                    <option value="Spanish">Spanish</option>
+                    <option value="Bangla">Bangla</option>
+                    {% elif user_data.language == 'Spanish' %}
+                    <option value="English">English</option>
+                    <option value="Spanish" selected>Spanish</option>
+                    <option value="Bangla">Bangla</option>
+                    {% elif user_data.language == 'Bangla' %}
+                    <option value="English">English</option>
+                    <option value="Spanish">Spanish</option>
+                    <option value="Bangla" selected>Bangla</option>
+                    {% else %}
+                    <option value="English">English</option>
+                    <option value="Spanish">Spanish</option>
+                    <option value="Bangla">Bangla</option>
+                    {% endif %}
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="pro-input">
+                  <label for="country">Country</label>
+                  <select id="country" name="country">
+                    {% for country in country_list %}
+                    {% if country == user_data.country %}
+                    <option value="{{country}}" selected>{{country}}</option>
+                    {% else %}
+                    <option value="{{country}}">{{country}}</option>
+                    {% endif %}
+                    {% endfor %}
+
+
+                    <!-- <option value=""></option>
+                    <option value="Afganistan">Afghanistan</option>
+                    <option value="Albania">Albania</option>
+                    <option value="Algeria">Algeria</option>
+                    <option value="American Samoa">American Samoa</option>
+                    <option value="Andorra">Andorra</option>
+                    <option value="Angola">Angola</option>
+                    <option value="Anguilla">Anguilla</option>
+                    <option value="Antigua & Barbuda">
+                      Antigua & Barbuda
+                    </option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Armenia">Armenia</option>
+                    <option value="Aruba">Aruba</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Austria">Austria</option>
+                    <option value="Azerbaijan">Azerbaijan</option>
+                    <option value="Bahamas">Bahamas</option>
+                    <option value="Bahrain">Bahrain</option>
+                    <option value="Bangladesh">Bangladesh</option>
+                    <option value="Barbados">Barbados</option>
+                    <option value="Belarus">Belarus</option>
+                    <option value="Belgium">Belgium</option>
+                    <option value="Belize">Belize</option>
+                    <option value="Benin">Benin</option>
+                    <option value="Bermuda">Bermuda</option>
+                    <option value="Bhutan">Bhutan</option>
+                    <option value="Bolivia">Bolivia</option>
+                    <option value="Bonaire">Bonaire</option>
+                    <option value="Bosnia & Herzegovina">
+                      Bosnia & Herzegovina
+                    </option>
+                    <option value="Botswana">Botswana</option>
+                    <option value="Brazil">Brazil</option>
+                    <option value="British Indian Ocean Ter">
+                      British Indian Ocean Ter
+                    </option>
+                    <option value="Brunei">Brunei</option>
+                    <option value="Bulgaria">Bulgaria</option>
+                    <option value="Burkina Faso">Burkina Faso</option>
+                    <option value="Burundi">Burundi</option>
+                    <option value="Cambodia">Cambodia</option>
+                    <option value="Cameroon">Cameroon</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Canary Islands">Canary Islands</option>
+                    <option value="Cape Verde">Cape Verde</option>
+                    <option value="Cayman Islands">Cayman Islands</option>
+                    <option value="Central African Republic">
+                      Central African Republic
+                    </option>
+                    <option value="Chad">Chad</option>
+                    <option value="Channel Islands">Channel Islands</option>
+                    <option value="Chile">Chile</option>
+                    <option value="China">China</option>
+                    <option value="Christmas Island">Christmas Island</option>
+                    <option value="Cocos Island">Cocos Island</option>
+                    <option value="Colombia">Colombia</option>
+                    <option value="Comoros">Comoros</option>
+                    <option value="Congo">Congo</option>
+                    <option value="Cook Islands">Cook Islands</option>
+                    <option value="Costa Rica">Costa Rica</option>
+                    <option value="Cote DIvoire">Cote DIvoire</option>
+                    <option value="Croatia">Croatia</option>
+                    <option value="Cuba">Cuba</option>
+                    <option value="Curaco">Curacao</option>
+                    <option value="Cyprus">Cyprus</option>
+                    <option value="Czech Republic">Czech Republic</option>
+                    <option value="Denmark">Denmark</option>
+                    <option value="Djibouti">Djibouti</option>
+                    <option value="Dominica">Dominica</option>
+                    <option value="Dominican Republic">
+                      Dominican Republic
+                    </option>
+                    <option value="East Timor">East Timor</option>
+                    <option value="Ecuador">Ecuador</option>
+                    <option value="Egypt">Egypt</option>
+                    <option value="El Salvador">El Salvador</option>
+                    <option value="Equatorial Guinea">
+                      Equatorial Guinea
+                    </option>
+                    <option value="Eritrea">Eritrea</option>
+                    <option value="Estonia">Estonia</option>
+                    <option value="Ethiopia">Ethiopia</option>
+                    <option value="Falkland Islands">Falkland Islands</option>
+                    <option value="Faroe Islands">Faroe Islands</option>
+                    <option value="Fiji">Fiji</option>
+                    <option value="Finland">Finland</option>
+                    <option value="France">France</option>
+                    <option value="French Guiana">French Guiana</option>
+                    <option value="French Polynesia">French Polynesia</option>
+                    <option value="French Southern Ter">
+                      French Southern Ter
+                    </option>
+                    <option value="Gabon">Gabon</option>
+                    <option value="Gambia">Gambia</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Ghana">Ghana</option>
+                    <option value="Gibraltar">Gibraltar</option>
+                    <option value="Great Britain">Great Britain</option>
+                    <option value="Greece">Greece</option>
+                    <option value="Greenland">Greenland</option>
+                    <option value="Grenada">Grenada</option>
+                    <option value="Guadeloupe">Guadeloupe</option>
+                    <option value="Guam">Guam</option>
+                    <option value="Guatemala">Guatemala</option>
+                    <option value="Guinea">Guinea</option>
+                    <option value="Guyana">Guyana</option>
+                    <option value="Haiti">Haiti</option>
+                    <option value="Hawaii">Hawaii</option>
+                    <option value="Honduras">Honduras</option>
+                    <option value="Hong Kong">Hong Kong</option>
+                    <option value="Hungary">Hungary</option>
+                    <option value="Iceland">Iceland</option>
+                    <option value="Indonesia">Indonesia</option>
+                    <option value="India">India</option>
+                    <option value="Iran">Iran</option>
+                    <option value="Iraq">Iraq</option>
+                    <option value="Ireland">Ireland</option>
+                    <option value="Isle of Man">Isle of Man</option>
+                    <option value="Israel">Israel</option>
+                    <option value="Italy">Italy</option>
+                    <option value="Jamaica">Jamaica</option>
+                    <option value="Japan">Japan</option>
+                    <option value="Jordan">Jordan</option>
+                    <option value="Kazakhstan">Kazakhstan</option>
+                    <option value="Kenya">Kenya</option>
+                    <option value="Kiribati">Kiribati</option>
+                    <option value="Korea North">Korea North</option>
+                    <option value="Korea Sout">Korea South</option>
+                    <option value="Kuwait">Kuwait</option>
+                    <option value="Kyrgyzstan">Kyrgyzstan</option>
+                    <option value="Laos">Laos</option>
+                    <option value="Latvia">Latvia</option>
+                    <option value="Lebanon">Lebanon</option>
+                    <option value="Lesotho">Lesotho</option>
+                    <option value="Liberia">Liberia</option>
+                    <option value="Libya">Libya</option>
+                    <option value="Liechtenstein">Liechtenstein</option>
+                    <option value="Lithuania">Lithuania</option>
+                    <option value="Luxembourg">Luxembourg</option>
+                    <option value="Macau">Macau</option>
+                    <option value="Macedonia">Macedonia</option>
+                    <option value="Madagascar">Madagascar</option>
+                    <option value="Malaysia">Malaysia</option>
+                    <option value="Malawi">Malawi</option>
+                    <option value="Maldives">Maldives</option>
+                    <option value="Mali">Mali</option>
+                    <option value="Malta">Malta</option>
+                    <option value="Marshall Islands">Marshall Islands</option>
+                    <option value="Martinique">Martinique</option>
+                    <option value="Mauritania">Mauritania</option>
+                    <option value="Mauritius">Mauritius</option>
+                    <option value="Mayotte">Mayotte</option>
+                    <option value="Mexico">Mexico</option>
+                    <option value="Midway Islands">Midway Islands</option>
+                    <option value="Moldova">Moldova</option>
+                    <option value="Monaco">Monaco</option>
+                    <option value="Mongolia">Mongolia</option>
+                    <option value="Montserrat">Montserrat</option>
+                    <option value="Morocco">Morocco</option>
+                    <option value="Mozambique">Mozambique</option>
+                    <option value="Myanmar">Myanmar</option>
+                    <option value="Nambia">Nambia</option>
+                    <option value="Nauru">Nauru</option>
+                    <option value="Nepal">Nepal</option>
+                    <option value="Netherland Antilles">
+                      Netherland Antilles
+                    </option>
+                    <option value="Netherlands">
+                      Netherlands (Holland, Europe)
+                    </option>
+                    <option value="Nevis">Nevis</option>
+                    <option value="New Caledonia">New Caledonia</option>
+                    <option value="New Zealand">New Zealand</option>
+                    <option value="Nicaragua">Nicaragua</option>
+                    <option value="Niger">Niger</option>
+                    <option value="Nigeria">Nigeria</option>
+                    <option value="Niue">Niue</option>
+                    <option value="Norfolk Island">Norfolk Island</option>
+                    <option value="Norway">Norway</option>
+                    <option value="Oman">Oman</option>
+                    <option value="Pakistan">Pakistan</option>
+                    <option value="Palau Island">Palau Island</option>
+                    <option value="Palestine">Palestine</option>
+                    <option value="Panama">Panama</option>
+                    <option value="Papua New Guinea">Papua New Guinea</option>
+                    <option value="Paraguay">Paraguay</option>
+                    <option value="Peru">Peru</option>
+                    <option value="Phillipines">Philippines</option>
+                    <option value="Pitcairn Island">Pitcairn Island</option>
+                    <option value="Poland">Poland</option>
+                    <option value="Portugal">Portugal</option>
+                    <option value="Puerto Rico">Puerto Rico</option>
+                    <option value="Qatar">Qatar</option>
+                    <option value="Republic of Montenegro">
+                      Republic of Montenegro
+                    </option>
+                    <option value="Republic of Serbia">
+                      Republic of Serbia
+                    </option>
+                    <option value="Reunion">Reunion</option>
+                    <option value="Romania">Romania</option>
+                    <option value="Russia">Russia</option>
+                    <option value="Rwanda">Rwanda</option>
+                    <option value="St Barthelemy">St Barthelemy</option>
+                    <option value="St Eustatius">St Eustatius</option>
+                    <option value="St Helena">St Helena</option>
+                    <option value="St Kitts-Nevis">St Kitts-Nevis</option>
+                    <option value="St Lucia">St Lucia</option>
+                    <option value="St Maarten">St Maarten</option>
+                    <option value="St Pierre & Miquelon">
+                      St Pierre & Miquelon
+                    </option>
+                    <option value="St Vincent & Grenadines">
+                      St Vincent & Grenadines
+                    </option>
+                    <option value="Saipan">Saipan</option>
+                    <option value="Samoa">Samoa</option>
+                    <option value="Samoa American">Samoa American</option>
+                    <option value="San Marino">San Marino</option>
+                    <option value="Sao Tome & Principe">
+                      Sao Tome & Principe
+                    </option>
+                    <option value="Saudi Arabia">Saudi Arabia</option>
+                    <option value="Senegal">Senegal</option>
+                    <option value="Seychelles">Seychelles</option>
+                    <option value="Sierra Leone">Sierra Leone</option>
+                    <option value="Singapore">Singapore</option>
+                    <option value="Slovakia">Slovakia</option>
+                    <option value="Slovenia">Slovenia</option>
+                    <option value="Solomon Islands">Solomon Islands</option>
+                    <option value="Somalia">Somalia</option>
+                    <option value="South Africa">South Africa</option>
+                    <option value="Spain">Spain</option>
+                    <option value="Sri Lanka">Sri Lanka</option>
+                    <option value="Sudan">Sudan</option>
+                    <option value="Suriname">Suriname</option>
+                    <option value="Swaziland">Swaziland</option>
+                    <option value="Sweden">Sweden</option>
+                    <option value="Switzerland">Switzerland</option>
+                    <option value="Syria">Syria</option>
+                    <option value="Tahiti">Tahiti</option>
+                    <option value="Taiwan">Taiwan</option>
+                    <option value="Tajikistan">Tajikistan</option>
+                    <option value="Tanzania">Tanzania</option>
+                    <option value="Thailand">Thailand</option>
+                    <option value="Togo">Togo</option>
+                    <option value="Tokelau">Tokelau</option>
+                    <option value="Tonga">Tonga</option>
+                    <option value="Trinidad & Tobago">
+                      Trinidad & Tobago
+                    </option>
+                    <option value="Tunisia">Tunisia</option>
+                    <option value="Turkey">Turkey</option>
+                    <option value="Turkmenistan">Turkmenistan</option>
+                    <option value="Turks & Caicos Is">
+                      Turks & Caicos Is
+                    </option>
+                    <option value="Tuvalu">Tuvalu</option>
+                    <option value="Uganda">Uganda</option>
+                    <option value="United Kingdom">United Kingdom</option>
+                    <option value="Ukraine">Ukraine</option>
+                    <option value="United Arab Erimates">
+                      United Arab Emirates
+                    </option>
+                    <option value="United States of America">
+                      United States of America
+                    </option>
+                    <option value="Uraguay">Uruguay</option>
+                    <option value="Uzbekistan">Uzbekistan</option>
+                    <option value="Vanuatu">Vanuatu</option>
+                    <option value="Vatican City State">
+                      Vatican City State
+                    </option>
+                    <option value="Venezuela">Venezuela</option>
+                    <option value="Vietnam">Vietnam</option>
+                    <option value="Virgin Islands (Brit)">
+                      Virgin Islands (Brit)
+                    </option>
+                    <option value="Virgin Islands (USA)">
+                      Virgin Islands (USA)
+                    </option>
+                    <option value="Wake Island">Wake Island</option>
+                    <option value="Wallis & Futana Is">
+                      Wallis & Futana Is
+                    </option>
+                    <option value="Yemen">Yemen</option>
+                    <option value="Zaire">Zaire</option>
+                    <option value="Zambia">Zambia</option>
+                    <option value="Zimbabwe">Zimbabwe</option> -->
+                  </select>
+                </div>
+              </div>
+            </div>
+            <input type="submit" class="pro-save" value="Save changes" name="Language&Location">
+          </form>
+        </div>
+
+        <div class="pro-tab" title="Social">
+          <h2 class="pro-tab-title">LINKED SOCIAL ACCOUNTS</h2>
+          <p>
+            Allows you to sign in to your account using that provider in the
+            future.
+          </p>
+          <div class="pro-social">
+            <a href="#"><img src="{% static '' %}tfimg/profile/facebook.png" alt="" /></a>
+            <a href="#"><img src="{% static '' %}tfimg/profile/instagram (1)@1X.png" alt="" /></a>
+            <a href="#"><img src="{% static '' %}tfimg/profile/linkedin (2)@1X.png" alt="" /></a>
+          </div>
+          <button class="pro-save">Save Changes</button>
+        </div>
+
+        <div class="pro-tab" title="interest">
+          <h2 class="pro-tab-title">Interests</h2>
+          <p>Select Interest</p>
+          <form action="{% url 'user_profile' %}" method="post">
+            {% csrf_token %}
+            <ul class="pro-tab-list row">
+              <!-- <li class="col-md-4">
+              <input type="checkbox" name="risk_assessment" id="risk_assessment" />
+              <label for="risk_assessment">Risk Assessment</label>
+              </li> -->
+
+              {% for area in all_area %}
+              <li class="col-md-4">
+                {% if area in user_data.interests %}
+                <input type="checkbox" name="{{area}}" id="{{area}}" checked />
+                <label for="{{area}}">{{area}}</label>
+                {% else %}
+                <input type="checkbox" name="{{area}}" id="{{area}}" />
+                <label for="{{area}}">{{area}}</label>
+                {% endif %}
+              </li>
+              {% endfor %}
+            </ul>
+            <input type="submit" class="pro-save" value="Save Changes" name="interest">
+          </form>
+          <!-- <li class="col-md-4">
+              <input type="checkbox" name="incident_response" id="incident_response" />
+              <label for="incident_response">Incident Response</label>
+            </li>
+            <li class="col-md-4">
+              <input type="checkbox" name="cyber_investigation" id="cyber_investigation" />
+              <label for="cyber_investigation">Cybercrime Investigation</label>
+            </li>
+            <li class="col-md-4">
+              <input type="checkbox" name="malware" id="malware" />
+              <label for="malware">Malware Analysis</label>
+            </li>
+            <li class="col-md-4">
+              <input type="checkbox" name="seim" id="seim" />
+              <label for="seim">SIEM, Cloud Security</label>
+            </li>
+            <li class="col-md-4">
+              <input type="checkbox" name="network_security" id="network_security" />
+              <label for="network_security">Network Security</label>
+            </li>
+            <li class="col-md-4">
+              <input type="checkbox" name="compliance" id="compliance" />
+              <label for="compliance">Security Compliance</label>
+            </li>
+            <li class="col-md-4">
+              <input type="checkbox" name="policy" id="policy" />
+              <label for="policy">Policy Development</label>
+            </li>
+            <li class="col-md-4">
+              <input type="checkbox" name="osint" id="osint" />
+              <label for="osint">OSInt</label>
+            </li>
+            <li class="col-md-4">
+              <input type="checkbox" name="pcs" id="pcs" />
+              <label for="pcs">Personal Cybersecurity</label>
+            </li>
+            <li class="col-md-4">
+              <input type="checkbox" name="training_program" id="training_program" />
+              <label for="training_program">Training Program</label>
+            </li>
+            <li class="col-md-4">
+              <input type="checkbox" name="news" id="news" />
+              <label for="news">Security News</label>
+            </li>
+            <li class="col-md-4">
+              <input type="checkbox" name="tools" id="tools" />
+              <label for="tools">Tools & Tricks </label>
+            </li>
+          </ul> -->
+        </div>
+        <div class="pro-tab" title="Notification">
+          <h2 class="pro-tab-title">Notification</h2>
+          <br />
+
+          <ul class="pro-tab-list">
+            <li>
+              <input type="checkbox" name="" id="" />
+              <label for="">Newsletter Notification</label>
+            </li>
+            <li>
+              <input type="checkbox" name="" id="" />
+              <label for="">Push Notification</label>
+            </li>
+            <li>
+              <input type="checkbox" name="" id="" />
+              <label for="">Newsletter Subscription</label>
+            </li>
+          </ul>
+          <ul class="pro-tab-list">
+            <li>
+              <input type="checkbox" name="" id="" />
+              <label for="">Email Notification</label>
+            </li>
+            <li>
+              <input type="checkbox" name="" id="" />
+              <label for="">Events & Webinar Notification</label>
+            </li>
+          </ul>
+          <ul class="pro-tab-list">
+            <li>
+              <input type="checkbox" name="" id="" />
+              <label for="">New Article Notification</label>
+            </li>
+            <li>
+              <input type="checkbox" name="" id="" />
+              <label for="">Regular Blog Notification</label>
+            </li>
+          </ul>
+          <button class="pro-save">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}
+
+{% block customjs %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+<script src="{% static '' %}tfjs/career.js"></script>
+<script src="{% static '' %}tfjs/find.js"></script>
+<script src="{% static '' %}tfjs/profile_tab.js"></script>
+<script src="{% static '' %}tfjs/telephone.js"></script>
+
+<script src="{% static '' %}js/glide.js"></script>
+
+<script src="{% static '' %}js/home-tab.js"></script>
+<script src="{% static '' %}js/gs.js"></script>
+<script src="{% static '' %}js/datepicker.js"></script>
+<script src="{% static '' %}js/telephone.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
+<script>
+  var input = document.querySelector("#phone");
+  intlTelInput(input, {
+    utilsScript: "{% static 'tfjs/utils.js' %}",
+  });
+</script>
+<script>
+  var input = document.querySelector("#per_phone");
+  intlTelInput(input, {
+    utilsScript: "{% static 'tfjs/utils.js' %}",
+  });
+</script>
+
+    <script>
+      $(".timepicker").timepicker({
+        timeFormat: "h:mm p",
+        interval: 30,
+        minTime: "12:00am",
+        maxTime: "11:30pm",
+        defaultTime: "11",
+        startTime: "12:00am",
+        dynamic: false,
+        dropdown: true,
+        scrollbar: true,
+      });
+    </script>
+    <script>
+      var phone = $("#phone");
+      var gsCta = $(".gs-cta");
+
+      function checkCountry() {
+        var number = phone.val();
+        fourDigit = number.slice(0, 4);
+        twoDigit = number.slice(0, 3);
+        if (
+          fourDigit == "+880" ||
+          twoDigit == "017" ||
+          twoDigit == "016" ||
+          twoDigit == "019" ||
+          twoDigit == "018" ||
+          twoDigit == "015" ||
+          twoDigit == "013" ||
+          twoDigit == "014"
+        ) {
+          gsCta.css("display", "block");
+        } else {
+          gsCta.css("display", "none");
+        }
+      }
+    </script>
+    <script>
+      var phone = $("#per_phone");
+      var gsCta = $(".gs-cta");
+
+      function checkCountry() {
+        var number = phone.val();
+        fourDigit = number.slice(0, 4);
+        twoDigit = number.slice(0, 3);
+        if (
+          fourDigit == "+880" ||
+          twoDigit == "017" ||
+          twoDigit == "016" ||
+          twoDigit == "019" ||
+          twoDigit == "018" ||
+          twoDigit == "015" ||
+          twoDigit == "013" ||
+          twoDigit == "014"
+        ) {
+          gsCta.css("display", "block");
+        } else {
+          gsCta.css("display", "none");
+        }
+      }
+    </script>
+<script>
+  $(document).ready(function () {
+    $("#my-header").load("header.html");
+  });
+</script>
+<script>
+  $(document).ready(function () {
+    $("#my-footer").load("footer.html");
+  });
+</script>
+<script src="{% static '' %}js/purecookie.js"></script>
+    <script>
+      let input_phone = document.getElementById('phone');
+      let dialList = document.querySelectorAll('.iti__country');
+      for(let i = 0; i<dialList.length;i++){
+        dialList[i].addEventListener('click', function(){
+          input_phone.value = dialList[i].children[2].innerHTML;
+        });
+      }
+    </script>
+    <script>
+      let input_phone = document.getElementById('per_phone');
+      let dialList = document.querySelectorAll('.iti__country');
+      for(let i = 0; i<dialList.length;i++){
+        dialList[i].addEventListener('click', function(){
+          input_phone.value = dialList[i].children[2].innerHTML;
+        });
+      }
+    </script>
+    <script>
+        grecaptcha.ready(function() {
+          grecaptcha.execute('6Ld9pFAaAAAAAIHOTYw4dhAfQT8iC6eIf3Fbh5ty', {action: 'submit'}).then(function(token) {
+              document.getElementById('token').value = token;
+          });
+        });
+    </script>
+{% endblock customjs %}

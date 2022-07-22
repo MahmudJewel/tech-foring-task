@@ -1,0 +1,61 @@
+{% extends 'base/main_admin_base.html' %} {% load static %} {% block title %} Ticket View {% endblock title %}
+{% block headercss %} {% endblock headercss %} {% block content %}
+<main>
+    <section class="px-3">
+        <h5 class="fw-bold">TICKET {{ ticket.id }}</h5>
+        <h6 class="fw-bold"><span class="text-green">Submitted on: </span>{{ ticket.ticket_date }}</h6>
+
+        <h6><span class="fw-bold">Title: </span>{{ ticket.ticket_title }}</h6>
+
+        <h6 class="mt-5 fw-bold">Description:</h6>
+        <div>{{ ticket.ticket_description|safe }}</div>
+
+        <div class="row">
+            <h6 class="fw-bold mb-3">Attachment</h6>
+            <img src="{{ ticket.ticket_attachment.url }}" alt="ticket" style="width: 250px; height: 150px">
+        </div>
+
+        {% if ticket.ticketcomment_ticket.all.count < 1 %}
+            <p class="border-top py-3">No Comment Yet</p>
+        {% else %}
+            <div class="conversation mt-5 border border-secondary p-3">
+                <h6 class="fw-bold">Response:</h6>
+                {% for comment in ticket.ticketcomment_ticket.all %}
+                    {% if user == comment.user %}
+                        <div class="d-flex shadow-sm bg-lightgreen p-2 mb-3 justify-content-between">
+                            <div class="d-flex align-items-center pe-3">
+                                <p>{{ comment.comment|safe }}</p>
+                            </div>
+                            <img src="{{ comment.user.profile_pic.url }}"
+                                 style="width: 40px;height: 40px;border-radius: 50%;object-fit: cover;" alt="">
+                        </div>
+                    {% elif user != comment.user %}
+                        <div class="d-flex shadow-sm bg-lightgreen p-2 mb-3 justify-content-between">
+                            <img src="{{ comment.user.profile_pic.url }}"
+                                 style="width: 40px;height: 40px;border-radius: 50%;object-fit: cover;" alt="">
+                            <div class="d-flex align-items-center ps-3">
+                                <p>{{ comment.comment|safe }}</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% if ticket.ticket_status == 'open' %}
+            {% if user.is_superuser or user.is_staff or ticket.ticketcomment_ticket.all.count > 0 %}
+                <div class="reply-box mt-3">
+                    <h6 class="fw-bold">Recent Messages</h6>
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {{ commentform.media }}
+                        {{ commentform }}
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary px-4 mt-3">Reply</button>
+                    </form>
+                </div>
+            {% endif %}
+        {% endif %}
+    </section>
+</main>
+
+
+{% endblock content %} {% block customjs %} {% endblock customjs %}

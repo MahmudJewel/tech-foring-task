@@ -1,0 +1,233 @@
+:root {
+    --var-primary-color: #182f59;
+    --var-first-ring-color: #022e75;
+    --var-sidebar-color: #f2f3f7;
+    --var-box-shadow-color: #d9d9d9;
+    --var-link-color: #000000;
+    --var-icon-color: #5bbc2e;
+    --var-detail-background: #ebebeb;
+    --var-topbar-background-color: #ffffff;
+    --var-btn-background-purple: #da2579;
+    --var-text-yellow: #ff9100;
+}
+
+
+
+/* dashboard stat starts */
+.user-stat-bubble {
+    border-radius: 50%;
+    margin-block-start: 1rem;
+    text-align: center;
+    width: 13rem;
+    height: 13rem;
+    padding: 1rem;
+    margin-inline: auto;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+}
+.user-stat-bubble h4 {
+    text-transform: capitalize;
+}
+.user-stat-bubble i {
+    font-size: 2rem;
+    margin-block-end: 1rem;
+}
+.user-stat-bubble p {
+    font-weight: 700;
+    font-size: 3rem;
+}
+/* businesss user bubble style starts */
+.business-users {
+    box-shadow: 0 0 0px 5px var(--var-first-ring-color);
+    position: relative;
+}
+/* businesss user bubble style ends */
+/* individual user bubble style starts */
+.individual-users {
+    box-shadow: 0 0 0px 5px var(--var-link-color);
+    position: relative;
+}
+.individual-users-detail, .business-users-detail{
+    margin-top: -186px;
+    transform: translateX(-200rem);
+    transition: all .5s ease-in-out;
+    background: #f5f5f5;
+    box-shadow: 1px 1px 3px 1px #7a7a7a;
+    font-weight: 800;
+}
+input#dashboardDaterange {
+    width: 25% !important;
+}
+input#daterange {
+    padding: .5rem 1rem;
+    width: 100% !important;
+}
+.subscription-info {
+    color: var(--var-topbar-background-color);
+    padding: 1rem;
+}
+
+.subscription-info h3 {
+    font-size: 22px;
+}
+
+.subscription-info p {
+    font-size: 18px;
+}
+/* individual user bubble style ends */
+/* info select filter starts */
+
+.selectBox {
+    position: relative;
+}
+
+.selectBox select {
+    width: 100%;
+    font-weight: 500;
+    padding: .5rem 1rem;
+}
+
+.overSelect {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+#checkboxes,
+#checkboxes2 {
+    display: none;
+    border: 1px #dadada solid;
+    padding: .5rem 1rem;
+}
+
+#checkboxes label,
+#checkboxes2 label {
+    display: block;
+}
+#checkboxes input,
+#checkboxes2 input {
+    margin-inline-end: .5rem;
+}
+
+#checkboxes label:hover {
+    background-color: transparent !important;
+}
+/* info select filter ends */
+/* info chart filter starts */
+.filter-options .btn:hover{
+    background-color: var(--var-primary-color);
+}
+.user-stat .multiselect{
+    position: relative;
+}
+
+/* info chart filter ends */
+/* oveview section start */
+/* activites table style */
+.activites-table thead, .users-table thead{
+    display:none;
+}
+.activites-table tbody tr {
+    border-bottom-color: #ddd;
+} 
+.activites-table tbody td {
+    font-size: 12px;
+} 
+.activites-icon{
+    padding: 3px 6px;
+}
+/* users table */
+.users-table,.users-table tr {
+    border: 1px solid #707070;
+}
+.users-table th {
+    border-inline: 1px solid;
+}
+.users-table .odd th {
+    padding-block-start: 32px;
+}
+.users-table td {
+    font-size: 12px;
+}
+.users-table i{
+    font-size: .9rem;
+}
+/* oveview section ends */
+/* modal */
+#businessModal .accordion-button::after{
+    display: none;
+} 
+.accordion-body{
+    text-transform: capitalize;
+}
+.revenue-stat{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr 2fr;
+}
+.revenue{
+    border: 5px solid #5bbc2e;
+    padding: 1.5rem;
+    width: 10rem;
+    height: 10rem;
+    margin-block: auto;
+}
+.revenue:last-child{
+    width: 100%;
+}
+
+.revenue h4{
+    font-size: 14px;
+}
+.revenue p{
+    font-size: 1.5rem;
+}
+
+@media (max-width:1241px) {
+    .revenue{
+        width: 9rem;
+        height: 9rem;
+    }
+}
+
+/* filter options */
+
+.filter-options {
+    margin-top: 15px;
+}
+
+.filter-options button {
+    min-width: 45px;
+    padding: .5rem 0;
+}
+
+/* oveview section ends */
+/* modal */
+#businessModal .accordion-button::after{
+    display: none;
+}
+.accordion-body{
+    text-transform: capitalize;
+}
+
+@media (max-width:769px) {
+    .user-stat-bubble{
+        margin-bottom: 2rem;
+    }
+    #activites-table_wrapper {
+        margin-block-end: 2rem;
+    }
+    input#dashboardDaterange {
+        width: 100% !important;
+        margin-bottom: 1rem;
+    }
+    .revenue-stat{
+        grid-template-columns: none;
+    }
+    .filter-options{
+        float: none !important;
+        width: 100% !important;
+    }
+}

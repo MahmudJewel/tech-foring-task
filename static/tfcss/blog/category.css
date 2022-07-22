@@ -1,0 +1,275 @@
+.row.banner-1 {
+    height: 300px;
+}
+
+.bg-gray {
+    background-color: gainsboro;
+}
+
+.accordion-button:focus,
+.form-select:focus,
+.form-control:focus,
+.btn:focus {
+    border-color: black;
+    outline: 0;
+    box-shadow: none;
+    background-color: white;
+    color: black;
+}
+
+.accordion-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.accordion-header {
+    border-bottom: 2px solid gray;
+}
+
+.accordion-body a {
+    text-decoration: none;
+    color: var(--navy);
+    padding: 5px 0;
+}
+
+.banner-1 .menu-link {
+    padding: 5px;
+    background-color: white;
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+}
+
+.banner-1 .menu-link:hover {
+    background-color: transparent;
+    border: 1px solid;
+}
+
+.dropdown-menu .dropdown-item:active {
+    background-color: var(--navy);
+}
+
+.dropdown-menu li:hover {
+    border-left: 4px solid rgb(130, 190, 40);
+}
+
+.container-heading {
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.container-heading::before {
+    display: inline-block;
+    content: '';
+    background-color: var(--navy);
+    width: 100%;
+    height: 3px;
+}
+
+.important-posts .card {
+    height: 330px;
+    box-shadow: 1px 1px 3px 1px #707070;
+    border: 5px solid #182f59a1;
+}
+
+.important-posts .card-body {
+    background-image: linear-gradient(to bottom, #182f59bd, #182f5963);
+}
+
+.important-posts .card:hover .card-body {
+    background-image: linear-gradient(to bottom, #182f59, #182f59);
+}
+
+.important-posts .more-importants .post {
+    height: 155px;
+}
+
+.info-area {
+    margin-top: 5px;
+}
+
+.post .title h6 {
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.post p {
+    font-size: 15px;
+    line-height: 1.2;
+    margin-bottom: 0;
+    margin-top: 5px;
+}
+
+.get-update-heading {
+    margin-top: 5rem;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.get-update-heading:before,
+.get-update-heading:after {
+    background-color: #182f59;
+    content: "";
+    display: inline-block;
+    height: 2px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+}
+
+.get-updates label {
+    font-weight: bold;
+}
+
+.get-updates input {
+    border-bottom: 2px solid gray;
+    border-radius: 5px;
+    padding: 0.5rem;
+}
+
+
+/* place inside media query for large device */
+
+.post.col-md-4:nth-child(3n-2) {
+    padding-left: 0;
+    padding-right: 1.5rem;
+}
+
+.post.col-md-4:nth-child(3n) {
+    padding-left: 1.5rem;
+    padding-right: 0;
+}
+
+
+/* for important blogs */
+
+.bg-light {
+    background-color: #f8f9fa!important
+}
+
+a.bg-light:focus,
+a.bg-light:hover,
+button.bg-light:focus,
+button.bg-light:hover {
+    background-color: #dae0e5 !important
+}
+
+.post-container .size {
+    height: 200px
+}
+
+@media (max-width:991.98px) {
+    .post-container .img-1 {
+        height: 200px
+    }
+}
+
+.post-container .col-md-4 {
+    overflow: hidden;
+    position: relative;
+}
+
+.post-container .url-wrapper {
+    display: block;
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: all 1s;
+}
+
+.post-container img {
+    width: 100%;
+    height: 100%;
+    transition: all 1s;
+    object-fit: cover;
+}
+
+.post-container .url-wrapper:hover img {
+    transform: scale(1.1);
+    /* background-size: 250%; */
+}
+
+.post-container .url-wrapper .post-category {
+    color: #fff
+}
+
+.post-container .url-wrapper.mb-30p {
+    margin-bottom: 30px
+}
+
+.post-container .url-wrapper .date {
+    font-size: 15px
+}
+
+.post-container .url-wrapper.gradient {
+    position: relative
+}
+
+.post-container .url-wrapper.gradient:before {
+    z-index: 1;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: -moz-linear-gradient(top, transparent 0%, transparent 18%, rgba(0, 0, 0, .8) 99%, rgba(0, 0, 0, .8) 100%);
+    background: -webkit-linear-gradient(top, transparent 0%, transparent 18%, rgba(0, 0, 0, .8) 99%, rgba(0, 0, 0, .8) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(18%, transparent), color-stop(99%, rgba(0, 0, 0, .8)), to(rgba(0, 0, 0, .8)));
+    background: -o-linear-gradient(top, transparent 0%, transparent 18%, rgba(0, 0, 0, .8) 99%, rgba(0, 0, 0, .8) 100%);
+    background: linear-gradient(to bottom, transparent 0%, transparent 18%, rgba(0, 0, 0, .8) 99%, rgba(0, 0, 0, .8) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#cc000000', GradientType=0)
+}
+
+.post-container .text {
+    position: absolute;
+    bottom: 0;
+    z-index: 10;
+    padding: 10px;
+    width: 100%;
+}
+
+.post-container .text h2 {
+    color: #fff;
+    font-size: 17px;
+    line-height: 1.5;
+    margin-bottom: 0
+}
+
+.post-container .text span {
+    color: rgba(255, 255, 255, 0.767)
+}
+
+.post-container .text.text-sm h2 {
+    font-size: 16px;
+    line-height: 1.5
+}
+
+.post-container .gradient {
+    position: relative
+}
+
+.post-container .gradient:before {
+    z-index: 1;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: -moz-linear-gradient(top, transparent 0%, transparent 18%, rgba(0, 0, 0, .8) 99%, rgba(0, 0, 0, .8) 100%);
+    background: -webkit-linear-gradient(top, transparent 0%, transparent 18%, rgba(0, 0, 0, .8) 99%, rgba(0, 0, 0, .8) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(18%, transparent), color-stop(99%, rgba(0, 0, 0, .8)), to(rgba(0, 0, 0, .8)));
+    background: -o-linear-gradient(top, transparent 0%, transparent 18%, rgba(0, 0, 0, .8) 99%, rgba(0, 0, 0, .8) 100%);
+    background: linear-gradient(to bottom, transparent 0%, transparent 18%, rgba(0, 0, 0, .8) 99%, rgba(0, 0, 0, .8) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#cc000000', GradientType=0)
+}
+
+.post-container .size {
+    height: 200px
+}

@@ -1,0 +1,123 @@
+.banner-1 .banner-bg {
+    /* padding: 4rem 1rem; */
+    color: white;
+    background-image: url("../../tfimg/blog/podcast_header.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.row.banner-1 {
+    height: 300px;
+}
+
+.banner-1 .menu-link {
+    padding: 5px;
+    background-color: white;
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+}
+
+.banner-1 .menu-link:hover {
+    background-color: transparent;
+    border: 1px solid;
+}
+
+.dropdown-menu .dropdown-item:active {
+    background-color: var(--navy);
+}
+
+.dropdown-menu li:hover {
+    border-left: 4px solid rgb(130, 190, 40);
+}
+
+.container-heading {
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.container-heading::before {
+    display: inline-block;
+    content: '';
+    background-color: var(--navy);
+    width: 100%;
+    height: 3px;
+}
+
+.important-blogs .col-md-6:nth-child(2n+1) {
+    padding-left: 0;
+}
+
+.info-area {
+    margin-top: 5px;
+}
+
+.post .title h6 {
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.post p {
+    font-size: 15px;
+    line-height: 1.2;
+    margin-bottom: 0;
+    margin-top: 5px;
+}
+
+.post .card {
+    height: auto !important;
+}
+
+.get-update-heading {
+    margin-top: 5rem;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.get-update-heading:before,
+.get-update-heading:after {
+    background-color: #182f59;
+    content: "";
+    display: inline-block;
+    height: 2px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+}
+
+.get-updates label {
+    font-weight: bold;
+}
+
+.get-updates input {
+    border-bottom: 2px solid gray;
+    border-radius: 5px;
+    padding: 0.5rem;
+}
+
+
+/* 
+.get-updates label {
+    padding: 0 10px;
+    position: absolute;
+    top: 0.75rem;
+    right: 1rem;
+} */
+
+
+/* place inside media query for large device */
+
+.post.col-md-4:nth-child(3n-2) {
+    padding-left: 0;
+    padding-right: 1.5rem;
+}
+
+.post.col-md-4:nth-child(3n) {
+    padding-left: 1.5rem;
+    padding-right: 0;
+}

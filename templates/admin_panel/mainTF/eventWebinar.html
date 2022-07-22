@@ -1,0 +1,189 @@
+{% extends 'base/main_admin_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load my_filter %}
+{% load hosts %}
+{% block title %} Events {% endblock title %} {% block headercss %}
+    <link rel="stylesheet" href="{% static 'tfcss/admin_panel/mainTF/eventWebinar.css' %}"/> 
+    <link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.2.8/css/rowReorder.dataTables.min.css"/> 
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css"/> 
+{% endblock headercss %} {% block content %}
+
+<main>
+    <section class="event-count mb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="event-info bg-primary-25">
+                        <h3>Total Events</h3>
+                        <p class="display-6 fw-bolder">
+                            <i class="bi bi-calendar2-check"></i> {{ events.count }}
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="event-info bg-primary-50">
+                        <h3>Previous Events</h3>
+                        <p class="display-6 fw-bolder">
+                            <i class="bi bi-calendar2-check"></i> {{ previous.count }}
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="event-info bg-saphire">
+                        <h3>Upcoming Events</h3>
+                        <p class="display-6 fw-bolder">
+                            <i class="bi bi-calendar2-check"></i> {{ active.count }}
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="event-info bg-saphire">
+                        <h3>Canceled Events</h3>
+                        <p class="display-6 fw-bolder">
+                            <i class="bi bi-calendar2-check"></i> {{ canceled.count }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="event-control">
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between event-filter-options align-content-center my-3">
+                {% comment %}
+                <div class="align-self-center filter">
+                    <div class="filter-btn-container">
+                        <button class="btn event-filter-btn active">
+                            All Event
+                        </button>
+                        <button class="btn byStatus event-filter-btn">
+                            Active
+                        </button>
+                        <button class="btn byStatus event-filter-btn">
+                            Completed
+                        </button>
+                        <button class="btn byStatus event-filter-btn">
+                            Canceled
+                        </button>
+                        <button class="btn byMedium event-filter-btn">
+                            Online
+                        </button>
+                        <button class="btn byMedium event-filter-btn">
+                            Offline
+                        </button>
+                    </div>
+                </div>
+                {% endcomment %}
+                {% comment %}<div class="align-self-center filter-by">
+                    <select name="" id="filter" style="padding: .5rem 1rem;">
+                        <option value="" class="disabled" disabled>Filter</option>
+                        <option value="status">By Status</option>
+                        <option value="medium">By Medium</option>
+                    </select>
+                </div>{% endcomment %}
+                <div class=" align-self-center addEvent">
+                    <button class="btn createEventBtn bg-saphire rounded-0 text-white" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                        Add new event <i class="bi bi-plus-circle-fill"></i>
+                    </button>
+                </div>
+                {% comment %}<div class="align-self-center date-filter">
+                    <!-- date picker -->
+                    <input type="text" id="daterange" class="drp-selected" value="Select date" name="date"/>
+                </div>{% endcomment %}
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <table id="event-list" class="display" style="width: 100%">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Event Name</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Category</th>
+                            <th>Medium</th>
+                            <th>Status</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for event in events %}
+                            <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>
+                                <a href="{% host_url 'main_admin_event_detail' id=event.id %}">{{ event.event_name }}</a
+                                >
+                            </td>
+                            <td>{{ event.date_time|date }}</td>
+                            <td>{{ event.date_time|time }}</td>
+                            <td class="offline">{{ event.category|capitalize }}</td>
+                            <td class="offline">{{ event.address }}</td>
+                            <td class="active filter">{{ event.status }} <i class="bi bi-circle-fill text-success"></i></td>
+                            <td>{{ event.event_description|safe }}
+                            </td>
+                            <td>
+                                <a href="{% host_url 'main_admin_events_edit' id=event.id %}?next={{ request.path|urlencode }}" class="btn">
+                                    <i
+                                            class="
+                                                        icofont-edit
+                                                        text-primary
+                                                        rounded-circle
+                                                        activites-icon
+                                                    "
+                                    ></i>
+                                    Edit
+                                </a>
+                                <a href="{% host_url 'main_admin_events_delete' id=event.id %}" class="btn">
+                                    <i
+                                            class="
+                                                        bi bi-trash-fill
+                                                        text-danger
+                                                        rounded-circle
+                                                        activites-icon
+                                                    "
+                                    ></i>
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                    ></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {{ form.media }}
+                        {{ form|crispy }}
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">
+                            Add Event
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %} {% block customjs %}
+<script src="{% static 'tfjs/admin_panel/mainTF/eventWebinar.js' %}"></script>
+<script src="https://cdn.datatables.net/rowreorder/1.2.8/js/dataTables.rowReorder.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+{% endblock customjs %}

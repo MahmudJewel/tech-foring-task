@@ -1,0 +1,43 @@
+.idea/
+#requirement.txt
+venv/
+Academy/__pycache__
+Account/__pycache__
+BusinessSecurity/__pycache__
+#BusinessSecurity/migrations
+#Account/migrations
+#Academy/migrations
+#Blog/migrations
+Blog/__pycache__
+MainTechforing/__pycache__
+PersonalSecurity/__pycache__
+__pycache__/
+# Django #
+*.log
+*.pot
+*.pyc
+__pycache__
+media
+**/__pycache__/
+
+# Backup files #
+*.bak
+
+# If you are using PyCharm #
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/dictionaries
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.xml
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/gradle.xml
+.idea/**/libraries
+*.iws /out/
+db.sqlite3
+#migrations/
+
+readme.md

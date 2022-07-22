@@ -1,0 +1,377 @@
+{% extends 'base/msbase.html' %} {% load static %} {% load hosts %} {% block title %} Mysecurity FAQ {% endblock title %} {% block headercss %}
+<link rel="stylesheet" href="{% static '' %}css/glide.core.css" />
+<link rel="stylesheet" href="{% static '' %}css/glide.theme.css" /> {% endblock headercss %} {% block content %}
+<section class="f-banner">
+    <div class="container">
+        <h2>How can we help you?</h2>
+        <p>
+            Find advice and answers from our support team fast or get in touch
+        </p>
+        <!-- This section will come back -->
+        <!-- <div class="fsearch-box">
+          <input type="text" placeholder="Search for answers" />
+        </div> -->
+    </div>
+</section>
+<div class="container">
+    <section class="faq-section">
+        <h2 class="faq-title">
+            Here are some common q/a about personal cybersecurity
+        </h2>
+        <div class="row justify-content-between faq-row">
+            <div class="col-md-4">
+                <div class="faq-category">
+                    <h2>General</h2>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="ques-list">
+                    <button class="accordion">
+            What is Personal Cyber Security?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            Personal Cybersecurity means securing your personal digital space on the Internet. It includes securing your personal devices, social media accounts, financial transactions, online communication, home network, and email accounts.
+                        </p>
+                    </div>
+
+                    <button class="accordion">
+            Why do I need this personal cyber security service?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            In recent times, personal information breaches and financial hacking incidents are happening continuously. You may not be out of these attacks. Before these kinds of attacks happen to you, the best way is to protect your space. Also, antivirus and internet
+                            protection tools cannot give you in-depth protection from HACKERS.
+                        </p>
+                    </div>
+
+                    <button class="accordion">
+            What are the best practices to be secured in CyberSpace?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            As it is a vast world and every step has different threats, you might need various ways of protection. The best practice will be to take a managed cyber security solution and monitor that. You can also see our Blogs to get more details.
+                        </p>
+                    </div>
+                    <button class="accordion">How long does it take?</button>
+                    <div class="fpanel">
+                        <p>
+                            We need to know more about your requirements before we say that. Normally it takes 3 to 5 days and another day to write the report.
+                        </p>
+                    </div>
+                    <button class="accordion">Who are the auditors?</button>
+                    <div class="fpanel">
+                        <p>
+                            All of our auditors are CEH, CISA, CISSP, Security+ certified
+                        </p>
+                    </div>
+                    <button class="accordion">How do you provide the service?</button>
+                    <div class="fpanel">
+                        <p>
+                            Our engineer will connect with your device and provide you the service remotely.
+                        </p>
+                    </div>
+                    <button class="accordion">
+            What kind of tools and methods do you use to give the service?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            We use both automated and manual testing methods to analyze and remove the hack and secure your digital assets. For tools, we mostly use premium tools and some open-source tools.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-between faq-row">
+            <div class="col-md-4">
+                <div class="faq-category">
+                    <h2>About Concierge Cybersecurity</h2>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="ques-list">
+                    <button class="accordion">Who are your clients?</button>
+                    <div class="fpanel">
+                        <p>
+                            We normally provide the concierge cybersecurity service to High-Net-Worth Individuals like C-level business executives, politicians, and public figures.
+                        </p>
+                    </div>
+
+                    <button class="accordion">How do you support my security?</button>
+                    <div class="fpanel">
+                        <p>
+                            We audit and monitor your device, network, online accounts, and online presence regularly. We fix any found issues immediately and notify you. If there is a security risk, we contact you immediately. We provide monthly reports about our work. We also
+                            provide training and resources to educate you continuously to keep you up to date about cybersecurity.
+                        </p>
+                    </div>
+
+                    <button class="accordion">
+            Is it remote or physical service?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            We provide the service remotely, in special request service can be provided on-premise.
+                        </p>
+                    </div>
+                    <button class="accordion">
+            If I travel abroad, can you still ensure my cybersecurity?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            We provide service that is done by the direct intervention of the engineers. Yes, it is remote and we can provide it from anywhere.
+                        </p>
+                    </div>
+                    <button class="accordion">
+            Does your service include my family's devices?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            Yes, we can provide the service for your family member’s device, for your home network, your car GPS, etc
+                        </p>
+                    </div>
+                    <button class="accordion">
+            What about the security of my offline devices?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            We can also cover them under our Business Cybersecurity Service.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-between faq-row">
+            <div class="col-md-4">
+                <div class="faq-category">
+                    <h2>About Cyber Investigation</h2>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="ques-list">
+                    <button class="accordion">Can you track the hacker?</button>
+                    <div class="fpanel">
+                        <p>
+                            Yes, we can. It needs forensic investigation and you can learn more about our forensic investigation service here (Link).
+                        </p>
+                    </div>
+
+                    <button class="accordion">
+            If I lose my device can you find it?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            We can find it if you have taken the service before it got stolen. In some cases, we also assist in finding lost devices if proper measures were taken before it got lost.
+                        </p>
+                    </div>
+
+                    <button class="accordion">
+            If I lose my device can you recover data?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            If you have a backup in the cloud, we will make sure you can access it.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-between faq-row">
+            <div class="col-md-4">
+                <div class="faq-category">
+                    <h2>Trust & Confidentiality</h2>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="ques-list">
+                    <button class="accordion">
+            How do I trust you with my Data?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            We have been in the market for the last 13 years and we enforce strict policies to make sure our clients’ information remains confidential. We respect and adhere to GDPR compliance and local cybersecurity laws. We also sign NDA and special data agreement
+                            policy with all of our clients. <br /><br /> We also don’t store any of the client's data or have access to it except for the service providing time. In any case, if we share your data, if it is
+                            proven then we will lose our license to do business and a $10M fine
+                        </p>
+                    </div>
+
+                    <button class="accordion">
+            How can I believe that you will not be on my device without my
+            consent or you will not install any spyware?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            We are a multinational company and we are working with many prominent institutions and individuals. Also, we have a license and data protection compliance policy. If any of our engineers will do these kinds of unethical things, you can charge us and we
+                            might lose our license and business, which we don’t want.
+                        </p>
+                    </div>
+
+                    <button class="accordion">
+            What do you do when the government asks for my data?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            We keep our customer’s privacy and data safe regardless of the requester.
+                        </p>
+                    </div>
+                    <button class="accordion">
+            Are you authorized by the Local Government?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            Yes, we are authorized by the Local Government in every country we have branches.
+                        </p>
+                    </div>
+                    <button class="accordion">
+            Can I see your detailed portfolio of your clients and products?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            Yes, you can see our clients & testimonials
+                            <a href="{% host_url 'testimonial' host 'main' %}" target="_blank">here</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-between faq-row">
+            <div class="col-md-4">
+                <div class="faq-category">
+                    <h2>Pricing & Payment</h2>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="ques-list">
+                    <button class="accordion">
+            Can I do a Test Run before the purchase?
+          </button>
+                    <div class="fpanel">
+                        <p>Unfortunately, we don’t provide a trial service.</p>
+                    </div>
+
+                    <button class="accordion">How much does it cost?</button>
+                    <div class="fpanel">
+                        <p>
+                            The pricing is customizable, as it always depends on your requirements. The pricing depends on how many devices, accounts, or systems you want us to secure or assess.
+                        </p>
+                    </div>
+
+                    <button class="accordion">Is it expensive?</button>
+                    <div class="fpanel">
+                        <p>
+                            To some extent, normal consumers may find our service a bit expensive. We provide white-glove concierge cybersecurity service to elites. We prioritize quality over quantity. On top of that, we are not selling software but our professional engineers provide
+                            the service.
+                        </p>
+                    </div>
+                    <button class="accordion">
+            Is it a one-time service or monthly?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            Our regular services are one-time. If you want to take our managed security solution it will be monthly. We will analyze your requirement and based on that we will send you a different quotation.
+                        </p>
+                    </div>
+                    <button class="accordion">What are the payment methods?</button>
+                    <div class="fpanel">
+                        <p>
+                            You can do a bank deposit or you can pay online via Debit/Credit cards, PayPal, and other forms of online payments.
+                        </p>
+                    </div>
+                    <button class="accordion">How to place an order?</button>
+                    <div class="fpanel">
+                        <p>
+                            After consulting with us, we’ll provide you an invoice stating your requirements mentioned in the list. You can confirm and pay the invoice from our payment portal.
+                        </p>
+                    </div>
+                    <button class="accordion">
+            Do the tools and software come with the service or Do I have to
+            pay extra for it?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            No. We take care of the necessary tools. The package is all-inclusive.
+                        </p>
+                    </div>
+                    <button class="accordion">
+            Do I need to renew my subscription again after an interval?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            If you purchase a monthly managed subscription, then you'll have to renew every month for the continuation of the service.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-between faq-row">
+            <div class="col-md-4">
+                <div class="faq-category">
+                    <h2>Post Service</h2>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="ques-list">
+                    <button class="accordion">
+            Do you provide any refund guarantee?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            30 days money-back guarantee is provided for special cases.
+                        </p>
+                    </div>
+
+                    <button class="accordion">
+            How can I claim a refund if I terminate the contract?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            Refunds can be provided only when the service is not provided. Let's say someone gives an advance payment for 12 months but they want to cancel after 1 month, they will get an 11 months refund if they make a written notice in time. Please contact us for
+                            any refund related queries.
+                        </p>
+                    </div>
+
+                    <button class="accordion">
+            Can you guarantee that I’ll never get hacked or the hacker will
+            not be back?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            If you take our security service, we guarantee. It is also recommended to take a monthly managed security solution because the technology, your applications, devices’ operating systems are continuously updating and hackers are finding new ways to hack
+                            every single day.
+                        </p>
+                    </div>
+                    <button class="accordion">
+            What happens if the hacker comes back?/ What happens if I get
+            hacked?
+          </button>
+                    <div class="fpanel">
+                        <p>
+                            If we take the responsibility to ensure your security, you will not get hacked. In unlikely events, we shall respond immediately to restore your data and privacy
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<section class="faq-cta lazy" data-bg="{% static '' %}msimg/faq/CTA.png">
+    <h2>still need help? Send us a note</h2>
+    <a href="{% host_url 'get_start' host 'main' %}" target="_blank">Let Us Secure</a>
+</section>
+{% endblock content %} {% block customjs %}
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("factive");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
+</script>
+{% endblock customjs %}

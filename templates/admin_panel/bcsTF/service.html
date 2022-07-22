@@ -1,0 +1,122 @@
+{% extends 'base/bcs_admin_base.html' %}
+{% load static %}
+{% load hosts %}
+{% load crispy_forms_tags %}
+
+{% block title %} BCS Admin Services
+{% endblock title %}
+
+{% block headercss %}
+    <!-- data table css -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css"/>
+    <!-- custom css -->
+    <link rel="stylesheet" href="{% static 'tfcss/admin_panel/bcsTF/service.css' %}"/>
+    <style>
+        .select2-container {
+            width: 100% !important;
+        }
+    </style>
+{% endblock headercss %}
+{% block content %}
+    <!-- main section starts -->
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <button class="btn border-1 form-close form-close-back float-start mb-4 d-none">
+                        <i class="bi bi-arrow-left-circle-fill"></i>
+                        Go back to list
+                    </button>
+                    <button class="btn border-1 servicesBtn addService float-end mb-4">
+                        Add Service
+                        <i class="bi bi-plus-circle-fill"></i></button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12" style="margin-bottom: 15rem; position: relative;">
+                    <div class="modal-dialog modal-lg add-form d-none">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4>Add Service</h4>
+                                <button type="button" class="btn-close form-close"></button>
+                            </div>
+                            <div class="modal-body px-3">
+                                <form action="" enctype="multipart/form-data" class="needs-validation" method="POST">
+                                    {{ form.media }}
+                                    <div id="div_sales">
+                                        <label for="sales" class="fw-bold">Assign To</label>
+                                        <select name="sales" id="sales" class="form-select js-example-basic-multiple"
+                                                multiple>
+                                            {% for sales_person in sales_persons %}
+                                                <option value="{{ sales_person.id }}">{{ sales_person.email }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+
+                                    {{ form|crispy }}
+
+                                    {% csrf_token %}
+                                    <div class="d-flex justify-content-between">
+                                        <button type="submit" class="btn btn-primary saveService text-capitalize"
+                                                id="save-short-service">
+                                            save
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <h2 class="float-start position-absolute serviceHeading">Service List</h2>
+                        <table id="sub-service-list" class="table display service">
+                            <thead>
+                            <tr>
+                                <th>SL</th>
+                                <th>Service Name</th>
+                                <th>Sub Service Name</th>
+                                <th>Description</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for service in services %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ service.category.category_name }}</td>
+                                    <td>{{ service.service_title }}</td>
+                                    <td>{{ service.short_description }}</td>
+                                    <td>
+
+                                        <a href="{% host_url 'bcs_admin_services_edit' id=service.id %}"
+                                           class="btn editBtn">
+                                            <i class="icofont-edit text-primary rounded-circle activites-icon"></i>
+                                            Edit
+                                        </a>
+                                        <a href="{% host_url 'bcs_admin_services_delete' id=service.id %}"
+                                           class="btn trash">
+                                            <i class="bi bi-trash-fill text-danger rounded-circle activites-icon"></i>
+                                            Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- main section ends -->
+{% endblock content %}
+{% block customjs %}
+    <script src="{% static 'tfjs/admin_panel/bcsTF/service.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+            $('.js-example-basic-single').select2();
+            $('.js-example-basic-multiple').select2();
+        });
+    </script>
+{% endblock customjs %}

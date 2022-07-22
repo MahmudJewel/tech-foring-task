@@ -1,0 +1,208 @@
+{% extends 'base/pcs_admin_base.html' %} {% load static %} {% load hosts %}
+
+{% block title %} PCS User Interest
+{% endblock title %}
+
+{% block headercss %}
+    <link rel="stylesheet" href="{% static 'tfcss/admin_panel/bcsTF/service.css' %}" />
+{% endblock headercss %}
+{% block content %}
+    <!-- main section starts -->
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12" style="margin-block-start: .5rem; margin-block-end: 15rem; position: relative;">
+                    <div class="table-container">
+                        <h2 class="float-start table-heading position-absolute text-uppercase">interest List</h2>
+                        <table id="reading-list" class="table display service">
+                            <thead>
+                                <tr>
+                                    <th>SL</th>
+                                    <th>User Name</th>
+                                    <th>Email</th>
+                                    <th>List Title</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td> Jhon </td>
+                                    <td>
+                                        Jhon@gmail.com
+                                    </td>
+                                    <td><li class="fw-bold"> Risk Assessment </li></td>
+                                    <td>
+                                        <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                                            <i class="icofont-edit text-primary rounded-circle activites-icon"></i>
+                                            Edit
+                                        </button>
+                                        <button class="btn trash">
+                                            <i class="bi bi-trash-fill text-danger rounded-circle activites-icon"></i>
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Helal</td>
+                                    <td>
+                                        helal@mail.com
+                                    </td>
+                                    <td>
+                                        <li class="fw-bold"> Virus Removal </li>
+                                    </td>
+                                    <td>
+                                        <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                                            <i class="icofont-edit text-primary rounded-circle activites-icon"></i>
+                                            Edit
+                                        </button>
+                                        <button class="btn trash">
+                                            <i class="bi bi-trash-fill text-danger rounded-circle activites-icon"></i>
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Azharul</td>
+                                    <td>
+                                        azharul@gmial.com
+                                    </td>
+                                    <td>
+                                        <li class="fw-bold"> Hack Recovery</li>
+                                    </td>
+                                    <td>
+                                        <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                                            <i class="icofont-edit text-primary rounded-circle activites-icon"></i>
+                                            Edit
+                                        </button>
+                                        <button class="btn trash">
+                                            <i class="bi bi-trash-fill text-danger rounded-circle activites-icon"></i>
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Neruz</td>
+                                    <td>
+                                        neruz@gmial.com
+                                    </td>
+                                    <td>
+                                        <li class="fw-bold"> Open Source Intelligence</li>
+                                    </td>
+                                    <td>
+                                        <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                                            <i class="icofont-edit text-primary rounded-circle activites-icon"></i>
+                                            Edit
+                                        </button>
+                                        <button class="btn trash">
+                                            <i class="bi bi-trash-fill text-danger rounded-circle activites-icon"></i>
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="">
+                            <!-- <div class="col-auto mb-3">
+                                <label for="serviceName">User Name</label>
+                                <input type="serviceName" class="form-control" id="serviceName"
+                                    placeholder="Enter User Name" />
+                            </div>
+                            <div class="col-auto mb-3">
+                                <label for="serviceName">User Email</label>
+                                <input type="serviceName" class="form-control" id="serviceName"
+                                    placeholder="Enter Email" />
+                            </div> -->
+                            <div class="col-auto mb-3">
+                                <label for="serviceName">Select Interest</label>
+                                <div class="row gx-0 mt-4 d-flex justify-content-center">
+                                    <div class="col-md-5 me-lg-5">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked>
+                                            <label class="form-check-label text-truncate" for="defaultCheck1">
+                                                Risk Assessment
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked>
+                                            <label class="form-check-label text-truncate" for="defaultCheck1">
+                                                Incident Resoponse
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                            <label class="form-check-label text-truncate" for="defaultCheck1">
+                                                Cyber Crime Investigation
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked>
+                                            <label class="form-check-label text-truncate" for="defaultCheck1">
+                                                Open Source Intelligence
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                            <label class="form-check-label text-truncate" for="defaultCheck1">
+                                                Hack Recovery
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked>
+                                            <label class="form-check-label text-truncate" for="defaultCheck1">
+                                                Virus Removal
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                            <label class="form-check-label text-truncate" for="defaultCheck1">
+                                                Digital Forensic
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                            <label class="form-check-label text-truncate" for="defaultCheck1">
+                                                Digital Integration
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <!-- <button type="button" class="btn btn-primary">
+                                    Save and add another
+                                </button> -->
+                                <button type="button" class="btn btn-primary">
+                                    Update
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- main section ends -->
+{% endblock content %}
+{% block customjs %}
+    <script src="{% static 'tfjs/admin_panel/bcsTF/service.js' %}"></script>
+{% endblock customjs %}

@@ -1,0 +1,159 @@
+{% extends 'base/pcs_admin_base.html' %}
+{% load static %}
+{% load hosts %}
+{% load crispy_forms_tags %}
+
+{% block title %} PCS Admin Services Category
+{% endblock title %}
+
+{% block headercss %}
+    <link rel="stylesheet" href="{% static 'tfcss/admin_panel/bcsTF/service.css' %}"/>
+    <style>
+        .select2-container {
+            width: 100% !important;
+        }
+    </style>
+{% endblock headercss %}
+{% block content %}
+    <!-- main section starts -->
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <button class="btn border-1 form-close form-close-back float-start mb-4 d-none">
+                        <i class="bi bi-arrow-left-circle-fill"></i>
+                        Go back to list
+                    </button>
+                    <button class="btn border-1 servicesBtn addService float-end mb-4">
+                        Add Service
+                        <i class="bi bi-plus-circle-fill"></i></button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12" style="margin-bottom: 15rem; position: relative;">
+                    <div class="modal-dialog modal-lg add-form d-none">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4>Add Service</h4>
+                                <button type="button" class="btn-close form-close"></button>
+                            </div>
+                            <div class="modal-body px-3">
+                                <div id="loading" class="d-none justify-content-center">
+                                    <div class="spinner-border" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                                <form id="form" action="" enctype="multipart/form-data" class="needs-validation" method="POST">
+                                    {{ form.media }}
+{#                                    <div id="div_sales">#}
+{#                                        <label for="sales" class="fw-bold">Assign To</label>#}
+{#                                        <select name="sales" id="sales" class="form-select js-example-basic-multiple"#}
+{#                                                multiple>#}
+{#                                            {% for sales_person in sales_persons %}#}
+{#                                                <option value="{{ sales_person.id }}">{{ sales_person.email }}</option>#}
+{#                                            {% endfor %}#}
+{#                                        </select>#}
+{#                                    </div>#}
+
+                                    {{ form|crispy }}
+                                    <input type="text" class="d-none" id="product_id" name="product_id">
+                                    {% csrf_token %}
+                                    <div class="d-flex justify-content-between">
+                                        <button type="submit" class="btn btn-primary saveService text-capitalize"
+                                                id="save-short-service">
+                                            save
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <h2 class="float-start position-absolute serviceHeading">Service List</h2>
+                        <table id="sub-service-list" class="table display service">
+                            <thead>
+                            <tr>
+                                <th>SL</th>
+                                <th>Service Name</th>
+                                <th>Sub Service Name</th>
+                                <th>Description</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for service in services %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ service.category.category_name }}</td>
+                                    <td>{{ service.service_title }}</td>
+                                    <td>{{ service.short_description }}</td>
+                                    <td>
+
+                                        <a href="{% host_url 'pcs_admin_subscription_services_edit' host 'mysecurity' %}{{ service.id }}"
+                                           class="btn editBtn">
+                                            <i class="icofont-edit text-primary rounded-circle activites-icon"></i>
+                                            Edit
+                                        </a>
+                                        <a href="{% host_url 'pcs_admin_subscription_services_delete' host 'mysecurity' %}{{ service.id }}"
+                                           class="btn trash">
+                                            <i class="bi bi-trash-fill text-danger rounded-circle activites-icon"></i>
+                                            Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- main section ends -->
+{% endblock content %}
+{% block customjs %}
+    <script src="{% static 'tfjs/admin_panel/bcsTF/service.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+            $('.js-example-basic-multiple').select2();
+        });
+    </script>
+    <script>
+        let form = document.getElementById('form');
+        let loading = document.getElementById('loading');
+
+        let username = '{{ paypal_user }}'
+        let password = '{{ paypal_pass }}'
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let product_title = document.getElementById('id_service_title').value;
+            let short_description = document.getElementById('id_short_description').value;
+            let product_id = document.getElementById('product_id');
+            form.classList.add('d-none')
+            loading.classList.remove('d-none')
+            loading.classList.add('d-flex')
+            fetch('{{ paypal_url }}catalogs/products', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json',
+                    Authorization: "Basic " + btoa(username).slice(0, -1) + '6' + btoa(password),
+                },
+                body: JSON.stringify({
+                    "name": product_title+' - PCS',
+                    "description": short_description,
+                    "type": "SERVICE",
+                    "category": "COMPUTER_AND_DATA_PROCESSING_SERVICES",
+                })
+            }) /*end fetch */
+                .then(results => results.json())
+                .then(data => {
+                    product_id.value = data.id;
+                    {#console.log(product_id.value)#}
+                    form.submit()
+                })
+        })
+
+
+    </script>
+{% endblock customjs %}

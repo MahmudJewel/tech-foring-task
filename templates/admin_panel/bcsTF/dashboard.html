@@ -1,0 +1,329 @@
+{% extends 'base/bcs_admin_base.html' %} {% load static %}
+{% load my_filter %}
+
+{% block title %} BCS Admin Dashboard
+{% endblock title %}
+
+{% block headercss %}
+    <link rel="stylesheet" href="{% static 'tfcss/admin_panel/bcsTF/dashboard.css' %}"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+
+{% endblock headercss %}
+{% block content %}
+    <!-- main section starts -->
+    <main>
+        <section class="user-stat">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="accordion" id="accordionExample">
+                            <div class="row g-4 align-content-center">
+                                {% for service_category in service_categories %}
+                                    <div class="col-md-4">
+                                        <h2 class="subscription-info" style="background-color: #4566A0;"
+                                            id="heading{{ service_category.category_name|replacespace }}">
+                                            <div class="row">
+                                                <div class="col-9">
+                                                    <h3>{{ service_category.category_name }}</h3>
+                                                </div>
+                                                <div class="col-2">
+                                                    <button class="accordion-button collapsed text-white"
+                                                            style="width: fit-content; padding: 0; font-size: 30px;background-color: transparent"
+                                                            type="button"
+                                                            data-bs-toggle="collapse"
+                                                            data-bs-target="#collapse{{ service_category.category_name|replacespace }}"
+                                                            aria-expanded="false"
+                                                            aria-controls="collapse{{ service_category.category_name|replacespace }}">
+                                                        <i class="bi bi-arrow-down-circle"></i>
+                                                    </button>
+
+                                                </div>
+                                            </div>
+                                        </h2>
+                                        <div id="collapse{{ service_category.category_name|replacespace }}"
+                                             class="accordion-collapse collapse"
+                                             aria-labelledby="heading{{ service_category.category_name|replacespace }}"
+                                             data-bs-parent="#accordionExample">
+                                            <div class="accordion-body" style="padding: 10px">
+                                                {% for serv_cat in service_category.service_category.all %}
+                                                    <div class="row py-2">
+                                                        <div class="col-10">
+                                                            {{ serv_cat.service_title }}
+                                                        </div>
+                                                        <div class="col-2">
+                                                            {{ serv_cat.order_service.count }} <i class="bi bi-person"></i>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+
+                    {% comment %} <!-- User Stat Chart -->
+                    <div class="col-lg-4">
+                        <canvas id="user-chart" class="chartjs-render-monitor"></canvas>
+                    </div> {% endcomment %}
+                </div>
+            </div>
+        </section>
+
+        <section class="info">
+            <div class="container">
+                <div class="row">
+                    <!-- info chart -->
+                    <div class="col-md-12 mt-5">
+                        <!-- date picker -->
+{#                        <input type="text" id="dashboardDaterange" class="float-end" placeholder="Select By Time range" name="daterange"/>#}
+                        <canvas id="info-chart" class="mt-5" height="50" class="chartjs-render-monitor"></canvas>
+                        <!-- filter buttons -->
+                        <div class="filter-options d-flex w-100 justify-content-between  align-items-center" >
+                            <div class="input-group" style="width: 350px" >
+                              <span class="input-group-text" style="width: 120px" id="inputGroup-sizing-lg">Start month:</span>
+                              <input class="form-control" type="month" id="startMonth" name="startMonth">
+                            </div>
+                            <div class="input-group" style="width: 350px" >
+                              <span class="input-group-text" style="width: 120px" id="inputGroup-sizing-lg">End month:</span>
+                              <input class="form-control" type="month" id="endMonth" name="endMonth">
+                            </div>
+                            <button style="width: 150px" class="btn btn-secondary mx-2 rounded-pill" onclick="handleRangeChart()">Filter</button>
+                        </div>
+                        <div class="filter-options d-flex w-100 justify-content-between mb-3">
+                            <button style="width: 150px" class="btn btn-secondary mx-2 rounded-pill px-3" onclick="getChartData('month')">This Month</button>
+                            <button style="width: 150px" class="btn btn-secondary mx-2 rounded-pill px-3" onclick="getChartData('lastmonth')">Last Month</button>
+                            <button style="width: 150px" class="btn btn-secondary mx-2 rounded-pill px-3" onclick="getChartData('year')">This Year</button>
+                            <button style="width: 150px" class="btn btn-secondary mx-2 rounded-pill px-3" onclick="getChartData('all')">All</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% comment %}
+        <section class="overview my-5">
+            <div class="activities">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h3 class="mb-3 ">Recent Activities</h3>
+                            <!-- recent activities table -->
+                            <table class="table activites-table" id="activites-table">
+                                <thead>
+                                    <tr>
+                                        <th>activity</th>
+                                        <th>time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th><i
+                                                class="bi bi-person-plus-fill btn-success rounded-circle activites-icon"></i>
+                                            5 users hav signed up</th>
+                                        <td><i class="bi bi-clock-fill"></i> 3 minutes ago</td>
+                                    </tr>
+                                    <tr>
+                                        <th><i
+                                                class="bi bi-person-check-fill btn-primary rounded-circle activites-icon"></i>
+                                            2 users have subscribed</th>
+                                        <td><i class="bi bi-clock-fill"></i> 10 minutes ago</td>
+                                    </tr>
+                                    <tr>
+                                        <th><i class="bi bi-person-fill btn-purple rounded-circle activites-icon"></i> 3
+                                            users have renewed their account</th>
+                                        <td><i class="bi bi-clock-fill"></i> 30 minutes ago</td>
+                                    </tr>
+                                    <tr>
+                                        <th><i class="bi bi-person-x-fill btn-danger rounded-circle activites-icon"></i>
+                                            1
+                                            user have registered CCSP webinar </th>
+                                        <td><i class="bi bi-clock-fill"></i> 1 hour ago</td>
+                                    </tr>
+                                    <tr>
+                                        <th><i class="bi bi-person-x-fill btn-danger rounded-circle activites-icon"></i>
+                                            1
+                                            user have updated their interest list</th>
+                                        <td><i class="bi bi-clock-fill"></i> 1 hour ago</td>
+                                    </tr>
+                                    <tr>
+                                        <th><i class="bi bi-person-x-fill btn-danger rounded-circle activites-icon"></i>
+                                            1
+                                            user updated their interest list</th>
+                                        <td><i class="bi bi-clock-fill"></i> 1 hour ago</td>
+                                    </tr>
+                                    <tr>
+                                        <th><i class="bi bi-person-x-fill btn-danger rounded-circle activites-icon"></i>
+                                            1
+                                            PCS user recently subscribed to BCS service</th>
+                                        <td><i class="bi bi-clock-fill"></i> 1 hour ago</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-lg-6">
+                            <h3 class="mb-3">My Users</h3>
+                            <!-- user table -->
+                            <table class="table users-table" id="users-table" style="max-height: 10px;">
+                                <thead>
+                                    <th>title</th>
+                                    <th>title</th>
+                                    <th>title</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><i
+                                                class="bi bi-person-circle btn-primary rounded-circle activites-icon"></i>
+                                            Azharul
+                                        </td>
+                                        <td><i class="bi bi-person-fill text-yellow rounded-circle activites-icon"></i>
+                                            Moderator
+                                        </td>
+                                        <td>
+                                            <button class="btn">
+                                                <i class="icofont-edit text-primary rounded-circle activites-icon"></i>
+                                            </button>
+                                            <button class="btn">
+                                                <i
+                                                    class="bi bi-trash-fill text-danger rounded-circle activites-icon"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><i
+                                                class="bi bi-person-circle btn-primary rounded-circle activites-icon"></i>
+                                            Shomit
+                                        </td>
+                                        <td><i class="bi bi-person-fill text-yellow rounded-circle activites-icon"></i>
+                                            Editor
+                                        </td>
+                                        <td>
+                                            <button class="btn">
+                                                <i class="icofont-edit text-primary rounded-circle activites-icon"></i>
+                                            </button>
+                                            <button class="btn">
+                                                <i
+                                                    class="bi bi-trash-fill text-danger rounded-circle activites-icon"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><i
+                                                class="bi bi-person-circle btn-primary rounded-circle activites-icon"></i>
+                                            Azharul
+                                        </td>
+                                        <td><i class="bi bi-person-fill text-yellow rounded-circle activites-icon"></i>
+                                            Moderator
+                                        </td>
+                                        <td>
+                                            <button class="btn">
+                                                <i class="icofont-edit text-primary rounded-circle activites-icon"></i>
+                                            </button>
+                                            <button class="btn">
+                                                <i
+                                                    class="bi bi-trash-fill text-danger rounded-circle activites-icon"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><i
+                                                class="bi bi-person-circle btn-primary rounded-circle activites-icon"></i>
+                                            Shomit
+                                        </td>
+                                        <td><i class="bi bi-person-fill text-yellow rounded-circle activites-icon"></i>
+                                            Editor
+                                        </td>
+                                        <td>
+                                            <button class="btn">
+                                                <i class="icofont-edit text-primary rounded-circle activites-icon"></i>
+                                            </button>
+                                            <button class="btn">
+                                                <i
+                                                    class="bi bi-trash-fill text-danger rounded-circle activites-icon"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><i
+                                                class="bi bi-person-circle btn-primary rounded-circle activites-icon"></i>
+                                            Azharul
+                                        </td>
+                                        <td><i class="bi bi-person-fill text-yellow rounded-circle activites-icon"></i>
+                                            Moderator
+                                        </td>
+                                        <td>
+                                            <button class="btn">
+                                                <i class="icofont-edit text-primary rounded-circle activites-icon"></i>
+                                            </button>
+                                            <button class="btn">
+                                                <i
+                                                    class="bi bi-trash-fill text-danger rounded-circle activites-icon"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><i
+                                                class="bi bi-person-circle btn-primary rounded-circle activites-icon"></i>
+                                            Shomit
+                                        </td>
+                                        <td><i class="bi bi-person-fill text-yellow rounded-circle activites-icon"></i>
+                                            Editor
+                                        </td>
+                                        <td>
+                                            <button class="btn">
+                                                <i class="icofont-edit text-primary rounded-circle activites-icon"></i>
+                                            </button>
+                                            <button class="btn">
+                                                <i
+                                                    class="bi bi-trash-fill text-danger rounded-circle activites-icon"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endcomment %}
+    </main>
+{% endblock content %}
+{% block customjs %}
+    <!-- custom scripts -->
+    <script src="{% static 'tfjs/admin_panel/bcsTF/chart.js' %}"></script>
+    <script src="{% static 'tfjs/admin_panel/bcsTF/dashboard.js' %}"></script>
+    <script src="{% static 'tfjs/admin_panel/bcsTF/nav.js' %}"></script>
+    <!-- sweetAlert CDN -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        const handleRangeChart =()=>{
+            const startMonth = $('#startMonth').val();
+            const endMonth = $('#endMonth').val();
+    
+            // error if start or endmonth is empty
+            if(startMonth === '' || endMonth === ''){
+                Swal.fire({
+                    text: 'Please select start and end month',
+                    icon: 'error'
+                })
+                return;
+            }
+    
+            // validate startmonth and endmonth
+            if(startMonth > endMonth){
+                Swal.fire(({
+                    text: 'Start month can not be greater than end month!',
+                    icon: 'error',
+                  }));
+                return;
+            }
+    
+            console.log(startMonth,endMonth);
+            getChartData('range',startMonth,endMonth);
+        }
+    </script>
+{% endblock customjs %}

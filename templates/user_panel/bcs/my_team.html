@@ -1,0 +1,806 @@
+{% extends 'base/bcs_user_base.html' %} {% load static %} {% load my_filter %} {% load crispy_forms_tags %} {% load hosts %}
+{% block headercss %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    {% comment %} <link rel="stylesheet" href="https://npmcdn.com/tootik@1.0.2/css/tootik.min.css"> {% endcomment %}
+    <style>
+        body {
+            padding-right: 0 !important
+        }
+
+        .profile-details {
+            margin-block: 1rem;
+        }
+
+        .company-img {
+            /* border: 1px solid #000; */
+            text-align: center;
+            margin: 1rem;
+        }
+
+        .company-img img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .img-change {
+            visibility: hidden;
+        }
+
+        .company-logo:hover + .img-change {
+            visibility: visible;
+        }
+
+        .img-change:hover {
+            visibility: visible;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            opacity: 1;
+            z-index: 0;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 140px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 150%;
+            left: 50%;
+            margin-left: -75px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .alert-dismissible .btn-close {
+            top: -7px
+        }
+    </style>
+
+{% endblock headercss %}
+{% block title %} My Team {% endblock title %}
+{% block content %}
+    <div class="team-container">
+        <div class="company-profile">
+            <div class="pt-3 border-bottom border-gray pb-2 align-items-center">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h3 class="fw-bold mb-0">Your Business Profile</h3>
+                    {% if request.user.business_user.privilege != 'general_staff' %}
+                        <button class="btn btn-lg bg-navy" data-bs-toggle="modal" data-bs-target="#infoChangeModal"
+                                data-tootik="Edit Business" data-tootik-conf="left">
+                            <i class="fa fa-pencil"></i>
+                        </button>
+                    {% endif %}
+                </div>
+                <div class="profile-details row">
+                    <div class="col-md-3 align-items-center justify-content-center d-flex">
+                        <div class="company-img position-relative border border-2 rounded-circle"
+                             style="width: fit-content">
+                            <img src="{{ current_business.business.company_logo.url }}"
+                                 class="rounded-circle p-1 company-logo" alt="">
+                            {% if request.user.business_user.privilege != 'general_staff' %}
+                                <div data-tootik="Change Logo"
+                                     class="img-change overlay position-absolute top-0 start-0 bottom-0 end-0 w-100 h-100 m-auto d-flex align-items-center justify-content-center rounded-circle"
+                                     data-bs-toggle="modal" data-bs-target="#imageChangeModal"
+                                     style="background: #00000033; cursor: pointer"><i class="fa fa-camera"></i></div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="company-detail d-grid align-items-center">
+                            <h4>{{ current_business.business.company_name }}
+
+                                <input type="text" class="d-none key" id="myInput"
+                                       value="{{ current_business.business.unique_id }}"
+                                       disabled/>
+                                <div class="tooltip">
+                                    <span onclick="myFunction()" onmouseout="outFunc()" style="cursor: pointer">
+                                      <span class="tooltiptext" id="myTooltip">Copy Business Key</span>
+                                      <i class="fa fa-copy text-primary fs-5"></i>
+                                    </span>
+                                </div>
+                            </h4>
+                            <div class="row mx-0">
+                                <div class="col-sm-6 col-md ps-0">
+                                    <p class="mb-1">Company
+                                        Type: {{ current_business.business.industry_type|capitalize }}</p>
+                                    <p class="mb-1">Website:
+                                        <a href="{{ current_business.business.website }}"
+                                           target="_blank">{{ current_business.business.website }}</a>
+                                    </p>
+                                    <p class="mb-1">No of Employees: {{ current_business.business.business_size }}</p>
+                                </div>
+                                <div class="col-sm-6 col-md ps-0">
+                                    <p class="mb-1">Phone: {{ current_business.business.phone_number }}</p>
+                                    <p class="mb-1">Email: {{ current_business.business.email }}</p>
+                                    <p class="mb-1">Address: {{ current_business.business.address }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if request.user.business_user.privilege != 'general_staff' %}
+            <!-- Modal -->
+            <div class="modal fade" id="imageChangeModal" tabindex="-1" aria-labelledby="imageChangeModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="imageChangeModalLabel">Change Company Logo</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {{ image_form|crispy }}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-navy" name="img-btn">Upload</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="infoChangeModal" tabindex="-1" aria-labelledby="infoChangeModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="infoChangeModalLabel">Change Company Information</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {{ info_form|crispy }}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-navy" name="info-btn">Update</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="employeePermission" tabindex="-1" aria-labelledby="employeePermissionLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content" style="width:100%">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="employeePermission">Change Access Information</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="px-3 table-responsive">
+                            <div>
+                                <h5 class="mt-2 services-type">Services</h5>
+                            </div>
+                            <table class="table text-center">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Service Name</th>
+                                    <th scope="col">Package Name</th>
+                                    <th scope="col">Max User</th>
+                                    <th scope="col">Total User</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody id="updateServicePermissionTable">
+                                {% comment %} 
+                                    Fill data from script
+                                {% endcomment %}
+                                </tbody>
+                            </table>
+                            <div>
+                                <h5 class="mt-2 services-type">Courses</h5>
+                            </div>
+                            <table class="table text-center">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Course Name</th>
+                                    <th scope="col">Package Name</th>
+                                    <th scope="col">Max User</th>
+                                    <th scope="col">Total User</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody id="updateCoursePermissionTable">
+                                {% comment %} 
+                                    Fill data from script
+                                {% endcomment %}
+                                </tbody>
+                            </table>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        <section class="team-statistics mb-5">
+            {% if request.user.business_user.privilege != 'general_staff' %}
+                <div id="liveAlertPlaceholder"></div>
+                <div class="pt-3 border-bottom border-gray pb-2 d-flex justify-content-between align-items-center">
+                    <h4 class="fw-bold mb-0">Your team</h4>
+                    <button data-bs-toggle="modal" data-bs-target="#addNew" class="btn btn-lg bg-navy">
+                        <i class="fa fa-plus-circle"></i>
+                        Invite User
+                    </button>
+                </div>
+            {% endif %}
+
+            {% comment %}<div class="py-5 gap-4 row px-4">
+                {% for employee in current_business.business.business_business.all %}
+                    <div class="col-md-3">
+                        <div class="card rounded-5 shadow" style="background: #182a5915;">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <div class="d-flex flex-column align-items-center justify-content-center gap-2">
+                                        <img src="{{ employee.user.profile_pic.url }}" class="card-img-top"
+                                             style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover"
+                                             alt="...">
+                                        <h5 class="mb-0 fw-bold">{{ employee.user.full_name }}</h5>
+                                        <p class="mb-0">Position: {{ employee.position }}</p>
+                                        <p class="mb-0">Joined Date: {{ employee.joined_date|date }}</p>
+                                    </div>
+                                    <hr>
+                                    <div class="d-flex flex-column align-items-center gap-2">
+                                        <p class="mb-0">Phone Number: {{ employee.user.phone_number }}</p>
+                                        <p class="mb-0">Email: {{ employee.user.email }}</p>
+                                        <div class="">
+                                            <a href="#" class="btn btn-navy" data-tootik="View Profile"><i
+                                                    class="fa fa-user-o"></i></a>
+                                            {% if current_business.business.business_business.count > 1 %}
+                                                {% if request.user.business_user.privilege != 'general_staff' %}
+                                                    <a href="#" class="btn btn-navy" data-tootik="Edit Position"><i
+                                                            class="fa fa-pencil"></i></a>
+                                                    <a href="
+
+
+                                                            {% host_url 'bcs_user_team_member_delete' %}{{ employee.id }}"
+                                                       class="btn btn-navy" data-tootik="Remove Employee"><i
+                                                            class="fa fa-trash-o"></i></a>
+                                                {% endif %}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>{% endcomment %}
+
+            <section class="mt-5 table-responsive">
+                <table id="myTable" class="display mt-5 table text-center border border-gray">
+                    <thead class="border border-gray">
+                    <tr class="fw-bold text-navy border border-gray">
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Position</th>
+                        <th>Permissions</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for employee in current_business.business.business_business.all %}
+                        <tr>
+                            <td>{{ employee.user.full_name }}</td>
+                            <td>{{ employee.user.email }}</td>
+                            <td>{{ employee.position }}</td>
+                            <td>{{ employee.privilege|capitalize }}</td>
+                            <td>
+                                <a href="{% host_url 'bcs_user_my_team_user' host 'main' %}{{ employee.id }}"
+                                   class="btn btn-outline-navy btn-sm" data-tootik="View Profile"><i
+                                        class="fa fa-user-o"></i></a>
+                                <button data-tootik="Change access permissions" id=""
+                                        class="btn btn-outline-navy btn-sm employeePermissionUpdate"
+                                        data-bs-toggle="modal" data-bs-target="#employeePermission"
+                                        onclick="handlePermissionAccess({{ employee.user.id }})">
+                                    <i class="icofont-unlock"></i>
+                                </button>
+
+                                {% if current_business.business.business_business.count > 1 %}
+                                    {% if request.user.business_user.privilege != 'general_staff' %}
+                                        {% if employee.privilege == 'admin' %}
+                                            {% if admins > 1 %}
+                                                <button data-tootik="Edit" id="{{ employee.id }}"
+                                                        class="detail-btn btn btn-outline-navy btn-sm"
+                                                        data-bs-toggle="modal" data-bs-target="#employeeDetail">
+                                                    <i class="bi bi-pencil"></i>
+                                                </button>
+                                                <a data-tootik="Delete"
+                                                   href="{% host_url 'bcs_user_team_member_delete' host 'main' %}{{ employee.id }}"
+                                                   class="del-btn btn btn-outline-danger btn-sm">
+                                                    <i class="bi bi-trash"></i>
+                                                </a>
+                                            {% endif %}
+                                        {% else %}
+                                            <button data-tootik="Edit" id="{{ employee.id }}"
+                                                    class="detail-btn btn btn-outline-navy btn-sm"
+                                                    data-bs-toggle="modal" data-bs-target="#employeeDetail">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <a data-tootik="Delete"
+                                               href="{% host_url 'bcs_user_team_member_delete' host 'main' %}{{ employee.id }}"
+                                               class="del-btn btn btn-outline-danger btn-sm">
+                                                <i class="bi bi-trash"></i>
+                                            </a>
+                                        {% endif %}
+
+                                    {% endif %}
+                                {% endif %}
+                            </td>
+
+                        </tr>
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Modal -->
+            {% if request.user.business_user.privilege != 'general_staff' %}
+                <div class="modal fade" id="employeeDetail" tabindex="-1" aria-labelledby="employeeDetail-Label"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="employeeDetail-Label">Change Employee Privilege</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <form onsubmit="updatePrivilege(event)" action="" method="POST">
+                                <div class="modal-body">
+                                    {% csrf_token %}
+                                    <div class="mb-3">
+                                        <label for="designation" class="form-label">Designation</label>
+                                        <input type="text" class="form-control" id="designation">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="privilege" class="form-label">Privilege</label>
+                                        <select id="privilege" class="form-select" aria-label="Default select example">
+                                            <option value="admin">Admin</option>
+                                            <option value="general_admin">General Admin</option>
+                                            <option value="general_staff">General Staff</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-navy">Update</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            <div class="modal fade" id="addNew" tabindex="-1" aria-labelledby="trainingModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content border-0 bg-main">
+                        <div class="modal-header border-0">
+                            <button type="button" class="btn-close rounded-circle bg-green" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body px-5 pb-5">
+                            <h4 class="px-3 fw-bold text-center">Invite Members for Your Team</h4>
+
+                            {% comment %} <form action="" method="POST" onkeydown="return event.key != 'Enter';">
+                                {% csrf_token %}
+                                <input type="email" name="email" class="form-control" placeholder="User Email">
+                                <button type="submit" class="mt-4 btn bg-navy p-1 px-3" name="inv-btn">INVITE</button>
+                            </form> {% endcomment %}
+                            <form onsubmit="submitForm(event)" id="invite-form" method="POST"
+                                  onkeydown="return event.key != 'Enter';">
+                                {% csrf_token %}
+                                <div class="email-container d-flex flex-wrap justify-content-start align-items-start align-content-start border border-dark fs-7 p-2 h-200p">
+                                    <div class="h-25p">
+                                        <input autocomplete="off" class="email-input" maxlength="30" type="email"
+                                               placeholder="Type an email">
+                                        <button type="button" class="add-email btn p-0"><i
+                                                class="icofont-plus-circle"></i></button>
+                                    </div>
+                                    <div id="validationEmail" class="invalid-feedback">
+                                        Please choose a valid email.
+                                    </div>
+                                </div>
+                                <input type="text" name="email" class="all-emails" hidden>
+                                <input type="hidden" name="inv-btn">
+                                <button type="submit" class="mt-4 btn bg-navy p-1 px-3" name="inv-btn">INVITE</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock content %}
+
+{% block customjs %}
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+            integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script>
+        const csrf_token = document.querySelector("#employeeDetail form input[name='csrfmiddlewaretoken']").value;
+
+        const handleSubscriptionAccessChange = (serviceId, userId) => {
+            const payload = {
+                subscription_order: serviceId,
+                user: userId
+            }
+            fetch(`${mainOrigin}/api/bcs/subscription_team/`, {
+                method: 'POST',
+                credentials: 'include',
+                body: JSON.stringify(payload),
+                headers: {
+                    'Content-type': 'application/json',
+                    'X-CSRFToken': csrf_token,
+                }
+            })
+                .then((response) => response.json())
+                .then(data => {
+                    handlePermissionAccess(userId);
+                })
+        }
+
+        const handleCourseAccessChange = (serviceId, userId) => {
+            const payload = {
+                subscription_order: serviceId,
+                user: userId
+            }
+            fetch(`${mainOrigin}/api/bcs/course_subscription_team/`, {
+                method: 'POST',
+                credentials: 'include',
+                body: JSON.stringify(payload),
+                headers: {
+                    'Content-type': 'application/json',
+                    'X-CSRFToken': csrf_token,
+                }
+            })
+                .then((response) => response.json())
+                .then(data => {
+                    handlePermissionAccess(userId);
+                })
+        }
+
+        const handlePermissionAccess = id => {
+            const serviceContainer = $(`#updateServicePermissionTable`);
+            const courseContainer = $(`#updateCoursePermissionTable`);
+            serviceContainer.empty();
+            courseContainer.empty();
+            fetch(`${mainOrigin}/api/bcs/puchased_subscriptions/`, {
+                credentials: 'include',
+            })
+                .then((response) => response.json())
+                .then(services => {
+                    const servicesIds = services?.map(service => service.id)
+                    fetch(`${mainOrigin}/api/bcs/subscription_team/`, {
+                        credentials: 'include',
+                        headers: {
+                            'Content-type': 'application/json',
+                            'X-CSRFToken': csrf_token,
+                        }
+                    })
+                        .then((response) => response.json())
+                        .then(team => {
+                            services.forEach(service => {
+                                const subscribed = team?.filter(sUser => service.id === sUser.subscription_order && sUser.user === id)
+                                const tableRow = document.createElement("tr");
+                                if (service.is_active) {
+                                    tableRow.innerHTML += `
+                        <th scope="row">${service.subscription_service}</th>
+                        <td>${service.subscription_package}</td>
+                        <td>${service.max_user}</td>
+                        <td>${service.total_user}</td>
+                        <td>
+                            ${
+                                        (!subscribed.length && service.max_user > service.total_user) ? (`<button
+                                style="width: 150px; height: 35px" 
+                                type="button" 
+                                class="btn btn-outline-navy"
+                                onclick="handleSubscriptionAccessChange(${service.id},${id})"
+                                >
+                                    Give Access
+                                </button>`) : (`<button 
+                                style="width: 150px; height: 35px" 
+                                type="button" 
+                                disabled
+                                class="btn btn-outline-navy"
+                                >
+                                    Give Access
+                                </button>`)
+                                    {% comment %}
+                                    (`<button
+                                    style="width: 150px; height: 35px"
+                                    type="button"
+                                    class="btn btn-outline-navy"
+                                    onclick="handleSubscriptionAccessChange(${service.id},${id})"
+                                    >
+                                        Give Access
+                                    </button>`)
+                                    {% endcomment %}
+                                    }
+                        </td>
+                        `
+                                }
+                                serviceContainer.append(tableRow);
+                            })
+                        })
+                })
+            fetch(`${mainOrigin}/api/bcs/puchased_course_subscriptions/`, {
+                credentials: 'include',
+            })
+                .then((response) => response.json())
+                .then(courses => {
+                    console.log(courses)
+                    const coursesIds = courses?.map(service => service.id)
+                    fetch(`${mainOrigin}/api/bcs/course_subscription_team/`, {
+                        credentials: 'include',
+                        headers: {
+                            'Content-type': 'application/json',
+                            'X-CSRFToken': csrf_token,
+                        }
+                    })
+                        .then((response) => response.json())
+                        .then(team => {
+                            courses.forEach(course => {
+                                const subscribed = team?.filter(sUser => course.id === sUser.subscription_order && sUser.user === id)
+                                const tableRow = document.createElement("tr");
+                                if (course.is_active) {
+                                    tableRow.innerHTML += `
+                        <th scope="row">${course.course}</th>
+                        <td>${course.course_package}</td>
+                        <td>${course.max_user}</td>
+                        <td>${course.total_user}</td>
+                        <td>
+                            ${
+                                        (!subscribed.length && course.max_user > course.total_user) ? (`<button
+                                style="width: 150px; height: 35px" 
+                                type="button" 
+                                class="btn btn-outline-navy"
+                                onclick="handleCourseAccessChange(${course.id},${id})"
+                                >
+                                    Give Access
+                                </button>`) : (`<button 
+                                style="width: 150px; height: 35px" 
+                                type="button" 
+                                disabled
+                                class="btn btn-outline-navy"
+                                >
+                                    Give Access
+                                </button>`)
+                                    {% comment %}
+                                    (`<button
+                                    style="width: 150px; height: 35px"
+                                    type="button"
+                                    class="btn btn-outline-navy"
+                                    onclick="handleCourseAccessChange(${course.id},${id})"
+                                    >
+                                        Give Access
+                                    </button>`)
+                                    {% endcomment %}
+                                    }
+                        </td>
+                        `
+                                }
+                                courseContainer.append(tableRow);
+                            })
+                        })
+                })
+        }
+
+        document.querySelector('#employeeDetail .modal-body');
+        document.querySelectorAll('.detail-btn').forEach(btn => {
+            btn.addEventListener('click', e => {
+
+                {% comment %} document.querySelector('#employeeDetail  form .modal-body').insertAdjacentHTML('beforebegin',
+                `<input type="hidden" value="${btn.parentNode.parentNode.children[1].textContent}">`); {% endcomment %}
+
+                document.querySelector('#employeeDetail form .modal-body').insertAdjacentHTML('beforebegin',
+                    `<input type="hidden" id="apiId" value="${btn.id}">`);
+
+                fetch(`${location.origin}/api/bcs/team_permission/${btn.id}/`)
+                    .then(res => res.json())
+                    .then(data => {
+                        document.getElementById('designation').value = data.position;
+                        document.querySelectorAll('#privilege option').forEach(option => {
+                            if (option.value === data.privilege)
+                                option.selected = true;
+                            else
+                                option.selected = false;
+                        })
+                    });
+
+            });
+        });
+
+        const updatePrivilege = e => {
+            e.preventDefault();
+            // const csrf_token = document.querySelector("#employeeDetail form input[name='csrfmiddlewaretoken']").value;
+            let apiId = document.getElementById('apiId').value;
+
+            let privileges = document.getElementById("privilege");
+            let selectedPrivilege = privileges.options[privileges.selectedIndex].value;
+            let designation = document.getElementById("designation").value;
+
+            fetch(`${location.origin}/api/bcs/team_permission/${apiId}/`, {
+                headers: {
+                    'Content-type': 'application/json',
+                    'X-CSRFToken': csrf_token,
+                },
+                method: 'PATCH',
+                body: JSON.stringify({position: designation, privilege: selectedPrivilege}),
+
+            })
+                .then(res => {
+                    //if(res.statusText === 'OK')
+                    location.reload();
+                });
+
+        }
+
+        let validateEmail = document.getElementById('validationEmail');
+        const submitForm = e => {
+            e.preventDefault();
+
+            if (document.querySelectorAll('#invite-form .email-container .email').length > 0) {
+                let allEmails = '';
+                document.querySelectorAll('#invite-form .email-container .email').forEach(email => {
+                    allEmails += ' ' + email.children[0].textContent.split(' ')[0];
+                })
+                document.querySelector('.all-emails').value = allEmails;
+                e.target.submit()
+            } else {
+                console.log(validateEmail)
+                validateEmail.style.display = 'block';
+            }
+
+
+        }
+        let emailInput = document.querySelector('.team-statistics .email-input');
+        document.querySelector('.team-statistics .email-container').addEventListener('click', () => {
+            emailInput.focus();
+        });
+
+        function ValidateEmail(email) {
+            let validRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return email.match(validRegex) ? true : false;
+        }
+
+        let addEmail = (email) => {
+            let allEmail = document.querySelectorAll('.email-container .email');
+
+            if (ValidateEmail(email) && allEmail.length < 16) {
+                let newEmail = `<div class="email">
+                                        <span>${email} <span class="remove-email">&Cross;</span></span>
+                                        </div>`;
+
+                if (allEmail.length == 0) {
+                    emailInput.parentNode.insertAdjacentHTML('beforebegin', newEmail);
+                } else {
+                    let lastEmail = allEmail[allEmail.length - 1];
+                    lastEmail.insertAdjacentHTML('afterend', newEmail);
+                }
+
+                emailInput.value = '';
+                removeEmail();
+            }
+        }
+        let removeEmail = () => {
+            document.querySelectorAll('.email-container .remove-email').forEach(email => {
+                email.addEventListener('click', e => {
+                    document.querySelector('.email-container').removeChild(e.target.parentNode.parentNode);
+                });
+            });
+        }
+
+        emailInput.addEventListener('keydown', (e) => {
+            let email = e.target.value;
+            if (e.key == 'Enter') {
+                addEmail(email);
+            }
+        });
+        emailInput.addEventListener('keyup', (e) => {
+            validateEmail.style.display = 'none';
+            if (e.key != 'Enter') {
+                if (ValidateEmail(e.target.value)) {
+                    e.target.style.backgroundColor = '#28a745';
+                    e.target.style.color = 'white';
+                } else {
+                    e.target.style.backgroundColor = '#dc3545';
+                    e.target.style.color = 'white';
+                }
+            } else {
+                e.target.style.backgroundColor = 'white';
+                e.target.style.color = 'black';
+            }
+        });
+        document.querySelector('.email-container .add-email').addEventListener('click', e => {
+            let newEmail = e.target.parentNode.parentNode.children[0];
+            newEmail.style.backgroundColor = 'white';
+            newEmail.style.color = 'black';
+            addEmail(newEmail.value);
+        });
+
+        removeEmail();
+
+        document.querySelectorAll('.my-team-img .img-logo').forEach((img, index) => {
+            let value = `-${20 * index}px`;
+            img.style.left = value;
+        });
+
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+                responsive: true,
+                "order": []
+            });
+        });
+    </script>
+    <script>
+        function myFunction() {
+            var copyText = document.getElementById("myInput");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(copyText.value);
+
+            var tooltip = document.getElementById("myTooltip");
+            tooltip.innerHTML = "Copied";
+        }
+
+        function outFunc() {
+            var tooltip = document.getElementById("myTooltip");
+            tooltip.innerHTML = "Copy Business Key";
+        }
+    </script>
+    <script>
+        var alertPlaceholder = document.getElementById('liveAlertPlaceholder');
+
+        function successAlert(message, type) {
+            var wrapper = document.createElement('div')
+            wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">User with given email ' + message + ' added to your teams.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+
+            alertPlaceholder.append(wrapper)
+        }
+
+        function failedAlert(message, type) {
+            var wrapper = document.createElement('div')
+            wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">User with given email ' + message + ' registered to another business.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+
+            alertPlaceholder.append(wrapper)
+        }
+
+        {% if success %}
+            successAlert('{{ success }}', 'success')
+        {% endif %}
+
+        {% if message %}
+            failedAlert('{{ message }}', 'danger')
+        {% endif %}
+    </script>
+{% endblock customjs %}

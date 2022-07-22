@@ -1,0 +1,83 @@
+{% extends 'base/main_admin_base.html' %} {% load static %} {% block title %} Event Details
+{% endblock title %}
+{% load my_filter %}
+{% block headercss %}
+<link rel="stylesheet" href="{% static '' %}tfcss/admin_panel/mainTF/eventWebinar.css" /> {% endblock headercss %}
+{% block content %}
+<main>
+    <section class="event-count mb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-white p-4 bg-primary-25">
+                        <h4>
+                            {{ event.event_name }}
+                        </h4>
+                        <p>
+                            {{ event.event_description|safe }}
+                        </p>
+                        <p class="mt-2">
+                            <span class="fw-bolder">Speakers: </span>{{ event.speaker }}
+                        </p>
+                        <div class="w-50 my-2">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p class="fw-bolder"><i class="bi bi-people-fill"></i> Total Registered: <span
+                                            class="fw-normal">50</span></p>
+                                    <p class="fw-bolder"><i class="bi bi-people-fill"></i> Medium: <span
+                                            class="fw-normal">{{ event.medium|capitalize }}</span></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="fw-bolder"><i class="bi bi-calendar-check"></i> Date: <span
+                                            class="fw-normal">{{ event.date_field }}</span></p>
+                                    <p class="fw-bolder"><i class="bi bi-clock"></i> Time: <span class="fw-normal">{{ event.time_field }}
+                                    </span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="event-control">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <table id="event-details" class="display" style="width: 100%">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>First Name</th>
+                                <th>Email</th>
+                                <th>Phone Number</th>
+                                <th>Gender</th>
+                                <th>Registered Date</th>
+                                <th>Organisation</th>
+                                <th>Position</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for register_user in event.registered_event_event.all %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ register_user.user.full_name }}</td>
+                                <td>{{ register_user.user.email }}</td>
+                                <td>{{ register_user.user.phone_number }}</td>
+                                <td>{{ register_user.user.gender }}</td>
+                                <td>{{ register_user.user.birth_date }}</td>
+                                <td>{{ register_user.user.business_user.business.company_name }}</td>
+                                <td>{{ register_user.user.business_user.position }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+{% endblock content %} {% block customjs %}
+<script src="{% static '' %}tfjs/admin_panel/mainTF/eventWebinar.js"></script>
+{% endblock customjs %}

@@ -1,0 +1,302 @@
+{% extends 'base/bcs_admin_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load hosts %}
+{% block title %} BCS Subscription Packages
+{% endblock title %}
+
+{% block headercss %}
+    <link rel="stylesheet" href="{% static 'tfcss/admin_panel/bcsTF/dashboard.css' %}"/>
+    <link rel="stylesheet" href="{% static 'tfcss/admin_panel/bcsTF/subscription.css' %}"/>
+    <!-- charts js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+{% endblock headercss %}
+{% block content %}
+    <!-- main section starts -->
+    <main>
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="package-stat">
+                            <div class="shadow p-4 mt-4" style="vertical-align: middle;">
+                                <canvas id="package-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8" style="align-self: end;">
+                        <div class="row g-4 align-content-center">
+                            <div class="col-md-6">
+                                <div class="subscription-info" style="background-color: #4566A0;">
+                                    <h3>Basic</h3>
+                                    <p class="fw-bolder">
+                                        <i class="bi bi-person"></i> <span style="font-size: 25px;">750</span> users
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="subscription-info" style="background-color: #2C4C8C;">
+                                    <h3>Medium</h3>
+                                    <p class="fw-bolder">
+                                        <i class="bi bi-person"></i> <span style="font-size: 25px;">750</span> users
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="subscription-info" style="background-color: #2C4C8C;">
+                                    <h3>Advanced</h3>
+                                    <p class="fw-bolder">
+                                        <i class="bi bi-person"></i> <span style="font-size: 25px;">750</span> users
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="subscription-info" style="background-color: #182F59;">
+                                    <h3>Custom</h3>
+                                    <p class="fw-bolder">
+                                        <i class="bi bi-person"></i> <span style="font-size: 25px;">750</span> users
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="info">
+            <div class="container">
+                <div class="row my-5">
+                    <select name="serviceName" class="w-25 px-3 py-2 mb-3" id="serviceName">
+                        <!-- <option value="" disabled >Select a service</option> -->
+                        {% for service in services %}
+                            <option value="{{ service.id }}">{{ service }}</option>
+                        {% endfor %}
+                    </select>
+                    <div class="subscription-container position-relative px-0 px-md-2 text-center">
+                        <div class="plugAndPlay">
+                            <div class="border-bottom border-gray pb-1">
+                                <div class="d-flex heading justify-content-between">
+                                    <div class="btn-container">
+                                        <button class="btn btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#subscribeModal-1">Add package
+                                        </button>
+                                        {% comment %}<button class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#subscribeFeatureModal-1">Add features</button>{% endcomment %}
+                                    </div>
+                                    <h4 class="fw-bold">SUBSCRIPTION PACKAGES</h4>
+                                </div>
+                            </div>
+                            <section class="package-details mt-4">
+
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- modal -->
+        <div class="modal fade" id="subscribeModal-1" tabindex="-1" aria-labelledby="subscribeModal-1Label"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="loading" class="d-none justify-content-center">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+
+                        <form action="" class="needs-validation" method="POST" id="form">
+                            <div class="d-flex justify-content-between">
+                                <h4>Package Details</h4>
+                                <h4>New Data</h4>
+                            </div>
+                            {{ form|crispy }}
+                            <input type="text" id="package_id" name="package_id" class="d-none">
+                            {% csrf_token %}
+                            <div class="row gx-3 mx-0 form-group px-0">
+                                <div class="col-md-6 ps-0">
+                                    <label for="featureName-1" class="form-label">Feature Name 1</label>
+                                    <input type="text" class="form-control" name="featureName" id="featureName-1"
+                                           required>
+                                </div>
+                                <div class="col-md-6 pe-0">
+                                    <label for="feature-1" class="form-label">Feature 1</label>
+                                    <input type="text" class="form-control" name="feature" id="feature-1" required>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <button type="button" class="btn btn-sm btn-outline-success add-more-feature">Add
+                                        more
+                                    </button>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary text-capitalize" name="package-btn"
+                                    id="save-short-service">
+                                save
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- main section ends -->
+{% endblock content %}
+{% block customjs %}
+    <!-- custom scripts -->
+    <script src="{% static 'tfjs/admin_panel/bcsTF/subscription.js' %}"></script>
+    <script>
+        const packageDetails = document.querySelector(".package-details")
+        const subscriptionService = document.querySelector("#serviceName")
+        const showSubscription = (url) => {
+            fetch(url)
+                .then(response => response.json())
+                .then(result => {
+                    let divHtml
+                    result.map(subscription => {
+                        const div = document.createElement("div")
+                        div.classList.add("package", "bg-lightgreen", "shadow", "p-3", "rounded")
+                        divHtml = `<h3 class="fw-bold fs-4">${subscription.package_name}</h3>`
+                        subscription.feature_subscription?.map((item, index) => {
+                            divHtml += `
+                                <div class="info-btn">
+                                    <p class="mb-0">
+                                    <i class="bi bi-box"></i> ${item.feature_name}
+                                    </p>
+                                    <p class="mb-0 fw-bold">${item.feature}</p>
+                                </div>`})
+                            divHtml += `<div class="mt-2 info-btn">
+                                    <p class="mb-0"><i class="icofont-ui-user-group"></i> Max User</p>
+                                    <p class="mb-0 fw-bold">${subscription.max_user}</p>
+                                </div>`
+                            divHtml += `
+                                <div class="mt-2 info-btn">
+                                    <p class="mb-0">
+                                    <i class="icofont-tag"></i> Price
+                                    </p>
+                                    <p class="mb-0 fw-bold">${subscription.price}$ <span class="fw-bolder">/${subscription.duration_type}</span>
+                                    </p>
+                                    </div>
+                                    <div class="btn-container d-flex justify-content-between">
+                                    <a href="{%host_url 'bcs_admin_subscription_packages_edit'%}${subscription.id} " class="mt-3 btn bg-navy px-5 py-1 text-uppercase d-block"><i class="bi bi-pencil-square"></i></a>
+                                    <a href="{%host_url 'bcs_admin_subscription_packages_delete'%}${subscription.id} " class="mt-3 btn ms-3 px-5 py-1 text-uppercase btn-danger d-block"><i class="bi bi-trash2-fill"></i></a>
+                                </div>`
+                        div.innerHTML = divHtml
+                        packageDetails.appendChild(div)
+                    })
+
+                })
+        }
+        window.addEventListener("load", () => {
+            packageDetails.innerHTML = ""
+            showSubscription(`${baseUrl}bcs/package/${subscriptionService.value}`)
+        })
+
+        subscriptionService.addEventListener("change", () => {
+            packageDetails.innerHTML = ""
+            showSubscription(`${baseUrl}bcs/package/${subscriptionService.value}`)
+        });
+
+        let feature = 1;
+        document.querySelector('.add-more-feature').addEventListener('click', e => {
+            feature++;
+            e.target.parentNode.insertAdjacentHTML('beforebegin', `<div class="col-md-6 ps-0">
+            <label for="featureName-${feature}" class="form-label">Feature Name ${feature}</label>
+            <input type="text" class="form-control" name="featureName" id="featureName-${feature}" required>
+          </div>
+          <div class="col-md-6 pe-0">
+            <label for="feature-${feature}" class="form-label">Feature ${feature}</label>
+            <input type="text" class="form-control" name="feature" id="feature-${feature}" required>
+          </div>`);
+
+        })
+    </script>
+
+    <script>
+        let form = document.getElementById('form');
+        let loading = document.getElementById('loading');
+        let service_id = document.getElementById('id_service_id');
+        let product_id = '';
+
+        let username = '{{ paypal_user }}'
+        let password = '{{ paypal_pass }}'
+
+        service_id.addEventListener('change', (e) => {
+            fetch(`${mainOrigin}/api/bcs/subscription_service/${e.target.value}/`, {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    'Content-type': 'application/json',
+                },
+            }) /*end fetch */
+                .then(results => results.json())
+                .then(data => {
+                    product_id = data.product_id;
+                })
+        })
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let package_name = document.getElementById('id_package_name').value;
+            let duration = document.getElementById('id_duration').value;
+            let duration_type = (document.getElementById('id_duration_type').value).toUpperCase();
+            let price = document.getElementById('id_price').value;
+            let package_id = document.getElementById('package_id');
+
+            form.classList.add('d-none')
+            loading.classList.remove('d-none')
+            loading.classList.add('d-flex')
+            fetch('{{ paypal_url }}billing/plans', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json',
+                    Authorization: "Basic " + btoa(username).slice(0, -1) + '6' + btoa(password),
+                },
+                body: JSON.stringify({
+                    "product_id": product_id,
+                    "name": package_name,
+                    "description": "BCS",
+                    "status": "ACTIVE",
+                    "billing_cycles": [
+                        {
+                            "frequency": {
+                                "interval_unit": duration_type,
+                                "interval_count": duration
+                            },
+                            "tenure_type": "REGULAR",
+                            "sequence": 1,
+                            "total_cycles": 0,
+                            "pricing_scheme": {
+                                "fixed_price": {
+                                    "value": price,
+                                    "currency_code": "USD"
+                                }
+                            }
+                        }
+                    ],
+                    "payment_preferences": {
+                        "auto_bill_outstanding": true,
+                        "setup_fee": {
+                            "value": "0",
+                            "currency_code": "USD"
+                        },
+                        "setup_fee_failure_action": "CONTINUE",
+                        "payment_failure_threshold": 1
+                    }
+                })
+            }) /*end fetch */
+                .then(results => results.json())
+                .then(data => {
+                    {#console.log(data)#}
+                    package_id.value = data.id;
+                    {#console.log(product_id.value)#}
+                    form.submit()
+                })
+        })
+    </script>
+
+{% endblock customjs %}

@@ -1,0 +1,88 @@
+{% extends 'base/bcs_admin_base.html' %} {% load static %}
+{% load crispy_forms_tags %}
+{% load hosts %}
+
+{% block title %} BCS Admin Services
+{% endblock title %}
+
+{% block headercss %}
+    <!-- data table css -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css"/>
+    <!-- tiny script -->
+    {#    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>#}
+    <!-- custom css -->
+    <link rel="stylesheet" href="{% static 'tfcss/admin_panel/bcsTF/service.css' %}"/>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+
+{% endblock headercss %}
+{% block content %}
+    <!-- main section starts -->
+    <main>
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-lg-12" style="margin-bottom: 15rem; position: relative;">
+
+                    <div class="table-container">
+                        <h2 class="float-start position-absolute serviceHeading">Subscription Fields</h2>
+                        <table id="sub-service-list" class="table display service">
+                            <thead>
+                            <tr>
+                                <th>SL</th>
+                                <th>Subscription Service</th>
+                                <th>Service Category</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for subService in sub_services %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ subService.service_title }}</td>
+                                    <td>{{ subService.category }}</td>
+                                    <td>
+                                        <a href="{% host_url 'bcs_admin_subscription_fields_edit' id=subService.id %}"
+                                           class="btn btn-navy">
+                                            <i class="icofont-edit rounded-circle activites-icon"></i>
+                                            Add
+                                        </a>
+
+                                    </td>
+                                </tr>
+                            {% endfor %}
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- main section ends -->
+{% endblock content %}
+{% block customjs %}
+    <script src="{% static 'tfjs/admin_panel/bcsTF/service.js' %}"></script>
+    <script>
+        document.getElementById('id_description').addEventListener('keydown', e => {
+            if (e.key == 'Enter' || e.which == '13') {
+                e.preventDefault();
+            }
+        });
+        let format = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+        document.getElementById('id_title').addEventListener('keydown', e => {
+            if (format.test(e.key))
+                e.preventDefault();
+
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+    $(document).ready(function() {
+    $('.js-example-basic-multiple').select2({
+                width: '100%'
+            })
+});
+
+    </script>
+{% endblock customjs %}

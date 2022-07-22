@@ -1,0 +1,172 @@
+{% extends 'base/blog_admin_base.html' %} {% load static %}
+{% load hosts %}
+{% load crispy_forms_tags %}
+
+{% block title %} Blog Admin Form
+{% endblock title %}
+
+{% block headercss %}
+    <!-- <link rel="stylesheet" href="{% static '' %}tfcss/admin_panel/bcsTF/dashboard.css" /> -->
+    <style>
+    label {
+        margin-block-start: 1.5rem;
+        font-size: 1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    #id_short_description {
+        height: 75px;
+        resize: none;
+    }
+
+    .blogPost {
+        margin-block: 1rem;
+        padding-inline: 3rem;
+    }
+    input[type=file]{
+cursor: pointer;
+
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+    }
+    </style>
+{% endblock headercss %}
+{% block content %}
+<main>
+<section class="w-75 mb-5 container">
+    <h3 class="fw-bold text-center my-5 border-bottom border-secondary">Add a new post</h3>
+    <div id="content-main">
+        <form enctype="multipart/form-data" method="POST" id="post_form">
+            <label for="category">Category <span class="asteriskField">*</span></label>
+            <select name="category" id="category" class="form-select" required>
+                <option value="" disabled selected>Select a category</option>
+            </select>
+            <label for="subCategory" class="d-none">Sub Category <span class="asteriskField">*</span></label>
+            <select name="subCategory" id="subCategory" class="form-select d-none">
+                <option value="" disabled selected>Select a Sub category</option>
+            </select>
+            <label for="filterOption" class="d-none">Filter Option<span class="asteriskField">*</span></label>
+            <select name="filterOption" id="filterOption" class="form-select d-none">
+                <option value="" disabled selected>Select Filter Option</option>
+            </select>
+            {{ form.media }}
+            {{ form|crispy }}
+            {% csrf_token %}
+            <label for="tagName" class="">Tag<span class="asteriskField">*</span></label>
+            <select name="tagName" class="form-control js-example-tokenizer" id="tagName" multiple="multiple">
+                <option value="" disabled>Select Tag</option>
+                {% for tag in tag_list %}
+                    <option>{{ tag }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="btn btn-success d-block mx-auto blogPost">Post</button>
+        </form>
+    </div>
+
+</section>
+</main>
+{% endblock content %}
+{% block customjs %}
+    <!-- custom scripts -->
+    <!-- <script src="{% static '' %}tfjs/admin_panel/bcsTF//chart.js"></script> -->
+
+    <script>
+    $(document).ready(function () {
+        // $('.js-example-basic-single').select2();
+        $(".js-example-tokenizer").select2({
+            tags: true,
+            tokenSeparators: [',', ' ']
+        })
+    });
+    const baseUrl = mainOrigin + "/"
+    const blogCategory = document.getElementById("category")
+    const blogSubCategory = document.getElementById("subCategory")
+    const filterOption = document.getElementById("filterOption")
+    window.addEventListener("load", () => {
+        fetch(`${baseUrl}api/blogs/category/`,{
+            credentials: 'include'
+        })
+            .then(response => response.json())
+            .then(result => {
+                result.map((item) => {
+                    const newOption = document.createElement("option");
+                    newOption.setAttribute("value", item.id)
+                    newOption.setAttribute("has_subcategory", item.has_subcategory)
+                    newOption.text = item.category
+                    // console.log(newOption);
+                    blogCategory.appendChild(newOption)
+                })
+            })
+    })
+    blogCategory.addEventListener("change", () => {
+        const has_subcategory = blogCategory.options[blogCategory.selectedIndex].getAttribute("has_subcategory")
+        blogSubCategory.innerHTML = `<option value="" disabled selected>Select a Sub category</option>`
+        filterOption.previousElementSibling.classList.add("d-none")
+        filterOption.classList.add("d-none")
+        if (has_subcategory === "true") {
+            blogSubCategory.previousElementSibling.classList.remove("d-none")
+            blogSubCategory.classList.remove("d-none")
+        } else if (has_subcategory === "false") {
+            blogSubCategory.previousElementSibling.classList.add("d-none")
+            blogSubCategory.classList.add("d-none")
+        }
+        fetch(`${baseUrl}api/blogs/category/${blogCategory.value}`)
+            .then(response => response.json())
+            .then(result => {
+                result.map((item) => {
+                    const newOption = document.createElement("option");
+                    newOption.setAttribute("value", item.id)
+                    newOption.setAttribute("has_filter", item.has_filter)
+                    newOption.text = item.sub_category
+                    blogSubCategory.appendChild(newOption)
+                })
+            })
+    })
+    blogSubCategory.addEventListener("change", () => {
+        const has_filter = blogSubCategory.options[blogSubCategory.selectedIndex].getAttribute("has_filter")
+        filterOption.innerHTML = `<option value="" disabled selected>Select a Sub category</option>`
+        console.log(`${baseUrl}api/blogs/category/${blogCategory.value}/${blogSubCategory.value}`);
+        if (has_filter === "true") {
+            filterOption.previousElementSibling.classList.remove("d-none")
+            filterOption.classList.remove("d-none")
+            filterOption.setAttribute("required", true)
+        } else if (has_filter === "false") {
+            filterOption.previousElementSibling.classList.add("d-none")
+            filterOption.classList.add("d-none")
+            filterOption.removeAttribute("required")
+        }
+        fetch(`${baseUrl}api/blogs/category/${blogCategory.value}/${blogSubCategory.value}`)
+            .then(response => response.json())
+            .then(result => {
+                // console.log(result);
+                result.map((item) => {
+                    // console.log(item.has_subcategory);
+                    const newOption = document.createElement("option");
+                    newOption.setAttribute("value", item.id)
+                    newOption.text = item.filter_name
+                    filterOption.appendChild(newOption)
+                })
+            })
+    });
+
+        document.getElementById('id_post_url').addEventListener('keyup', (e) => {
+            e.target.value = e.target.value.replace(/([^a-zA-z0-9-_]+)/g, "");
+            });
+    </script>
+
+{% endblock customjs %}

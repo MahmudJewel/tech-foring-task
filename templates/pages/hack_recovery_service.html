@@ -1,0 +1,384 @@
+{% extends 'base/base.html' %} {% load static %} {% load hosts %} {% block title %} Fix Hacked Website | Business Hack Recovery Service | Techforing {% endblock title %} {% block meta %}
+<meta property="og:description" content="The hack Rescue team will fix hacked websites of businesses and corporations, workstations, networks, servers, data centers fast and efficiently! We offer top-notch hack repair, blacklist removal, scan website for malware."
+/>
+<meta name="description" content="The hack Rescue team will fix hacked websites of businesses and corporations, workstations, networks, servers, data centers fast and efficiently! We offer top-notch hack repair, blacklist removal, scan website for malware."
+/>
+<meta name="keywords" content="Hack Recovery Service, scan website for malware, website security check, check website safety, hack recovery, cloud data breach, Blacklist cleanup, DIGITAL ASSET HACKS, " /> {% endblock meta %} {% block headercss %}
+<link rel="stylesheet" href="{% static '' %}css/glide.core.css" />
+<link rel="stylesheet" href="{% static '' %}css/glide.theme.css" />
+<link rel="stylesheet" href="{% static '' %}css/style.css" /> {% endblock headercss %} {% block content %}
+<section class="hr-banner">
+    <div class="container">
+        <h2>Hack Recovery Service - Stay One Step Ahead</h2>
+    </div>
+</section>
+<section class="risk-slider">
+    <div class="container">
+        <div class="glide">
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    <li class="glide__slide">
+                        <div class="rs-outer-box">
+                            <div class="ir-inner-box">
+                                <h2 class="rs-title">Report, Guide & Tool</h2>
+                                <p class="rs-text">
+                                    A definitive guide to secure your business from external and internal cyberattacks.
+                                </p>
+                                <a href="{% host_url 'bcs_form' host 'main' %}" class="rs-btn" target="_blank">Download Now</a
+                    >
+                  </div>
+                </div>
+              </li>
+              <!-- <li class="glide__slide">
+                <div class="rs-outer-box">
+                  <div class="ir-inner-box">
+                    <h2 class="rs-title">Report, Guide & Tool</h2>
+                    <p class="rs-text">
+                      Assess your website for SQLI, XSS, CSRF and other common
+                      OWASP vulnerabilities, free tool.
+                    </p>
+                    <a
+                      href="https://thirdeye.techforing.com"
+                      class="rs-btn"
+                      target="_blank"
+                      >Run Assessment</a
+                    >
+                  </div>
+                </div>
+              </li> -->
+              <li class="glide__slide">
+                <div class="rs-outer-box">
+                  <div class="ir-inner-box">
+                    <h2 class="rs-title">Report, Guide & Tool</h2>
+                    <p class="rs-text">
+                      17 ways High Net Worth Individuals are being hacked & how
+                      to be safe.
+                    </p>
+                    <a
+                      href="https://personal.techforing.com/ebook"
+                      class="rs-btn"
+                      target="_blank"
+                      >Download Now</a
+                    >
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="glide__bullets rs-bullets" data-glide-el="controls[nav]">
+            <button class="glide__bullet" data-glide-dir="=0"></button>
+            <button class="glide__bullet" data-glide-dir="=1"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="vr-mitigate">
+      <div class="container">
+        <div class="hr-line"></div>
+        <h2 class="hr-title">DIGITAL ASSET HACKS WE HANDLE</h2>
+        <div class="row vrm-row">
+          <div class="col-md-6">
+            <div class="vrm-img">
+              <img
+                src="{% static '' %}img/hack/website recovery.png"
+                title="Digital Assets Hack Recovery"
+                alt="scan-website-for-malware-website-security-check"
+                longdesc="website hack recovery service"
+              />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="vrm-outer-box">
+              <div class="vrm-box">
+                <h2>website recovery</h2>
+                <p class="text-justify">
+                  A Website is the frontend of a business, the very reason why
+                  regardless of its CMS like WordPress or Joomla or highly
+                  sophisticated (Java or Python) code-driven, hackers love to
+                  test their hacking skills by breaking into sites and pages. To
+                  make their tasks difficult, we scan the website for malware as
+                  part of a security check and tighten the security controls by
+                  upgrades to plugins, passwords, and overall CMS if necessary.
+                </p>
+                <!-- <div class="is-btn text-right">
+                  <a href="#" target="_blank">Explore More</a>
+                            </div> -->
+                        </div>
+            </div>
+        </div>
+    </div>
+    <div class="row vrm-row vrm-row-invers">
+        <div class="col-md-6">
+            <div class="vrm-outer-box">
+                <div class="vrm-box vrm-box-invers">
+                    <h2>Work Station & Office Network</h2>
+                    <p class="text-justify">
+                        In coordinated attacks, hackers co-opt Business workstations and make these "slave" machines for data theft. Office networks are compromised by attacks like malware implants, phishing emails, a man in the middle attacks, and packet sniffing. If you collect
+                        customer data for your business, you need to minimize the damage by making a hack recovery followed by putting necessary security controls. We can do that for you!
+                    </p>
+                    <!-- <div class="is-btn text-right">
+                  <a href="#" target="_blank">Explore More</a>
+                </div> -->
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="vrm-img">
+                <img src="{% static '' %}img/hack/work station and office network.png" title="Work stationa and Office Network Security" alt="scan-website-for-malware-check-webisite-for-malware" longdesc="work station and office network hack recovery service" />
+            </div>
+        </div>
+    </div>
+    <div class="row vrm-row">
+        <div class="col-md-6">
+            <div class="vrm-img">
+                <img src="{% static '' %}img/hack/server & data center.png" title="Cloud Infrastructure Checkup" alt="scan-website-for-malware-website-hack-recovery-service" longdesc="server and data center hack recovery service" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="vrm-outer-box">
+                <div class="vrm-box">
+                    <h2>Server & Data Center</h2>
+                    <p class="text-justify">
+                        System administrators tend to install OS in default settings leading to unwanted services. They are often turned on, which causes unwanted traffic to the server and possibly a gateway for opportunist attackers. If you suspect any malfunctioning in the
+                        data center, please contact us to provide you a Hack Recovery Service that will restore your server to full working order.
+                    </p>
+                    <!-- <div class="is-btn text-right">
+                  <a href="#" target="_blank">Explore More</a>
+                </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row vrm-row vrm-row-invers">
+        <div class="col-md-6">
+            <div class="vrm-outer-box">
+                <div class="vrm-box vrm-box-invers">
+                    <h2>Cloud Infrastructure</h2>
+                    <p class="text-justify">
+                        Sixty percent of top US companies have been hit by cloud infrastructure penetrations that led to a severe cloud data breach. Google Cloud, Amazon Web Services, and Microsoft’s Azure usually manage security for the underlying infrastructure, where users
+                        are responsible for securing the applications and databases. If you think your company cloud server is affected this way, we have your back! We stop the flood of breaches!
+                    </p>
+                    <!-- <div class="is-btn text-right">
+                  <a href="#" target="_blank">Explore More</a>
+                </div> -->
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="vrm-img">
+                <img src="{% static '' %}img/hack/cloud infrastructure.png" title="Server and Data Center" alt="scan-website-for-malware-test-website-for-malware" longdesc="cloud infrastructure hack recovery service" />
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+<section class="hr-fact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="hrf-img">
+                    <img src="{% static '' %}img/hack/Fact.png" title="Hack Recovery Service Fact" alt="scan-website-for-malware-facts" longdesc="hack recovery fact" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="hrf-box">
+                    <div class="vrf-inner-box mt-5">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h2>
+                                    300 billion passwords will become vulnerable by 2021
+                                </h2>
+                            </div>
+                            <div class="col-md-4">
+                                <h2>
+                                    Since 2017, The number of phishing websites grew by over 130.5%
+                                </h2>
+                            </div>
+                            <div class="col-md-4">
+                                <h2>
+                                    Data breaches will cost businesses more than $150M in 2020
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="hcs-section">
+    <div class="container">
+        <div class="hr-line"></div>
+        <h2 class="hr-title">important client stories</h2>
+    </div>
+    <div class="ics-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="ics-img">
+                        <img src="{% static '' %}img/hack/testimonial-image/paul-hager.png" alt="test img" />
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="hcs-box">
+                        <img src="{% static '' %}img/incident/quote@1X.png" alt="" />
+                        <p class="ics-text">
+                            Joomla 1.5 was Virus-affected. The in-charge person of this agency did a hack recovery job and updated the whole system. He was very reachable on Skype and completed the work within the time frame we needed. Would hire again for sure. I would highly recommend
+                            them.
+                        </p>
+                        <h2 class="ics-name text-end">Paul Hager (USA)</h2>
+                        <p class="ics-des text-end">
+                            <i>CEO, Information Technology Profssionals</i>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="hr-cta">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="hrc-box">
+                    <h2>Has your Business Suffered Data breach?</h2>
+                    <p>We Want to help. Call us!</p>
+                    <a href="{% host_url 'get_start' host 'main' %}" target="_blank">Secure Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="case-section">
+    <div class="container">
+        <div class="hr-line"></div>
+        <h2 class="hr-title">RECENT BLOGS</h2>
+    </div>
+    <div class="case-box-fluid">
+        <div class="container">
+            <div class="case-box">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="hcase-img">
+                            <img src="{% static '' %}img/va/case1.png" title="Hack Recovery Case Study 1" alt="scan-website-for-malware-case-study-1" longdesc="hack recovery service case study 1" />
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="case-inner">
+                            <div class="case-inner-box">
+                                <h2 class="case-box-title text-start">
+                                    Cyber Attacks on Financial Institutions- Hackers Stealing Data, not Money
+                                </h2>
+                                <p class="case-text text-justify">
+                                    Financial institutions like Banks, brokerage firms, mortgage companies often become the target of hackers, who are after financial data to perform phishing attacks, DDOS, etc. Data is more valuable than money and such cyberattacks cost banks millions!
+                                </p>
+                                <div class="case-btn">
+                                    <a href="https://blog.techforing.com/blogs/cyber-attacks-on-financial-services/" target="_blank">Read More</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="case-box">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="hcase-img">
+                  <img
+                    src="{% static '' %}img/va/case2.png"
+                    title="Hack Recovery Case Study 2"
+                    alt="scan-website-for-malware-case-study-2"
+                    longdesc="hack recovery service case study 2"
+                  />
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="case-inner">
+                  <div class="case-inner-box">
+                    <h2 class="case-box-title text-start">
+                      Cybersecurity Tips for Work from home users - coping up
+                      with the new normal
+                    </h2>
+                    <p class="case-text text-justify">
+                      Working from home makes life easy for hackers to
+                      infiltrate not so secure IT system used by the employees.
+                      Therefore, organizations' data security largely depends on
+                      how safely the coworkers can operate workplace digital
+                      assets. This blog has the right tips you can use!
+                    </p>
+                    <div class="case-btn">
+                      <a
+                        href="https://blog.techforing.com/blogs/cybersecurity-tips-for-work-from-home/"
+                        target="_blank"
+                        >Read More</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="case-box">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="hcase-img">
+                  <img
+                    src="{% static '' %}img/va/case3.png"
+                    title="Hack-Recovery case study 3"
+                    alt="scan-website-for-malware-case-study-3"
+                    longdesc="hack recovery service case study 3"
+                  />
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="case-inner">
+                  <div class="case-inner-box">
+                    <h2 class="case-box-title text-start">
+                      How to design a secure office network
+                    </h2>
+                    <p class="case-text text-justify">
+                      To ensure safe communications via routers, switches,
+                      servers, and hosts, defense-in-depth approach security is
+                      mandatory for each organization. This article provides a
+                      comprehensive view of designing a secure office network
+                      that you can implement in your workplace.
+                    </p>
+                    <div class="case-btn">
+                      <a
+                        href="https://blog.techforing.com/blogs/how-to-design-a-secure-office-network/"
+                        target="_blank"
+                        >Read More</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock content %}
+
+{% block customjs %}
+    <script src="{% static '' %}js/glide.js"></script>
+
+    <script src="{% static '' %}js/asses-tab.js"></script>
+    <script>
+      new Glide(".glide", {
+        type: "carousel",
+        autoplay: 8000,
+      }).mount();
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#my-header").load("header.html");
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#my-footer").load("footer.html");
+      });
+    </script>
+{% endblock customjs %}

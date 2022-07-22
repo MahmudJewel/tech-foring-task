@@ -1,0 +1,124 @@
+{% extends 'base/bcs_user_base.html' %}
+{% load static %}
+{% load hosts %}
+{% load my_filter %}
+{% block title %}
+    Payment
+{% endblock title %}
+{% block content %}
+
+    <div class="subscription-container px-0 px-md-2">
+        <h5 class="fw-bold">Please Select Your Payment Method</h5>
+
+        {% csrf_token %}
+
+        <div class="row my-5 shadow">
+            <div class="col-md-7">
+                <div id="smart-button-container">
+                    <div style="text-align: center;">
+                        <div id="paypal-button-container"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-5 border-start border-secondary">
+                <table class="table">
+                    <tr>
+                        <td>Course Name:</td>
+                        <td>{{ course.service_id.course_name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Course Duration:</td>
+                        <td>{{ course.duration|capitalize }}</td>
+                    </tr>
+                    <tr>
+                        <td>Price:</td>
+                        <td>$ {{ course.price }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+{% block customjs %}
+{#    <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD"#}
+{#            data-sdk-integration-source="button-factory"></script>#}
+    <script src="https://www.paypal.com/sdk/js?client-id=AfTmv1E8P0HbJCkRMtm7s_07rqkJCGvp4WufOBxLWUl5AFujlsqmn6WdpMZo-nQr-yKVTnogZOQYgLnl&vault=true&intent=subscription"
+            data-sdk-integration-source="button-factory"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        let courseId = "{{ course.service_id.id }}";
+        let packageID = "{{ course.id }}";
+
+        const csrf_token = document.querySelector("input[name='csrfmiddlewaretoken']")
+
+        function initPayPalButton() {
+            paypal.Buttons({
+                style: {
+                    shape: 'rect',
+                    color: 'gold',
+                    layout: 'vertical',
+                    label: 'subscribe'
+                },
+
+                createSubscription: function (data, actions) {
+                    return actions.subscription.create({
+                        /* Creates the subscription */
+                        plan_id: '{{ course.package_id }}',
+                        quantity: 1 // The quantity of the product for a subscription
+                    });
+                },
+
+                onApprove: function (data, actions) {
+                    console.log(data)
+                    const element = document.getElementById('paypal-button-container');
+                        element.innerHTML = '';
+                        element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                        console.log(data)
+
+                        fetch(`${mainOrigin}/api/bcs/course_order/`, {
+                            method: 'POST',
+                            credentials: 'include',
+                            body: JSON.stringify({
+                                paypal_id: data.orderID,
+                                payment_id: data.subscriptionID,
+                                amount: {{ course.price }},
+                                course: parseInt(courseId),
+                                course_package: packageID
+                            }),
+                            headers: {
+                                'Content-type': 'application/json',
+                                'X-CSRFToken': csrf_token.value,
+                            },
+                        })
+                            .then((response) => response.json())
+                            .then(data => console.log(data))
+
+                        // Or go to another URL:  actions.redirect('thank_you.html');
+                },
+
+                onError: function (err) {
+                    console.log(err);
+                }
+            }).render('#paypal-button-container');
+        }
+
+        fetch(`${mainOrigin}/api/bcs/course_order_check/`, {
+            credentials: 'include'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.result.includes(parseInt(packageID))) {
+                    Swal.fire('Already Purchased.')
+                } else {
+                    initPayPalButton();
+                }
+            })
+
+
+    </script>
+{% endblock customjs %}
+
+
+
+

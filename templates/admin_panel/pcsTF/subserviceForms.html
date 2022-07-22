@@ -1,0 +1,121 @@
+{% extends 'base/pcs_admin_base.html' %} {% load static %}
+{% load crispy_forms_tags %}
+{% load hosts %}
+
+{% block title %} BCS Admin Services
+{% endblock title %}
+
+{% block headercss %}
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+
+    <!-- data table css -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css" />
+    <!-- tiny script -->
+{#    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>#}
+    <!-- custom css -->
+    <link rel="stylesheet" href="{% static '' %}tfcss/admin_panel/bcsTF/service.css" />
+{% endblock headercss %}
+{% block content %}
+    <!-- main section starts -->
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <button class="btn border-1 form-close form-close-back float-start mb-4 d-none" >
+                        <i class="bi bi-arrow-left-circle-fill"></i>
+                        Go back to list
+                    </button>
+                    <button class="btn border-1 servicesBtn addService float-end mb-4" >
+                        Create a Form Field
+                        <i class="bi bi-plus-circle-fill"></i></button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12" style="margin-bottom: 15rem; position: relative;">
+                    <div class="modal-dialog modal-lg add-form d-none">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4>Add a Form</h4>
+                                <button type="button" class="btn-close form-close"></button>
+                            </div>
+                            <div class="modal-body px-3">
+                                <form action="" enctype="multipart/form-data" class="needs-validation" method="POST">
+                                    {{ form.media }}
+                                    {{ form|crispy }}
+                                    {% csrf_token %}
+                                    <div class="d-flex justify-content-between">
+                                        <button type="submit" class="btn btn-primary text-capitalize" id="save-short-service">
+                                            save
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <h2 class="float-start position-absolute serviceHeading">Sub Service List</h2>
+                        <table id="sub-service-list" class="table display service">
+                            <thead>
+                                <tr>
+                                    <th>SL</th>
+                                    <th>Form Type</th>
+                                    <th>Form Name</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for form_list in form_lists %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ form_list.type }}</td>
+                                    <td>{{ form_list.placeholder }}</td>
+                                    <td>
+                                        <a href="{% host_url 'pcs_admin_sub_services_form_edit' host 'mysecurity' %}{{ form_list.id }}" class="btn">
+                                            <i class="icofont-edit text-primary rounded-circle activites-icon"></i>
+                                            Edit
+                                        </a>
+                                        <a href="{% host_url 'pcs_admin_sub_services_form_delete' host 'mysecurity' %}{{ form_list.id }}" class="btn trash">
+                                            <i class="bi bi-trash-fill text-danger rounded-circle activites-icon"></i>
+                                            Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <!-- main section ends -->
+{% endblock content %}
+{% block customjs %}
+    <script src="{% static 'tfjs/admin_panel/bcsTF/service.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+    let selectChoices = {{select_choices|safe}};
+    let selectId = document.getElementById('id_type');
+    
+    document.body.addEventListener('change', e =>{
+        if(e.target.id === 'id_type'){
+            if(e.target.value === 'select'){
+            let selectOptions = '';
+                selectChoices.forEach(option => {
+                    selectOptions+= `<option value=${option.id}>${option.choices}</option>`;
+                });
+                e.target.insertAdjacentHTML('afterend','<label for="choiceList">Choose Options</label><select id="choiceList" name="options" class="form-select js-example-basic-single" multiple>'+selectOptions+'</select>');
+                $('.js-example-basic-single').select2({
+                width: '100%'
+            })
+        }
+            else{
+                e.target.parentNode.children[1].outerHTML='';
+                e.target.parentNode.children[2].outerHTML='';
+            }
+        }
+    })
+    </script>
+
+{% endblock customjs %}

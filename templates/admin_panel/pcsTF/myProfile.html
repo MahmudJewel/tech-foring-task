@@ -1,0 +1,131 @@
+{% extends 'base/pcs_admin_base.html' %} {% load static %} {% load hosts %}
+
+{% block title %} PCS Admin List
+{% endblock title %}
+
+{% block headercss %}
+    <link rel="stylesheet" href="{% static 'tfcss/admin_panel/bcsTF/myProfile.css' %}" />
+    {% endblock headercss %}
+    {% block content %}
+    <!-- main section starts -->
+    <main>
+        <div class="container">
+            <div class="jumbotron d-grid">
+                <img src="{% static 'tfimg/admin_panel/Techforing-Icon.png' %}" alt="">
+                <div class="row align-end">
+                    <div class="col-md-4">
+                        <h3>AZHARUL</h3>
+                        <p class="text-primary mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="19.998" height="16" viewBox="0 0 19.998 16">
+                                <path id="Icon_awesome-user-cog" data-name="Icon awesome-user-cog" d="M19.078,11.666a3.666,3.666,0,0,0,0-1.331l.806-.466a.226.226,0,0,0,.1-.266A4.69,4.69,0,0,0,18.95,7.809a.228.228,0,0,0-.281-.044l-.806.466a3.669,3.669,0,0,0-1.153-.666V6.634a.228.228,0,0,0-.178-.222,4.715,4.715,0,0,0-2.069,0,.228.228,0,0,0-.178.222v.931a3.669,3.669,0,0,0-1.153.666l-.806-.466a.229.229,0,0,0-.281.044A4.69,4.69,0,0,0,11.006,9.6a.23.23,0,0,0,.1.266l.806.466a3.666,3.666,0,0,0,0,1.331l-.806.466a.226.226,0,0,0-.1.266,4.713,4.713,0,0,0,1.038,1.794.228.228,0,0,0,.281.044l.806-.466a3.669,3.669,0,0,0,1.153.666v.931a.228.228,0,0,0,.178.222,4.715,4.715,0,0,0,2.069,0,.228.228,0,0,0,.178-.222v-.931a3.669,3.669,0,0,0,1.153-.666l.806.466a.229.229,0,0,0,.281-.044A4.69,4.69,0,0,0,19.988,12.4a.23.23,0,0,0-.1-.266Zm-3.578.85A1.516,1.516,0,1,1,17.016,11,1.517,1.517,0,0,1,15.5,12.516ZM7,8A4,4,0,1,0,3,4,4,4,0,0,0,7,8Zm6.288,7.078c-.072-.038-.144-.081-.212-.122l-.247.144a1.226,1.226,0,0,1-1.516-.228A5.7,5.7,0,0,1,10.056,12.7a1.222,1.222,0,0,1,.559-1.428l.247-.144q0-.122,0-.244l-.247-.144a1.221,1.221,0,0,1-.559-1.428c.028-.091.069-.181.1-.272C10.038,9.028,9.922,9,9.8,9H9.278A5.44,5.44,0,0,1,4.722,9H4.2A4.2,4.2,0,0,0,0,13.2v1.3A1.5,1.5,0,0,0,1.5,16h11a1.5,1.5,0,0,0,.85-.266,1.217,1.217,0,0,1-.062-.369Z" fill="#182f59"/>
+                            </svg>
+                              
+                            ADMIN
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <p><i class="bi bi-envelope-fill"></i> info@techforing.com</p>
+                        <p class="mt-2"><i class="bi bi-telephone-fill"></i> +1-(616)-251-1517</p>
+                    </div>
+                </div>
+                <button class="btn btn-primary text-uppercase mt-3" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">edit profile</button>
+            </div>
+        </div>
+        <div class="container ms-md-5">
+            <h2 class="my-5">My Recent Activities <span class="text-danger activity-delete-all btn"><i class="bi bi-trash"></i> Delete
+                    All</span></h2>
+            <div class="recent-activites">
+                <div class="activity">
+                    <p>create notification</p> <button class="btn delete-activites"><i class="bi bi-trash text-danger"></i></button>
+                </div>
+                <div class="activity">
+                    <p>create notification</p> <button class="btn delete-activites"><i class="bi bi-trash text-danger"></i></button>
+                </div>
+                <div class="activity">
+                    <p>create notification</p> <button class="btn delete-activites"><i class="bi bi-trash text-danger"></i></button>
+                </div>
+                <div class="activity">
+                    <p>edited notification</p> <button class="btn delete-activites"><i class="bi bi-trash text-danger"></i></button>
+                </div>
+                <div class="activity">
+                    <p>cleared</p> <button class="btn delete-activites"><i class="bi bi-trash text-danger"></i></button>
+                </div>
+                <div class="activity">
+                    <p>edited</p> <button class="btn delete-activites"><i class="bi bi-trash text-danger"></i></button>
+                </div>
+                <div class="activity">
+                    <p>create notification</p> <button class="btn delete-activites"><i class="bi bi-trash text-danger"></i></button>
+                </div>
+                <div class="activity">
+                    <p>create notification</p> <button class="btn delete-activites"><i class="bi bi-trash text-danger"></i></button>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade profile-edit" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="modal-title">
+                            <h5>Edit profile</h5>
+                            <img src="./images/Techforing-Icon.png" alt="">
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="">
+                            <div class="col-auto mb-3">
+                                <label for="file">Image</label>
+                                <input type="file" class="form-control" id="file" />
+                            </div>
+                            <div class="col-auto mb-3">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Enter Name" />
+                            </div>
+                            <div class="col-auto mb-3">
+                                <label for="email">email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Enter Email" />
+                            </div>
+                            <div class="col-auto mb-3">
+                                <label for="phone">Phone Number</label>
+                                <input type="text" placeholder="+000-5555-6666" class="form-control" id="phone" />
+                            </div>
+                            <div class="col-auto mb-3">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="******" />
+                            </div>
+                            <div class="col-auto mb-3">
+                                <label for="confirmPassword">Password</label>
+                                <input type="confirmPassword" class="form-control" id="confirmPassword"
+                                    placeholder="******" />
+                            </div>
+                            <button type="button" class="btn btn-primary">
+                                Update
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- main section ends -->
+{% endblock content %}
+{% block customjs %}
+    <script src="./scripts/notification.js"></script>
+    <script>
+        const activitiesDeleteBtn = document.querySelectorAll(".delete-activites")
+        const activityDeleteAll = document.querySelector(".activity-delete-all")
+        activitiesDeleteBtn.forEach(del=>{
+            del.addEventListener('click',()=>{
+                del.parentElement.classList.add("d-none")
+            })
+        })
+        activityDeleteAll.addEventListener('click',()=>{
+            activitiesDeleteBtn.forEach(del=>{
+                del.parentElement.classList.add("d-none")
+            })
+        })
+    </script>
+{% endblock customjs %}

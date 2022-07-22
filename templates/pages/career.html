@@ -1,0 +1,864 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load hosts %}
+
+{% block title %}
+    Career at TechForing | Cybersecurity jobs
+{% endblock title %}
+
+{% block headercss %}
+    <link rel="stylesheet" href="{% static '' %}tfcss/style.css" />
+{% endblock headercss %}
+
+{% block content %}
+    <section class="career-banner">
+      <div class="container">
+        <h2 class="cb-title">Turn Your passion into a career</h2>
+        <h2 class="cb-subtitle">Work at TechForing Limited</h2>
+        <a href="{% host_url 'aboutus' %}" target="_blank" class="tf-btn2 cb-btn"
+          >Learn About Us.</a
+        >
+      </div>
+    </section>
+    <section class="career-life">
+      <div class="container">
+        <h2 class="cl-title">Life at TechForing</h2>
+        <h2 class="cl-subtitle">
+          Get your chance to work with the coolest cyber-tech companies around.
+        </h2>
+        <img
+          src="{% static '' %}tfimg/career/life at techforing.png"
+          title="Techforing Career"
+          alt="cybersecurity-jobs-cybersecurity-engineer"
+          longdesc="Awesome life of Techforing Career"
+        />
+        <img
+          src="{% static '' %}tfimg/career/recruitement procedure.png"
+          title="Techforing recrutement process"
+          class="flow-img"
+          alt="cybersecurity-jobs-cyber-security-professional"
+          longdesc="Multi-phase recruitement process of Techforing"
+        />
+      </div>
+    </section>
+    <section class="career-gallery">
+      <div class="container">
+        <h2 class="cg-title">Shaping Tomorrow’s Cybersecurity</h2>
+        <h2 class="cg-subtitle">Lets make it happen</h2>
+        <p>
+          It doesn’t matter where you are from, how you look, or any other aspect of yourself. If you are passionate about what you do, we can’t wait to meet you.
+        </p>
+        <div class="row cg-row">
+          <div class="col-md-3">
+            <div class="cg-img cg-img1">
+              <img src="{% static '' %}tfimg/career/lets make it happen 1.png" alt="" />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="cg-img cg-img2">
+              <img src="{% static '' %}tfimg/career/lets make it happen 2.png" alt="" />
+            </div>
+            <div class="cg-img cg-img5">
+              <img src="{% static '' %}tfimg/career/lets make it happen 5.png" alt="" />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="cg-img cg-img3">
+              <img src="{% static '' %}tfimg/career/lets make it happen 3.png" alt="" />
+            </div>
+            <div class="cg-img cg-img6">
+              <img src="{% static '' %}tfimg/career/lets make it happen 6.png" alt="" />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="cg-img cg-img4">
+              <img src="{% static '' %}tfimg/career/lets make it happen 4.png" alt="" />
+            </div>
+            <div class="cg-img cg-img7">
+              <img src="{% static '' %}tfimg/career/lets make it happen 7.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="career-culture">
+      <div class="container">
+        <h2 class="text-center">Our Culture</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <ul>
+              <li class="d-flex">
+                <i class="fas fa-circle"></i>We are on a mission in shaping
+                tomorrow's cybersecurity.
+              </li>
+
+              <li class="d-flex">
+                <i class="fas fa-circle"></i> We save lives by protecting data
+                and preventing cybercrimes.
+              </li>
+              <li class="d-flex">
+                <i class="fas fa-circle"></i>We work hard, we prefer quality
+                over quantity.
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <ul>
+              <li class="d-flex">
+                <i class="fas fa-circle"></i>We push everyone to their limits to
+                help them grow professionally.
+              </li>
+              <li class="d-flex">
+                <i class="fas fa-circle"></i>we always have time for a cup of
+                coffee to keep a healthy relationship.
+              </li>
+              <li class="d-flex">
+                <i class="fas fa-circle"></i>We never mix work life with our
+                personal lives.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="career-benefit">
+      <div class="container">
+        <h2>Employee Benefits</h2>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="cb-box">
+              <img src="{% static '' %}tfimg/career/providend funds.png" alt="" />
+              <div>
+                <h2>Providend Funds</h2>
+                <p class="text-justify">
+                  A small amount of your basic monthly pay is contributed to
+                  your retirement fund.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="cb-box">
+              <img src="{% static '' %}tfimg/career/kpi bonus.png" alt="" />
+              <div>
+                <h2>KPI Bonus</h2>
+                <p class="text-justify">
+                  Every month, we select one Best Employee based on KPI and are rewarded with a handsome amount of money as a performance bonus.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="cb-box">
+              <img src="{% static '' %}tfimg/career/competitive salary.png" alt="" />
+              <div>
+                <h2>Competitive Salary</h2>
+                <p class="text-justify">
+                  The remuneration is industry standard for the position you
+                  hold.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="cb-box">
+              <img src="{% static '' %}tfimg/career/comission.png" alt="" />
+              <div>
+                <h2>Commission</h2>
+                <p class="text-justify">
+                  For the Sales & Marketing Team, we offer a Sales commission
+                  given its explicit mention on the appointment letter.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="cb-box">
+              <img src="{% static '' %}tfimg/career/yearly salary revision.png" alt="" />
+              <div>
+                <h2>Yearly Salary Revision</h2>
+                <p class="text-justify">
+                  We revise every employee’s salary after a minimum of one year if they are permanent.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="cb-box">
+              <img src="{% static '' %}tfimg/career/meal & snacks.png" alt="" />
+              <div>
+                <h2>Meal & Snacks</h2>
+                <p class="text-justify">
+                  Full-subsidized lunch with tea/coffee available as light refreshment throughout the day.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="career-interest">
+      <img
+        src="{% static '' %}tfimg/career/we are hiring.png"
+        title="We are Hiring"
+        alt="cybersecurity-jobs-it-security-job"
+        longdesc="techforing limited is hiring"
+      />
+
+      <div class="interest-box">
+        <h2>Interested? We’re hiring</h2>
+        <p>
+          We’re always searching for amazing people to join our team. Take a
+          look at our current openings.
+        </p>
+      </div>
+    </section>
+    <section class="c-position">
+      <div class="container">
+        <h2 class="cp-title">browse Open Positions by category</h2>
+        <p>We are always on the lookout for talanted people</p>
+        <div class="positions">
+          <div class="cp-box">
+            <h2>General Administrative</h2>
+            <button class="pos-btn">
+              Browse <img src="{% static '' %}tfimg/career/left-arrow.png" alt="" />
+            </button>
+            <div class="position-box">
+              <i class="fas fa-times-circle cross-btn"></i>
+              <h2 class="nv-text">No Vacancy right now</h2>
+            </div>
+          </div>
+          <div class="cp-box">
+            <h2>Engineering</h2>
+            <button class="pos-btn">
+              Browse <img src="{% static '' %}tfimg/career/left-arrow.png" alt="" />
+            </button>
+            <div class="position-box">
+              <i class="fas fa-times-circle cross-btn"></i>
+              <ul>
+                <li>
+                  <a class="c-link">Cybersecurity Engineer</a>
+                  <div class="circular">
+                    <i class="fas fa-times-circle cross-btn"></i>
+                    <h2 class="circular-title">Cybersecurity Engineer</h2>
+                    <p>
+                    We are looking to hire a Cyber Security Engineer with an analytical mind and a detailed understanding of cyber security methodologies. Cyber Security Engineers are expected to have a meticulous attention to detail, outstanding problem-solving skills, work comfortably under pressure and deliver on tight deadlines.
+
+                    To ensure success, a Cyber Security Engineer must display an excellent understanding of technology infrastructures using Firewalls, VPN, Data Loss Prevention, IDS/IPS, Web-Proxy and Security Audits. Top candidates will be comfortable working with a variety of technologies, security problems and troubleshooting of the network.
+                    </p>
+                    <h2 class="circular-point">Responsibilities:</h2>
+                    <ul>
+                      <li>
+                      Planning, implementing, managing, monitoring and upgrading security measures for the protection of the organizations data, systems and networks.
+                      </li>
+                      <li>
+                      Troubleshooting security and network problems.
+                      </li>
+                      <li>
+                      Responding to all system and/or network security breaches.
+                      </li>
+                      <li>Ensuring that the organization's data and infrastructure are protected by enabling the appropriate security controls.</li>
+                      <li>Participating in the change management process.</li>
+                      <li>Testing and identifying network and system vulnerabilities.</li>
+                      <li>Daily administrative tasks, reporting and communication with the relevant departments in the organization.</li>
+                    </ul>
+                    <h2 class="circular-point">Requirements:</h2>
+                    <ul>
+                      <li>
+                      A degree in Computer Science, IT, Systems Engineering or a related qualification.
+                      </li>
+                      <li>
+                      2 years of work experience with incident detection, incident response and forensics.
+                      </li>
+                      <li>
+                      Experience with Firewalls (functionality and maintenance), Office 365 Security, VSX and Endpoint Security.
+                      </li>
+                      <li>Ability to work under pressure in a fast-paced environment.</li>
+                      <li>Strong attention to detail with an analytical mind and outstanding problem-solving skills.</li>
+                      <li>Great awareness of cybersecurity trends and hacking techniques.</li>
+                    </ul>
+                    <h2 class="circular-point">Salary: Negotiable</h2>
+                    <form
+                    class="circular-form"
+                      method="POST"
+                      enctype="multipart/form-data"
+                      action=""
+                    >
+                    {% csrf_token %}
+                      <input type="hidden" name="position" value="Cybersecurity Engineer">
+                      <input type="text" placeholder="Your Full Name" name="fullname" required/>
+                      <input type="email" placeholder="Your Email" name="email" required/>
+                      <input type="tell" placeholder="Your Phone Number" name="phone" required/>
+                      <label for="">Upload your CV / Resume</label>
+                      <input type="file" name="cv" accept=".doc, .docx, .pdf" required/>
+                      <button type="submit" name="submit" value="Send Email">Apply</button>
+                    </form>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="cp-box">
+            <h2>Sales & Marketing</h2>
+            <button class="pos-btn">
+              Browse <img src="{% static '' %}tfimg/career/left-arrow.png" alt="" />
+            </button>
+
+            <div class="position-box">
+              <i class="fas fa-times-circle cross-btn"></i>
+              <ul>
+                <li>
+                  <a class="c-link">Junior Content Writer</a>
+                  <div class="circular">
+                    <i class="fas fa-times-circle cross-btn"></i>
+                    <h2 class="circular-title">Junior Content Writer</h2>
+                    <p>
+                      We need a content writer to write technical articles/
+                      tutorials, eBook, copywriting, blog post, marketing
+                      content etc. The candidate must be familiar with content
+                      SEO and search engine’s best practices. This job requires
+                      highly talented self-motivated person. Please do not apply
+                      if you don’t have minimum 2+ years’ of experience in
+                      relevant field.
+                    </p>
+                    <h2 class="circular-point">Requirements:</h2>
+                    <ul>
+                      <li>
+                        Understand and define the target audience and its
+                        preferences, needs, and challenges to produce relevant
+                        contents.
+                      </li>
+                      <li>
+                        Combine market insights, business objectives, audience
+                        insights, and intelligence as well as key messages into
+                        integrated programs and/or campaigns.
+                      </li>
+                      <li>
+                        Research, develop, and deliver content for our blog
+                        about the following topics: Cyber Security, Cloud
+                        Computing, DevOps Engineering, Tech Business, Marketing
+                        campaigns, events, Documentation etc.
+                      </li>
+                    </ul>
+                    <h2 class="circular-point">Must Have:</h2>
+                    <ul>
+                      <li>
+                        Must be able to demonstrate experience with social media
+                        tools & interact with online community tools such as
+                        forums, blogs, user-generated content, etc.
+                      </li>
+                      <li>
+                        Strong working knowledge of MS Office, Google Drive,
+                        Email Handling, Content SEO and Content Marketing.
+                      </li>
+                      <li>
+                        Superior written and verbal communication skills, with a
+                        keen eye for detail.
+                      </li>
+                      <li>
+                        Proven ability to handle multiple projects
+                        simultaneously, with an eye for prioritization.
+                      </li>
+                      <li>Must be a tech enthusiast</li>
+                    </ul>
+                    <h2 class="circular-point">Qualifications:</h2>
+                    <ul>
+                      <li>
+                        Bachelor’s degree in CSE or Information Technology
+                      </li>
+                      <li>Minimum 2 years+ of relevant experience.</li>
+                      <li>Good to have IELTS Certificate</li>
+                    </ul>
+
+                    <h2 class="circular-point">Salary: Negotiable</h2>
+                    <form
+                    class="circular-form"
+                      method="POST"
+                      enctype="multipart/form-data"
+                      action=""
+                    >
+                    {% csrf_token %}
+                      <input type="hidden" name="position" value="Junior Content Writer">
+                      <input type="text" placeholder="Your Full Name" name="fullname" required/>
+                      <input type="email" placeholder="Your Email" name="email" required/>
+                      <input type="tell" placeholder="Your Phone Number" name="phone" required/>
+                      <label for="">Upload your CV / Resume</label>
+                      <input type="file" name="cv" accept=".doc, .docx, .pdf" required/>
+                      <button type="submit" name="submit" value="Send Email">Apply</button>
+                    </form>
+                  </div>
+                </li>
+                <li>
+                  <a class="c-link">Sr Digital Marketing Specialist</a>
+                  <div class="circular">
+                    <i class="fas fa-times-circle cross-btn"></i>
+                    <h2 class="circular-title">
+                      Senior Digital Marketing Specialist
+                    </h2>
+                    <p>
+                      The ideal candidate will be responsible for growing
+                      revenue through digital media through designing and
+                      executing marketing campaigns. After campaigns have been
+                      launched, you will extract and analyze data across
+                      multiple channels.
+                    </p>
+                    <h2 class="circular-point">Responsibilities:</h2>
+                    <ul>
+                      <li>
+                        Maneuver digital marketing campaigns through all areas
+                        of the project life cycle
+                      </li>
+                      <li>
+                        Clearly understand and implement digital marketing
+                        campaigns **(Google Ads, Facebook Ads, Instagram Ads,
+                        LinkedIn Ads, Email Marketing, Remarketing)** which fit
+                        client needs
+                      </li>
+                      <li>
+                        Clearly understand about buyers behavior pattern
+                        **(Google Analytics), Sales Funnel** and able to drive
+                        qualified leads.
+                      </li>
+                      <li>
+                        Write **copy ads** for campaigns, email marketing and
+                        implement automation across all sales funnel.
+                      </li>
+                      <li>
+                        Must be able to lead a small team of different key
+                        players like graphics designer, telemarketing and SEO
+                        executive.
+                      </li>
+                      <li>
+                        Provide analytical reporting of campaigns to
+                        stakeholders
+                      </li>
+                    </ul>
+                    <h2 class="circular-point">Qualifications:</h2>
+                    <ul>
+                      <li>Bachelor's degree or equivalent</li>
+                      <li>
+                        Minimum** 2 years **of experience as a Digital Marketing
+                        Specialist in only **Tech Industry**
+                      </li>
+                      <li>
+                        Fluency in Microsoft Office suite (Outlook, Excel, Word,
+                        PowerPoint, etc.)
+                      </li>
+                      <li>
+                        Experience with SEM, SMM, Email Marketing, Copywriting
+                      </li>
+                      <li>Strong written, verbal and collaboration skills</li>
+                    </ul>
+                    <h2 class="circular-point">Salary & Salary & Benefits</h2>
+                    <ul>
+                      <li>Negotiable</li>
+                      <li>Festive Bonus</li>
+                      <li>Performance Bonus</li>
+                      <li>Yearly Salary Revision</li>
+                      <li>Unlimited Snacks</li>
+                      <li>Free Lunch</li>
+                    </ul>
+
+                    <p>
+                      Note - Please only apply if you meet all the requirements
+                      and have proven experience in executing all the mentioned
+                      responsibilities.
+                    </p>
+                    <form
+                    class="circular-form"
+                      method="POST"
+                      enctype="multipart/form-data"
+                      action=""
+                    >
+                    {% csrf_token %}
+                      <input type="hidden" name="position" value="Sr Digital Marketing Specialist">
+                      <input type="text" placeholder="Your Full Name" name="fullname" required/>
+                      <input type="email" placeholder="Your Email" name="email" required/>
+                      <input type="tell" placeholder="Your Phone Number" name="phone" required/>
+                      <label for="">Upload your CV / Resume</label>
+                      <input type="file" name="cv" accept=".doc, .docx, .pdf" required/>
+                      <button type="submit" name="submit" value="Send Email">Apply</button>
+                    </form>
+                  </div>
+                </li>
+                <li>
+                  <a class="c-link">Telemarketing Executive</a>
+                  <div class="circular">
+                    <i class="fas fa-times-circle cross-btn"></i>
+                    <h2 class="circular-title">Telemarketing Executive</h2>
+                    <p>
+                      Make sales and market products and services by phone,
+                      answer incoming customer calls and make outgoing sales
+                      calls, maintain thorough understanding of products and
+                      services, process sales, meet sales goals.
+                    </p>
+                    <h2 class="circular-point">Responsibilities:</h2>
+                    <ul>
+                      <li>
+                        Takes incoming customer calls, processes sales, and
+                        accepts payment for
+                      </li>
+                      <li>
+                        Makes outgoing customer calls or cold calls in order to
+                        sell products and services
+                      </li>
+                      <li>
+                        Answers questions about product specifications and
+                        pricing
+                      </li>
+                      <li>
+                        Upsells customers to larger products, more extensive
+                        packages, or higher priced services
+                      </li>
+                      <li>
+                        Explains product pricing and negotiates bulk or package
+                        pricing
+                      </li>
+                      <li>
+                        Accurately and efficiently enters customer information
+                        into company databases for mailing and billing purposes
+                      </li>
+                      <li>
+                        Processes credit card payments and troubleshoots any
+                        issues that may arise
+                      </li>
+                      <li>
+                        Maintains a list of potential leads and follows up with
+                        those customers by making subsequent sales pitches
+                      </li>
+                      <li>
+                        Assists sales colleagues with arranging meetings and
+                        sales calls with customers
+                      </li>
+                      <li>
+                        Contacts customers in response to correspondence or
+                        feedback
+                      </li>
+                      <li>
+                        Monitors order status to ensure that clients receive
+                        orders in a timely manner
+                      </li>
+                      <li>
+                        Investigates unfilled, misplaced, or misdirected orders
+                        and resolves customer issues as necessary
+                      </li>
+                      <li>
+                        Maintains working knowledge of products and services
+                        sold and keeps current on industry developments by
+                        reading current news or attending workshops
+                      </li>
+                      <li>
+                        May specialise in inbound or outbound telemarketing or
+                        in sales for a particular industry
+                      </li>
+                    </ul>
+                    <h2 class="circular-point">Requirements:</h2>
+                    <ul>
+                      <li>
+                        Understand and define the target audience and its
+                        preferences, needs, and challenges to convert.
+                      </li>
+                      <li>
+                        owledge of online marketing and good understanding of
+                        major marketing channels
+                      </li>
+                      <li>
+                        Positive attitude, detail and customer oriented with
+                        good multitasking and organisational ability
+                      </li>
+                      <li>
+                        Superior written and verbal communication skills, with a
+                        keen eye for detail.
+                      </li>
+                      <li>
+                        Proven ability to handle multiple projects
+                        simultaneously, with an eye for prioritization.
+                      </li>
+                      <li>
+                        Marketing and Sales Skills, Verbal Communication,
+                        Telephone Skills, Interpersonal Communication, Customer
+                        Service Skills, Attention to Detail, Ability to Track
+                        Leads, Accuracy, Patience, Motivation, High Energy,
+                        Ability to Meet Goals, Data Entry, Product Knowledge
+                      </li>
+                      <li>Must be a tech enthusiast</li>
+                    </ul>
+                    <h2 class="circular-point">Qualifications:</h2>
+                    <ul>
+                      <li>
+                        Bachelor/ Master’s degree in Communications, Marketing,
+                        Business, New Media or Public Relations
+                      </li>
+                      <li>Minimum 1 year of relevant experience.</li>
+                      <li>Good to have IELTS certificate</li>
+                    </ul>
+                    <h2 class="circular-point">Salary: Negotiable</h2>
+                    <p>
+                      Note - Please only apply if you meet all the requirements
+                      and have proven experience in executing all the mentioned
+                      responsibilities.
+                    </p>
+                    <form
+                    class="circular-form"
+                      method="POST"
+                      enctype="multipart/form-data"
+                      action=""
+                    >
+                    {% csrf_token %}
+                      <input type="hidden" name="position" value="Telemarketing Executive">
+                      <input type="text" placeholder="Your Full Name" name="fullname" required/>
+                      <input type="email" placeholder="Your Email" name="email" required/>
+                      <input type="tell" placeholder="Your Phone Number" name="phone" required/>
+                      <label for="">Upload your CV / Resume</label>
+                      <input type="file" name="cv" accept=".doc, .docx, .pdf" required/>
+                      <button type="submit" name="submit" value="Send Email">Apply</button>
+                    </form>
+                  </div>
+                </li>
+                <li>
+                  <a class="c-link">Social Media Marketing Executive</a>
+                  <div class="circular">
+                    <i class="fas fa-times-circle cross-btn"></i>
+                    <h2 class="circular-title">
+                      Social Media Marketing Executive
+                    </h2>
+                    <p>
+                      We need a Social Media Marketing Executive who has vast
+                      experience with Facebook, LinkedIn, Instagram, Twitter,
+                      and Google + marketing. This job requires highly talented
+                      self-motivated person. Please do not apply if you don’t
+                      have minimum 2+ year of experience in relevant field.
+                    </p>
+                    <h2 class="circular-point">Responsibilities:</h2>
+                    <ul>
+                      <li>
+                        Set up and optimize company pages within each platform
+                        to increase the visibility of company’s social content
+                      </li>
+                      <li>
+                        Build and execute social media strategy through
+                        competitive research, audience research, platform
+                        determination, benchmarking, messaging and audience
+                        identification
+                      </li>
+                      <li>
+                        Combine market insights, business objectives, audience
+                        insights, and intelligence as well as key messages into
+                        integrated programs and/or campaigns.
+                      </li>
+                      <li>
+                        Generate, edit, publish and share daily content
+                        (original text, images, video or HTML) that builds
+                        meaningful connections and encourages community members
+                        to take action
+                      </li>
+                      <li>
+                        Moderate all user-generated content in line with the
+                        moderation policy for each community
+                      </li>
+                      <li>
+                        Create editorial calendars and syndication schedules
+                      </li>
+                      <li>
+                        Continuously improve by capturing and analyzing the
+                        appropriate social data/metrics, insights and best
+                        practices, and then acting on the information
+                      </li>
+                      <li>
+                        Collaborate with other departments (customer relations,
+                        sales etc) to manage reputation, identify key players
+                        and coordinate actions
+                      </li>
+                    </ul>
+                    <h2 class="circular-point">Requirements:</h2>
+                    <ul>
+                      <li>
+                        Must be familiar with Facebook Ads, Facebook
+                        Remarketing, LinkedIn inMail marketing, Instagram,
+                        twitter marketing etc.
+                      </li>
+                      <li>
+                        Should have a clear understanding about sales campaign
+                        funnel, able to optimize ads and convert into customers.
+                      </li>
+                      <li>
+                        Understand and define the target audience and its
+                        preferences, needs, and challenges to convert.
+                      </li>
+                      <li>
+                        Proven working experience in social media marketing or
+                        as a digital media specialist
+                      </li>
+                      <li>
+                        Excellent consulting, writing, editing
+                        (photo/video/text), presentation and communication
+                        skills
+                      </li>
+                      <li>
+                        Demonstrable social networking experience and social
+                        analytics tools knowledge
+                      </li>
+                      <li>
+                        Adequate knowledge of web design, web development, CRO
+                        and SEO
+                      </li>
+                      <li>
+                        Knowledge of online marketing and good understanding of
+                        major marketing channels
+                      </li>
+                      <li>
+                        Positive attitude, detail and customer oriented with
+                        good multitasking and organisational ability
+                      </li>
+                    </ul>
+                    <h2 class="circular-point">Must Have:</h2>
+                    <ul>
+                      <li>
+                        Must be able to demonstrate experience with social media
+                        tools & interact with online community tools such as
+                        forums, blogs, user-generated content, etc.
+                      </li>
+                      <li>
+                        Strong working knowledge of MS Office, Google Drive,
+                        Email Handling, Thirdparty lead generation tools like
+                        hubspot.
+                      </li>
+                      <li>
+                        Superior written and verbal communication skills, with a
+                        keen eye for detail.
+                      </li>
+                      <li>
+                        Proven ability to handle multiple projects
+                        simultaneously, with an eye for prioritization.
+                      </li>
+                      <li>Must be a tech enthusiast</li>
+                    </ul>
+                    <h2 class="circular-point">Qualifications:</h2>
+                    <ul>
+                      <li>
+                        Bachelor/ Master’s degree in Communications, Marketing,
+                        Business, New Media or Public Relations
+                      </li>
+                      <li>Minimum 2 years+ of relevant experience.</li>
+                    </ul>
+
+                    <h2 class="circular-point">Salary: Negotiable</h2>
+
+                    <form
+                    class="circular-form"
+                      method="POST"
+                      enctype="multipart/form-data"
+                      action=""
+                    >
+                    {% csrf_token %}
+                      <input type="hidden" name="position" value="Social Media Marketing Executive">
+                      <input type="text" placeholder="Your Full Name" name="fullname" required/>
+                      <input type="email" placeholder="Your Email" name="email" required/>
+                      <input type="tell" placeholder="Your Phone Number" name="phone" required/>
+                      <label for="">Upload your CV / Resume</label>
+                      <input type="file" name="cv" accept=".doc, .docx, .pdf" required/>
+                      <button type="submit" name="submit" value="Send Email">Apply</button>
+                    </form>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="cp-box">
+            <h2>Customer Support</h2>
+            <button class="pos-btn">
+              Browse <img src="{% static '' %}tfimg/career/left-arrow.png" alt="" />
+            </button>
+            <div class="position-box">
+              <i class="fas fa-times-circle cross-btn"></i>
+              <h2 class="nv-text">No Vacancy right now</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="our-location">
+      <div class="container">
+        <h2>Our Location</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="location-box">
+              <img src="{% static '' %}tfimg/career/usa.png" alt="" />
+              <div class="location-text">
+                <h2>United state</h2>
+                <p>Michigan</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="location-box">
+              <img src="{% static '' %}tfimg/career/london.png" alt="" />
+              <div class="location-text">
+                <h2>United kingdom</h2>
+                <p>London</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="location-box">
+              <img
+                src="{% static '' %}tfimg/career/ankara.png"
+                title="Techforing Turkey Jobs"
+                alt="cybersecurity-jobs-information-security-jobs"
+                longdesc="Techforing Turkey office"
+              />
+              <div class="location-text">
+                <h2>turkey</h2>
+                <p>Istanbul</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="location-box">
+              <img
+                src="{% static '' %}tfimg/career/bd.png"
+                title="Techforing BD Jobs"
+                alt="cybersecurity-jobs-information-security-analyst"
+                longdesc="Tehforing BD office"
+              />
+              <div class="location-text">
+                <h2>bangladesh</h2>
+                <p>Dhaka</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock content %}
+
+{% block customjs %}
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/tfjs/bootstrap.bundle.min.js"
+      integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="{% static '' %}tfjs/career.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#my-header").load("header.html");
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#my-footer").load("footer.html");
+      });
+    </script>
+    <script>
+        grecaptcha.ready(function() {
+          grecaptcha.execute('6Ld9pFAaAAAAAIHOTYw4dhAfQT8iC6eIf3Fbh5ty', {action: 'submit'}).then(function(token) {
+              let tokens = document.querySelectorAll('.token');
+              for(let i=0;i<tokens.length;i++){
+                tokens[i].value = token;
+              }
+              console.log(tokens);
+          });
+        });
+    </script>
+{% endblock customjs %}

@@ -1,0 +1,142 @@
+{% extends 'base/pcs_admin_base.html' %} {% load static %} {% block title %} Ticket View {% endblock title %}
+{% block headercss %} {% endblock headercss %} {% block content %}
+<main>
+    <section class="px-3">
+        <h5 class="fw-bold">TICKET {{ ticket.id }}</h5>
+        <h6 class="fw-bold"><span class="text-green">Submitted on: </span>{{ ticket.ticket_date }}</h6>
+
+        <h6><span class="fw-bold">Title: </span>{{ ticket.ticket_title }}</h6>
+
+        <h6 class="mt-5 fw-bold">Description:</h6>
+        <div>{{ ticket.ticket_description|safe }}</div>
+
+        <div class="row">
+            <h6 class="fw-bold mb-3">Attachment</h6>
+            <div id="ticketAttachmentPreview" >
+                
+            </div>
+            <div>
+                <a class="btn btn-sm btn-navy mt-2" href="{{ ticket.ticket_attachment.url }}" download="{{ ticket.ticket_attachment.url }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                      </svg>
+                    Download Attachment
+                </a>
+            </div>
+        </div>
+
+        {% if ticket.ticketcomment_ticket.all.count < 1 %}
+            <p class="border-top py-3">No Comment Yet</p>
+        {% else %}
+            <div class="conversation mt-5 border border-secondary p-3">
+                <h6 class="fw-bold">Response:</h6>
+                {% for comment in ticket.ticketcomment_ticket.all %}
+                    {% if user == comment.user %}
+                        <div class="d-flex p-2 mb-3 justify-content-end">
+                            <div style="max-width: 60%" class="py-2 px-4 lh-1 shadow-sm bg-lightgreen rounded-3 d-flex justify-content-end">
+                                <div class="ms-auto">
+                                    <div class="d-flex lh-1 pt-3">
+                                        <span class="fw-bold">{{ comment.user.full_name }}</span>
+                                        <span class="mx-2">|</span>
+                                        <span class="">{{ comment.comment_date }}</span>
+                                    </div>
+                                    <p>{{ comment.comment|safe }}</p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center align-items-end mx-2">
+                                <img src="{{ comment.user.profile_pic.url }}"
+                                style="width: 65px;height: 65px;border-radius: 50%;object-fit: cover;" alt="">
+                            </div>
+                        </div>
+                    {% elif user != comment.user %}
+                        <div class="d-flex p-2 mb-3 justify-content-start">
+                            <div class="d-flex justify-content-center align-items-end mx-2">
+                                <img src="{{ comment.user.profile_pic.url }}"
+                                style="width: 65px;height: 65px;border-radius: 50%;object-fit: cover;" alt="">
+                            </div>
+                            <div style="max-width: 60%" class="py-2 px-4 lh-1 shadow-sm bg-navy rounded-3" >
+                                <div class="d-flex lh-1 pt-3">
+                                    <span class="fw-bold">{{ comment.user.full_name }}</span>
+                                    <span class="mx-2">|</span>
+                                    <span class="">{{ comment.comment_date }}</span>
+                                </div>
+                                <p>{{ comment.comment|safe }}</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% if ticket.ticket_status == 'open' %}
+            {% if user.is_superuser or user.is_staff or ticket.ticketcomment_ticket.all.count > 0 %}
+                <div class="reply-box mt-3">
+                    <h6 class="fw-bold">Recent Messages</h6>
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {{ commentform.media }}
+                        {{ commentform }}
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary px-4 mt-3">Reply</button>
+                    </form>
+                </div>
+            {% endif %}
+        {% endif %}
+    </section>
+</main>
+
+
+{% endblock content %} 
+{% block customjs %} 
+<script>
+    // File formats
+    const videoFormats = ['mp4','webm','m4v','ogv','avi'];
+    const imageFormats = ['apng', 'avif','gif','jpeg','jpg','png','svg','webp','bmp'];
+    const audioFormats = ['mp3','wav','ogg'];
+
+    $( document ).ready(function() {
+        const previewContainer = $("#ticketAttachmentPreview");
+        const container = document.createElement("div");
+        container.style.width = "400px";
+        const fileName = `{{ticket.ticket_attachment.url}}`
+        const extentionType = fileName.split(/[#?]/)[0].split('.').pop().trim().toLowerCase();
+
+        if(videoFormats.includes(extentionType)){
+            container.innerHTML=`
+            <video controls width="100%" height="100%">
+                <source src="${fileName}"
+                        type="video/${extentionType}">
+                Sorry, your browser doesn't support embedded videos.
+            </video>
+            `
+            previewContainer.append(container)
+        }
+        else if (imageFormats.includes(extentionType)){
+            container.innerHTML=`
+            <img class="w-100 h-100"
+                src="${fileName}"
+                alt="${fileName}">
+            `
+            previewContainer.append(container)
+        }
+        else if (audioFormats.includes(extentionType)){
+            container.innerHTML=`
+            <audio controls>
+                <source src="${fileName}"
+                        type="audio/${extentionType}">
+                Your browser does not support the audio tag.
+              </audio>
+            `
+            previewContainer.append(container)
+        }
+        else if (extentionType === "pdf"){
+            container.style.width = "50%";
+            container.style.height = "300px";
+            container.innerHTML=`
+            <iframe class="w-100 h-100" src="${fileName}">
+            </iframe>
+            `
+            previewContainer.append(container)
+        }
+        
+      });
+</script>
+{% endblock customjs %}

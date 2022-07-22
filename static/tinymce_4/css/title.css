@@ -1,0 +1,31 @@
+@import './settings.css';
+
+h1 {
+  font: 28px var(--font);
+  color: #444;
+  padding: 0 0 5px 0;
+}
+
+h2 {
+  font: 26px var(--font);
+  color: #444;
+  padding: 0 0 5px 0;
+}
+
+h3 {
+  font: 24px var(--font);
+  color: #444;
+  padding: 0 0 5px 0;
+}
+
+h4 {
+  font: 22px var(--font);
+  color: #444;
+  padding: 0 0 5px 0;
+}
+
+h5 {
+  font: 20px var(--font);
+  color: #444;
+  padding: 0 0 5px 0;
+}

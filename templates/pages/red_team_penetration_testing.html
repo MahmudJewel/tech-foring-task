@@ -1,0 +1,510 @@
+{% extends 'base/base.html' %} {% load static %} {% load hosts %} {% block title %} Red Team Penetration Testing Service for Business {% endblock title %} {% block meta %}
+<meta property="og:description" content="Our Red Team Penetration testing service simulates cyber attack against business IT system to check for exploitable vulnerabilities. Networks or Firewalls, Wireless network testing, Physical security testing, Web applications such as HTTP / HTTPS (SSL), etc are the sectors we focus on."
+/>
+<meta name="description" content="Our Red Team Penetration testing service simulates cyber attack against business IT system to check for exploitable vulnerabilities. Networks or Firewalls, Wireless network testing, Physical security testing, Web applications such as HTTP / HTTPS (SSL), etc are the sectors we focus on."
+/> {% endblock meta %} {% block headercss %}
+<link rel="stylesheet" href="{% static '' %}css/glide.core.css" />
+<link rel="stylesheet" href="{% static '' %}css/glide.theme.css" />
+<link rel="stylesheet" href="{% static '' %}css/style.css" /> {% endblock headercss %} {% block content %}
+<section class="pt-banner">
+    <div class="container">
+        <h2>
+            RED TEAM PENETRATION TESTING TO DETERMINE YOUR SECURITY SYSTEM WEAKNESS
+        </h2>
+    </div>
+</section>
+<section class="risk-slider">
+    <div class="container">
+        <div class="glide">
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    <li class="glide__slide">
+                        <div class="rs-outer-box">
+                            <div class="rs-inner-box">
+                                <h2 class="rs-title">Report, Guide & Tool</h2>
+                                <p class="rs-text">
+                                    A definitive guide to secure your business from external and internal cyberattacks.
+                                </p>
+                                <a href="{% host_url 'bcs_form' host 'main' %}" class="rs-btn" target="_blank">Download Now</a
+                    >
+                  </div>
+                </div>
+              </li>
+              <!-- <li class="glide__slide">
+                <div class="rs-outer-box">
+                  <div class="rs-inner-box">
+                    <h2 class="rs-title">Report, Guide & Tool</h2>
+                    <p class="rs-text">
+                      Assess your website for SQLI, XSS, CSRF and other common
+                      OWASP vulnerabilities, free tool.
+                    </p>
+                    <a
+                      href="https://thirdeye.techforing.com"
+                      class="rs-btn"
+                      target="_blank"
+                      >Run Assessment</a
+                    >
+                  </div>
+                </div>
+              </li> -->
+              <li class="glide__slide">
+                <div class="rs-outer-box">
+                  <div class="rs-inner-box">
+                    <h2 class="rs-title">Report, Guide & Tool</h2>
+                    <p class="rs-text">
+                      17 ways High Net Worth Individuals are being hacked & how
+                      to be safe.
+                    </p>
+                    <a
+                      href="https://personal.techforing.com/ebook"
+                      class="rs-btn"
+                      target="_blank"
+                      >Download Now</a
+                    >
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="glide__bullets rs-bullets" data-glide-el="controls[nav]">
+            <button class="glide__bullet" data-glide-dir="=0"></button>
+            <button class="glide__bullet" data-glide-dir="=1"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="pt-about">
+      <div class="container">
+        <div class="pt-bar"></div>
+        <h2 class="pt-title">Penetration Testing</h2>
+        <p class="text-justify">
+          Everywhere we look, organizations are being hacked. Many believe that
+          firewalls and anti-virus products are sufficient protection.
+          Unfortunately, this is not true. Techforing.com provides a
+          comprehensive Penetration Test service that identifies the
+          vulnerabilities within systems and infrastructure and determines the
+          exposure to cyber threats such as DDoS attacks, malware, data theft,
+          and many more. The Penetration Test results in an in-depth report that
+          includes actionable recommendations of suitable and proactive
+          countermeasures.
+        </p>
+        <div class="row ei-row-invers">
+          <div class="col-md-6">
+            <div class="pta-box">
+              <ul>
+                <li class="d-flex text-justify">
+                  <i class="fas fa-circle"></i>
+                  Cybercrime is at an all-time high and cybercriminal technology is advancing too rapidly for conventional methods of protection to work.
+                </li>
+                <li class="d-flex text-justify">
+                  <i class="fas fa-circle"></i>
+                  We designed a penetration test for any company of any size to assess the vulnerabilities that may exist in its systems and to understand where its existing security posture sits.
+                </li>
+                <li class="d-flex text-justify">
+                  <i class="fas fa-circle"></i>
+                  The test determines the security of its business and its data. As we all know, data has become a paramount asset for any business and in our current times, businesses are spending millions on money to recover data that has been lost or stolen.
+                </li>
+                <li class="d-flex text-justify">
+                  <i class="fas fa-circle"></i>
+                  Stolen or compromised data may cause adverse effects, such as blacklisting and business closure.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="pta-img">
+              <img
+                src="{% static '' %}img/pt/penetration testing.png"
+                title="Penetration Testing"
+                alt="penetration-testing-companies"
+                longdesc="Techforing Cybersecurity Penetration Testing program"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="pt-serve">
+      <div class="container">
+        <div class="pt-bar"></div>
+        <h2 class="pt-title">industries we serve</h2>
+        <p class="text-justify">
+          Any business, no matter how large or small, should undertake penetration testing if the business deals with sensitive or valuable customer information. In fact, recent statistics have shown that smaller companies are increasingly becoming targets for cyber criminals simply because their IT security is weaker. Some of the industrial sectors that require penetration testing include:
+        </p>
+        <div class="pts-list">
+          <div class="pts-box">
+            <img src="{% static '' %}img/pt/store.png" alt="" />
+            <p>Retail</p>
+          </div>
+          <div class="pts-box">
+            <img src="{% static '' %}img/pt/truck.png" alt="" />
+            <p>Transport</p>
+          </div>
+          <div class="pts-box">
+            <img src="{% static '' %}img/pt/school.png" alt="" />
+            <p>Education</p>
+          </div>
+          <div class="pts-box">
+            <img src="{% static '' %}img/pt/bank.png" alt="" />
+            <p>Banking</p>
+          </div>
+          <div class="pts-box">
+            <img src="{% static '' %}img/pt/health.png" alt="" />
+            <p>Healthcare</p>
+          </div>
+          <div class="pts-box">
+            <img src="{% static '' %}img/pt/hospital.png" alt="" />
+            <p>Hospitality</p>
+          </div>
+          <div class="pts-box">
+            <img src="{% static '' %}img/pt/info.png" alt="" />
+            <p>Information Technology</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="pt-approch">
+      <div class="container">
+        <div class="pt-bar"></div>
+        <h2 class="pt-title">our approach</h2>
+        <p class="text-justify">
+          At Techforing.com, we use real people to perform system breaches. We leverage sophisticated tools along with the same methods that a malicious hacker would. In this way, we make the test as realistic as possible.  <br /><br />
+          We break our overall process of penetration testing down into a series of four phases identified, highlighted below. When put together, these phases form a comprehensive method for completing a successful Penetration Test.
+        </p>
+        <div class="row pta-row">
+          <div class="col-md-8">
+            <div class="pta-flow">
+              <h2 class="pt-subtitle">Methodology:</h2>
+              <div class="row">
+                <div class="col-md-7">
+                  <div class="flow-box">
+                    <img src="{% static '' %}img/pt/arrow.png" alt="" class="arrow1" />
+                    <img src="{% static '' %}img/pt/scoping.png" alt="" />
+                    <div>
+                      <h2>Scoping and Exploration</h2>
+                      <p class="text-justify">
+                        This is where we learn who you are as a client, the dynamics of your network, and what comprises it; All your assets. We also agree upon the timeframe for testing and the systems and data to perform the penetration testing.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-5">
+                  <div class="flow-box flow-box2">
+                    <img src="{% static '' %}img/pt/arrow.png" alt="" class="arrow1" />
+                    <img src="{% static '' %}img/pt/arrow.png" alt="" class="arrow3" />
+                    <img src="{% static '' %}img/pt/discovery.png" alt="" />
+                    <div>
+                      <h2>Discovery and Analysis</h2>
+                      <p class="text-justify">
+                        In this phase, we scan your network both internally and
+                        externally to understand all the various vulnerabilities
+                        that exist.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-7">
+                  <div class="flow-box">
+                    <img src="{% static '' %}img/pt/arrow.png" alt="" class="arrow2" />
+                    <img src="{% static '' %}img/pt/notification.png" alt="" />
+                    <div>
+                      <h2>Notification and Reporting</h2>
+                      <p class="text-justify">
+                        After penetrating into your system, we proceed to the most important aspect in penetration testing, the report. It gives you a breakdown of everything that we discovered, including evidence of our discovery process and the problem remediation. We rate vulnerabilities as critical, high, medium or low, followed by overall security rating for the business, enabling you to decide and fix the most important issues.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-5">
+                  <div class="flow-box flow-box4">
+                    <img src="{% static '' %}img/pt/arrow.png" alt="" class="arrow2" />
+                    <img src="{% static '' %}img/pt/expolitation.png" alt="" />
+                    <div>
+                      <h2>Exploitation</h2>
+                      <p class="text-justify">
+                        This is where we learn who you are as a client, the dynamics of your network, and what comprises it; all your assets. We also agree upon the timeframe for testing and the systems and data to perform the penetration testing.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="flow-box-img">
+              <img src="{% static '' %}img/pt/flow.png" alt="" />
+              <ul class="flow-box-list">
+                <li>1. Information Gathering</li>
+                <li>2. Threat Modeling</li>
+                <li>3. Vulnerability Analysis</li>
+                <li>4. Exploitation</li>
+                <li>5. Post Exploitation</li>
+                <li>6. Reporting</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="pt-focus">
+      <div class="container">
+        <div class="pt-bar"></div>
+        <h2 class="pt-title mb-4">Our Focus</h2>
+        <h2 class="ptf-title">PEN Testing that Leaves No Stones Unturned</h2>
+        <p class="text-justify">
+          We provide penetration testing for many targets–both externally and internally accessible infrastructure and services. This includes web applications, networks, hardware, mobile devices or even humans, through our physical testing.
+        </p>
+        <p class="text-justify">
+          We can deliver our services as a one-time service or on a recurring service for maximum protection.
+        </p>
+        <div class="row ptf-row ei-row-invers">
+          <div class="col-md-6">
+            <div class="ptf-box">
+              <ul>
+                <h2 class="focus-subtitle">
+                  Our Penetration Testing Services Focus on:
+                </h2>
+                <li class="d-flex">
+                  <i class="fas fa-circle"></i>
+                  Networks/Firewalls
+                </li>
+                <li class="d-flex">
+                  <i class="fas fa-circle"></i>
+                  Wireless network testing
+                </li>
+                <li class="d-flex">
+                  <i class="fas fa-circle"></i>
+                  Physical security testing
+                </li>
+                <li class="d-flex">
+                  <i class="fas fa-circle"></i>
+                  Web applications such as HTTP / HTTPS (SSL)
+                </li>
+                <li class="d-flex">
+                  <i class="fas fa-circle"></i>
+                  Technical testing of your cloud based infrastructure
+                </li>
+                <li class="d-flex">
+                  <i class="fas fa-circle"></i>
+                  Technical testing of your internal network infrastructure
+                </li>
+                <li class="d-flex text-justify">
+                  <i class="fas fa-circle"></i>
+                  Networking gear including routers, switches, access points and
+                  more
+                </li>
+                <li class="d-flex text-justify">
+                  <i class="fas fa-circle"></i>
+                  Technical testing on any other IT system or peripheral that
+                  may pose security vulnerability in a client’s environment
+                </li>
+                <li class="d-flex text-justify">
+                  <i class="fas fa-circle"></i>
+                  Technical testing of your internally accessible infrastructure
+                  such as workstations, mobile devices, DNS services, email
+                  servers, databases, VOIP services, etc
+                </li>
+                <li class="d-flex text-justify">
+                  <i class="fas fa-circle"></i>
+                  Technical testing of your externally accessible infrastructure
+                  such as servers in your DMZ, RDP (Remote Desktop Protocol),
+                  VPN, IPsec end points, web applications, etc.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="pta-img">
+              <img
+                src="{% static '' %}img/pt/our focus.png"
+                title="Focused Penetration Testring Service"
+                alt="penetration-testing-companies-red-team-penetration-testing"
+                longdesc="Techforing penetration testing service focuses"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-why">
+      <div class="container">
+        <img
+          src="{% static '' %}img/pt/why us.png"
+          title="Why our penetration Testing Service"
+          alt="penetration-testing-companies-pentest-companies"
+          longdesc="Why choose our penetration testing service"
+        />
+        <div class="pt-bar"></div>
+        <h2 class="pt-title">why us</h2>
+        <div class="ptf-box">
+          <ul>
+            <li class="d-flex text-justify">
+              <i class="fas fa-circle"></i>
+              We guarantee to provide your company with remediation and mitigation steps to address all the vulnerabilities we identify during our testing. What makes us stand out, however, is a combination of our world-class data security team and highly advanced automated tools all under one roof.
+            </li>
+            <li class="d-flex text-justify">
+              <i class="fas fa-circle"></i>
+              Drawing from years of experience of infiltrating the networks of some of the world’s greatest adversaries, we have developed advanced techniques to penetrate target networks. This includes a hybrid penetration testing approach that goes far beyond conventional automated scanners, but leveraging the highly skilled human factor that exposes your entire network and infrastructure’s vulnerabilities. We hack your IT before the hackers do, ensuring complete security for you and your customers.
+            </li>
+            <li class="d-flex text-justify">
+              <i class="fas fa-circle"></i>
+              Don’t let uncertainty of an insecure network worry you a day longer. Contact us today and let us help you get started in building a safer future.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="ics-section rcs-section risk-rcs-section">
+      <div class="container">
+        <div class="y-line-mini r-line-mini"></div>
+        <h2 class="ics-title">client stories</h2>
+      </div>
+      <div class="ics-fluid">
+        <div class="container">
+          <div class="rcs-fluid">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="rcs-img">
+                  <img src="{% static '' %}img/pt/murgic.png" alt="" />
+                </div>
+              </div>
+              <div class="col-md-9">
+                <div class="rcs-box">
+                  <img src="{% static '' %}img/risk/quote.png" alt="quote" />
+                  <p class="rcs-text">
+                    Our website needed risk assessment. Techforing Engineers are
+                    a pro in that. They did everything needed to get the job
+                    done. Guys are content and I got my piece of mind. Thanks
+                    techforing.
+                  </p>
+                  <h2 class="rcs-name">Eddie Murgic (USA)</h2>
+                  <i>President and CEO, Traveloko, LLC.</i>
+                  <div class="rcs-btn">
+                    <a href="{% url 'testimonial' %}" target="_blank"
+                      >See all success stories</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="pt-cta">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div class="ptc-box">
+              <h2>GET REALWORLD LOOK AT HOW YOU CAN BE HACKED</h2>
+              <p>Our Team is Ready to Help</p>
+              <a href="{% host_url 'get_start' host 'main' %}" target="_blank">Secure Now</a>
+                            </div>
+                        </div>
+            </div>
+        </div>
+</section>
+<section class="pt-blog">
+    <div class="container">
+        <div class="pt-bar"></div>
+        <h2 class="pt-title">important resources</h2>
+    </div>
+    <div class="pt-blog-row">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="pt-blog-box">
+                        <img src="{% static '' %}img/va/case1.png" title="Penetration Testing Case Studies 1" alt="penetration-testing-companies-pen-testing-as-a-service" longdesc="Penetration testing service case 1" />
+                        <div class="pt-bar"></div>
+                        <h2 class="text-center">
+                            Cyber Attacks on Financial Institutions- Hackers Stealing Data, Not Money
+                        </h2>
+                        <p class="text-justify">
+                            Financial institutions like Banks, brokerage firms, mortgage companies often become the target of hackers, who are after financial data to perform phishing attacks, DDOS, etc. Data is more valuable than money and such cyberattacks cost banks millions!
+                        </p>
+                        <div class="case-btn rcase-btn">
+                            <a href="https://blog.techforing.com/blogs/cyber-attacks-on-financial-services/" target="_blank">Read More</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="pt-blog-box">
+                <img
+                  src="{% static '' %}img/va/case2.png"
+                  title="Penetration Testing Case Studies 2"
+                  alt="penetration-testing-companies-web-application-penetration-testing-service"
+                  longdesc="Penetration testing service case 2"
+                />
+                <div class="pt-bar"></div>
+                <h2 class="text-center">Cybersecurity Tips for Work from Home Users</h2>
+                <p class="text-justify">
+                  Working from home makes life easy for hackers to infiltrate
+                  not so secure IT system used by the employees. Therefore,
+                  organizations' data security largely depends on how safely the
+                  coworkers can operate workplace digital assets. This blog has
+                  the right tips you can use!
+                </p>
+                <div class="case-btn rcase-btn">
+                  <a
+                    href="https://blog.techforing.com/blogs/cybersecurity-tips-for-work-from-home/"
+                    target="_blank"
+                    >Read More</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="pt-blog-box">
+                <img
+                  src="{% static '' %}img/va/case3.png"
+                  title="Penetration Testing Case Studies 3"
+                  alt="penetration-testing-companies-cyber-security-penetration-testing"
+                  longdesc="Penetration testing service case 3"
+                />
+                <div class="pt-bar"></div>
+                <h2 class="text-center">How to Design A Secure Office Network</h2>
+                <p class="text-justify">
+                  To ensure safe communications via routers, switches, servers,
+                  and hosts, defense-in-depth approach security is mandatory for
+                  each organization. This article provides a comprehensive view
+                  of designing a secure office network that you can implement in
+                  your workplace.
+                </p>
+                <div class="case-btn rcase-btn">
+                  <a
+                    href="https://blog.techforing.com/blogs/how-to-design-a-secure-office-network/"
+                    target="_blank"
+                    >Read More</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock content %}
+
+{% block customjs %}
+    <script src="{% static '' %}js/glide.js"></script>
+    <script src="{% static '' %}js/custom.js"></script>
+    <script>
+      new Glide(".glide", {
+        type: "carousel",
+        autoplay: 8000,
+      }).mount();
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#my-header").load("header.html");
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#my-footer").load("footer.html");
+      });
+    </script>
+
+{% endblock customjs %}

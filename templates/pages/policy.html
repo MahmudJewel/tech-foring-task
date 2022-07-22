@@ -1,0 +1,127 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load hosts %}
+
+{% block title %}
+    Policy
+{% endblock title %}
+
+{% block headercss %}
+    <link rel="stylesheet" href="{% static '' %}tfcss/style.css" />
+{% endblock headercss %}
+
+{% block content %}
+    <section class="policy-banner">
+      <div class="container">
+        <h2>TechForing Privacy Policy</h2>
+      </div>
+    </section>
+    <div class="container terms-text">
+      <h2 class="tfh-title-right">Privacy Policy</h2>
+      <small>Last updated: March 2020</small>
+      <p class="text-justify">
+        We maintain the utmost respect for your privacy and information. We offer our privacy policy for your review, so that you can directly understand how your data is collected and handled. The following explains the practices we follow regarding handling data. <br /><br />
+        Techforing is devoted to taking all the steps necessary to protect your data. We take technical, administrative, and physical measures in order to safeguard your information against theft, loss, misuse, unauthorized access, alteration, disclosure, and destruction.
+        <br /><br />
+        Your information will only be accessed by allowed staff who have been specifically instructed to handle your information with the utmost confidentiality. All the information you provide to Techforing is protected by standard industry security and firewalls. Any data we transmit uses secure socket layer encryption.
+      </p>
+    </div>
+    <section class="terms-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="terms-box">
+              <div class="fran-bar"></div>
+              <h2 class="terms-title">Techforing uses information to</h2>
+              <ul class="pl-4">
+                <li>Provide your requested service.</li>
+                <li>
+                  Fulfill obligations arising from contracts between you and Techforing.
+                </li>
+                <li>Send you notifications about changes to our services.</li>
+              </ul>
+            </div>
+            <div class="terms-box">
+              <div class="fran-bar"></div>
+              <h2 class="terms-title">
+                How we handle sharing information with third parties
+              </h2>
+              <p class="text-justify">
+                None of the information you provide to us is sold, leased, or rented. The only exceptions to this are if we have your permission, are legally required to do so, are required to do so to protect the rights of Techforing, our customers or others. We only provide information to other entities within Techforing and to third parties that assist Techforing through operation of our website and sale of our services.
+                <br /><br />
+                If Techforing gains or sells any assets or business, we may disclose your personal information to the prospective buyer or seller of such assets or business; or if Techforing or all of its assets are obtained by a third party, the information being held about partners and our customers will be an asset transferred.
+                <br /><br />
+                To fulfill business and services, we may transfer your information from your country or jurisdiction and across borders to other jurisdictions or countries around the world. The data collected from you may be stored and transferred to the United States, Turkey or another destination outside of the European Economic Area (EEA). Your information may be processed by staff in the U.S. or outside the EEA. These staff members may fulfill, process, and engage in the provision of your order and/or service. Upon submitting your information to Techforing, you agree to this storing, transfer, and/or processing.
+              </p>
+            </div>
+            <div class="terms-box">
+              <div class="fran-bar"></div>
+              <h2 class="terms-title">Your ability to control information</h2>
+              <p class="text-justify">
+                Upon establishing an account or submitting your information to Techforing, we will make contact via email, telephone or postal mail. During contact, we may notify you of new services Techforing offers. You can opt out of being contacted by deactivating your account with us. If you no longer desire to maintain your Techforing account, please contact us and we will have you removed from our list of contacts.
+                <br /><br />
+                You uphold the right to access the information we hold about you. Please email us for more details.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="terms-box">
+              <div class="fran-bar"></div>
+              <h2 class="terms-title">
+                The collection of personal information
+              </h2>
+              <p class="text-justify">
+                When you register for our services, Techforing collects personal information. If you report a problem with our website, we keep a record of the correspondence. We also collect personal information when a transaction is completed through our site or when you enter Live Chat on our site.
+                <br /><br />
+                It is our standard practice to log the domain name from where your visit originated. We also log the IP address you’re currently using, web browser type, internet service provider, exit page, referral page, operating system, as well as a date and time stamp. This information is used for statistics, the tracking of usage patterns, and serving pages you visit. We do not use the aforementioned information to identify you as the user.
+              </p>
+            </div>
+            <div class="terms-box">
+              <div class="fran-bar"></div>
+              <h2 class="terms-title">Cookie usage</h2>
+              <p class="text-justify">
+                Techforing uses cookies for the convenience of information storage. This way, you don’t have to reenter your information on each visit. Cookies are also used to monitor usage of our services and site features, so that we may market and advertise our services most effectively.
+                <br /><br />
+                When visiting our site, cookies are placed on your device or computer. The purpose of this is to maximize your experience and help us improve our site. You can choose not to receive cookies by setting your browser to reject all cookies, selecting trusted sites or only accepting cookies from sites you’re on at the moment. Note that turning off cookies may hinder the ability to use some portions of our site.
+              </p>
+            </div>
+            <div class="terms-box">
+              <div class="fran-bar"></div>
+              <h2 class="terms-title">Linking outside of our site</h2>
+              <p class="text-justify">
+                Our site links to other sites. By visiting those sites, you choose to comply with their privacy policy. The Techforing privacy policy solely applies to information collected from the Techforing website. We do not accept liability or responsibility for third party policies.
+              </p>
+            </div>
+            <div class="terms-box">
+              <div class="fran-bar"></div>
+              <h2 class="terms-title">Changes to our privacy policy</h2>
+              <p class="text-justify">
+                If Techforing changes how we use your personal information, we post the change (s) on our site. We recommend you visit this page regularly to be advised of any changes. The changes (s) only apply to information furnished by our users after the change (s) and data we have on file for existing users.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock content %}
+
+{% block customjs %}
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/tfjs/bootstrap.bundle.min.js"
+      integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="{%static ''%}tfjs/career.js"></script>
+    <script src="{%static ''%}tfjs/find.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#my-header").load("header.html");
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#my-footer").load("footer.html");
+      });
+    </script>
+{% endblock customjs %}

@@ -1,0 +1,361 @@
+{% extends 'base/blog_base.html' %} {% load my_filter %} {% load static %}{% load hosts %} {% block title %}
+    {{ path|capitalize }} {% endblock title %} {% block headercss %}
+    <link rel="stylesheet" href="{% static 'tfcss/blog/category.css' %}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        .banner-1 .banner-bg {
+            color: white;
+            background-image: url("{% static '' %}tfimg/blog/{{path}}.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+{% endblock headercss %}
+{% block content %}
+    <section class="row mx-0 banner-1">
+        <div class="col-md-6 col-lg-7 col-xl-8 pe-2 banner-bg">
+            <div class="d-flex flex-column justify-content-center h-100">
+                <h4 class="fw-bold">{{ pathname|capitalize|upper }}</h4>
+                <h5 class="text-capitalize">
+                {% if path == 'articles' %}
+                Keep yourself updated about latest cybersecurity problems and solutions.
+                {% elif path == 'case-studies' %}
+                Stories and experience of an amazing journey towards cybersecurity.
+                {% else %}
+                Participate live shows with our experts and get clarified about your queries.
+                {% endif %}
+                </h5>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-5 col-xl-4 px-0 px-md-2">
+            <div class="bg-gray px-3 py-2 h-100 d-flex flex-column justify-content-center">
+                {% if path|capitalize|upper != 'PODCAST' %}
+                    <div class="accordion accordion-flush" id="accordionFlush">
+                        {% for subcategory in subcategories %}
+                            <div class="accordion-item {% if forloop.counter == 2 %}mt-2{% endif %}">
+                                <h2 class="accordion-header" id="{{ subcategory|replacespace|lower }}">
+                                    <button class="accordion-button collapsed fw-bold" type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#{{ subcategory|replacespace|lower }}-collapse"
+                                            aria-expanded="false"
+                                            aria-controls="{{ subcategory|replacespace|lower }}-collapse">
+                                        {{ subcategory }}
+                                    </button>
+                                </h2>
+                                <div id="{{ subcategory|replacespace|lower }}-collapse"
+                                     class="accordion-collapse collapse"
+                                     aria-labelledby="{{ subcategory|replacespace|lower }}"
+                                     data-bs-parent="#accordionFlush">
+                                    <div class="accordion-body">
+                                        {% for filter_option in subcategory.filter_subcategory.all %}
+                                            <a class="fw-bold" href="{% host_url 'category' host 'blog' %}{{ path }}/{{ subcategory|replacespace }}/{{ filter_option|replacespace }}">{{ filter_option }}</a> 
+                                        {% endfor %}
+                                    </div>
+                                </div>
+
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                   <div class="d-none d-md-block text-center">
+                    <h4 class="text-center fw-bold">Upcoming Podcast</h4>
+                    <img src="{% static 'tfimg/blog/upcoming.png' %}" style="width: 70%;height: auto;" />
+                   </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    <div class="mt-3 d-none d-md-flex justify-content-center justify-content-md-start">
+        <div class="dropdown">
+            <button class="btn border border-secondary text-navy bg-white dropdown-toggle" type="button"
+                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                Filter Posts By Keyword
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <li>
+                    <input type="search" class="form-control" placeholder="Type a keyword" id="keyword-input">
+                </li>
+            </ul>
+        </div>
+        <div class="dropdown ms-md-5">
+            <button class="btn border border-secondary text-navy bg-white dropdown-toggle" type="button"
+                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                Upload Date
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <li>
+                    <button class="dropdown-item" onclick="location.reload()" type="button">All</button>
+                </li>
+                <li>
+                    <button class="dropdown-item" onclick="filterByDate('month')" type="button">This Month</button>
+                </li>
+                <li>
+                    <button class="dropdown-item" onclick="filterByDate('year')" type="button">This Year</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    {% if path|capitalize|upper != 'PODCAST' and important_posts.count > 1 %}
+        <section class="important-posts mt-4 px-2 px-md-0">
+            <a href="" class="container-heading">MOST IMPORTANT {{ path|capitalize|upper }}</a>
+            <div class="bg-light">
+                <div class="row mx-0 align-items-stretch post-container">
+                    <div class="col-md-4 ps-md-0">
+                        {% for post in important_posts %} {% if forloop.counter == 2 or forloop.counter == 3 %}
+                            <a href="{% host_url path host 'blog' %}{{ post.post_url }}"
+                               class="url-wrapper {% if forloop.counter == 2 %}mb-30p{% endif %} size gradient">
+                                <img src="{{ post.feature_image.url }}" class="position-absolute" alt="">
+                                <div class="text">
+                                    <h2>{{ post.title }}</h2>
+                                    <span class="date">
+                            <i class="bi bi-calendar"></i>
+                            {{ post.date|date }}
+                        </span>
+                                    <span class="ms-2">
+                            <i class="bi bi-stopwatch"></i>
+                            {{post.reading_time}}
+                        </span>
+                                </div>
+                            </a>
+                        {% endif %} {% endfor %}
+                    </div>
+
+                    <div class="col-md-4 mb-4 mb-md-0">
+                        {% for post in important_posts %}
+                        {% if forloop.counter == 1 %}
+                            <a href="{% host_url path host 'blog' %}{{ post.post_url }}"
+                               class="url-wrapper h-100 gradient">
+                                <img src="{{ post.feature_image.url }}" class="position-absolute" alt="">
+                                <div class="text">
+                                    <h2>{{ post.title }}</h2>
+                                    <span class="date">
+                            <i class="bi bi-calendar"></i>
+                            {{ post.date|date }}
+                        </span>
+                                    <span class="ms-2">
+                            <i class="bi bi-stopwatch"></i>
+                            {{post.reading_time}}
+                        </span>
+                                </div>
+                            </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="col-md-4 pe-md-0">
+                        {% for post in important_posts %} {% if forloop.counter == 4 or forloop.counter == 5 %}
+                            <a href="{% host_url path host 'blog' %}{{ post.post_url }}"
+                               class="url-wrapper {% if forloop.counter == 4 %}mb-30p{% endif %} size gradient">
+                                <img src="{{ post.feature_image.url }}" class="position-absolute" alt="">
+                                <div class="text">
+                                    <h2>{{ post.title }}</h2>
+                                    <span class="date">
+                            <i class="bi bi-calendar"></i>
+                            {{ post.date|date }}
+                        </span>
+                                    <span class="ms-2">
+                            <i class="bi bi-stopwatch"></i>
+                            {{post.reading_time}}
+                        </span>
+                                </div>
+                            </a>
+                        {% endif %} {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+   
+    <!-- recent posts  -->
+    <section class="recent-posts mt-4 px-2 px-md-0">
+        <a href="" class="container-heading mb-3">RECENT {{ path|capitalize|upper }}</a>
+        <div class="posts row row-cols-1 row-cols-md-3 g-5">
+            {% for post in posts %}
+                <div class="post col" data-aos="fade-up">
+                    <div class="card h-100">
+
+                        {% if user.is_authenticated %}
+                            {% if post.id not in reading_lists %}
+                                <a href="{% host_url 'add_to_reading_list' host 'blog' %}{{ post.id }}"
+                                   class="btn add-btn"><i class="bi bi-plus-lg"></i>
+                                    <span>Add to my reading list</span>
+                                </a>
+                            {% else %}
+                                <a href="{% host_url 'add_to_reading_list' host 'blog' %}{{ post.id }}"
+                                   class="btn add-btn"><i class="bi bi-dash-lg"></i>
+                                    <span>Remove from my reading list</span>
+                                </a>
+                            {% endif %}
+                        {% else %}
+                        <a href="{% host_url 'account_login' %}"
+                                   class="btn add-btn"><i class="bi bi-plus-lg"></i>
+                                    <span>Login First</span>
+                                </a>
+                        {% endif %}
+
+                        <img src="{{ post.feature_image.url }}" class="card-img-top" alt="{{ post.title }}">
+                        <div class="card-body p-1 pt-2">
+                            <a href="{% host_url path host 'blog' %}{{ post.post_url }}" class="title">
+                                <h6 class="fw-bold fs-7">{{ post.title }}
+                                </h6>
+                            </a>
+                            <div class="info-area">
+                        <span class="p-0 me-3 text-green">
+                            <i class="bi bi-calendar"></i>
+                            {{ post.date|date }}
+                        </span>
+                                <span class="p-0 me-3 text-green" title="Reading Time">
+                            <i class="bi bi-stopwatch"></i>
+                            {{ post.reading_time }}
+                        </span>
+                            </div>
+                            <p class="fs-7 lh-sm">
+                                {{ post.short_description|truncatechars:140 }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="d-none filtered-posts row mx-0 g-5">
+
+        </div>
+    </section>
+
+    <!-- load more data  -->
+    <!-- <section class="my-5 container d-flex justify-content-center">
+        <button id="load-more-btn" class="btn btn-navy rounded-pill">Load More</button>
+    </section> -->
+
+
+   
+
+{% endblock content %}
+{% block customjs %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+    AOS.init();
+        let importantPosts = document.querySelector('.important-posts');
+        let recentPosts = document.querySelector('.recent-posts .posts');
+        let filteredPosts = document.querySelector('.recent-posts .filtered-posts');
+        let containerHeading = document.querySelector('.recent-posts .container-heading');
+
+        document.getElementById('keyword-input').addEventListener('keyup', e => {
+            if (e.target.value == '') {
+                e.target.parentNode.parentNode.parentNode.parentNode.style.marginBottom = '0px';
+                containerHeading.textContent = 'RECENT {{ path|capitalize|upper }}';
+                importantPosts.classList.remove('d-none');
+                recentPosts.classList.remove('d-none');
+                filteredPosts.innerHTML = '';
+            } else {
+                e.target.parentNode.parentNode.parentNode.parentNode.style.marginBottom = '100px';
+                containerHeading.textContent = 'FILTERED POSTS';
+                importantPosts.classList.add('d-none');
+                recentPosts.classList.add('d-none');
+                let url = `${mainOrigin}/api/blogs/filter/{{ path|capitalize|lower }}/${e.target.value}/`;
+                getPosts(url);
+            }
+        });
+
+        let filterByDate = (range) => {
+            containerHeading.textContent = 'FILTERED {{ path|capitalize|upper }}';
+            importantPosts.classList.add('d-none');
+            recentPosts.classList.add('d-none');
+            let url = `${mainOrigin}/api/blogs/filter/date/{{ path|capitalize|lower }}/${range}`;
+            getPosts(url);
+        }
+
+        let getPosts = (url) => {
+            filteredPosts.classList.remove('d-none');
+            filteredPosts.innerHTML = `<div id="progress" class="text-center py-5">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        </div>`;
+
+            console.log(url)
+
+            fetchPosts(url).then(function (posts) {
+                console.log(posts)
+                filteredPosts.removeChild(document.getElementById('progress'));
+
+                posts.forEach(post => {
+                    let newPost = ` <div class="post col-md-4">
+            <div class="card h-100">
+                <button class="btn add-btn"><i class="bi bi-plus-lg"></i>
+                    <span>Add to my reading list</span>
+                </button>
+                <img src="${post.feature_image}" class="card-img-top" alt="...">
+                <div class="card-body pt-2 p-0">
+                    <a href="" class="title">
+                        <h6 class="fw-bold fs-7">${post.title}</h6>
+                    </a>
+                    <div class="info-area">
+                        <span class="p-0 me-3 text-green">
+                            <i class="bi bi-calendar"></i>
+                            ${(post.date).split('T')[0]}
+                        </span>
+                        <span class="p-0 me-3 text-green" title="Reading Time">
+                            <i class="bi bi-stopwatch"></i>
+                            ${post.reading_time}
+                        </span>
+                    </div>
+                    <p class="fs-7 lh-sm">
+                        ${post.short_description.slice(0, 140) + "..."}
+                    </p>
+                </div>
+            </div>
+        </div>`;
+
+                    filteredPosts.innerHTML += newPost;
+                });
+
+                updateAddBtn();
+            }).catch(function (err) {
+                console.log(err)
+            })
+        }
+
+        function fetchPosts(url) {
+            return new Promise(function (resolve, reject) {
+                $.ajax({
+                    url: url,
+                    type: 'get',
+                    xhrFields: {
+                        withCredentials: true
+                     },
+                     crossDomain: true,
+                    dataType: 'json',
+                    success: function (data) {
+                        resolve(data) // Resolve promise and go to then()
+                    },
+                    error: function (err) {
+                        reject(err) // Reject the promise and go to catch()
+                    }
+                });
+            });
+        }
+
+
+        let updateAddBtn = () => {
+            document.querySelectorAll('.post .card .add-btn').forEach(btn => {
+                btn.addEventListener('mouseover', e => {
+                    if (e.target.tagName == 'I')
+                        btn.classList.add('show-btn');
+                });
+                btn.addEventListener('mouseout', e => {
+                    if (e.target.tagName == 'A')
+                        btn.classList.remove('show-btn');
+                });
+            });
+        }
+
+        window.onload = function () {
+            updateAddBtn();
+        }
+
+    </script>
+{% endblock customjs %}

@@ -1,0 +1,566 @@
+{% extends 'base/base.html' %} {% load static %} {% load hosts %} {% block title %} Small business cybersecurity service | Techforing {% endblock title %} {% block meta %}
+<meta property="og:description" content="Our small business cyber security service provides SMBs customizable, scalable, and fully managed solutions at a very reasonable rate. We maximize the ROI on your existing security infrastructure" />
+<meta name="description" content="Our small business cyber security service provides SMBs customizable, scalable, and fully managed solutions at a very reasonable rate. We maximize the ROI on your existing security infrastructure" />
+<meta name="keywords" content="small business cybersecurity, managed it security services, managed cybersecurity services, managed network security, SMB Solution, security solution, Techforing, cyber security solutions for small business" /> {% endblock meta %} {% block headercss %}
+<link rel="stylesheet" href="{% static '' %}css/glide.core.css" />
+<link rel="stylesheet" href="{% static '' %}css/glide.theme.css" />
+<link rel="stylesheet" href="{% static '' %}css/style.css" /> {% endblock headercss %} {% block content %}
+<section class="smb-banner">
+    <div class="container">
+        <div class="smb-line"></div>
+        <h2>SMALL BUSINESS CYBERSECURITY FOR SMBs</h2>
+    </div>
+</section>
+
+<section class="risk-slider">
+    <div class="container">
+        <div class="glide">
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    <li class="glide__slide">
+                        <div class="rs-outer-box">
+                            <div class="smb-inner-box">
+                                <h2 class="rs-title">Report, Guide & Tool</h2>
+                                <p class="rs-text">
+                                    A definitive guide to secure your business from external and internal cyberattacks.
+                                </p>
+                                <a href="{% host_url 'bcs_form' host 'main' %}" class="rs-btn" target="_blank">Download Now</a
+                    >
+                  </div>
+                </div>
+              </li>
+              <!-- <li class="glide__slide">
+                <div class="rs-outer-box">
+                  <div class="smb-inner-box">
+                    <h2 class="rs-title">Report, Guide & Tool</h2>
+                    <p class="rs-text">
+                      Assess your website for SQLI, XSS, CSRF and other common
+                      OWASP vulnerabilities, free tool.
+                    </p>
+                    <a
+                      href="https://thirdeye.techforing.com"
+                      class="rs-btn"
+                      target="_blank"
+                      >Run Assessment</a
+                    >
+                  </div>
+                </div>
+              </li> -->
+              <li class="glide__slide">
+                <div class="rs-outer-box">
+                  <div class="smb-inner-box">
+                    <h2 class="rs-title">Report, Guide & Tool</h2>
+                    <p class="rs-text">
+                      17 ways High Net Worth Individuals are being hacked & how
+                      to be safe.
+                    </p>
+                    <a
+                      href="https://personal.techforing.com/ebook"
+                      target="_blank"
+                      class="rs-btn"
+                      >Download Now</a
+                    >
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="glide__bullets smb-bullets" data-glide-el="controls[nav]">
+            <button class="glide__bullet" data-glide-dir="=0"></button>
+            <button class="glide__bullet" data-glide-dir="=1"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wr-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="wr-box">
+              <div class="smb-line"></div>
+              <h2 class="wr-title">how techforing work</h2>
+              <p class="wr-text text-justify">
+                Techforing provides a comprehensive and customizable Cyber Security Service to support small and Medium-sized organizations that need around-the-clock outsourced monitoring. We cover the fundamentals of security controls led by a team of professionals certified in C|EH, CISA, CISSP, and Security+. Our Managed IT security services help companies identify potential threats and cracks in the security infrastructure quickly and efficiently. 
+                <br /><br />
+                Alongside LIVE Monitoring and high-quality detection, we have a Plug & Play Program at a reasonable cost to fit your affordability. In collaboration with your IT team, our SMB solutions simplify regular security operations, advise on the essential security practices, provide estimates about future security requirements and maximize the ROI on the current system.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="wr-img-box">
+              <img
+                src="{%static ''%}img/smb/How-tf-smb.png"
+                title="How TF Help with SMB Solution"
+                alt="small-business-cybersecurity-managed-it-security-service"
+                longdesc="How techforing small and medium business solution work"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="smb-category">
+      <div class="container">
+        <div class="row smbc-row">
+          <div class="col-md-6">
+            <div class="smbc-img">
+              <img
+                src="{%static ''%}img/smb/plug n play program.png"
+                title="SMB Solution for Business"
+                alt="small-business-cybersecurity-cybersecurity-solutions-for-small-business"
+                longdesc="Techforing small and medium business solution plug n play program"
+              />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="smbc-box">
+              <div class="p-line"></div>
+              <h2 class="smbc-title">Plug & Play Program</h2>
+              <p class="smbc-text text-justify">
+                Plug & Play Program allows us to offer you a ready-made action plan depending on your company size and the industry you are in for a fixed price. It’s aimed to simplify security controls that minimize data breach risks or any sort of cyberattacks. Financial, educational, e-commerce or law firms, any small and medium-sized companies looking for an easy-to-deploy fully customized security solution turn to such full package services in their business.
+              </p>
+              <div class="case-btn smbc-btn">
+                <a href="{% url 'plug_and_play_cyber_security' %}" target="_blank"
+                  >Explore Now</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row smbc-row">
+          <div class="col-md-6">
+            <div class="smbc-img">
+              <img
+                src="{%static ''%}img/smb/managed cybersecurity services.png"
+                title="SMB Solution For Enterprise"
+                alt="small-business-cybersecurity-small-business-cybersecurity-consultants"
+                longdesc="techforing managed cybersecurity program for small and medium business"
+              />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="smbc-box">
+              <div class="p-line"></div>
+              <h2 class="smbc-title">Managed Cybersecurity Services</h2>
+              <p class="smbc-text text-justify">
+                Due to not having deeper pockets, subsequently not hiring an
+                industry-grade security system, SMBs are always inside a
+                cyberattack’s risk zone. Our small business cybersecurity
+                service provides such businesses customizable, scalable, and
+                fully managed solutions at a very reasonable rate. Our security
+                analysts possess the industry knowledge and expertise. Alongside
+                custom-developed next-generation algorithms, we help detect,
+                prevent, and secure critical information, infrastructure, and
+                endpoints. We can work together on a monthly basis, which is
+                extendable based on your business needs.
+              </p>
+              <div class="case-btn smbc-btn">
+                <a href="{% url 'managed_cybersecurity_service' %}" target="_blank"
+                  >Explore Now</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="smb-client">
+      <div class="container">
+        <div class="smb-line"></div>
+        <h2 class="smb-client-title">Our Valuable Clients</h2>
+      </div>
+      <hr />
+      <div class="container">
+        <div class="glide smb-glide">
+          <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
+              <li class="glide__slide">
+                <div class="ovc-img">
+                  <img src="{%static ''%}logos/ambient-tech.png" alt="ovc-img" />
+                </div>
+                <div class="ovc-img">
+                  <img src="{%static ''%}logos/Active-Adult-living.png" alt="ovc-img" />
+                </div>
+              </li>
+              <li class="glide__slide">
+                <div class="ovc-img">
+                  <img src="{%static ''%}logos/Forexnation-garzotto.png" alt="ovc-img" />
+                </div>
+                <div class="ovc-img">
+                  <img src="{%static ''%}logos/ACJ-Group.png" alt="ovc-img" />
+                </div>
+              </li>
+              <li class="glide__slide">
+                <div class="ovc-img">
+                  <img src="{%static ''%}logos/color-fuzion-kimberly.png" alt="ovc-img" />
+                </div>
+                <div class="ovc-img">
+                  <img
+                    src="{%static ''%}logos/ntuc-social-enterprise.png"
+                    alt="ovc-img"
+                  />
+                </div>
+              </li>
+              <li class="glide__slide">
+                <div class="ovc-img">
+                  <img src="{%static ''%}logos/RailMedia.png" alt="ovc-img" />
+                </div>
+                <div class="ovc-img">
+                  <img src="{%static ''%}logos/hoop-conultants-mike.png" alt="ovc-img" />
+                </div>
+              </li>
+              <li class="glide__slide">
+                <div class="ovc-img">
+                  <img src="{%static ''%}logos/Forexnation-garzotto.png" alt="ovc-img" />
+                </div>
+                <div class="ovc-img">
+                  <img
+                    src="{%static ''%}logos/Best-quality-power-solution.png"
+                    alt="ovc-img"
+                  />
+                </div>
+              </li>
+              <li class="glide__slide">
+                <div class="ovc-img">
+                  <img src="{%static ''%}logos/DCI-Consultancy.png" alt="ovc-img" />
+                </div>
+                <div class="ovc-img">
+                  <img
+                    src="{%static ''%}logos/cloud-academy-stefanno.png"
+                    alt="ovc-img"
+                  />
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="glide__arrows" data-glide-el="controls">
+            <button
+              class="glide__arrow glide__arrow--left smb-arrow smb-left"
+              data-glide-dir="<"
+            >
+              <img src="{%static ''%}img/smb/previous.png" alt="previous" />
+            </button>
+            <button
+              class="glide__arrow glide__arrow--right smb-arrow smb-right"
+              data-glide-dir=">"
+            >
+              <img src="{%static ''%}img/smb/next.png" alt="next" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="wr-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="wr-box">
+              <div class="smb-line"></div>
+              <h2 class="wr-title">why choose techforing</h2>
+              <ul class="wr-list smb-list">
+                <li class="d-flex">
+                  <i class="fas fa-circle"></i>
+                  <div class="smb-list-box">
+                    <p>
+                      Our Security Specialists have over 15 years of hands-on experience in performing an enterprise-grade risk assessment.
+                    </p>
+                  </div>
+                </li>
+                <li class="d-flex">
+                  <i class="fas fa-circle"></i>
+                  <div class="smb-list-box">
+                    <p>We address the ever-strengthened compliance requirements.</p>
+                  </div>
+                </li>
+                <li class="d-flex">
+                  <i class="fas fa-circle"></i>
+                  <div class="smb-list-box">
+                    <p>
+                      We maximize the ROI on your existing security infrastructure.
+                    </p>
+                  </div>
+                </li>
+                <li class="d-flex">
+                  <i class="fas fa-circle"></i>
+                  <div class="smb-list-box">
+                    <p>
+                      The upfront capital expenditures will be totally avoided or minimized.
+                    </p>
+                  </div>
+                </li>
+                <li class="d-flex">
+                  <i class="fas fa-circle"></i>
+                  <div class="smb-list-box">
+                    <p>
+                      We offer a partnership-oriented service that allows you to build on your security insights and mitigate potential cyber threats.
+                    </p>
+                  </div>
+                </li>
+                <li class="d-flex">
+                  <i class="fas fa-circle"></i>
+                  <div class="smb-list-box">
+                    <p>
+                      We schedule online meetings with clients and developers to consult on security maintenance. We instantly start working if required.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="wr-img-box">
+              <img
+                src="{%static ''%}img/smb/why choose techforing.png"
+                title="WHy TF SMB Solution"
+                alt="small-business-cybersecurity-cybersecurity-plan-for-small-business"
+                longdesc="Why choose techforing small and meedium busines cybersecurity solution"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="ig-section ig-smb-section">
+      <div class="container">
+        <div class="ig-box">
+          <div class="ig-box-left">
+            <img
+              src="{%static ''%}img/smb/get-started.png"
+              title="SMB Solution Get Started"
+              alt="small-business-cybersecurity-small-business-information-security"
+              longdesc="techforing small and medium business solution get started"
+            />
+          </div>
+          <div class="ig-box-right">
+            <div class="pm-line"></div>
+            <p class="igbr-sub">Book a free consultation</p>
+            <h2 class="igbr-title">Get A Demo of our SMB Solution</h2>
+            <p class="igbr-text text-justify">
+              Techforing seeks to provide a security solution to all businesses
+              regardless of their size or posture. If you are dubious about your
+              affordability or uncertain about our overall efficacy, feel free
+              to schedule a meeting, so that we can get to know each other
+              better.
+            </p>
+            <div class="text-right">
+              <a href="{% host_url 'findus' host 'main' %}" target="_blank" class="sgbr-btn"
+                >Contact us</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="manage-client">
+      <div class="container">
+        <div class="mc-box">
+          <div class="mc-top">
+            <img class="mc-top-img" src="{%static ''%}img/smb/saif.png" alt="" />
+            <div>
+              <img src="{%static ''%}img/manage/quote.png" alt="" />
+              <h2>Saif Qazi (Qatar)</h2>
+              <i>Managing Director, Urban Point W.L.L.</i>
+            </div>
+          </div>
+          <p class="text-justify">
+            The guys are extremely knowledgeable, reliable, committed and the
+            best thing you can find on the internet. This company is a
+            one-stop-shop for anything to do with cybersecurity and server
+            stability. You can entrust them with critical projects and sensitive
+            information. They will go above and beyond to ensure not just the
+            tasks assigned to them, but also your success as a person or
+            business. I have now worked with them on several projects, and I can
+            easily say that in over 6 years of working with freelancers,
+            Techforing has been by far my best discovery. Whether you are a bank
+            or a small business, do yourself a favor and hire this team.
+          </p>
+          <div class="story-btn">
+            <a href="{% url 'testimonial' %}" target="_blank"
+              >See all success stories</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="case-section">
+      <div class="container">
+        <div class="smb-line"></div>
+        <h2 class="case-title">Important Case Studies</h2>
+      </div>
+      <div class="smb-box-fluid">
+        <div class="container">
+          <div class="case-box">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="case-img">
+                  <img
+                    src="{%static ''%}img/risk/cs1.png"
+                    title="SMB Solution Case Studies 1"
+                    alt="small-business-cybersecurity-small-business-it-security"
+                    longdesc="techforing small and medium business solution case study 1"
+                  />
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="case-inner">
+                  <div class="smb-case-box">
+                    <h2 class="case-box-title">Vulnerability Assessment</h2>
+                    <p class="case-text text-justify">
+                      One of our clients needed their entire website hack-proof.
+                      which was involved in a partnership with a credit bureau.
+                      The information was extremely sensitive and it required
+                      detailed penetration and regression testing. How we went
+                      about it might interest you!
+                    </p>
+                    <div class="case-btn smb-case-btn">
+                      <a
+                        href="https://blog.techforing.com/case_studies/vulnerability-assessment/"
+                        target="_blank"
+                        >Read More</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="case-box">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="case-img">
+                  <img
+                    src="{%static ''%}img/risk/cs-2.png"
+                    title="SMB Solution Case Study 2"
+                    alt="small-business-cybersecurity-cybersecurity-plan-for-small-business"
+                    longdesc="techforing small and medium business solution case study 2"
+                  />
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="case-inner">
+                  <div class="smb-case-box">
+                    <h2 class="case-box-title">Penetration Testing</h2>
+                    <p class="case-text text-justify">
+                      The client had an authentication engine. Due to the
+                      seriousness of this engine and multiple APIs being used,
+                      we had to carry out module based penetration testing. We
+                      evaluated if each authentication mechanism in the
+                      authentication engine had at least two-factor
+                      authentication.
+                    </p>
+                    <div class="case-btn smb-case-btn">
+                      <a
+                        href="https://blog.techforing.com/case_studies/case-study-on-penetration-testing/"
+                        target="_blank"
+                        >Read More</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="case-box">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="case-img">
+                  <img
+                    src="{%static ''%}img/risk/cs-3.png"
+                    title="SMB Solution Case Study 3"
+                    alt="small-business-cybersecurity-business-cyber-security"
+                    longdesc="techforing small and medium business solution case study 3"
+                  />
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="case-inner">
+                  <div class="smb-case-box">
+                    <h2 class="case-box-title">Infrustructure Audit</h2>
+                    <p class="case-text text-justify">
+                      A software service company had its services spread across
+                      various domains. So understanding the risks of each
+                      business domain and evaluating the software were some
+                      challenges we had to overcome. We used tools like
+                      Wireshark, TcpDump and many more.
+                    </p>
+                    <div class="case-btn smb-case-btn">
+                      <a
+                        href="https://blog.techforing.com/case_studies/it-infrastructure-audit/"
+                        target="_blank"
+                        >Read More</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="he-section re-section">
+      <div class="container">
+        <div class="se-line"></div>
+        <h2>Want to discuss your IT security system?</h2>
+        <p>
+          Get Latest updates on cybersecurity tools and techniques from our
+          regular webinars and newsletters. We make sure our subscribers are the
+          first to know.
+        </p>
+        <form
+          action="https://app.getresponse.com/add_subscriber.html"
+          accept-charset="utf-8"
+          method="post"
+        >
+          <input
+            type="email"
+            name="email"
+            class="he-input"
+            placeholder="Enter your email address"
+          />
+          <input type="hidden" name="campaign_token" value="okoVq" />
+          <input
+            type="hidden"
+            name="thankyou_url"
+            value="https://techforing.com/pages/thanks_subscriber.html"
+          />
+          <input type="hidden" name="start_day" value="0" />
+          <button class="se-input-btn" type="submit">Subscribe Now</button>
+        </form>
+      </div>
+    </section>
+{% endblock content %}
+
+{% block customjs %}
+    <script src="{%static ''%}js/glide.js"></script>
+
+    <script>
+      new Glide(".glide", {
+        type: "carousel",
+        autoplay: 8000,
+      }).mount();
+    </script>
+    <script>
+      new Glide(".smb-glide", {
+        type: "carousel",
+        perView: 6,
+        autoplay: 8000,
+        breakpoints: {
+          800: {
+            perView: 2,
+          },
+        },
+      }).mount();
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#my-header").load("header.html");
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#my-footer").load("footer.html");
+      });
+    </script>
+{% endblock customjs %}

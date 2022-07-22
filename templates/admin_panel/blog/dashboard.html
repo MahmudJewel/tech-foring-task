@@ -1,0 +1,71 @@
+{% extends 'base/blog_admin_base.html' %} {% load static %}
+{% load hosts %}
+{% load crispy_forms_tags %}
+{% block title %} Blog Admin
+{% endblock title %}
+
+{% block headercss %}
+    <link rel="stylesheet" href="{% static 'tfcss/admin_panel/blog/dashboard.css' %}"/>
+    <link rel="stylesheet" href="https://npmcdn.com/tootik@1.0.2/css/tootik.min.css">
+    <style>
+      [data-tootik]:after {
+          white-space: initial
+      }
+    </style>
+{% endblock headercss %}
+{% block content %}
+
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <a href="{% host_url 'admin_blog_form' %}" class="btn border-1 border-dark addService float-end mb-4">
+                        Add Blog
+                        <i class="bi bi-plus-circle-fill"></i></a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 position-relative" style="margin-bottom: 15rem;">
+                    <h2 class="text-capitalize position-absolute my-4">post list</h2>
+                    <table id="blogList" class="table display" style="width: 100%">
+                        <thead>
+                        <tr>
+                            <th>Post Title</th>
+                            <th>Post Author</th>
+                            <th>Category</th>
+                            <th>Total Views</th>
+                            <th>Post Date And Time</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for post in posts %}
+                            <tr>
+                                <td data-tootik="{{post.title}}" data-tootik-conf="right"><a href="{% host_url 'articles' name=post.post_url %}" class="part fw-bold">{{ post.title|truncatechars:40 }}</a></td>
+                                <td>{{ post.author }}</td>
+                                <td>{{ post.category }}</td>
+                                <td>{{ post.total_view }}</td>
+                                <td>{{ post.date }}</td>
+                                <td>
+                                    <a href="{% host_url 'admin_blog_form_edit' host 'blog' %}{{post.id}}" class="btn">
+                                        <i class="icofont-edit text-primary rounded-circle activites-icon"></i>
+                                    </a>
+                                    <a href="{% host_url 'admin_blog_delete' id=post.id %}" class="btn">
+                                        <i class="bi bi-trash-fill text-danger rounded-circle activites-icon"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock content %}
+{% block customjs %}
+    <!-- custom scripts -->
+    <script src="{% static 'tfjs/admin_panel/blog/dashboard.js' %}"></script>
+{% endblock customjs %}

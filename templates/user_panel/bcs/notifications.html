@@ -1,0 +1,112 @@
+{% extends 'base/bcs_user_base.html' %} {% load static %} {% load hosts %} {% block title %}
+    Notifications {% endblock title %} {% block content %}
+
+    <section class="position-relative px-2">
+        <h4 class="pt-2 fw-bold border-bottom border-gray pb-14p">Your Notifications
+        </h4>
+
+        {% if all_notifications|length > 0 or notifications|length > 0 %}
+            <div class="row d-flex justify-content-between px-2">
+                <div class="col-auto d-flex">
+                    <h6 class="fw-light bg-navy py-2 px-4 rounded today">24 Aug</h6>
+                </div>
+            </div>
+            {% for notification in notifications %}
+                <div class="notifications-container px-md-4 mt-4">
+                    <div class="new">
+                        <div class="row notification mt-2" style="{% if notification.is_read == False %} background: rgba(255,229,119,0.64) {% endif %}">
+                            <div class="row py-2 align-items-center">
+                                <div class="col-2 icon icon-bg-blue">
+                                    <i class="icofont-bell-alt"></i>
+                                </div>
+                                <div class="col-10">
+                                    <h6>{{ notification.notification|safe }} </h6>
+                                    <i class="icofont-clock-time"></i> {{ notification.notification_time }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="row d-flex justify-content-between px-2 mt-5">
+                <div class="col-auto d-flex">
+                    <h6 class="fw-light bg-navy py-2 px-4 rounded">Previous Notifications</h6>
+                </div>
+            </div>
+            {% for notification in all_notifications %}
+                <div class="notifications-container px-md-4 mt-4">
+                    <div class="new">
+                        <div class="row notification mt-2" style="{% if notification.is_read == False %} background: rgba(255,229,119,0.64) {% endif %}">
+                            <div class="row py-2 align-items-center">
+                                <div class="col-2 icon icon-bg-blue">
+                                    <i class="icofont-bell-alt"></i>
+                                </div>
+                                <div class="col-10">
+                                    <h6>{{ notification.notification|safe }} </h6>
+                                    <i class="icofont-clock-time"></i> {{ notification.notification_time }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <h3 class="text-center text-gray my-5 py-5 h-100">No Notification Found!</h3>
+        {% endif %}
+    </section>
+{% endblock content %} {% block customjs %}
+    <script>
+        let d = new Date();
+        let day = d.getDate();
+        let month = d.getMonth();
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        document.querySelector('.today').textContent = day + ' ' + months[d.getMonth()];
+
+        let allNotifications = document.querySelectorAll('.notifications-container .notification');
+        let newNotifications = document.querySelectorAll('.notifications-container .new .notification');
+        let oldNotifications = document.querySelectorAll('.notifications-container .old .notification');
+        let removeButtons = document.querySelectorAll('.notifications-container .remove-notification');
+        let readButtons = document.querySelectorAll('.notifications-container .mark-read');
+
+        removeButtons.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                allNotifications[index].classList.add('d-none');
+            });
+        });
+        readButtons.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                allNotifications[index].style.backgroundColor = 'white';
+            });
+        });
+
+        document.querySelector('.clear-new').addEventListener('click', () => {
+            newNotifications.forEach(notification => {
+                notification.classList.add('d-none');
+            })
+        });
+        document.querySelector('.clear-old').addEventListener('click', (e) => {
+            oldNotifications.forEach(notification => {
+                notification.classList.add('d-none');
+            });
+            e.target.parentNode.classList.add('d-none');
+            document.querySelector('.prev-heading').classList.add('d-none');
+        });
+
+        const loadmore = document.querySelector('#loadmore');
+        let currentItems = 2;
+        loadmore.addEventListener('click', (e) => {
+            const elementList = [...document.querySelectorAll('.old .notification')];
+            for (let i = currentItems; i < currentItems + 2; i++) {
+                if (elementList[i]) {
+                    elementList[i].style.display = 'flex';
+                }
+            }
+            currentItems += 2;
+
+            // Load more button will be hidden after list fully loaded
+            if (currentItems >= elementList.length) {
+                event.target.style.display = 'none';
+            }
+        });
+    </script>
+{% endblock customjs %}

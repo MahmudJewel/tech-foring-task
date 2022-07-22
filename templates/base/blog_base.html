@@ -1,0 +1,264 @@
+{% load static %}
+{% load hosts %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: https://ogp.me/ns#">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/> {% block meta %} {% endblock meta %}
+
+    <title>
+        {% block title %} {% endblock title %}
+    </title>
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+    <link rel="shortcut icon" href="{% static 'img/Techforing-Icon.png' %}" type="image/x-icon"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    {% block headercss %} {% endblock headercss %}
+    <link rel="stylesheet" href="{% static 'tfcss/blog/style.css' %}">
+    <script>
+        // let mainOrigin = location.origin;
+        // if(!location.origin.includes('127.0.0.1') && !location.origin.includes('localhost'))
+        //     mainOrigin = 'https://main.techforing.com';
+    </script>
+</head>
+
+<body>
+
+<!-- Header Start -->
+<header class="sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="{% host_url 'home' %}">
+                <img src="{% static '' %}tfimg/blog/logo.png" width="125" height="60" alt="Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto mb-2 mb-lg-0 align-items-center">
+                    <li class="nav-item pe-3">
+                        <a class="nav-link" href="{% host_url 'index' host 'blog' %}">HOME</a>
+                    </li>
+                    <li class="nav-item pe-3">
+                        <a class="nav-link" href="{% host_url 'cybersecurity' name='articles' host 'blog' %}">ARTICLES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% host_url 'cybersecurity' name='case-studies' host 'blog' %}">CASE STUDIES</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="{% host_url 'category' host 'blog' %}podcast">PODCAST</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% host_url 'cybersecurity' name='podcast' host 'blog' %}">PODCAST</a>
+                    </li>
+
+                    {% if user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                               aria-expanded="false">
+                                <img class="ms-2 rounded-circle" src="{{ user.profile_pic.url }}" width="40" height="40"
+                                     alt="">
+                            </a>
+                            <ul class="dropdown-menu border-0 shadow end-0" style="left: -50px"
+                                aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a class="dropdown-item ps-3"
+                                       href="{% host_url 'pcs_user_dashboard' host 'mysecurity' %}">
+                                        <i class="icofont-ui-user me-2"></i> Dashboard</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item ps-3" href="{% host_url 'user_profile' %}">
+                                        <i class="icofont-ui-user me-2"></i> My Profile</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item ps-3" href="{% host_url 'change_password' %}">
+                                        <i class="icofont-edit me-2"></i> Change Password
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item ps-3" href="{% host_url 'logout' %}">
+                                        <i class="icofont-logout me-2"></i> Logout
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    {% comment %} {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link text-success" href="{% host_url 'account_login' %}">LOGIN</a>
+                        </li> {% endcomment %}
+                    {% endif %}
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="container-xl px-0 position-relative">
+    {% block content %} {% endblock content %}
+    <button type="button" id="btn-back-to-top" class="btn" title="Back to top">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <!-- get updates form  -->
+    <div class="update-container">
+        <h5 class="get-update-heading">
+            <i class="bi bi-envelope px-2"></i>
+        </h5>
+        <section class="get-updates mb-5 shadow-sm py-3 bg-gray rounded">
+            <div class="row mx-0 align-items-center">
+                <div class="col-md-5">
+                    <h4 class="fw-bold">Get Updates</h4>
+                    <h5 class="text-secondary">Sign up to receive the latest news</h5>
+
+                </div>
+                <div class="col-md-7">
+                    <div class="get-updates">
+                        <form class="row" method="POST">
+                            {% csrf_token %}
+                            <div class="col-12 col-md-auto">
+                                <div id="div_id_full_name" class="form-group">
+                                    <label for="id_full_name" class=" requiredField">
+                                        Full name<span class="asteriskField">*</span>
+                                    </label>
+                                    <div class="">
+                                        <input type="text" name="full_name" placeholder="Enter Your Name"
+                                               maxlength="255" class="textinput textInput form-control" required=""
+                                               id="id_full_name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-auto">
+                                <div id="div_id_email" class="form-group">
+                                    <label for="id_email" class=" requiredField">
+                                        Email<span class="asteriskField">*</span>
+                                    </label>
+                                    <div class="">
+                                        <input type="email" name="email" placeholder="Enter Your Email" maxlength="254"
+                                               class="emailinput form-control" required="" id="id_email">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-auto d-flex align-items-end mt-3 mt-lg-0">
+                                <button type="submit" class="btn btn-navy py-2">Subscribe <i
+                                        class="bi bi-arrow-right"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+        </section>
+    </div>
+</main>
+
+<footer>
+
+    <div class="bg-blue p-2 p-md-4 pb-md-2">
+        <div class="d-flex justify-content-center mb-4">
+            <a href="{% host_url 'policy' %}" class="me-5">PRIVACY POLICY</a>
+            <a href="{% host_url 'terms' %}">TERMS OF USE</a>
+        </div>
+        <div class="d-flex justify-content-center align-items-center pb-4">
+            <a href="https://www.facebook.com/techforing/">
+                <img src="{% static '' %}tfimg/user_panel/facebook.png" class="me-3" alt="">
+            </a>
+            <a href="https://www.linkedin.com/company/techforingltd./">
+                <img src="{% static '' %}tfimg/user_panel/linkedin.png" class="me-3" alt="">
+            </a>
+            <a href="https://twitter.com/techforingltd?lang=en">
+                <img src="{% static '' %}tfimg/user_panel/twitter.png" class="me-3" alt="">
+            </a>
+            <a href="https://www.instagram.com/techforingltd/">
+                <img src="{% static '' %}tfimg/user_panel/Instagram.png" alt="">
+            </a>
+        </div>
+    </div>
+    {% comment %} <div class="footer-down">
+        <div class="d-flex flex-wrap justify-content-center justify-content-md-around">
+            <div>
+                {% if user.is_authenticated %}
+                    <a href="{% host_url 'logout' %}" target="_blank" class="copyright-btn">
+                        Logout <i class="bi bi-arrow-right"></i>
+                    </a>
+                {% else %}
+                    <a href="{% url 'account_login' %}" target="_blank" class="copyright-btn">
+                        Create an account or login <i class="bi bi-arrow-right"></i>
+                    </a>
+                {% endif %}
+
+
+            </div>
+            <div>
+                <p class="mt-5 mt-md-0 footer-text">Copyright &copy; 2022 Techforing Ltd.
+                </p>
+            </div>
+        </div>
+    </div> {% endcomment %}
+</footer>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script src="{% static 'tfjs/footer.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+<script>
+    hljs.highlightAll();
+</script>
+<script>
+    let links = ['home', 'articles', 'case-studies', 'podcast'];
+    let linkItems = document.querySelectorAll('.navbar-nav .nav-link');
+    let url = window.location.href;
+    let linkFound = false;
+    links.forEach((item, index) => {
+        if (url.includes(item)) {
+            linkItems[index].classList.add('active');
+            linkFound = true;
+        }
+    });
+
+    if (!linkFound)
+        linkItems[0].classList.add('active');
+
+
+    let mybutton = document.getElementById("btn-back-to-top");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () {
+        scrollFunction();
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    mybutton.addEventListener("click", backToTop);
+
+    function backToTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+
+    const deleteBtn = document.querySelectorAll(".trash, .dlt")
+    deleteBtn.forEach(btn => {
+        btn.addEventListener("click", () => {
+            btn.parentElement.parentElement.parentElement.style.display = "none"
+        })
+    })
+</script>
+{% block customjs %} {% endblock customjs %}
+</body>
+
+</html>

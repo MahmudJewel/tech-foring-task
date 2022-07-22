@@ -1,0 +1,366 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+:root {
+    --navy: #182f59;
+    --green: #5bbc2e;
+}
+
+.text-navy {
+    color: var(--navy);
+}
+
+.bg-navy {
+    background-color: var(--navy);
+}
+
+.btn-navy {
+    background-color: var(--navy);
+    color: white;
+}
+
+.btn-navy:hover {
+    border: 1px solid white;
+    color: white;
+}
+
+.text-green {
+    color: var(--green);
+}
+
+.fs-14p {
+    font-size: 14px;
+}
+
+.fs-7 {
+    font-size: 0.9rem !important;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: var(--navy);
+}
+
+.navbar-nav .nav-link {
+    color: black !important;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-item .active {
+    color: var(--green) !important;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #000000 !important;
+}
+
+a.nav-link {
+    position: relative;
+    padding-bottom: 0;
+}
+
+a.nav-link:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 5;
+    background-color: black;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+a.nav-link:last-child:hover::before {
+    visibility: visible;
+    width: 80%;
+}
+
+a.nav-link:last-child:hover::after {
+    visibility: visible;
+    width: 60%;
+}
+
+a.nav-link:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -8px;
+    left: 8px;
+    background-color: black;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar .nav-item .dropdown-menu {
+    display: none;
+}
+
+.navbar .nav-item:hover .dropdown-menu {
+    display: block;
+}
+
+.btn.menu-link {
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+}
+
+.bg-gray {
+    background-color: gainsboro;
+}
+
+.bg-lightnavy {
+    background-color: #182f5926;
+}
+
+.accordion-button {
+    justify-content: center;
+}
+
+.accordion-button::after {
+    margin-left: 0;
+    position: absolute;
+    right: 10px;
+}
+
+.accordion-button:focus,
+.form-select:focus,
+.form-control:focus,
+.btn:focus {
+    border-color: black;
+    outline: 0;
+    box-shadow: none;
+    background-color: white;
+    color: black;
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%2e2e2ee4'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.accordion-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-height: 150px;
+    overflow: auto;
+}
+
+.accordion-body::-webkit-scrollbar {
+    opacity: 0;
+    width: 4px;
+    height: 10px;
+    background-color: rgb(240, 240, 240);
+}
+
+.accordion-body::-webkit-scrollbar-thumb {
+    opacity: 0;
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgb(0 0 0 / 71%);
+    background-color: gainsboro;
+}
+
+.accordion-header {
+    border-bottom: 2px solid rgba(128, 128, 128, 0.637);
+}
+
+.accordion-button:not(.collapsed) {
+    color: var(--navy);
+}
+
+.accordion-body a {
+    text-decoration: none;
+    color: var(--navy);
+    padding: 5px 0;
+}
+
+.row.post {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.post h5.title {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.info-area span,
+.info-area button {
+    font-size: 14px;
+}
+
+.info-area button:focus {
+    background: transparent;
+}
+
+.reading-list-btn {
+    padding: 0;
+    border: none !important;
+    color: var(--green);
+}
+
+#btn-back-to-top {
+    position: fixed;
+    bottom: 20px;
+    z-index: 1030;
+    right: 20px;
+    background-color: #5bbc2a;
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+    display: none;
+}
+
+.important-blogs .row .post .desc,
+.important-case-studies .row .post {
+    box-shadow: 1px 1px 3px 1px #707070;
+    border: 5px solid #182f59a1;
+}
+
+.important-blogs .row .post .desc:hover,
+.important-case-studies .row .post:hover {
+    box-shadow: 1px 1px 10px 1px #707070;
+    border-color: #182f59f3;
+}
+
+.post .card {
+    padding: .25rem;
+    border: 5px solid #182f591c;
+    border-radius: 0;
+    box-shadow: 1px 1px 3px 1px #707070;
+    position: relative;
+    height: auto;
+    margin-right: 10px;
+}
+
+.post .card:hover {
+    box-shadow: 1px 1px 10px 1px #707070;
+    /* border: 5px solid #182f595b; */
+}
+
+.post .card img {
+    border-radius: 0;
+}
+
+.post .card:hover .add-btn {
+    display: block;
+}
+
+.post .card .add-btn {
+    display: none;
+    border-radius: 50%;
+    position: absolute;
+    background-color: var(--navy);
+    top: -10px;
+    right: -10px;
+    color: white;
+    font-size: 16px;
+    padding: 2px 8px;
+    transition: all 0.5s;
+}
+
+.post .card .add-btn.show-btn {
+    left: 0;
+    width: 100%;
+    top: -1px;
+    border-radius: 0;
+}
+
+.post .card .add-btn.show-btn span {
+    display: inline;
+    z-index: 2;
+}
+
+.post .card .add-btn.show-btn i {
+    display: none;
+}
+
+.post .card .add-btn span {
+    display: none;
+    pointer-events: none;
+}
+
+
+/*Footer*/
+
+
+/* footer  */
+
+footer a {
+    text-decoration: none;
+    color: white;
+}
+
+footer a:hover {
+    color: rgb(211, 209, 209);
+    transition: color 0.5s linear;
+}
+
+footer img {
+    width: 40px;
+    height: 40px;
+}
+
+footer {
+    background-color: #182f59;
+    padding: 30px 0px 0px 0px;
+    color: white;
+}
+
+.footer-text {
+    color: black;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+}
+
+.footer-down {
+    background-color: #f4f4f2;
+    padding: 30px 0px;
+    margin-top: 25px;
+}
+
+.copyright-btn {
+    color: black;
+    font-family: "Poppins", sans-serif;
+    padding: 1px 0 0 2px;
+    border-radius: 20px;
+}
+
+.copyright-btn i {
+    color: white;
+    background-color: rgb(24, 47, 89);
+    padding: 7px 20px;
+    border-radius: 18px;
+    margin-left: 20px;
+    transition: 0.5s;
+    border: 2px solid #182f59;
+}
+
+.copyright-btn:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.copyright-btn:hover i {
+    background-color: transparent;
+    color: rgb(24, 47, 89);
+}
+
+.copyright-btn:focus {
+    border: 2px solid #182f59;
+}
+
+@media (max-width:460px) {
+    .post .card {
+        margin-right: 0;
+    }
+}

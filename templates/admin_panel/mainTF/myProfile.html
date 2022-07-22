@@ -1,0 +1,170 @@
+{% extends 'base/main_admin_base.html' %} {% load static %} {% block title %} My Profile {% endblock title %} {% block headercss %}
+<link rel="stylesheet" href="{% static '' %}tfcss/admin_panel/mainTF/myProfile.css" /> {% endblock headercss %} {% block content %}
+
+<main>
+    <div class="container">
+        <div class="jumbotron d-grid">
+            <img src="{% static 'tfimg/admin_panel/Techforing-Icon.png' %}" alt="">
+            <div class="row align-end">
+                <div class="col-md-6 col-lg-4">
+                    <h3>TechForig Ltd</h3>
+                    <p class="text-primary mt-2"><i></i> ADMIN</p>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <p><i class="bi bi-envelope-fill"></i> info@techforing.com</p>
+                    <p class="mt-2"><i class="bi bi-telephone-fill"></i> +1-(616)-251-1517</p>
+                </div>
+            </div>
+            <button class="btn btn-primary text-uppercase mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">edit profile</button>
+        </div>
+    </div>
+    <div class="container ms-md-5">
+    <div class="heading d-flex align-content-center my-5">
+        <button class="btn btn-primary addAdmin" data-bs-toggle="modal" data-bs-target="#exampleModal2">Add Admin</button>
+        <h2>My Recent Activities <span class="text-danger activity-delete-all btn"><i class="bi bi-trash"></i> Delete
+                    All</span></h2>
+    </div>
+        <div class="recent-activites">
+            <div class="activity">
+                <p class="d-flex justify-content-between">
+                    create notification 
+                    <span class="pe-1 me-1">5 Minutes ago</span>
+                </p> 
+                <button class="btn delete-activites"><i class="bi bi-trash text-danger"></i></button>
+            </div>
+            <div class="activity">
+                <p class="d-flex justify-content-between">
+                    Add new service 
+                    <span class="pe-1 me-1">10 Minutes ago</span>
+                </p> 
+                <button class="btn delete-activites"><i class="bi bi-trash text-danger"></i></button>
+            </div>
+            <div class="activity">
+                <p class="d-flex justify-content-between">
+                    Add new sub-service 
+                    <span class="pe-1 me-1">15 Minutes ago</span>
+                </p> 
+                <button class="btn delete-activites"><i class="bi bi-trash text-danger"></i></button>
+            </div>
+            <div class="activity">
+                <p class="d-flex justify-content-between">
+                    Publish new blog 
+                    <span class="pe-1 me-1"> 30 Minutes ago</span>
+                </p> 
+                <button class="btn delete-activites"><i class="bi bi-trash text-danger"></i></button>
+            </div>
+            <div class="activity">
+                <p class="d-flex justify-content-between">
+                    Send a notification
+                    <span class="pe-1 me-1">1 hour ago</span>
+                </p> 
+                <button class="btn delete-activites"><i class="bi bi-trash text-danger"></i></button>
+            </div>
+            <div class="activity">
+                <p class="d-flex justify-content-between">
+                    Delete an user
+                    <span class="pe-1 me-1">2 Hour ago</span>
+                </p> 
+                <button class="btn delete-activites"><i class="bi bi-trash text-danger"></i></button>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade profile-edit" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title">
+                        <h5>Edit profile</h5>
+                        <img src="{% static '' %}tfimg/admin_panel/Techforing-Icon.png" alt="">
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <div class="col-auto mb-3">
+                            <label for="file">Image</label>
+                            <input type="file" class="form-control" id="file" />
+                        </div>
+                        <div class="col-auto mb-3">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter Name" />
+                        </div>
+                        <div class="col-auto mb-3">
+                            <label for="email">email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter Email" />
+                        </div>
+                        <div class="col-auto mb-3">
+                            <label for="phone">Phone Number</label>
+                            <input type="text" placeholder="+000-5555-6666" class="form-control" id="phone" />
+                        </div>
+                        <div class="col-auto mb-3">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="******" />
+                        </div>
+                        <div class="col-auto mb-3">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input type="confirmPassword" class="form-control" id="confirmPassword" placeholder="******" />
+                        </div>
+                        <button type="button" class="btn btn-primary">
+                                Update
+                            </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title w-100 text-center" id="exampleModalLabel">Invite Admin</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control w-100" id="Name"
+                                placeholder="Enter Name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control w-100" id="email"
+                                placeholder="name@mail.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Role Name</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Select Role</option>
+                                <option value="1">Super Admin</option>
+                                <option value="2">Admin</option>
+                                <option value="3">Moderator</option>
+                                <option value="3">Editor</option>
+                            </select>
+                        </div>
+                        <button type="button" class="btn btn-primary">Send Invitation</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %} {% block customjs %}
+<script src="{% static '' %}tfjs/admin_panel/mainTF/notification.js"></script>
+<script>
+    const activitiesDeleteBtn = document.querySelectorAll(".delete-activites")
+    const activityDeleteAll = document.querySelector(".activity-delete-all")
+    activitiesDeleteBtn.forEach(del => {
+        del.addEventListener('click', () => {
+            del.parentElement.classList.add("d-none")
+        })
+    })
+    activityDeleteAll.addEventListener('click', () => {
+        activitiesDeleteBtn.forEach(del => {
+            del.parentElement.classList.add("d-none")
+        })
+    })
+</script>
+{% endblock customjs %}

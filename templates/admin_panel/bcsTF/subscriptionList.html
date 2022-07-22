@@ -1,0 +1,158 @@
+{% extends 'base/bcs_admin_base.html' %}
+{% load static %}
+
+{% block title %} BCS Subscription
+{% endblock title %}
+
+{% block headercss %}
+        <!-- data table css -->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css" />
+        <link rel="stylesheet" href="{% static 'tfcss/admin_panel/bcsTF/subscription.css' %}" />
+{% endblock headercss %}
+{% block content %}
+    <!-- main section starts -->
+    <main>
+        <section class="subscription-count mb-5">
+            <div class="container-fluid">
+                <div class="row"> 
+                    <h2 class="float-start text-uppercase mb-4">total client</h2>
+                    <div class="col-md-6">
+                        <div class="subscription-info bg-primary-dark">
+                            <h3>Plug and Play</h3>
+                            <p class="fw-bolder">
+                                <i class="bi bi-person"></i> <span style="font-size: 25px;">750</span> users
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="subscription-info bg-primary-25">
+                            <h3>Managed Security Solution</h3>
+                            <p class="fw-bolder">
+                                <i class="bi bi-person"></i> <span style="font-size: 25px;">750</span> users
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="subscription-control">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 position-relative" style="margin-block-end: 15rem;">
+                        <h2 class="float-start text-uppercase">Subscription List</h2>
+                        <table id="subscription-list" class="display" style="width: 100%">
+                            <thead>
+                                <tr>
+                                    <th>SL</th>
+                                    <th>User Name</th>
+                                    <th>Service Category Name</th>
+                                    <th>Service Name</th>
+                                    <th>Price</th>
+                                    <th>Package Name</th>
+                                    <th>Start Date</th>
+                                    <th>Expire Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Afsana</td>
+                                    <td>SMB Solution</td>
+                                    <td>Plug & Play Program</td>
+                                    <td>$500</td>
+                                    <td>BASIC</td>
+                                    <td>01.02.2021</td>
+                                    <td>01.02.2021</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Afsana</td>
+                                    <td>SMB Solution</td>
+                                    <td>Managed security Solution</td>
+                                    <td>$1000</td>
+                                    <td>MEDIUM</td>
+                                    <td>01.02.2021</td>
+                                    <td>01.02.2021</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Afsana</td>
+                                    <td>SMB Solution</td>
+                                    <td>Plug & Play Program</td>
+                                    <td>$1100</td>
+                                    <td>PREMIUM</td>
+                                    <td>01.02.2021</td>
+                                    <td>01.02.2021</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Afsana</td>
+                                    <td>SMB Solution</td>
+                                    <td>Managed security Solution</td>
+                                    <td>$2000</td>
+                                    <td>MAXIMUM</td>
+                                    <td>01.02.2021</td>
+                                    <td>01.02.2021</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="">
+                            <div class="col-auto mb-3">
+                                <label for="subscriptionName">subscription Name</label>
+                                <input type="subscriptionName" class="form-control" id="subscriptionName"
+                                    placeholder="Enter subscription Name" />
+                            </div>
+                            <div class="col-auto mb-3">
+                                <label for="medium">Medium</label>
+                                <select class="form-select" name="medium" id="medium">
+                                    <option value="online">Onine</option>
+                                    <option value="offline">Offline</option>
+                                </select>
+                            </div>
+                            <div class="col-auto mb-3">
+                                <label for="date">Date</label>
+                                <input type="date" class="form-control" id="date" />
+                            </div>
+                            <div class="col-auto mb-3">
+                                <label for="time">Time</label>
+                                <input type="time" class="form-control" id="time" />
+                            </div>
+                            <div class="col-auto mb-3">
+                                <label for="status">Status</label>
+                                <select class="form-select" name="status" id="status">
+                                    <option value="active">active</option>
+                                    <option value="deactive">deactive</option>
+                                    <option value="canceled">canceled</option>
+                                    <option value="upcoming">upcoming</option>
+                                </select>
+                            </div>
+                            <div class="col-auto mb-3">
+                                <label for="description">Descrtption</label>
+                                <textarea class="form-control" id="description"
+                                    placeholder="*******************"></textarea>
+                            </div>
+                            <button type="button" class="btn btn-primary">
+                                Update
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}
+{% block customjs %}
+    <script src="{% static '' %}tfjs/admin_panel/bcsTF/subscription.js"></script>
+{% endblock customjs %}

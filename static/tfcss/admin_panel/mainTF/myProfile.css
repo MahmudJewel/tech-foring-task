@@ -1,0 +1,83 @@
+.align-end{
+    align-self: end;
+}
+
+.jumbotron{
+    background-color: #fff;
+    box-shadow: 1px 1px 3px 1px #7a7a7a;
+    padding-block-end: .5rem;
+    padding-inline-start: 6rem;
+    padding-inline-end: 3rem;
+    position: relative;
+    grid-template-rows: 2fr 1fr;
+    align-items: center;
+    width: 87%;
+    margin-inline: auto;
+    margin-block-start: 10rem;
+}
+.jumbotron .btn{
+    justify-self: end;
+}
+.jumbotron img {
+    position: absolute;
+    left: -3rem;
+    left: -3rem;
+    background-color: #fff;
+    box-shadow: 1px 1px 3px #7a7a7a;
+    border-radius: 5rem;
+    padding: .5rem;
+    width: 100px;
+}
+.activity{
+    display: grid;
+    grid-template-columns: 10fr 1fr;
+    grid-gap: 1rem;
+}
+.activity p{
+    box-shadow: 1px 1px 3px #7a7a7a;
+    padding-block: 1rem;
+    margin-block: 1rem;
+    padding-inline-start: 1rem;
+    text-transform: capitalize;
+}
+.activity .btn{
+    font-size: 2rem;
+    align-self: center;
+    padding: 0;
+    width: fit-content;
+}
+.profile-edit .modal-header{
+    display: grid;
+    grid-template-columns: 18fr 1fr;
+}
+.profile-edit .modal-title{
+    justify-self: center;
+    text-align: center;
+}
+.profile-edit .modal-title img{
+    width: 50%;
+    box-shadow: 1px 1px 3px #7a7a7a;
+    border-radius: 50%;
+    padding: 1rem;
+}
+.profile-edit .modal-header button{
+    align-self: start;
+}
+
+.recent-activites{
+    margin-bottom: 15rem;
+}
+.addAdmin{
+    order: 2;
+}
+@media (max-width:501px) {
+    .jumbotron .btn {
+        justify-self: start;
+    }
+    .heading{
+        display: grid !important;
+    }
+    .addAdmin{
+        order: 0;
+    }
+}

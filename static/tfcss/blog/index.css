@@ -1,0 +1,77 @@
+.banner-1 .banner-bg {
+    /* padding: 4rem 1rem; */
+    color: white;
+    background-image: url("../../tfimg/blog/banner-1.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 318px;
+}
+
+.banner-1 .menu-link {
+    padding: 5px;
+    background-color: white;
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+}
+
+.dropdown-menu .dropdown-item:active {
+    background-color: var(--navy);
+}
+
+.dropdown-menu li:hover {
+    border-left: 4px solid rgb(130, 190, 40);
+}
+
+.container-heading {
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.container-heading::before {
+    display: inline-block;
+    content: '';
+    background-color: var(--navy);
+    width: 100%;
+    height: 3px;
+}
+
+.get-update-heading {
+    margin-top: 5rem;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.get-update-heading:before,
+.get-update-heading:after {
+    background-color: #182f59;
+    content: "";
+    display: inline-block;
+    height: 2px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+}
+
+.get-updates label {
+    font-weight: bold;
+}
+
+.get-updates input {
+    border-bottom: 2px solid gray;
+    border-radius: 5px;
+    padding: 0.5rem;
+}
+
+
+/* 
+.get-updates label {
+    padding: 0 10px;
+    position: absolute;
+    top: 0.75rem;
+    right: 1rem;
+} */

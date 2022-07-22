@@ -1,0 +1,94 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load hosts %}
+
+{% block title %}
+Order History
+{% endblock title %}
+
+{% block headercss %}
+<link rel="stylesheet" href="{% static '' %}tfcss/style.css" />
+{% endblock headercss %}
+
+{% block content %}
+<section class="pro-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="user-img">
+          {% if user_data.profile_img %}
+          <img src="{{user_data.profile_img.url}}" alt="" />
+          {% else %}
+          <img src="{%static ''%}tfimg/about/Header.png" />
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="user-basic">
+          <h2>{{ user_data }}</h2>
+          <p>{{ user_data.business_email }}</p>
+          <p>{{ user_data.business_phone_no }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="pro-menu">
+  <div class="container">
+    <ul>
+      <li><a href="{%url 'user_profile'%}">Profile</a></li>
+      <li><a href="{%url 'event_webniar'%}">Events & Webinars</a></li>
+      <li><a href="{%url 'reading'%}">reading list</a></li>
+      <li><a href="{%url 'product_service'%}">products & services</a></li>
+      <li><a href="{%url 'cart'%}">Your Cart</a></li>
+      <li><a href="{%url 'order_history'%}">Order History</a></li>
+      <li><a href="{%url 'subscription'%}">Subscription</a></li>
+      <li><a href="#">Support</a></li>
+    </ul>
+  </div>
+</section>
+<section class="oh-section">
+  <div class="container">
+    <h2>Your Order Detalis</h2>
+    <div class="oh-table">
+      <table>
+        <tr>
+          <th>Service Name</th>
+          <th>Service Price</th>
+          <th>Service Description</th>
+          <th>date of order</th>
+          <th>delivery status</th>
+          <th>address</th>
+          <th>payment method</th>
+        </tr>
+        {% for order in orders %}
+        <tr>
+          <td>{{order.cart.sub_service}}</td>
+          <td>${{order.cart.total}}</td>
+          <td>{{order.cart.sub_service.description|truncatewords:10}}</td>
+          <td>{{order.created_at}}</td>
+          <td>{{order.delivary_status}}</td>
+          <td>{{order.address}}</td>
+          <td>{{order.payment_method}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</section>
+{% endblock content %}
+
+{% block customjs %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/tfjs/bootstrap.bundle.min.js"
+  integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<script>
+  $(document).ready(function () {
+    $("#my-header").load("header.html");
+  });
+</script>
+<script>
+  $(document).ready(function () {
+    $("#my-footer").load("footer.html");
+  });
+</script>
+{% endblock customjs %}

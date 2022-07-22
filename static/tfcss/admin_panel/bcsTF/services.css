@@ -1,0 +1,271 @@
+/*----------------------------
+    Services page start 
+------------------------------*/
+
+:root {
+    --main: #eeeff1;
+    --navy: #182F59;
+    --green: #5BBC2E;
+}
+
+.bg-main {
+    background-color: var(--main);
+}
+
+.bg-navy,
+.bg-navy:hover {
+    background-color: var(--navy);
+    color: white;
+}
+
+.bg-lightgreen {
+    background-color: #E1E6F1;
+}
+
+.bg-whitegreen {
+    background-color: #F5F8FE;
+}
+
+.view-btn {
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--green);
+    outline: none;
+    border: none;
+}
+
+.view-btn:hover {
+    /* text-decoration: underline; */
+    color: var(--green);
+}
+
+.bg-blue {
+    background-color: rgb(19, 52, 97);
+}
+
+.text-navy {
+    color: var(--navy);
+}
+
+.text-green {
+    color: var(--green);
+}
+
+.bg-green {
+    background-color: var(--green);
+    color: white;
+}
+
+.services .main-heading {
+    padding-bottom: 14px;
+    font-weight: bold;
+    border-bottom: 1px solid gray;
+    padding-top: 0.8rem;
+}
+
+.services-content .services-type {
+    font-weight: bold;
+    text-align: center;
+}
+
+.services-content .content-detail .service-title {
+    font-weight: bold;
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.services-content .service-icon {
+    border-radius: 50%;
+    padding: 0.5rem;
+    background-color: var(--navy);
+    width: 45px;
+    height: 45px;
+}
+
+.services-content .content-detail .view-btn {
+    display: flex;
+    justify-content: center;
+}
+
+.services-content .content-detail .view-btn button {
+    color: white;
+    background-color: var(--navy);
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+.preview-service-info {
+    margin-top: 2rem;
+}
+
+.preview-service-info .service-body>div>h4 {
+    display: none;
+}
+
+.whom-we-serve h6::before,
+.process-of-cleaning h6::before {
+    content: '\25CF';
+    font-size: 20px;
+    color: var(--navy);
+    margin-right: 5px;
+}
+
+ul,
+ol {
+    padding-left: 1rem;
+}
+
+ul li,
+ol li {
+    list-style-position: outside;
+}
+
+.services-type {
+    overflow: hidden;
+    text-align: center;
+}
+
+.services-type:before,
+.services-type:after {
+    background-color: #182f59;
+    content: "";
+    display: inline-block;
+    height: 2px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+}
+
+.services-type:last-child {
+    margin-top: 2.5rem;
+}
+
+.services-type:before {
+    right: 0.5em;
+    margin-left: -50%;
+}
+
+.services-type:after {
+    left: 0.5em;
+    margin-right: -50%;
+}
+
+.preview-service-info .service-img {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.preview-service-info .service-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.services .preview-service-info .btn.bg-navy:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid var(--navy)
+}
+
+
+/* style for get quotation forms  */
+
+#preview-form .sub-services {
+    padding: 10px 20px;
+}
+
+#preview-form .sub-services .form-check {
+    padding: 1rem;
+}
+
+#preview-form.sub-services .form-check input,
+#preview-form .sub-services .form-check label {
+    font-size: 18px;
+}
+
+#preview-form.sub-services .form-check input {
+    top: 3px;
+    position: relative;
+}
+
+#preview-form .btn-check:checked+.btn-outline-navy,
+#preview-form .btn-outline-navy.active,
+#preview-form .btn-outline-navy.dropdown-toggle.show,
+#preview-form .btn-outline-navy:active {
+    color: #fff;
+    background-color: var(--navy);
+    border-color: #4b6ba749;
+}
+
+#preview-form #cloud-platform .btn {
+    padding: .25rem;
+}
+
+#preview-form .information-form .dropdown {
+    border: 1px solid #d1d5d8;
+}
+
+#preview-form .heading {
+    font-weight: bold;
+    overflow: hidden;
+    text-align: center;
+}
+
+#preview-form .heading:before,
+#preview-form .heading:after {
+    background-color: #182f59;
+    content: "";
+    display: inline-block;
+    height: 2px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+}
+
+#preview-form .heading:before {
+    right: 0.5em;
+    margin-left: -50%;
+}
+
+#preview-form .heading:after {
+    left: 0.5em;
+    margin-right: -50%;
+}
+
+#preview-form .row .col .dropdown {
+    width: 100%;
+    text-align: center;
+}
+
+.preview-service {
+    background-color: white;
+    position: absolute;
+    max-width: 50%;
+    color: black;
+    text-align: center;
+    box-sizing: border-box;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+}
+
+.preview-service:hover {
+    cursor: default;
+}
+
+.btn-navy {
+    background-color: #182f59;
+    color: white;
+}
+
+.btn-navy:hover {
+    border: 1px solid #182f59;
+    color: #182f59;
+    background-color: white;
+}
+
+/*----------------------------
+Services page end
+------------------------------*/

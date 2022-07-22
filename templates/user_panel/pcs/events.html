@@ -1,0 +1,363 @@
+{% extends 'base/pcs_user_base.html' %}
+{% load static %}
+{% load my_filter %}
+{% load hosts %}
+{% block title %}
+    Events
+{% endblock title %}
+{% block content %}
+    <section class="position-relative px-2 px-md-4 overflow-hidden">
+        <h4 class="pt-3 fw-bold border-bottom border-gray pb-14p">MY EVENTS & WEBINARS</h4>
+        {% if events %}
+            <div class="events">
+                <div class="row d-flex justify-content-between ps-2 pe-5">
+                    <div class="col-auto">
+                        <div class="d-flex">
+                            <h6 class="fw-light text-secondary">Sort By</h6>
+                            <div class="dropdown sorting">
+                                <button class="dropdown-toggle"
+                                        type="button"
+                                        id="dropdownMenuButton"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                    <span class="ms-2 text-green" id="selectedItem">Select</span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li>
+                                        <button class="dropdown-item" onclick="location.reload();">Default</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item">Status &#x25BA;</button>
+                                        <ul class="dropdown-menu dropdown-submenu">
+                                            <li>
+                                                <button id="status-active" class="dropdown-item">Active</button>
+                                                <button id="status-completed" class="dropdown-item">Completed</button>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item time-btn">Choose Time &#x25BA;</button>
+                                        <ul class="dropdown-menu dropdown-submenu">
+                                            <li>
+                                                <button class="dropdown-item">
+                                                    <input type="month" name="" id="event-time">
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <h6 class="fw-light text-secondary">
+                        Show on page (<span id="current-events-no">1-2</span>) out
+                        of {{total_length}}
+                    </h6>
+                </div>
+            </div>
+            {% for event in events %}
+                <div class="event-row">
+                    <span class="event-order">{{ forloop.counter }}</span>
+                    <div class="p-3 shadow">
+                        <div class="position-relative">
+                            <h5 class="text-truncate">{{ event.event_name }}</h5>
+                            <h6 class="status">{{ event.status|capitalize }}</h6>
+                        </div>
+                        <p>
+                            {{ event.event_description|safe }}
+                        </p>
+                        <div class="row d-flex justify-content-between">
+                            <div class="col-auto">
+                                <h6>
+                                    <span class="fw-bold me-5">Speaker:</span>{{ event.speaker }}
+                            </h6>
+                            <h6 class="mt-3">
+                                <span class="fw-bold me-5 text-green">Medium:</span>{{ event.medium }}
+                        </h6>
+                    </div>
+                    <div class="col-auto ">
+                        <h6>
+                            <i class="icofont-calendar"></i>
+                            <span class="fw-bold mx-2 ">Timezone:</span>
+                            <span class="eventDate">{{ event.timezone }}</span>
+                        </h6>
+                        <h6>
+                            <i class="icofont-ui-calendar"></i>
+                            <span class="fw-bold mx-2 ">Date:</span>
+                            <span class="eventDate">{{ event.date_time|date }}</span>
+                        </h6>
+                        <h6>
+                            <i class="mt-3 icofont-clock-time"></i>
+                            <span class="fw-bold mx-2">Time:</span>{{ event.date_time|time }}
+                    </h6>
+                </div>
+                <div class="col-auto">
+                    <a href="{{ event.address }}"
+                       target="_blank"
+                       class="btn btn-sm bg-navy ms-0 ms-md-4 text-white px-3 py-2 ">Register</a>
+                    {% comment %}
+                                    {% if event.status == 'active' %}
+                                        {% if event.id not in registered_event %}
+                                            <a href="{% host_url 'bcs_user_event_register' id=event.id %}" class="btn btn-sm bg-navy ms-0 ms-md-4 text-white px-3 py-2 ">Register</a>
+                                        {% else %}
+                                            <a href="{% host_url 'bcs_user_event_register' id=event.id %}" class="btn btn-sm bg-navy ms-0 ms-md-4 text-white px-3 py-2 ">Unregister</a>
+                                        {% endif %}
+                                    {% endif %}
+                    {% endcomment %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+ <div class="px-0 px-md-5 mt-5">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center justify-content-md-end">
+                        <li class="page-item">
+                            <button id="prev-btn" class="page-link">Previous</button>
+                        </li>
+            
+                        {% for i in events_length %}
+                        <li class="page-item">
+                            <button class="page-link">{{i}}</button>
+                        </li>
+                        {% endfor %}
+                        
+                        {% comment %} <li class="page-item">
+                            <button class="page-link">2</button>
+                        </li>
+                        <li class="page-item">
+                            <button class="page-link">3</button>
+                        </li>
+                        <li class="page-item">
+                            <button class="page-link">4</button>
+                        </li> {% endcomment %}
+                        <li class="page-item">
+                            <button id="next-btn" class="page-link">Next</button>
+                        </li>
+                    </ul>
+                </nav>
+</div> 
+{% comment %} <div class="px-0 px-md-5 mt-5">
+{% if events.has_other_pages %}
+    <ul class="pagination">
+        {% if events.has_previous %}
+            <li>
+                <a href="?page={{ events.previous_page_number }}">&laquo;</a>
+            </li>
+        {% else %}
+            <li class="disabled">
+                <span>&laquo;</span>
+            </li>
+        {% endif %}
+        {% for i in events.paginator.page_range %}
+            {% if events.number == i %}
+                <li class="active">
+                    <span>{{ i }} <span class="sr-only">(current)</span></span>
+                </li>
+            {% else %}
+                <li>
+                    <a href="?page={{ i }}">{{ i }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+        {% if events.has_next %}
+            <li>
+                <a href="?page={{ events.next_page_number }}">&raquo;</a>
+            </li>
+        {% else %}
+            <li class="disabled">
+                <span>&raquo;</span>
+            </li>
+        {% endif %}
+    </ul>
+{% endif %}
+</div>  {% endcomment %}
+{% else %}
+<div class='text-center py-5'>
+    No Event Found
+</div>
+{% endif %}
+</section>
+{% endblock content %}
+{% block customjs %}
+    <script>
+        let selectedItem = document.getElementById('selectedItem');
+        let dropdownItems = document.querySelectorAll('.sorting .dropdown-item');
+        dropdownItems.forEach(item => {
+            item.addEventListener('click', () => {
+                if (!item.textContent.includes('Time'))
+                    selectedItem.textContent = item.textContent;
+            });
+        });
+        document.getElementById('event-time').addEventListener('change', (e) => {
+            selectedItem.textContent = 'Time: ' + e.target.value;
+        });
+
+
+        let eventsContainer = document.querySelector('.events');
+        var events = document.querySelectorAll('.event-row');
+        let pagesBtn = Array.from(document.querySelectorAll('.pagination li'));
+        let prev = document.getElementById('prev-btn');
+        let next = document.getElementById('next-btn');
+        let statusActive = document.getElementById('status-active');
+        let statusCompleted = document.getElementById('status-completed');
+        let dateSortBtn = document.getElementById('event-time');
+        console.log(dateSortBtn)
+        let currentEventsNo = document.getElementById('current-events-no');
+        let activeState = 0,
+            pageNo = 0;
+        let sortedStatus, sortedDate = false;
+
+        let updateEventList = () => {
+            events = document.querySelectorAll('.event-row');
+            updateEventOrder(events);
+            activeState = 0;
+            updateActiveRow('none');
+        }
+        let updateEventOrder = (updatedEvents) => {
+            updatedEvents.forEach((event, index) => {
+                event.children[0].textContent = index + 1;
+            });
+        }
+
+
+        function sorting(type) {
+            let statusList = document.querySelectorAll('.event-row .status');
+            let dateList = document.querySelectorAll('.event-row .eventDate');
+            let array = [];
+
+            if (type == 'date') {
+                dateList.forEach(date => {
+                    array.push(date.childNodes[0].textContent);
+                    {% comment %} console.log(date.childNodes[0].textContent); {% endcomment %}
+                });
+            } else {
+                statusList.forEach(status => {
+                    array.push(status.childNodes[0].textContent);
+                });
+            }
+
+            let eventsSorted = Array.from(eventsContainer.children);
+            eventsSorted.shift();
+            let len = array.length;
+            for (let i = 0; i < len; i++) {
+                for (let j = 0; j < len; j++) {
+
+                    if (type == 'active') {
+                        if (array[j] > array[j + 1]) {
+                            let tmp = array[j];
+                            array[j] = array[j + 1];
+                            array[j + 1] = tmp;
+                            // for html divs sorting
+                            tmp = eventsSorted[j];
+                            eventsSorted[j] = eventsSorted[j + 1];
+                            eventsSorted[j + 1] = tmp;
+                        }
+                    } else {
+                        if (array[j] < array[j + 1]) {
+                            let tmp = array[j];
+                            array[j] = array[j + 1];
+                            array[j + 1] = tmp;
+                            // for html divs sorting
+                            tmp = eventsSorted[j];
+                            eventsSorted[j] = eventsSorted[j + 1];
+                            eventsSorted[j + 1] = tmp;
+                        }
+                    }
+                }
+            }
+
+            eventsSorted.forEach((event, index) => {
+                events[index].outerHTML = event.outerHTML;
+            });
+        }
+        {% comment %} dateSortBtn.addEventListener('click',() =>{
+            sorting('date');
+        }); {% endcomment %}
+        statusActive.addEventListener('click', () => {
+            sorting('active');
+            updateEventList();
+        });
+        statusCompleted.addEventListener('click', () => {
+            sorting('completed');
+            updateEventList();
+        });
+
+
+        let updateActiveRow = (slide) => {
+            events.forEach(row => {
+                row.classList.add('d-none');
+                if (row.classList.contains('slide-right'))
+                    row.classList.remove('slide-right');
+                if (row.classList.contains('slide-left'))
+                    row.classList.remove('slide-left');
+            });
+
+            if ( activeState >= events.length || activeState < 0) {
+                activeState = 0;
+            }
+            {% comment %} if (activeState >= events.length){
+                console.log('ok')
+                activeState=events.length;
+            } {% endcomment %}
+            events[activeState].classList.remove('d-none');
+            events[activeState + 1].classList.remove('d-none');
+
+            events[activeState].style.marginTop = '1rem';
+            events[activeState + 1].style.marginTop = '3rem';
+
+            if (slide == 'right') {
+                events[activeState].classList.add('slide-right');
+                events[activeState + 1].classList.add('slide-right');
+            } else if (slide == 'left') {
+                events[activeState].classList.add('slide-left');
+                events[activeState + 1].classList.add('slide-left');
+            }
+
+            currentEventsNo.textContent = (activeState + 1) + '-' + (activeState + 2);
+        }
+
+        pagesBtn.shift();
+        pagesBtn.pop();
+
+        pagesBtn.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                let index = parseInt(btn.textContent);
+                let slide = pageNo < index ? 'right' : 'left';
+                activeState = index == 1 ? 0 : (index * 2) - 2;
+                updateActiveRow(slide);
+                
+                pageNo = index;
+                {% comment %} prev_back=btn.style. backgroundColor;
+                if (btn.style. backgroundColor== prev_back){
+                    btn.style. backgroundColor='Red';
+                }
+                else if (btn.style. backgroundColor='Red'){
+                    btn.style. backgroundColor=prev_back;
+                } {% endcomment %}
+            })
+        });
+
+        updateActiveRow('none');
+
+        next.addEventListener('click', () => {
+            if (activeState<events.length-2){
+            activeState += 2;
+            updateActiveRow('right');}
+            
+        });
+        prev.addEventListener('click', () => {
+            activeState -= 2;
+            updateActiveRow('left');
+        });
+
+        var elements = document.querySelectorAll('.event-row h5');
+        elements.forEach(element => {
+            element.addEventListener('click', () => {
+                element.classList.toggle("text-truncate");
+            })
+        });
+    </script>
+{% endblock customjs %}

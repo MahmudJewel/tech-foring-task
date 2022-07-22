@@ -1,0 +1,127 @@
+#training-list_filter {
+    margin-bottom: 2rem;
+    float: right;
+    width: 60%;
+}
+#training-list_filter label {
+    padding: .5rem 1rem;
+    width: 100%;
+    border: 1px solid #707070;
+}
+#training-list_filter input {
+    display: inline !important;
+    border-color: transparent;
+    width: 90%;
+    padding: 0 .75rem;
+}
+
+/**
+ * FilePond Custom Styles
+ */
+ .filepond--drop-label {
+	color: #4c4e53;
+}
+
+.filepond--label-action {
+	text-decoration-color: #babdc0;
+}
+
+.filepond--panel-root {
+	border-radius: 2em;
+	background-color: #edf0f4;
+	height: 1em;
+}
+
+.filepond--item-panel {
+	background-color: #595e68;
+}
+
+.filepond--drip-blob {
+	background-color: #7f8a9a;
+}
+.tox-notifications-container, .filepond--credits{
+    display: none;
+}
+.uppy-Dashboard-AddFiles-info{
+    display: none !important;
+}
+
+.course-info{
+   margin-bottom: 1.5rem; 
+}
+.text-green {
+    color: #5BBC2E;
+}
+.accordion table td:first-child, .accordion table th:first-child{
+    text-align: start;
+}
+.accordion table th{
+    font-size: 14px;
+}
+.accordion table th{
+    font-size: 14px;
+}
+.accordion table td{
+    font-size: 12px;
+}
+.accordion-button, .accordion-button:not(.collapsed) {
+    color: black;
+    background-color: #E1E6F1;
+}
+.accordion-button .title {
+    position: relative;
+    align-items: center;
+    color: #212529;
+}
+.accordion h6 {
+    margin-bottom: 0;
+}
+.accordion-button .title::before {
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 5px;
+    content: "";
+    display: inline-block;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxNiAxNicgZmlsbD0nIzIxMjUyOSc+PHBhdGggZmlsbC1ydWxlPSdldmVub2RkJyBkPSdNMS42NDYgNC42NDZhLjUuNSAwIDAgMSAuNzA4IDBMOCAxMC4yOTNsNS42NDYtNS42NDdhLjUuNSAwIDAgMSAuNzA4LjcwOGwtNiA2YS41LjUgMCAwIDEtLjcwOCAwbC02LTZhLjUuNSAwIDAgMSAwLS43MDh6Jy8+PC9zdmc+);
+    background-repeat: no-repeat;
+    background-size: 1.25rem;
+    position: relative;
+    top: 5px;
+    transition: transform .2s ease-in-out;
+}
+.accordion-button:not(.collapsed) .title::before {
+    transform: rotate(-180deg);
+}
+.pb-14p {
+    padding-bottom: 14px !important;
+}
+.info-value input {
+    background-color: transparent !important;
+    border: none;
+}
+
+.input-as-text {
+    display: grid;
+    grid-template-columns: 1fr 30px;
+    align-items: center;
+}
+
+.input-as-text input {
+    border-bottom: 1px solid #000;
+}
+
+.input-as-text::after {
+    content:"\eae8";
+    font-family: 'IcoFont';
+    position: absolute;
+    right: 5px;
+}
+.form-control:focus {
+    border-color: #000;
+}
+.text-truncate{
+    display: grid;
+    grid-template-columns: 30px 1fr 30px;
+    align-items: center;
+}

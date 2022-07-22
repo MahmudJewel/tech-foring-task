@@ -1,0 +1,588 @@
+{% extends 'base/base.html' %} {% load static %} {% load hosts %} {% block headercss %}
+<link rel="stylesheet" href="{% static 'tfcss/glide.core.css' %}" />
+<link rel="stylesheet" href="{% static 'tfcss/glide.theme.css' %}" />
+<link rel="stylesheet" href="{% static 'tfcss/slider/slick-theme.css' %}" />
+<link rel="stylesheet" href="{% static 'tfcss/slider/slick.css' %}" />
+<link rel="stylesheet" href="{% static 'tfcss/style.css' %}" /> {% endblock headercss %} {% block content %}
+<!--Banner Section-->
+<div class="header-slider">
+    <div class="tf-slider tf-slider1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="tf-slider-box">
+                        <h2>Business Cybersecurity</h2>
+                        <p class="text-justify">
+                            Business data needs to be protected at all times from cyber attackers. Our cyber security service will investigate your IT system to identify potential threat points. And provide you with a prompt solution to safeguard it from any future threats.
+                        </p>
+                        <div class="tf-btn1">
+                            <a href="{% host_url 'enterprise_cybersecurity' %}" target="_blank">SECURE YOUR BUSINESS</a
+                >
+              </div>
+
+              <a href="{% url 'get_start' %}" target="_blank" class="tf-btn2"
+                >Inquire Now</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tf-slider tf-slider2">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="tf-slider-box">
+              <h2>Personal Cybersecurity</h2>
+              <p class="text-justify">
+                We provide personal information security to high-net-worth
+                individuals, political leaders, corporate executives, media
+                personalities, and their families, who often are a lucrative
+                target for intruders.
+              </p>
+              <div class="tf-btn1">
+                <a href="{% host_url 'my_security_home' host 'mysecurity' %}" target="_blank"
+                  >SECURE YOUR DIGITAL LIFE</a
+                >
+              </div>
+
+              <a
+                href="{% host_url 'get_start' %}"
+                target="_blank"
+                class="tf-btn2"
+                >Inquire Now</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tf-slider tf-slider3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="tf-slider-box">
+              <h2>Academy</h2>
+              <p class="text-justify">
+                We have hands-on cyber security training courses separately
+                designed for Enthusiastic Individuals, Corporate Personnel,
+                Educational Institutes and Law Enforcement Agencies.
+              </p>
+              <div class="tf-btn1">
+                <a href="{% host_url 'academy_home' host 'academy' %}" target="_blank"
+                  >BE A PROFESSIONAL</a
+                >
+              </div>
+
+              <a href="{% host_url 'get_start' %}" target="_blank" class="tf-btn2"
+                >Inquire Now</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Report Slider -->
+<section class="ps-report-slider">
+    <div class="glide ps-glide">
+        <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
+                <li class="glide__slide">
+                    <div class="ps-report">
+                        <div class="container">
+                            <p>Report, Guide & Tool</p>
+                            <h2>
+                                A definitive guide to secure your business from external and internal cyberattacks.
+                            </h2>
+
+                            <a href="https://personal.techforing.com/ebook" target="_blank" class="psr-btn" target="_blank">Download Now</a
+                >
+              </div>
+            </div>
+          </li>
+          <li class="glide__slide">
+            <div class="ps-report">
+              <div class="container">
+                <p>Report, Guide & Tool</p>
+                <h2>
+                  17 ways High Net Worth Individuals are being hacked & how to
+                  be safe.
+                </h2>
+                <a
+                  href="https://personal.techforing.com/ebook"
+                  target="_blank"
+                  class="psr-btn"
+                  >Download Now</a
+                >
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div
+        class="glide__bullets ps-report-bullets"
+        data-glide-el="controls[nav]"
+      >
+        <button class="glide__bullet" data-glide-dir="=0"></button>
+        <button class="glide__bullet" data-glide-dir="=1"></button>
+      </div>
+    </div>
+  </section>
+
+<section class="home-category">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="home-category-box">
+                    <div class="g-line"></div>
+                    <h2 class="hc-subtitle">About Us</h2>
+                    <h2 class="hc-title">
+                        We are on a mission of fighting evil and providing safer cyberspace for everyone.
+                    </h2>
+                    <p class="text-justify">
+                        Led by security professionals with a wide range of organizational experience and expertise in solving real-life problems. Ever-vigilant to deliver protection from future threats and save businesses from data disasters.
+                    </p>
+                    <div class="home-btn">
+                        <a href="{% host_url 'aboutus' %}" target="_blank">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="home-category-img" id="hack-recovery">
+                        <img data-src="{% static 'tfimg/Home/About-Us.jpg' %}" class="lazy" title="Techforing About Us" longdesc="About Techforing Ltd. cybersecurity comapny" alt="cyber-security-companies-about-us" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+        <section class="uas-section">
+            <div class="container">
+                <p class="uas-subtitle">Shaping Tomorrow’s Cybersecurity</p>
+                <h2 class="uas-title">Skilled. Trusted. Experienced</h2>
+
+                <div class="row uas-row">
+                    <div class="col-md-6 ex-col">
+                        <div class="uas-img">
+                            <img data-src="{% static 'tfimg/Home/business cybersecurity.png' %}" title="techforing Business Cybersecurity" class="lazy" alt="cyber-security-business" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="uas-box">
+                            <div class="ec-line"></div>
+                            <h2>BUSINESS CYBERSECURITY</h2>
+                            <small>Safeguard Your Business</small>
+                            <p class="text-justify">
+                                Provide customized immediate security to expose digital assets of your business regardless of their size and complexity. Carry out a thorough risk assessment to identify potential threats. 
+                                Recover and contain hacked systems using industry-grade tools and techniques. Deliver Cyber Security Consulting on compliance policies, i.e. ISO 27001, GDPR, PCI DSS, and HIPAA. Ensure smooth operation and increase the overall productivity of your business.
+                            </p>
+                            <div class="uas-btn ec-btn">
+                                <a href="{% host_url 'enterprise_cybersecurity' %}" target="_blank">Explore Business
+                            Cybersecurity</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row uas-row row-inverse">
+                    <div class="col-md-6">
+                        <div class="uas-box">
+                            <div class="pc-line"></div>
+                            <h2>Personal Cybersecurity</h2>
+                            <small>Safeguard Your Personal Life</small>
+                            <p class="text-justify">
+                                Your personal data are relatively easy targets for cybercriminals in this day and age. Especially HNWIs like Celebrities, Business Persons, and C-level business executives are often clueless about their digital devices’ vulnerabilities. We provide full cybersecurity to your social media accounts, financial accounts, and cloud platforms, helping you understand and secure the threat points. We can safeguard even your smart homes with industry-grade technology with the help of our professionals.
+                            </p>
+                            <div class="uas-btn pc-btn">
+                                <a href="{% host_url 'my_security_home' host 'mysecurity' %}" target="_blank">Explore Personal Cybersecurity</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="uas-img">
+                            <img data-src="{% static 'tfimg/Home/personal cybersecurity.png'%}" title="Techforing Personal Cybersecurity" class="lazy" alt="cyber-security-personal-cyber-security" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row uas-row">
+                    <div class="col-md-6">
+                        <div class="uas-img">
+                            <img data-src="{% static 'tfimg/Home/academy.png' %}" class="lazy" alt="cyber-security-academy" title="Techforing Academy" longdesc="Techforing Ltd. Cybersecurity Learning Academy" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="uas-box">
+                            <div class="g-line"></div>
+                            <h2>Academy</h2>
+                            <small>Train Yourself to Secure Cyberspace</small>
+                            <p class="text-justify">
+                                Comprehensive Hands-on training sessions designed for individuals working in corporations, enterprises, educational institutes, and law enforcement agencies. Attend it On-site, off-site or watch it at your own pace at your own time. Fully flexible and planned with real-life incidents to help you solve real-life cases. We will provide you with a certificate as a validation of the skills you gained. 
+                                <br><br>
+                                Those who are looking to build or advance their career in cybersecurity will relish this opportunity, as it’s highly affordable and has installment facilities.
+
+                            </p>
+                            <div class="uas-btn">
+                                <a href="{% host_url 'academy_home' host 'academy' %}" target="_blank">Explore Training Programs</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="hc-slider">
+            <div class="container">
+                <div class="hc-glide glide">
+                    <div class="glide__track" data-glide-el="track">
+                        <ul class="glide__slides">
+                            <li class="glide__slide">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="hc-slider-box">
+                                            <img src="{% static 'tfimg/Home/quote.png' %}" alt="quote img" />
+                                            <p class="text-justify">
+                                                We were concerned about our infrastructure and cloud security as we store vast amounts of sensitive customer data. TechForing did a thorough audit and made excellent recommendations. They went above and beyond. I will definitely work with them again as
+                                                they pointed security holes no other tech had pointed out before. Thank you team!
+                                            </p>
+                                            <h2>Nick Namikas (USA)</h2>
+                                            <small><i>CTO, Incentify</i></small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 ex-col2">
+                                        <div class="hc-img">
+                                            <img data-src="{% static 'tfimg/Home/Nick-Namikas.jpg' %}" class="lazy" alt="client img" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="glide__slide">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="hc-slider-box">
+                                            <img src="{% static 'tfimg/Home/quote.png' %}" alt="quote img" />
+                                            <p class="text-justify">
+                                                The guys are extremely knowledgeable, reliable, committed and the best thing you can find on the internet. This company is a one-stop-shop for anything to do with cybersecurity and server stability. You can entrust them with critical projects and sensitive
+                                                information. They will go above and beyond to ensure not just the tasks assigned to them, but also your success as a person or business. I have now worked with them on several projects, and I can easily
+                                                say that in over 6 years of working with freelancers, Techforing has been by far my best discovery. Whether you are a bank or a small business, do yourself a favor and hire this team. </p>
+
+                                            </p>
+                                            <h2>Saif kazi (Qatar)</h2>
+                                            <small><i>CEO, Urban point </i></small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 ex-col2">
+                                        <div class="hc-img">
+                                            <img data-src="{% static 'tfimg/Home/Saif-Qazi.webp' %}" alt="cyber-security-client-saif-qazi" title="Techforing Client Testimonial" class="lazy" longdesc="Saif Qazi Testimonial" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="glide__slide">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="hc-slider-box">
+                                            <img src="{% static 'tfimg/Home/quote.png' %}" alt="quote img" />
+                                            <p class="text-justify">
+                                                The engineers from TechForing were able to complete the project exactly as required, they were efficient, knowledgeable, and skilled in the field of online security and were able to communicate effectively. TechForing was also patient and understanding
+                                                when I was dealing with some delays due to family illness. I would have no hesitation in recommending them and also rehiring them if the need arose.
+                                            </p>
+                                            <h2>Lanai Carter (Australia)</h2>
+                                            <small><i>Owner, SBS</i></small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 ex-col2">
+                                        <div class="hc-img">
+                                            <img data-src="{% static 'tfimg/Home/Lanai-Carter.jpg' %}" class="lazy" alt="client img" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hc-glide-bullets glide__bullets" data-glide-el="controls[nav]">
+                        <button class="glide__bullet" data-glide-dir="=0"></button>
+                        <button class="glide__bullet" data-glide-dir="=1"></button>
+                        <button class="glide__bullet" data-glide-dir="=2"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="hr-section hr-section-lg">
+            <div class="container">
+                <h2>resources for you</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <a href="https://blog.techforing.com/category/case_studies/" class="resource-link" target="_blank">
+                            <div class="hr-box hr-box1 lazy" data-bg="{% static 'tfimg/Home/case-Study-1.png' %}" title="Techforing case study 1">
+                                <div class="hr-box-top">
+                                    <div class="w-line"></div>
+                                    <h2>case studies</h2>
+                                </div>
+                                <div class="hr-box-bottom">
+                                    <h2>Problem & Solution</h2>
+                                    <p class="text-justify">
+                                        Identifying the weak spots in IT infrastructure is mandatory to make security decisions. This section is dedicated to the process of risk evaluation, remediation, and reporting
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="https://www.youtube.com/channel/UCBP7xegSjtVXulfywJ2kPvQ" class="resource-link" target="_blank">
+                            <div class="hr-box hr-box2 lazy" data-bg="{% static 'tfimg/Home/case-Study-2.png' %}" title="techforing case study 2">
+                                <div class="hr-box-top">
+                                    <div class="w-line"></div>
+                                    <h2>Tutorials</h2>
+                                </div>
+                                <div class="hr-box-bottom">
+                                    <h2>Be an Ethical Hacker</h2>
+                                    <p class="text-justify">
+                                        Hands-on training program for cyber enthusiasts to sharpen their skills on red hat penetration testing, malware analysis, forensic investigation, and incident response.
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="https://blog.techforing.com/" class="resource-link" target="_blank">
+                            <div class="hr-box hr-box3 lazy" data-bg="{% static 'tfimg/Home/case-Study-3.png' %}" title="Techforing Case study 3">
+                                <div class="hr-box-top">
+                                    <div class="w-line"></div>
+                                    <h2>Securitymania</h2>
+                                </div>
+                                <div class="hr-box-bottom">
+                                    <h2>Research & News</h2>
+                                    <p class="text-justify">
+                                        We investigate reported cybercrimes to find out the who-why-hows through a comprehensive crime investigation procedure. Check this section to know the details.
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="https://blog.techforing.com/" class="resource-link" target="_blank">
+                            <div class="hr-box hr-box4 lazy" data-bg="{% static 'tfimg/Home/case-Study-4.png' %}" title="Techforing Case study 4">
+                                <div class="hr-box-top">
+                                    <div class="w-line"></div>
+                                    <h2>Reports & Whitepapers</h2>
+                                </div>
+                                <div class="hr-box-bottom">
+                                    <h2>Statistics For Corporate</h2>
+                                    <p class="text-justify">
+                                        An in-depth report on cybersecurity to educate corporate personnel about IT security controls and compliances to keep their knowledge up to date.
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="{% url 'events' %}" class="resource-link" target="_blank">
+                            <div class="hr-box hr-box5 lazy" data-bg="{% static 'tfimg/Home/case-Study-5.png' %}" title="Techforng case study 5">
+                                <div class="hr-box-top">
+                                    <div class="w-line"></div>
+                                    <h2>Events & Webinars</h2>
+                                </div>
+                                <div class="hr-box-bottom">
+                                    <h2>Awareness & Training Programs</h2>
+                                    <p class="text-justify">
+                                        Our upcoming events and webinars including the videos of the previously aired ones about recent attacks and how to prevent them.
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="resource-link" href="https://blog.techforing.com/" target="_blank">
+                            <div class="hr-box hr-box6 lazy" data-bg="{% static 'tfimg/Home/case-Study-6.png' %}" title="Techforing case study 6">
+                                <div class="hr-box-top">
+                                    <div class="w-line"></div>
+                                    <h2>Industrywide Guides</h2>
+                                </div>
+                                <div class="hr-box-bottom">
+                                    <h2>Learn Best Practices</h2>
+                                    <p class="text-justify">
+                                        Guides about common vulnerabilities and cyberattacks industrywide. Learn about latest tools and techniques and safeguard digital assets from future threats.
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="hr-section hr-section-sm">
+            <div class="container">
+                <h2>resources for you</h2>
+                <div class="hr-glide glide">
+                    <div class="glide__track" data-glide-el="track">
+                        <ul class="glide__slides">
+                            <li class="glide__slide">
+                                <a href="https://blog.techforing.com/category/case_studies/" target="_blank" class="resource-link">
+                                    <div class="hr-box hr-box1 lazy" data-bg="{% static 'tfimg/Home/case-Study-1.png' %}">
+                                        <div class="hr-box-top">
+                                            <div class="w-line"></div>
+                                            <h2>case studies</h2>
+                                        </div>
+                                        <div class="hr-box-bottom">
+                                            <h2>Problem & Solution</h2>
+                                            <p class="text-justify">
+                                                Identifying the weak spots in IT infrastructure is mandatory to make security decisions. This section is dedicated to the process of risk evaluation, remediation, and reporting
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="glide__slide">
+                                <a href="https://www.youtube.com/channel/UCBP7xegSjtVXulfywJ2kPvQ" class="resource-link" target="_blank">
+                                    <div class="hr-box hr-box2 lazy" data-bg="{% static 'tfimg/Home/case-Study-2.png' %}">
+                                        <div class="hr-box-top">
+                                            <div class="w-line"></div>
+                                            <h2>Tutorials</h2>
+                                        </div>
+                                        <div class="hr-box-bottom">
+                                            <h2>Be an Ethical Hacker</h2>
+                                            <p class="text-justify">
+                                                Hands-on training program for cyber enthusiasts to sharpen their skills on red hat penetration testing, malware analysis, forensic investigation, and incident response.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="glide__slide">
+                                <a href="https://blog.techforing.com/" class="resource-link" target="_blank">
+                                    <div class="hr-box hr-box3 lazy" data-bg="{% static 'tfimg/Home/case-Study-3.png' %}">
+                                        <div class="hr-box-top">
+                                            <div class="w-line"></div>
+                                            <h2>Securitymania</h2>
+                                        </div>
+                                        <div class="hr-box-bottom">
+                                            <h2>Research & News</h2>
+                                            <p class="text-justify">
+                                                We investigate reported cybercrimes to find out the who-why-hows through a comprehensive crime investigation procedure. Check this section to know the details.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="glide__slide">
+                                <a href="https://blog.techforing.com/" class="resource-link" target="_blank">
+                                    <div class="hr-box hr-box4 lazy" data-bg="{% static 'tfimg/Home/case-Study-4.png' %}">
+                                        <div class="hr-box-top">
+                                            <div class="w-line"></div>
+                                            <h2>Reports & Whitepapers</h2>
+                                        </div>
+                                        <div class="hr-box-bottom">
+                                            <h2>Statistics For Corporate</h2>
+                                            <p class="text-justify">
+                                                An in-depth report on cybersecurity to educate corporate personnel about IT security controls and compliances to keep their knowledge up to date.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="glide__slide">
+                                <a href="{% url 'events' %}" class="resource-link" target="_blank">
+                                    <div class="hr-box hr-box5 lazy" data-bg="{% static 'tfimg/Home/case-Study-5.png' %}">
+                                        <div class="hr-box-top">
+                                            <div class="w-line"></div>
+                                            <h2>Events & Webinars</h2>
+                                        </div>
+                                        <div class="hr-box-bottom">
+                                            <h2>Awarness & Training Programs</h2>
+                                            <p class="text-justify">
+                                                Our upcoming events and webinars including the videos of the previously aired ones about recent attacks and how to prevent them.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="glide__slide">
+                                <a href="https://blog.techforing.com/" class="resource-link" target="_blank">
+                                    <div class="hr-box hr-box6 lazy" data-bg="{% static 'tfimg/Home/case-Study-6.png' %}">
+                                        <div class="hr-box-top">
+                                            <div class="w-line"></div>
+                                            <h2>Industrywide Guides</h2>
+                                        </div>
+                                        <div class="hr-box-bottom">
+                                            <h2>Learn Best Practices</h2>
+                                            <p class="text-justify">
+                                                Guides about common vulnerabilities and cyberattacks industrywide. Learn about latest tools and techniques and safeguard digital assets from future threats.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hr-glide-bullets glide__bullets" data-glide-el="controls[nav]">
+                        <button class="glide__bullet" data-glide-dir="=0"></button>
+                        <button class="glide__bullet" data-glide-dir="=1"></button>
+                        <button class="glide__bullet" data-glide-dir="=2"></button>
+                        <button class="glide__bullet" data-glide-dir="=4"></button>
+                        <button class="glide__bullet" data-glide-dir="=5"></button>
+                        <button class="glide__bullet" data-glide-dir="=6"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="he-section">
+            <div class="container">
+                <div class="he-line"></div>
+                <h2>Get Updates On The Latest From Cyberworld</h2>
+                <p>
+                    We regularly arrange and publish webinars, blogs and newsletter talking about what’s happening in the cyber arena and provide free cybersecurity consulting to our subscribers.
+                </p>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <input type="email" name="email" class="he-input" placeholder="Enter your email address" required />
+
+                    <button class="he-input-btn" type="submit">Subscribe Now</button>
+                </form>
+            </div>
+        </section>
+
+        {% endblock content %} {% block customjs %}
+        <script src="{% static 'tfjs/slick.js' %}"></script>
+        <script src="{% static 'tfjs/glide.js' %}"></script>
+        <script>
+            new Glide(".ps-glide", {
+                type: "carousel",
+                keyboard: true,
+                autoplay: 8000,
+                hoverpause: true,
+                perView: 1,
+            }).mount();
+
+            new Glide(".hc-glide", {
+                type: "carousel",
+                keyboard: true,
+                autoplay: 8000,
+                hoverpause: true,
+                perView: 1,
+            }).mount();
+
+            new Glide(".hr-glide", {
+                type: "carousel",
+                keyboard: true,
+                autoplay: 8000,
+                startAt: 1,
+                perView: 1,
+                peek: {
+                    before: 0,
+                    after: 50,
+                },
+            }).mount();
+
+            $(".header-slider").slick({
+                arrows: false,
+                dots: true,
+                pauseOnHover: false,
+                infinite: true,
+                speed: 500,
+                fade: true,
+                cssEase: "linear",
+                autoplay: true,
+                autoplaySpeed: 8000,
+            });
+        </script>
+        <script src="{% static 'tfjs/slider.js' %}"></script>
+        <script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="fc90d4ec3d7d61ba6855495f-|49" defer=""></script>
+        {% endblock customjs %}

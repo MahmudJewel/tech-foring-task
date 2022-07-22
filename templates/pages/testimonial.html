@@ -1,0 +1,971 @@
+{% extends 'base/base.html' %} {% load static %} {% load hosts %} {% block title %} Clients & Testimonial {% endblock title %} {% block headercss %}
+<link rel="stylesheet" href="{% static '' %}tfcss/glide.core.css" />
+<link rel="stylesheet" href="{% static '' %}tfcss/glide.theme.css" />
+<link rel="stylesheet" href="{% static '' %}tfcss/style.css" /> {% endblock headercss %} {% block content %}
+<section class="testi-banner">
+    <div class="container">
+        <h2>See why customers love techforing</h2>
+    </div>
+</section>
+
+<section class="testi-feature">
+    <div class="container">
+        <h2 class="feature-title">featured Testimonials</h2>
+        <div class="row row-inverse justify-content-between feature-row">
+            <div class="col-md-7">
+                <div class="feature-box">
+                    <p class="text-justify">
+                        The guys are extremely knowledgeable, reliable, committed and the best thing you can find on the internet. This company is a one-stop-shop for anything to do with cybersecurity and server stability. You can entrust them with critical projects and sensitive
+                        information. They will go above and beyond to ensure not just the tasks assigned to them, but also your success as a person or business. I have now worked with them on several projects, and I can easily say that in over 6 years
+                        of working with freelancers, Techforing has been by far my best discovery. Whether you are a bank or a small business, do yourself a favor and hire this team. </p>
+
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-img">
+                    <img src="{% static '' %}tfimg/Home/Saif-Qazi.webp" alt="" />
+                    <h2>Saif kazi (Qatar)</h2>
+                    <p>CEO, Urban point</p>
+                </div>
+            </div>
+        </div>
+        <div class="row row-inverse justify-content-between feature-row">
+            <div class="col-md-7">
+                <div class="feature-box">
+                    <p class="text-justify">
+                        We were concerned about our infrastructure and cloud security as we store vast amounts of sensitive customer data. TechForing did a thorough audit and made excellent recommendations. They went above and beyond. I will definitely work with them again as
+                        they pointed security holes no other tech had pointed out before. Thank you team!
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-img">
+                    <img src="{% static '' %}tfimg/Home/Nick-Namikas.jpg" alt="" />
+                    <h2>Nick Namikas (USA)</h2>
+                    <p>CTO, Incentify</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="feature-slider">
+    <div class="container">
+        <div class="glide" id="fslider">
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    <li class="glide__slide">
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/US-Army.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/IBM.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/bdArmy.png" alt="" />
+                        </div>
+
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/ACJ-Group.png" alt="" />
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/Defence-IT-Solutions.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/Dev Factory.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/cloud-academy-stefanno.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/color-fuzion-kimberly.png" alt="" />
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/Incentify.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/advanture-harris.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/Aklia-Institute.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/ambient-tech.png" alt="" />
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/ANZ.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/aora-galvin.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/atlas-tunney.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/Best-quality-power-solution.png" alt="" />
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/Urban-Point.jpg" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/bimort-dan.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/brush-for-life-deroo.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/DCI-Consultancy.png" alt="" />
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/digicert-beck.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/digitalrevolution.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/DJP.jpg" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/Dogstar-web-solution.png" alt="" />
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/fireshaper-surie.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/Forexnation-garzotto.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/fx-consultant.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/Dev Factory.png" alt="" />
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/hoop-conultants-mike.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/itp.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/KPMG,-USA.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/michael marcovici-ddf-logo.png" alt="" />
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/nclouds.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/ntuc-social-enterprise.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/OrenSoft.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/payfull-edogan.png" alt="" />
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/Pivot-Point-Security.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/Progmatic.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/RailMedia.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/Sark.png" alt="" />
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/Webrix-Technology.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/XboSoft.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/xtremax.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/preadtorpaintball-johnson.png" alt="" />
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/carl_search.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/FAmily-First.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/redlinedigital-lugbill.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/ripple-portilla.png" alt="" />
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/Active-Adult-living.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/brooksconsulting-brendanswan.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/bta-davis.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/clutchwave-roberto.png" alt="" />
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/Cyber Radar Systems.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/dominion-Media.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/global-app-test-Ronald-Cummings-John.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/Gridware-khanji.png" alt="" />
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/gteam.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/hbi.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/Hyper Velocity Consulting.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/iclick-peach.png" alt="" />
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/ideasseat-bowman.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/imc-js.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/infosec.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/kacare-bander.png" alt="" />
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/klaxxon-nick.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/kms-rainey.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/longevity.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/micahel-smith-newportllc.png" alt="" />
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/modulis.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/munchkin-katherine.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/myIVFa.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/Navi-Health.png" alt="" />
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/nexgence.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/O-Garman-Construction.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/Ostiary.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/otrain-sherri.png" alt="" />
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/Paper-Chaser.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/photogrpahy-talk.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/pixel cube-sverre.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/postali.png" alt="" />
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/projection-heaven-gregory.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/Quotium.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/Reditum.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/rhapsody.png" alt="" />
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/ronoco.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/Sark.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/SB Productions.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/Sergeant Agency.png" alt="" />
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/sociall-mulholland.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/Softnas.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/ssh-capital-logo.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/Starlight-Group.png" alt="" />
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/Start-Strong.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/Strategic-Security.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/Tangos.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/tanku-goren.png" alt="" />
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/traveloko_murgic.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/textwrum=janotta.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/vision-next-agha.png" alt="" />
+                        </div>
+                        <div class="fslide-img">
+                            <img src="{% static '' %}logos/WebBeds-Asia-Pacific.png" alt="" />
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="glide__arrows" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
+                    <div class="prev-img" style="background-color: rgb(24, 47, 89, 0.8)">
+                        <img src="{% static '' %}tfimg/testimonial/next.png" alt="" style="transform: rotate(180deg)" />
+                    </div>
+                </button>
+                <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
+                    <div class="prev-img">
+                        <img src="{% static '' %}tfimg/testimonial/next.png" alt="" />
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="video-testi">
+    <div class="container">
+        <!-- <h2 class="vt-title">Video Testimonials</h2> -->
+        <div class="row row-inverse vt-row">
+            <div class="col-md-6">
+                <div class="vt-text">
+                    <img src="{% static '' %}img/video_testimonial/CSI-co.png" class="remote-img" alt="" />
+                    <p class="text-justify">
+                        I have been using the personal cybersecurity service from Techforing for a while now. And I have to say that their team is incredibly professional, highly skilled and most of all very reliable.
+                    </p>
+                    <h2>Joseph Ke</h2>
+                    <p>General Manager, CSI Chemical Co. Ltd.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="vt-img">
+                    <video controls>
+                        <source src="{% static '' %}img/video_testimonial/JoshepK.mov" alt="Video of testimonial" />
+                    </video>
+                </div>
+            </div>
+        </div>
+        <div class="row row-inverse vt-row">
+            <div class="col-md-6">
+                <div class="vt-text">
+                    <img src="{% static '' %}img/video_testimonial/KT-bank.png" alt="" />
+                    <p class="text-justify">
+                        They provided plenty of avenues for our security team to improve and tighten the controls. In commercial banks, data security is the key priority. Without them providing us with the latest policies and compliances, we’d remain in the dark about a lot of things. They have lots of promise and potential. Try them. Their skills might save you from lots of unnecessary financial hassles.
+
+                    </p>
+                    <h2>Souheil Thabti</h2>
+                    <p>Ethics Manager, KT Bank</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="vt-img">
+                    <img src="{% static '' %}img/video_testimonial/Souheil Thabti.jpg" alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="people-slider">
+    <div class="container">
+        <h2>See What People are Saying on Trust Pilot</h2>
+        <div class="glide" id="pslider">
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    <li class="glide__slide">
+                        <div class="pslide-box">
+                            <img src="{% static '' %}img/virus/testimonial-image/magdalena cogbill.jpg" alt="" class="ps-face" />
+                            <img src="{% static '' %}tfimg/testimonial/quotation-marks.png" class="ps-quote" alt="" />
+                            <p class="text-center">
+                                We needed a quick and efficient virus expert. Our CentOS server was malfunctioning, and we needed it operational right away. Thankfully, we found out about these guys through a good friend of mine. They removed all malware or spyware from the system. Thank You!
+                            </p>
+                            <div class="ps-line"></div>
+                            <h3>Magdalena Cogbill</h3>
+                            <p>Founder, My IVF Alternative</p>
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="pslide-box">
+                            <img src="{% static '' %}img/video_testimonial/Dan Carnation.jpg" alt="" class="ps-face" />
+                            <img src="{% static '' %}tfimg/testimonial/quotation-marks.png" class="ps-quote" alt="" />
+                            <p>
+                                I needed a cybersecurity expert who could encrypt financial data then transfer to another place securedly. The guy from This team seemed to be a Pro at it. With his help I believe my project is safeguarded enough. He was great to work with. Will hire
+                                again for next phase of project.
+                            </p>
+                            <div class="ps-line"></div>
+                            <h3>Dan Carnation</h3>
+                            <p>Sr. Loanologist, BIMort</p>
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="pslide-box">
+                            <img src="{% static '' %}img/video_testimonial/Jatinder Giri.jpg" alt="" class="ps-face" />
+                            <img src="{% static '' %}tfimg/testimonial/quotation-marks.png" class="ps-quote" alt="" />
+                            <p>
+                                Techforing team is professional, they got some instructors who knows a lot about the current technologies. Knows ins and outs of a security system. Very open-minded and patiently made the team understand how things are in this field. I hope they learnt
+                                a lot. Thank you guys!
+                            </p>
+                            <div class="ps-line"></div>
+                            <h3>Jatinder Giri</h3>
+                            <p>CEO, nClouds</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="glide__bullets" data-glide-el="controls[nav]">
+                <button class="glide__bullet" data-glide-dir="=0"></button>
+                <button class="glide__bullet" data-glide-dir="=1"></button>
+                <button class="glide__bullet" data-glide-dir="=2"></button>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ppl-img-lg">
+    <img src="{% static '' %}img/video_testimonial/Desktop-Testimonial.png" alt="" />
+</section>
+<section class="ppl-img-sm">
+    <img src="{% static '' %}img/video_testimonial/Mobile-Testimonial.png" alt="" />
+</section>
+<section class="testi-happy">
+    <div class="container">
+        <h2 class="th-title">we have a lot of happy clients</h2>
+        <p class="th-text">with a lot of services</p>
+        <select name="services" id="services" onchange="serviceChange()">
+            <option class="happy-slider-option" value="business">
+                Enterprise Cybersecurity
+            </option>
+            <option class="happy-slider-option" value="personal">
+                Personal Cybersecurity
+            </option>
+            <option class="happy-slider-option" value="academy">Academy</option>
+        </select>
+        <!-- Enterprise Testimoinals -->
+        <div class="happy-slider happy-slider1">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="hs-box">
+                        <img src="{% static '' %}tfimg/testimonial/quotee.png" class="hs-quote" alt="" />
+                        <div class="hs-img-des">
+                            <img src="{% static '' %}img/home/john-rainey 1.jpg" alt="" />
+                            <div class="hs-des">
+                                <h2>John Rainey (USA)</h2>
+                                <i>Owner, Kingdom Marketing Solutions, Inc.</i>
+                            </div>
+                        </div>
+                        <div class="hs-text">
+                            <p class="text-justify">
+                                We were in a deep water when our users could not get access to data. It was difficult to fathom the whats and hows. On top of that someone was asking to get paid and giving threats to leak and erase the data. So we hired Techforing. Their security engineers
+                                were prompt in finding the weak link in the system and helped the workstation regain all the data. We felt we got out of jail. GREAT JOB!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="hs-box">
+                        <img src="{% static '' %}tfimg/testimonial/quotee.png" class="hs-quote" alt="" />
+                        <div class="hs-img-des">
+                            <img src="{% static '' %}img/home/Israel-Sunchez-1.jpg" alt="" />
+                            <div class="hs-des">
+                                <h2>Israel Sanchez (USA)</h2>
+                                <i>CEO, Integrated Healing and Strength Systems, Inc.</i>
+                            </div>
+                        </div>
+                        <div class="hs-text">
+                            <p class="text-justify"> 
+                                One of my crucial websites was showing ominous signs. We were being suspicious. Thankfully, we didn’t waste time and immediately asked my subordinate to look for somebody. He got us with Techforing. They did a thorough job and made some recommendations. I will definitely work with them again. As he pointed at security holes, no other tech had pointed out before. Thank you, Techforing!
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="hs-box">
+                        <img src="{% static '' %}tfimg/testimonial/quotee.png" class="hs-quote" alt="" />
+                        <div class="hs-img-des">
+                            <img src="{% static '' %}img/video_testimonial/OZ-Goren.png" alt="" />
+                            <div class="hs-des">
+                                <h2>Oz Goren (Israel)</h2>
+                                <i>VP Marketing, Tanku</i>
+                            </div>
+                        </div>
+                        <div class="hs-text">
+                            <p class="text-justify">
+                                TechForing conducted penetration tests on our website, database, and network and provided a detailed report. They could identify risks at several levels, explained the risk in detail and also suggested solutions. The team was also helping fix all found security issues. They are very professional, cooperative and very good at communication.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="hs-box">
+                        <img src="{% static '' %}tfimg/testimonial/quotee.png" class="hs-quote" alt="" />
+                        <div class="hs-img-des">
+                            <img src="{% static '' %}img/investigate/testimonial-image/Alvin Neo.jpg" alt="" />
+                            <div class="hs-des">
+                                <h2>Alvin Neo (Singapore)</h2>
+                                <i>Chief Customer & Marketing Officer, NTUC Enterprise
+                                    Co-operative Limited</i>
+                            </div>
+                        </div>
+                        <div class="hs-text">
+                            <p class="text-justify">
+                                These are some super talented bunch of people! Though costly, they helped me bypass the URL’s anti-virus was constantly flagging. I really needed those URLs operational. At first, I was not sure whether the price was worth it. Thankfully, I went on with it and they didn’t disappoint.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!--Col-->
+                <div class="col-md-6">
+                    <div class="hs-box">
+                        <img src="{% static '' %}tfimg/testimonial/quotee.png" class="hs-quote" alt="" />
+                        <div class="hs-img-des">
+                            <img src="{% static '' %}img/va/Eric Ho.jpg" alt="" />
+                            <div class="hs-des">
+                                <h2>Eric Ho (Ecuador)</h2>
+                                <i>Staff Software Engineer, RippleMatch</i>
+                            </div>
+                        </div>
+                        <div class="hs-text">
+                            <p class="text-justify">
+                                The guys in the team are extremely efficient and very humble. Kept me posted and helped me learn about lots of security related things. I never needed to do pen-testing. It really is an effective tool for companies like ours. If you are looking for reliability, Techforing is a Go-to! Try them!
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="hs-box">
+                        <img src="{% static '' %}tfimg/testimonial/quotee.png" class="hs-quote" alt="" />
+                        <div class="hs-img-des">
+                            <img src="{% static '' %}img/video_testimonial/murgic.png" alt="" />
+                            <div class="hs-des">
+                                <h2>Eddie Murgic (USA)</h2>
+                                <i>President and CEO, Traveloko, LLC.</i>
+                            </div>
+                        </div>
+                        <div class="hs-text">
+                            <p class="text-justify">
+                                Our website needed a risk assessment. TechForing Engineers are a pro in that. They did everything needed to get the job done. Guys are content and I got my peace of mind. Thanks TechForing.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="hs-box">
+                        <img src="{% static '' %}tfimg/testimonial/quotee.png" class="hs-quote" alt="" />
+                        <div class="hs-img-des">
+                            <img src="{% static '' %}img/hack/testimonial-image/paul-hager.png" alt="" />
+                            <div class="hs-des">
+                                <h2>Paul Hager (USA)</h2>
+                                <i>CEO, Information Technology Profssionals</i>
+                            </div>
+                        </div>
+                        <div class="hs-text">
+                            <p class="text-justify">
+                                Joomla 1.5 was Virus-affected. The in-charge person of this agency did a hack recovery job and updated the entire system. He was very reachable on Skype and completed the work within the time frame we needed. I would hire again for sure, if necessary. I would highly recommend them.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="hs-box">
+                        <img src="{% static '' %}tfimg/testimonial/quotee.png" class="hs-quote" alt="" />
+                        <div class="hs-img-des">
+                            <img src="{% static '' %}img/manage/testimonial_image/Elsane-Guglielmino.png" alt="" />
+                            <div class="hs-des">
+                                <h2>Elsane Guglielmino (France)</h2>
+                                <i>Business Development, Technologies group</i>
+                            </div>
+                        </div>
+                        <div class="hs-text">
+                            <p class="text-justify">
+                                They were really cooperative and patient with everything I asked. And I asked a lot of questions. In the end, I am immensely satisfied with the security I got for my applications. Good job!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="hs-box">
+                        <img src="{% static '' %}tfimg/testimonial/quotee.png" class="hs-quote" alt="" />
+                        <div class="hs-img-des">
+                            <img src="{% static '' %}img/plug/testimonial-image/Denise kee.jpg" alt="" />
+                            <div class="hs-des">
+                                <h2>Denise Kee (Singapore)</h2>
+                                <i>Managing Director, Xtremax</i>
+                            </div>
+                        </div>
+                        <div class="hs-text">
+                            <p class="text-justify">
+                                We’re looking for an AWS-NGINX Security configuration expert. Found this company and they did a fine job. Highly recommended.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Personal Testimonials -->
+        <div class="happy-slider">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="hs-box">
+                        <img src="{% static '' %}tfimg/testimonial/quotep.png" class="hs-quote" alt="" />
+                        <div class="hs-img-des">
+                            <img src="{% static '' %}img/video_testimonial/enrico-garzotto.jpg" alt="" />
+                            <div class="hs-des">
+                                <h2>Enrico Garzotto (Italy)</h2>
+                                <i>CEO & Founder, Enrico Garzotto</i>
+                            </div>
+                        </div>
+                        <div class="hs-text">
+                            <p class="text-justify">
+                                One morning, I woke up getting calls from everywhere. Somebody sent suspicious inbox messages from my social media profile to all my friends and foes. I asked my assistant to look into it. He found out about this cybersecurity team. They did something
+                                to help me get my login access back. Overall, a very professional job! Fast and reliable.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="hs-box">
+                        <img src="{% static '' %}tfimg/testimonial/quotep.png" class="hs-quote" alt="" />
+                        <div class="hs-img-des">
+                            <img src="{% static '' %}img/video_testimonial/Tim-Gogging.jpg" alt="" />
+                            <div class="hs-des">
+                                <h2>Tim goggin (USA)</h2>
+                                <i>Co-Founder, PocketMac</i>
+                            </div>
+                        </div>
+                        <div class="hs-text">
+                            <p class="text-justify">
+                                A rival tried to defame me by exposing personal moments on public. I was furious at the same time helpless. Needed a quick data removal job. These Techforing people did a standup job not only taking down those, they secured to protect privacy online.
+                                Thanks!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="hs-box">
+                        <img src="{% static '' %}tfimg/testimonial/quotep.png" class="hs-quote" alt="" />
+                        <div class="hs-img-des">
+                            <img src="{% static '' %}img/video_testimonial/shawn-bowman.jpg" alt="" />
+                            <div class="hs-des">
+                                <h2>Shawn Bowman (USA)</h2>
+                                <i> President, IdeaSeat Marketing and Advertising, LLC </i>
+                            </div>
+                        </div>
+                        <div class="hs-text">
+                            <p class="text-justify">
+                                My PC's acting strangely of late. Applications kept shutting down on me, was losing data left and right. decided to install a virus guard, hired Techforing Engineers. They setup Kaspersky remotely. Now, I'm running it for 3 days as smooth as a new car!
+                                gotta say- Great Work, you guys are really Focused on getting the project done right.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="hs-box">
+                        <img src="{% static '' %}tfimg/testimonial/quotep.png" class="hs-quote" alt="" />
+                        <div class="hs-img-des">
+                            <img src="{% static '' %}img/video_testimonial/Joseph-McCray.jpg" alt="" />
+                            <div class="hs-des">
+                                <h2>Joseph McCray (USA)</h2>
+                                <i>Founder & CEO, Strategic Security</i>
+                            </div>
+                        </div>
+                        <div class="hs-text">
+                            <p class="text-justify">
+                                My cryptocurrency got stolen despite it's deemed to be pretty secure. I can understand things happen! Tried law enforcement but got no help, then hired the Techforing team to get my funds back. They traced back the hacker and forced him return the cash
+                                with the same value of lost crypto. Excellent job indeed!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="hs-box">
+                        <img src="{% static '' %}tfimg/testimonial/quotep.png" class="hs-quote" alt="" />
+                        <div class="hs-img-des">
+                            <img src="{% static '' %}img/video_testimonial/Brandan-S..jpg" alt="" />
+                            <div class="hs-des">
+                                <h2>Brendan Swan (USA)</h2>
+                                <i>Principle, Brooks Consulting, LLC</i>
+                            </div>
+                        </div>
+                        <div class="hs-text">
+                            <p class="text-justify">
+                                I have depended on this cybersecurity company for a number of projects and they never fail to deliver. Hired them to create secure network (VPN/Proxy). They did a fine job as always!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="hs-box">
+                        <img src="{% static '' %}tfimg/testimonial/quotep.png" class="hs-quote" alt="" />
+                        <div class="hs-img-des">
+                            <img src="{% static '' %}img/video_testimonial/Christine-Carter.png" alt="" />
+                            <div class="hs-des">
+                                <h2>Christine Carter (USA)</h2>
+                                <i>Owner, Christine Carter</i>
+                            </div>
+                        </div>
+                        <div class="hs-text">
+                            <p class="text-justify">
+                                This team did a fantastic job for us and provided the highest quality 'Data Security' work. They truly are some experts in this field. We will use them again and again whenever we need assistance with security issues.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="hs-box">
+                        <img src="{% static '' %}tfimg/testimonial/quotep.png" class="hs-quote" alt="" />
+                        <div class="hs-img-des">
+                            <img src="{% static '' %}img/video_testimonial/John-Surie.jpg" alt="" />
+                            <div class="hs-des">
+                                <h2>JOHN SURIE (USA)</h2>
+                                <i>Owner, Fire Shaper</i>
+                            </div>
+                        </div>
+                        <div class="hs-text">
+                            <p class="text-justify">
+                                A colleague of mine mistakenly emailed a client's file in error to a different department. We needed someone to interfere and provide data security to stop it from happening. These guys helped me do it. They're very knowledgeable. All the best!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="hs-box">
+                        <img src="{% static '' %}tfimg/testimonial/quotep.png" class="hs-quote" alt="" />
+                        <div class="hs-img-des">
+                            <img src="{% static '' %}img/video_testimonial/benjamin-beck.jpg" alt="" />
+                            <div class="hs-des">
+                                <h2>Benjamin Beck (USA)</h2>
+                                <i> Sr. Marketing Automation Manager, DigiCert Inc.r</i>
+                            </div>
+                        </div>
+                        <div class="hs-text">
+                            <p class="text-justify">
+                                A public post from our official page got a lot of negative comments and it was clear most of those accounts are fake or linked to one account. I hired Team Techforing knowing they handle cyber harassment cases like this. I don't know how you guys did
+                                it, but I am surprised how you got to the bottom of it and brought out the miscreant in the light. Thanks for your work. I'll review your report paper and pass it along to a member of our executive team.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="hs-box">
+                        <img src="{% static '' %}tfimg/testimonial/quotep.png" class="hs-quote" alt="" />
+                        <div class="hs-img-des">
+                            <img src="{% static '' %}tfimg/profile/user.jpg" alt="" />
+                            <div class="hs-des">
+                                <h2>David J. Hall (USA)</h2>
+                                <i>Founder, HONDOIRISFARM</i>
+                            </div>
+                        </div>
+                        <div class="hs-text">
+                            <p class="text-justify">
+                                My nine-year-old girl's laptop computer was hacked by a pedophile in January 2021. The hacker managed to secure a personal picture of her and blackmailing her. I reported the incident to Police. Three months later I get back my laptop without any progress.
+                                In the meantime, the hacker got access into my business accounts, which were connected to my home wi-fi. In my search for help, I found Techforing. I checked them out and confirmed they were a trustworthy company that could
+                                fulfill their commitments. In less than two weeks my computers and my system was protected. I recommend them highly and stand ready to answer questions about their reputability.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Academy Testimoinals-->
+        <div class="happy-slider">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="hs-box">
+                        <img src="{% static '' %}tfimg/testimonial/quotea.png" class="hs-quote" alt="" />
+                        <div class="hs-img-des">
+                            <img src="{% static '' %}img/video_testimonial/cathy-lumsden.png" alt="" />
+                            <div class="hs-des">
+                                <h2>Cathy Lumsden (Canada)</h2>
+                                <i>Business coaching and counseling, Rhapsody Strategies</i>
+                            </div>
+                        </div>
+                        <div class="hs-text">
+                            <p class="text-justify">
+                                The courses help you to enlighten on the latest most happening cyberthreats. Apart from Phishing attacks, ransomware, they taught us about other threats and gave us hundreds of tricks to secure IT system. It was an eye-openning and fruitful session for
+                                all of us. Thanks a lot!
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="hs-box">
+                        <img src="{% static '' %}tfimg/testimonial/quotea.png" class="hs-quote" alt="" />
+                        <div class="hs-img-des">
+                            <img src="{% static '' %}img/video_testimonial/edwin.png" alt="" />
+                            <div class="hs-des">
+                                <h2>Edwin Curran (USA)</h2>
+                                <i>Vice President of Engineering, XboSoft</i>
+                            </div>
+                        </div>
+                        <div class="hs-text">
+                            <p class="text-justify">
+                                These trainers are some of the most skillfull persons I've come across. They pointed out the vulnerabilities in our existing systema long with educating the team on what else can be done harden the security controls. We are lucky to have them. Wish them
+                                all the best!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="hs-box">
+                        <img src="{% static '' %}tfimg/testimonial/quotea.png" class="hs-quote" alt="" />
+                        <div class="hs-img-des">
+                            <img src="{% static '' %}img/video_testimonial/Batho-Motubudi.png" alt="" />
+                            <div class="hs-des">
+                                <h2>Batho Motubudi (BOTSWANA)</h2>
+                                <i>Managing Director, Paperchaser Mobile</i>
+                            </div>
+                        </div>
+                        <div class="hs-text">
+                            <p class="text-justify">
+                                Before this session, I was honestly wasn't sure about its' necessity as we already have an IT team in-house. But having talked to them, I leant that the trainers really did a good job. Everyone's happy about the course. The course materials cover the
+                                most relevant ones, so I'd say well done!
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="hs-box">
+                        <img src="{% static '' %}tfimg/testimonial/quotea.png" class="hs-quote" alt="" />
+                        <div class="hs-img-des">
+                            <img src="{% static '' %}img/video_testimonial/sven eller.jpg" alt="" />
+                            <div class="hs-des">
+                                <h2>Sven Eller (Estonia)</h2>
+                                <i> Progmatic OÃœ</i>
+                            </div>
+                        </div>
+                        <div class="hs-text">
+                            <p class="text-justify">
+                                The trainers are really knowledgeable in cybersecurity. They helped the IT team and faculty members in securing their personal devices and social engineering. Before this, we never thought such penetration is possible. Now, we're aware and can take the
+                                necessary steps to avoid cybercrime (hopefully!). Also, the training videos are available for later use to rewatch and learn over and over again. They are a must Hire for any educational institutes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="about-protect testimonial-cta">
+    <div class="container">
+        <div class="fran-bar mx-auto"></div>
+        <p>Our unique customer experience approach</p>
+        <h2>From amazing project, through training, through consultation</h2>
+        <a href="{% host_url 'get_start' host 'main' %}" target="_blank"><button>Get Our Service <i
+                    class="fas fa-arrow-right"></i></button></a>
+    </div>
+</section>
+{% endblock content %} {% block customjs %}
+<script src="{% static ''%}tfjs/glide.js"></script>
+
+<script>
+    new Glide("#fslider", {
+        type: "carousel",
+        perView: 6,
+        // autoplay: 8000,
+        breakpoints: {
+            800: {
+                perView: 2,
+            },
+        },
+    }).mount();
+</script>
+<script>
+    new Glide("#pslider", {
+        type: "carousel",
+        perView: 1,
+    }).mount();
+</script>
+<script>
+    new Glide(".hr-glide", {
+        type: "carousel",
+        startAt: 1,
+        perView: 1,
+        peek: {
+            before: 0,
+            after: 50,
+        },
+    }).mount();
+</script>
+<script>
+    $(document).ready(function() {
+        $("#my-header").load("header.html");
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $("#my-footer").load("footer.html");
+    });
+</script>
+<script src="{% static ''%}js/testimonial_tab.js"></script>
+{% endblock customjs %}

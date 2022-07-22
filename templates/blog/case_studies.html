@@ -1,0 +1,331 @@
+{% extends 'base/blog_base.html' %} {% load static %} {% block title %} Case Studies {% endblock title %} {% block headercss %}
+<link rel="stylesheet" href="{% static 'tfcss/blog/case_studies.css' %}"> {% endblock headercss %} {% block content %}
+
+<section class="row mx-0 banner-1">
+    <div class="col-md-6 col-lg-7 col-xl-8 pe-2 banner-bg">
+        <div class="d-flex flex-column justify-content-center h-100">
+            <h4 class="fw-bold">CASE STUDY</h4>
+            <h5>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</h5>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-5 col-xl-4">
+        <div class="bg-gray px-3 py-2 h-100 d-flex flex-column justify-content-center">
+            <a class="btn menu-link fw-bold" href="{% url 'blog_app:category' name='hack_recovery' %}">Hack
+                Recovery</a>
+            <a class="btn menu-link fw-bold" href="{% url 'blog_app:category' name='risk_assesment' %}">Risk Assesment</a>
+            <a class="btn menu-link fw-bold" href="{% url 'blog_app:category' name='concierge_cybersecurity' %}">Concierge
+                CyberSecurity</a>
+            <a class="btn menu-link fw-bold" href="{% url 'blog_app:category' name='cybercrime_investigation' %}">Cybercrime
+                Investigation</a>
+        </div>
+    </div>
+</section>
+
+<div class="mt-3 d-flex justify-content-center justify-content-md-start">
+    <div class="dropdown">
+        <button class="btn border border-secondary text-navy bg-white dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+            Filter Posts By Keyword
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <li>
+                <input type="text" class="form-control" placeholder="Type a keyword" id="keyword-input">
+            </li>
+        </ul>
+    </div>
+    <div class="dropdown ms-5">
+        <button class="btn border border-secondary text-navy bg-white dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+            Upload Date
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <li><button class="dropdown-item" onclick="location.reload()" type="button">All</button></li>
+            <li><button class="dropdown-item" onclick="filterByDate('week')" type="button">This Week</button></li>
+            <li><button class="dropdown-item" onclick="filterByDate('month')" type="button">This Month</button></li>
+            <li><button class="dropdown-item" onclick="filterByDate('year')" type="button">This Year</button></li>
+        </ul>
+    </div>
+</div>
+
+
+<section class="important-case-studies mt-4">
+{#    <a href="{% url 'blog_app:category' name='case_studies' %}" class="container-heading">MOST IMPORTANT CASE#}
+{#        STUDIES</a>#}
+    <div class="site-section bg-light">
+        <div class="row align-items-stretch retro-layout-2">
+            <div class="col-md-4">
+                {% for post in important_posts %} {% if forloop.counter == 2 or forloop.counter == 3 %}
+{#                <a href="{% url 'blog_app:case_studies' name=post.post_url %}" class="h-entry {%if forloop.counter == 2%}mb-30{% endif %} v-height gradient" style="background-image:url('{% get_media_prefix %}{{post.feature_image}}')">#}
+                    <div class="text">
+                        <h2>{{post.title}}</h2>
+                        <span class="date">
+                            <i class="bi bi-calendar"></i>
+                            July 19, 2019
+                        </span>
+                        <span class="ms-2">
+                            <i class="bi bi-stopwatch"></i>
+                            3 min.
+                        </span>
+                    </div>
+                </a>
+                {% endif %} {% endfor %}
+            </div>
+            <div class="col-md-4">
+                {% for post in important_posts %} {% if forloop.first %}
+{#                <a href="{% url 'blog_app:case_studies' name=post.post_url %}" class="h-entry img-5 h-100 gradient" style="background-image:url('{% get_media_prefix %}{{post.feature_image}}')">#}
+                    <div class="text">
+                        <!-- <div class="post-categories mb-3">
+                                <span class="post-category bg-danger">Travel</span>
+                                <span class="post-category bg-primary">Food</span>
+                            </div> -->
+                        <h2>{{post.title}}</h2>
+                        <span class="date">
+                            <i class="bi bi-calendar"></i>
+                            July 19, 2019
+                        </span>
+                        <span class="ms-2">
+                            <i class="bi bi-stopwatch"></i>
+                            3 min.
+                        </span>
+                    </div>
+                </a>
+                {% endif %} {% endfor %}
+            </div>
+            <div class="col-md-4">
+                {% for post in important_posts %} {% if forloop.counter == 4 or forloop.counter == 5 %}
+{#                <a href="{% url 'blog_app:case_studies' name=post.post_url %}" class="h-entry {%if forloop.counter == 4%}mb-30{% endif %} v-height gradient" style="background-image:url('{% get_media_prefix %}{{post.feature_image}}')">#}
+                    <div class="text">
+                        <h2>{{post.title}}</h2>
+                        <span class="date">
+                            <i class="bi bi-calendar"></i>
+                            July 19, 2019
+                        </span>
+                        <span class="ms-2">
+                            <i class="bi bi-stopwatch"></i>
+                            3 min.
+                        </span>
+                    </div>
+                </a>
+                {% endif %} {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- recent case-studies  -->
+<section class="recent-case-studies mt-4">
+    <a href="{% url 'blog_app:category' name='case_studies' %}" class="container-heading mb-3">RECENT CASE STUDIES</a>
+    <div class="case-studies row row-cols-1 row-cols-md-3 g-5">
+        {% for post in recent_posts %}
+        <div class="post col">
+            <div class="card">
+                <button class="btn add-btn"><i class="bi bi-plus-lg"></i>
+                    <span>Add to my reading list</span>
+                </button>
+                <img src="{% get_media_prefix %}{{post.feature_image}}" class="card-img-top" alt="...">
+                <div class="card-body pt-2 p-0">
+                    <a href="{% url 'blog_app:blogs' name=post.post_url %}" class="title">
+                        <h6 class="fw-bold fs-7">{{post.title}}
+                        </h6>
+                    </a>
+                    <div class="info-area">
+                        <span class="p-0 me-3 text-green">
+                            <i class="bi bi-calendar"></i>
+                            {{post.date|date}}
+                        </span>
+                        <span class="p-0 me-3 text-green" title="Reading Time">
+                            <i class="bi bi-stopwatch"></i>
+                            {{post.reading_time}}
+                        </span>
+                    </div>
+                    <p class="fs-7 lh-sm">
+                        {{post.short_description|truncatechars:140}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="d-none filtered-case-studies row mx-0 g-5">
+
+    </div>
+</section>
+
+<!-- load more data  -->
+<!-- <section class="my-5 container d-flex justify-content-center">
+    <button id="load-more-btn" class="btn btn-navy rounded-pill">Load More</button>
+</section> -->
+
+
+<!-- get updates form  -->
+<h5 class="get-update-heading">
+    <i class="bi bi-envelope px-2"></i>
+</h5>
+<section class="get-updates mb-5 shadow-sm py-3 bg-gray rounded">
+    <div class="row mx-0 align-items-center">
+        <div class="col-md-5">
+            <h4 class="fw-bold">Get Updates</h4>
+            <h5 class="text-secondary">Sign up to receive the latest news</h5>
+
+        </div>
+        <div class="col-md-7">
+            <div class="get-updates">
+                <form class="row">
+                    <div class="col-auto">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                    </div>
+                    <div class="col-auto">
+                        <label for="email">Email Address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="col-auto d-flex align-items-end mt-3 mt-lg-0">
+                        <button type="submit" class="btn btn-navy py-2">Subscribe <i
+                                class="bi bi-arrow-right"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+</section>
+
+
+
+{% endblock content %} {% block customjs %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+    let importantCaseStudies = document.querySelector('.important-case-studies');
+    let recentCaseStudies = document.querySelector('.recent-case-studies .case-studies');
+    let filteredCaseStudies = document.querySelector('.recent-case-studies .filtered-case-studies');
+    let containerHeading = document.querySelector('.recent-case-studies .container-heading');
+
+    document.getElementById('keyword-input').addEventListener('keyup', e => {
+        if (e.target.value == '') {
+            e.target.parentNode.parentNode.parentNode.parentNode.style.marginBottom = '0px';
+            containerHeading.textContent = 'RECENT CASE STUDIES';
+            importantCaseStudies.classList.remove('d-none');
+            recentCaseStudies.classList.remove('d-none');
+            filteredCaseStudies.innerHTML = '';
+        } else {
+            e.target.parentNode.parentNode.parentNode.parentNode.style.marginBottom = '100px';
+            containerHeading.textContent = 'FILTERED CASE STUDIES';
+            importantCaseStudies.classList.add('d-none');
+            recentCaseStudies.classList.add('d-none');
+
+            getPosts(e.target.value, 'keyword');
+        }
+    });
+
+    let filterByDate = (range) => {
+        containerHeading.textContent = 'FILTERED CASE STUDIES';
+        importantCaseStudies.classList.add('d-none');
+        recentCaseStudies.classList.add('d-none');
+
+        getPosts(range, 'date');
+    }
+
+    let getPosts = (value, type) => {
+        filteredCaseStudies.classList.remove('d-none');
+        filteredCaseStudies.innerHTML = `<div id="progress" class="text-center py-5">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        </div>`;
+
+        let url = `/filter_post_${type}/case_studies/${value}`;
+        fetchPosts(url).then(function(data) {
+            let posts = JSON.parse(data);
+            filteredCaseStudies.removeChild(document.getElementById('progress'));
+
+            posts.forEach(post => {
+                let newPost = ` <div class="post col-md-4">
+            <div class="card">
+                <button class="btn add-btn"><i class="bi bi-plus-lg"></i>
+                    <span>Add to my reading list</span>
+                </button>
+                <img src="{% get_media_prefix %}${post.fields.feature_image}" class="card-img-top" alt="...">
+                <div class="card-body pt-2 p-0">
+                    {#<a href="{% url 'blog_app:case_studies' name=post.post_url %}" class="title">#}
+                    {#    <h6 class="fw-bold fs-7">${post.fields.title}</h6>#}
+                    {#</a>#}
+                    <div class="info-area">
+                        <span class="p-0 me-3 text-green">
+                            <i class="bi bi-calendar"></i>
+                            ${(post.fields.date).split('T')[0]}
+                        </span>
+                        <span class="p-0 me-3 text-green" title="Reading Time">
+                            <i class="bi bi-stopwatch"></i>
+                            ${post.fields.reading_time}
+                        </span>
+                    </div>
+                    <p class="fs-7 lh-sm">
+                        ${post.fields.short_description.slice(0, 140) + "..."}
+                    </p>
+                </div>
+            </div>
+        </div>`;
+
+                filteredCaseStudies.innerHTML += newPost;
+            });
+            updateCardHeight('filtered');
+            updateAddBtn();
+        }).catch(function(err) {
+            console.log(err)
+        })
+    }
+
+    function fetchPosts(url) {
+        return new Promise(function(resolve, reject) {
+            $.ajax({
+                url: url,
+                type: 'get',
+                dataType: 'json',
+                success: function(data) {
+                    resolve(data) // Resolve promise and go to then()
+                },
+                error: function(err) {
+                    reject(err) // Reject the promise and go to catch()
+                }
+            });
+        });
+    }
+    let updateCardHeight = (type) => {
+        let posts = type === 'all' ? document.querySelectorAll('.recent-case-studies .case-studies .post .card') :
+            document.querySelectorAll('.recent-case-studies .filtered-case-studies .post .card');
+        let postsHeight = Array.from(posts).map(post => post.clientHeight)
+
+        let maxPostHeight = postsHeight.reduce(function(a, b) {
+            return Math.max(a, b);
+        }, 0);
+
+        posts.forEach(post => {
+            post.style.height = (maxPostHeight + 20) + 'px';
+        })
+    }
+
+
+    let updateAddBtn = () => {
+        document.querySelectorAll('.post .card .add-btn').forEach(btn => {
+            btn.addEventListener('mouseover', e => {
+                if (e.target.tagName == 'I')
+                    btn.classList.add('show-btn');
+            });
+            btn.addEventListener('mouseout', e => {
+                if (e.target.tagName == 'BUTTON')
+                    btn.classList.remove('show-btn');
+            });
+        });
+    }
+
+    window.onload = function() {
+        updateCardHeight('all');
+        updateAddBtn();
+    }
+
+    let allPost = document.querySelectorAll('.recent-case-studies .post');
+
+    document.getElementById('load-more-btn').addEventListener('click', () => {
+        for (let i = 0; i < 4; i++) {
+            postContainer.appendChild(allPost[i]);
+        }
+    });
+</script>
+{% endblock customjs %}

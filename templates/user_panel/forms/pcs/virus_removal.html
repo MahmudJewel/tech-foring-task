@@ -1,0 +1,90 @@
+<form class="bg-white p-2 concierge-cybersecurity-service">
+    <div class="mt-5 information-form">
+        <h5 class="fw-bold text-center border-bottom border-gray p-2">Please Provide Necessary Informations for Virus Removal Service:
+        </h5>
+
+        <!-- device information  -->
+        <div class="mt-5 info-type">
+            <div class="row row-cols-sm-2 g-3">
+                <div class="col-md-6">
+                    <label>Device Type</label>
+                    <select class="form-select" aria-label="Default select example">
+                    <option value="mobile">Mobile</option>
+                    <option value="computer">Computer</option>
+                </select>
+                </div>
+                <div class="col-md-6 d-flex align-items-end">
+                    <div class="dropdown mt-3 w-100">
+                        <button class="btn btn-light dropdown-toggle d-block mx-auto" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Number of Your Devices
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <!-- level #2 -->
+                            <div class="dropdown dropend">
+                                <a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mobile</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown-layouts">
+                                    <span class="dropdown-item">
+                                        <div class="form-check" onclick="showInputField(this,'android-device')">
+                                            <input class="form-check-input" type="checkbox" name="" id="device-1">
+                                            <label class="form-check-label" for="device-1">Android</label>
+                                        </div>
+                                        <input id="android-device" class="d-none mt-2 form-control form-control-sm"
+                                            type="number" name="" placeholder="no. of devices">
+                                    </span>
+                                    <span class="dropdown-item">
+                                        <div class="form-check" onclick="showInputField(this,'ios-device')">
+                                            <input class="form-check-input" type="checkbox" name="" id="device-2">
+                                            <label class="form-check-label" for="device-2">IOS</label>
+                                        </div>
+                                        <input id="ios-device" class="d-none mt-2 form-control form-control-sm"
+                                            type="number" name="" placeholder="no. of devices">
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- /level #2 -->
+                            <div class="dropdown dropend">
+                                <a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Computer</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown-layouts">
+                                    <span class="dropdown-item">
+                                        <div class="form-check" onclick="showInputField(this,'windows-device')">
+                                            <input class="form-check-input" type="checkbox" name="" id="device-1">
+                                            <label class="form-check-label" for="device-1">Windows</label>
+                                        </div>
+                                        <input id="windows-device" class="d-none mt-2 form-control form-control-sm"
+                                            type="number" name="" placeholder="no. of devices">
+                                    </span>
+                                    <span class="dropdown-item">
+                                        <div class="form-check" onclick="showInputField(this,'linux-device')">
+                                            <input class="form-check-input" type="checkbox" name="" id="device-2">
+                                            <label class="form-check-label" for="device-2">Linux</label>
+                                        </div>
+                                        <input id="linux-device" class="d-none mt-2 form-control form-control-sm"
+                                            type="number" name="" placeholder="no. of devices">
+                                    </span>
+                                    <span class="dropdown-item">
+                                        <div class="form-check" onclick="showInputField(this,'mac-device')">
+                                            <input class="form-check-input" type="checkbox" name="" id="device-2">
+                                            <label class="form-check-label" for="device-2">Mac</label>
+                                        </div>
+                                        <input id="mac-device" class="d-none mt-2 form-control form-control-sm"
+                                            type="number" name="" placeholder="no. of devices">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="">How do you know your device is virus infected?</label>
+                    <input type="text" class="form-control" id="" placeholder="type here">
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+    <div class="mt-5 d-flex justify-content-center">
+        <button type="submit" class="btn btn-navy py-2">Submit <i class="icofont-long-arrow-right"></i></button>
+    </div>
+</form>

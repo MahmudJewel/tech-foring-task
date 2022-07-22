@@ -1,0 +1,115 @@
+{% extends 'base/bcs_user_base.html' %} {% load static %} {% load hosts %} {% block title %}
+    Payment {% endblock title %} {% block content %}
+
+    <div class="subscription-container px-0 px-md-2">
+
+        <h5 class="fw-bold">Please Select Your Payment Method</h5>
+        {% csrf_token %}
+        <div class="row my-5 shadow">
+            <div class="col-md-7">
+                <div id="smart-button-container">
+                    <div style="text-align: center;">
+                        <div id="paypal-button-container-{{ current_package.package_id }}"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 border-start border-secondary">
+                <table class="table">
+                    <tr>
+                        <td>Service Name:</td>
+                        <td>{{ current_package.service_id.service_title }}</td>
+                    </tr>
+                    <tr>
+                        <td>Package Name:</td>
+                        <td>{{ current_package.package_name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Price:</td>
+                        <td>{{ current_package.price }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+
+{% endblock content %}
+{% block customjs %}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AfTmv1E8P0HbJCkRMtm7s_07rqkJCGvp4WufOBxLWUl5AFujlsqmn6WdpMZo-nQr-yKVTnogZOQYgLnl&vault=true&intent=subscription"
+            data-sdk-integration-source="button-factory"></script>
+    <script>
+        let serviceID = "{{ current_package.service_id.id }}";
+        let packageID = "{{ current_package.id }}";
+
+        const csrf_token = document.querySelector("input[name='csrfmiddlewaretoken']")
+
+
+        function initPayPalButton() {
+            paypal.Buttons({
+                style: {
+                    shape: 'rect',
+                    color: 'gold',
+                    layout: 'vertical',
+                    label: 'subscribe'
+                },
+                createSubscription: function (data, actions) {
+                    return actions.subscription.create({
+                        /* Creates the subscription */
+                        plan_id: '{{ current_package.package_id }}',
+                        quantity: 1 // The quantity of the product for a subscription
+                    });
+                },
+                onApprove: function (data, actions) {
+                    {#console.log(data)#}
+                    {#console.log(actions)#}
+
+                    // Show a success message within this page, e.g.
+                    const element = document.getElementById('paypal-button-container-{{ current_package.package_id }}');
+                    element.innerHTML = '';
+                    element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                    {#alert(data.subscriptionID); // You can add optional success message for the subscriber here#}
+
+
+                    fetch(`${mainOrigin}/api/subscription_order/`, {
+                        method: 'POST',
+                        credentials: 'include',
+                        body: JSON.stringify({
+                            subscription_service: serviceID,
+                            paypal_order_id: data.orderID,
+                            paypal_subscription_id: data.subscriptionID,
+                            amount: {{ current_package.price }},
+                            subscription_package: packageID,
+                            category_choice: 'bcs'
+                        }),
+                        headers: {
+                            'Content-type': 'application/json',
+                            'X-CSRFToken': csrf_token.value,
+                        },
+                    })
+                        .then((response) => response.json())
+                        .then(data => console.log(data))
+
+                }
+            }).render('#paypal-button-container-{{ current_package.package_id }}'); // Renders the PayPal button
+        }
+
+        fetch(`${mainOrigin}/api/subscription_order_check/`, {
+            credentials: 'include'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.result.includes(parseInt(packageID))) {
+                    Swal.fire('Already Purchased.')
+                } else {
+                    initPayPalButton();
+                }
+            })
+    </script>
+{% endblock customjs %}
+
+
+
+

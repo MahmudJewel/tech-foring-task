@@ -1,0 +1,375 @@
+{% extends 'base/main_admin_base.html' %}{% load hosts %} {% load crispy_forms_tags %} {% load my_filter %} {% load static %}
+{% block title %}
+    Orders {% endblock title %}
+{% block headercss %}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'tfcss/admin_panel/bcsTF/order.css' %}"/>
+
+    <style>
+
+        .fixed-top {
+            z-index: unset;
+        }
+
+        .card-body {
+            max-height: 220px;
+            overflow-y: scroll;
+        }
+
+        .card-body::-webkit-scrollbar {
+            width: 5px;
+            background-color: gray;
+        }
+
+        .card-body::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+            background-color: #182f59;
+        }
+
+        .view-btn {
+            cursor: pointer;
+            text-decoration: none;
+            outline: none;
+            border: none;
+        }
+
+        .view-btn:hover {
+        {% comment %} text-decoration: underline; {% endcomment %} color: #5BBC2E;
+        }
+
+        .bg-green {
+            background-color: #5BBC2E;
+            color: white;
+        }
+    </style>
+
+{% endblock headercss %}
+
+{% block content %}
+    <main>
+        <div class="order-info">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3>Order ID: {{ current_order.id }}</h3>
+                        <p>User: <span class="text-bold">{{ current_order.user }}</span></p>
+                        <p>User Phone: <span class="text-bold">{{ current_order.user.phone_number }}</span></p>
+                        <p>User Email: <span class="text-bold">{{ current_order.user.email }}</span></p>
+                        <p>Order Date: <span class="text-bold">{{ current_order.order_date }}</span></p>
+                        <p>Status:
+                            {% if current_order.order_status == 'new' %}
+                                <span class="badge bg-primary">{{ current_order.order_status|capitalize }}</span>
+                            {% elif current_order.order_status == 'assigned' %}
+                                <span class="badge bg-secondary">{{ current_order.order_status|capitalize }}</span>
+                            {% elif current_order.order_status == 'attending' %}
+                                <span class="badge bg-warning text-dark">{{ current_order.order_status|capitalize }}</span>
+                            {% elif current_order.order_status == 'on_progress' %}
+                                <span class="badge bg-info text-dark">{{ current_order.order_status|capitalize }}</span>
+                            {% elif current_order.order_status == 'completed' %}
+                                <span class="badge bg-success">{{ current_order.order_status|capitalize }}</span>
+                            {% elif current_order.order_status == 'canceled' %}
+                                <span class="badge bg-danger">{{ current_order.order_status|capitalize }}</span>
+                            {% endif %}
+                        </p>
+                        <p>Change Status: </p>
+                        {% if current_order.category_choice == "pcs" %}
+                        <div class="d-flex gap-3 flex-wrap">
+                            <a class="badge bg-primary w-25 text-white"
+                               href="{% host_url 'pcs_admin_order_new'  host 'mysecurity'%}{{ current_order.id }}">
+                                <span>New</span></a>
+                            <a role="button" class="badge bg-secondary w-25 text-white" data-bs-toggle="modal"
+                               data-bs-target="#assignModal">
+                                <span>Assign To</span></a>
+                            <a class="badge bg-warning text-dark w-25"
+                               href="{% host_url 'pcs_admin_order_attending' host 'mysecurity'%}{{ current_order.id }}">
+                                <span>Attending</span></a>
+                            <a class="badge bg-info text-dark w-25" role="button" data-bs-toggle="modal"
+                               data-bs-target="#exampleModal">
+                                <span>On Progress</span></a>
+                            <a class="badge bg-success w-25 text-white"
+                               href="{% host_url 'pcs_admin_order_completed' host 'mysecurity'%}{{ current_order.id }}">
+                                <span>Completed</span></a>
+                            <a class="badge bg-danger w-25 text-white"
+                               href="{% host_url 'pcs_admin_order_canceled' host 'mysecurity'%}{{ current_order.id }}">
+                                <span>Canceled</span></a>
+                        </div>
+                        {% else %}
+                        <div class="d-flex gap-3 flex-wrap">
+                            <a class="badge bg-primary w-25 text-white"
+                               href="{% host_url 'bcs_admin_order_new' %}{{ current_order.id }}">
+                                <span>New</span></a>
+                            <a role="button" class="badge bg-secondary w-25 text-white" data-bs-toggle="modal"
+                               data-bs-target="#assignModal">
+                                <span>Assign To</span></a>
+                            <a class="badge bg-warning text-dark w-25"
+                               href="{% host_url 'bcs_admin_order_attending' %}{{ current_order.id }}">
+                                <span>Attending</span></a>
+                            <a class="badge bg-info text-dark w-25" role="button" data-bs-toggle="modal"
+                               data-bs-target="#exampleModal">
+                                <span>On Progress</span></a>
+                            <a class="badge bg-success w-25 text-white"
+                               href="{% host_url 'bcs_admin_order_completed' %}{{ current_order.id }}">
+                                <span>Completed</span></a>
+                            <a class="badge bg-danger w-25 text-white"
+                               href="{% host_url 'bcs_admin_order_canceled' %}{{ current_order.id }}">
+                                <span>Canceled</span></a>
+                        </div>
+                        {% endif %}
+                        
+                    </div>
+                    {% if current_order.category_choice == 'bcs' %}
+                        <div class="col-md-5">
+                            <h3>Company: {{ current_order.user.business_user.business.company_name }}</h3>
+                            <p>Company Type: <span
+                                    class="text-bold">{{ current_order.user.business_user.business.industry_type|capitalize }}</span>
+                            </p>
+                            <p>Website: <a href="{{ current_order.user.business_user.business.website }}"
+                                           target="_blank"
+                                           class="text-bold text-green">{{ current_order.user.business_user.business.website }}</a>
+                            </p>
+                            <p>Number of Employees: <span
+                                    class="text-bold">{{ current_order.user.business_user.business.business_size }}</span>
+                            </p>
+                            <p>User Position: <span
+                                    class="text-bold">{{ current_order.user.business_user.position }}</span>
+                            </p>
+                        </div>
+                        <div class="col-md-3 d-flex flex-column">
+                            {% comment %}
+                            <button class="btn view-btn bg-green btn-outline-light" data-bs-toggle="modal"
+                                data-bs-target="#invoiceModal-{{ current_order.id }}">View Invoice
+                            </button>
+                        {% endcomment %}
+                            {% if current_order.orderprice_order.invoice %}
+                                <a class="btn view-btn bg-green btn-outline-light"
+                                   href="{{ current_order.orderprice_order.invoice.url }}"
+                                   download="{{ current_order.orderprice_order.invoice.url }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                         class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                                    </svg>
+                                    Download Invoice
+                                </a>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="assignModal" tabindex="-1" aria-labelledby="assignModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Assign To</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="" method="POST">
+                        <div class="modal-body">
+                            {{ form1|crispy }}
+                            {% csrf_token %}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" name="assign-btn">Assign Order</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Set Price</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="" method="POST">
+                        <div class="modal-body">
+                            {{ form2|crispy }}
+                            {% csrf_token %}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" name="price-btn">Add to Progress</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="invoiceModal-{{ current_order.id }}" tabindex="-1"
+             aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold" id="exampleModalLabel">Invoice</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body invoice" id="invoice">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6>TechForing Ltd.</h6>
+                                <h6>Tel.: 01XXXXXXXXX</h6>
+                            </div>
+                            <div>
+                                <button onclick="generatePDF(this);"
+                                        class="invoice-btn btn btn-outline-danger py-1 px-3">Download
+                                    Invoice
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- <h4 class="mt-3 text-center fw-bold">Invoice</h4> -->
+                        <div class="mt-5 d-flex justify-content-between">
+                            <div class="user-info">
+                                <h6>To</h6>
+                                {% if current_order.category_choice == 'bcs' %}
+                                    <h6>{{ current_order.user.business_user.business.company_name }}</h6>
+                                    <h6>Tel.: {{ current_order.user.business_user.business.phone_number }}</h6>
+                                {% elif current_order.category_choice == 'pcs' %}
+                                    <h6>{{ current_order.user.full_name }}</h6>
+                                    <h6>Tel.: {{ current_order.user.phone_number }}</h6>
+                                {% endif %}
+
+
+                            </div>
+                            <div class="invoice-info">
+                                <h6>Invoice #{{ current_order.id }}</h6>
+                                <h6><span class="fw-bold">Issue Date:</span> {{ current_order.order_date|date }}
+                                </h6>
+                                <h6><span class="fw-bold">Issue Time:</span> {{ current_order.order_date|time }}
+                                </h6>
+                                <h6><span
+                                        class="fw-bold">Payment Method:</span> {{ current_order.orderprice_order.payment_method|capitalize }}
+                                </h6>
+                            </div>
+                        </div>
+
+                        <table class="mt-2 table border border-dark text-center">
+                            <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Description</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for service in current_order.subserviceinput.all %}
+
+                                <tr>
+                                    {% ifchanged %}
+                                        <td>{{ service.inputfield.subservice }}</td>
+                                    {% else %}
+                                        <td class="invisible">{{ service.inputfield.subservice }}</td>
+                                    {% endifchanged %}
+                                    <td>
+                                        {{ service.inputfield.inputfield.placeholder }}: {{ service.inputinfo }}
+                                    </td>
+                                </tr>
+
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <h6 class="text-end">
+                            Total: {{ current_order.orderprice_order.price }} {{ current_order.orderprice_order.currency|upper }}</h6>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn bg-navy" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid mb-5">
+            <h4 class="mt-3 fw-bolder services-type">{{ current_order.service }}</h4>
+            <div class="row">
+                {% for order in current_order.subserviceinput.all %}
+                    <div class="col-md-3 {{ order.inputfield.subservice|replacespace }} con-tooltip bottom">
+                        <div class="card h-100 shadow-lg">
+                            <div class="card-body">
+                                {% ifchanged %}
+                                    <h5 class="card-title text-center fw-bold">{{ order.inputfield.subservice }}</h5>
+                                {% else %}
+                                    <h5 class="card-title trash">{{ order.inputfield.subservice }}</h5>
+                                {% endifchanged %}
+
+                                {% for fieldOrder in current_order.subserviceinput.all %}
+                                    {% if order.inputfield.subservice == fieldOrder.inputfield.subservice %}
+                                        <p class="card-text">{{ fieldOrder.inputfield.inputfield.placeholder }}: <span
+                                                class="items">{{ fieldOrder.inputinfo }}</span></p>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </main>
+{% endblock content %}
+{% block customjs %}
+
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        // In your Javascript (external .js resource or <script> tag)
+        $(document).ready(function () {
+            $('.js-example-basic-single').select2({
+                dropdownParent: $("#assignModal"),
+                width: '100%'
+            })
+        });
+    </script>
+    <script src="{% static 'tfjs/admin_panel/bcsTF/order.js' %}"></script>
+    <script>
+        document.querySelectorAll('.card-title.trash').forEach(elem => {
+            elem.parentNode.parentNode.parentNode.outerHTML = '';
+        })
+    </script>
+    <script>
+        const inputItem = document.querySelectorAll('.items');
+        inputItem.forEach((item, index) => {
+            if (item.innerHTML.includes('/media/')) {
+                let image = item.innerHTML;
+
+                item.innerHTML = `<a type="button" class="p-0 text-success" data-bs-toggle="modal" data-bs-target="#imageModal${index}">View</a>`;
+
+                console.log(item.parentNode.parentNode)
+                document.querySelector('main').insertAdjacentHTML('beforeend', `<div class="modal fade" id="imageModal${index}" tabindex="-1" aria-labelledby="imageModal${index}Label" aria-hidden="true">
+                                      <div class="modal-dialog">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Media File</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                          </div>
+                                          <div class="modal-body">
+                                            <img src="${image}" class="img-fluid" alt="">
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>`);
+
+            }
+        })
+    </script>
+    <script src="{% static 'tfjs/user_panel/html2pdf.bundle.min.js' %}"></script>
+    <script>
+
+        function generatePDF(btn) {
+            btn.classList.add('d-none');
+            // Choose the element that our invoice is rendered in.
+            const element = document.getElementById('invoice');
+            // Choose the element and save the PDF for our user.
+            html2pdf().from(element).save();
+        }
+
+        console.log(document.querySelectorAll('.orders .view-btn'))
+        document.querySelector('.order-info button').addEventListener('click', () => {
+            document.querySelector('.invoice-btn').classList.remove('d-none');
+        });
+
+    </script>
+{% endblock customjs %}

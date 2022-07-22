@@ -1,0 +1,597 @@
+{% extends 'base/base.html' %} {% load static %} {% load hosts %} {% block title %} Managed CyberSecurity Services for SMB - TECHFORING {% endblock title %} {% block meta %}
+<meta property="og:description" content="Our managed cybersecurity services serve small and medium-sized businesses to detect, protect, and respond to cyberattacks on websites, networks, cloud servers, data centers through an identity and access management system"
+/>
+<meta name="description" content="Our managed cybersecurity services serve small and medium-sized businesses to detect, protect, and respond to cyberattacks on websites, networks, cloud servers, data centers through an identity and access management system"
+/>
+<meta name="keywords" content="managed cybersecurity services, identity and access management, Risk Assessment, Threat Mitigation, Protect Data, protect Privacy, Incident Response, Disaster Management, cybersecurity consultant, BUSINESS MANAGED CYBERSECURITY SERVICE, SMB solution, small business cybersecurity, online data protection"
+/>
+<title>Managed CyberSecurity Services for SMB - TECHFORING</title>
+{% endblock meta %} {% block headercss %}
+<link rel="stylesheet" href="{% static '' %}css/glide.core.css" />
+<link rel="stylesheet" href="{% static '' %}css/glide.theme.css" />
+<link rel="stylesheet" href="{% static '' %}css/style.css" /> {% endblock headercss %} {% block content %}
+<section class="manage-banner">
+    <div class="container">
+        <h2>
+            Protect your business and data with techforing Managed Security Service
+        </h2>
+    </div>
+</section>
+<section class="risk-slider">
+    <div class="container">
+        <div class="glide">
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    <li class="glide__slide">
+                        <div class="rs-outer-box">
+                            <div class="smb-inner-box">
+                                <h2 class="rs-title">Report, Guide & Tool</h2>
+                                <p class="rs-text">
+                                    A definitive guide to secure your business from external and internal cyberattacks.
+                                </p>
+                                <a href="{% host_url 'bcs_form' host 'main' %}" class="rs-btn" target="_blank">Download Now</a
+                    >
+                  </div>
+                </div>
+              </li>
+              <!-- <li class="glide__slide">
+                <div class="rs-outer-box">
+                  <div class="smb-inner-box">
+                    <h2 class="rs-title">Report, Guide & Tool</h2>
+                    <p class="rs-text">
+                      Assess your website for SQLI, XSS, CSRF and other common
+                      OWASP vulnerabilities, free tool.
+                    </p>
+                    <a
+                      href="https://thirdeye.techforing.com"
+                      class="rs-btn"
+                      target="_blank"
+                      >Run Assessment</a
+                    >
+                  </div>
+                </div>
+              </li> -->
+              <li class="glide__slide">
+                <div class="rs-outer-box">
+                  <div class="smb-inner-box">
+                    <h2 class="rs-title">Report, Guide & Tool</h2>
+                    <p class="rs-text">
+                      17 ways High Net Worth Individuals are being hacked & how
+                      to be safe.
+                    </p>
+                    <a
+                      href="https://personal.techforing.com/ebook"
+                      class="rs-btn"
+                      target="_blank"
+                      >Download Now</a
+                    >
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="glide__bullets smb-bullets" data-glide-el="controls[nav]">
+            <button class="glide__bullet" data-glide-dir="=0"></button>
+            <button class="glide__bullet" data-glide-dir="=1"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="wr-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="wr-box">
+              <div class="smb-line"></div>
+              <h2 class="wr-title">WHAT IS MANAGED CYBERSECURITY</h2>
+              <p class="text-justify">
+                Techforing managed cybersecurity services allow small and
+                medium-sized businesses to detect, protect, and respond to
+                unknown online attacks through best-in-class management and
+                monitoring of security systems and devices. We cover the
+                fundamental online data protection needs of most organizations
+                in a comprehensive, all-in-one service.
+              </p>
+              <ul class="wr-list smb-list mt-0">
+                <li class="d-flex">
+                  <i class="fas fa-circle"></i>
+                  <div class="smb-list-box">
+                    <p>Maximize the ROI on the current It security solution</p>
+                  </div>
+                </li>
+                <li class="d-flex">
+                  <i class="fas fa-circle"></i>
+                  <div class="smb-list-box">
+                    <p>Compliance requirements are addressed and fulfilled.</p>
+                  </div>
+                </li>
+                <li class="d-flex">
+                  <i class="fas fa-circle"></i>
+                  <div class="smb-list-box">
+                    <p>
+                      Constant support from our professionals in understanding
+                      the latest threats.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="wr-img-box">
+              <img
+                src="{%static ''%}img/manage/waht is managed cybersecurity.png"
+                title="What is Managed Cybersecurity"
+                alt="managed-cybersecurity-services-managed-cyber-security"
+                longdesc="What is techforing Managed cybersecurity service"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="cwm-section">
+      <div class="container">
+        <div class="smb-line"></div>
+        <h2 class="wr-title">Cybersecurity We Manage</h2>
+        <div class="row cwm-row">
+          <div class="col-md-3">
+            <div class="cwm-box">
+              <img src="{%static ''%}img/manage/website.png" alt="" />
+              <h2>Website</h2>
+              <p>
+                19% of attacks are aimed at Web 2.0 sites. 28% of them are
+                Website defacement and 26% are Loss of sensitive data.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="cwm-box">
+              <img src="{%static ''%}img/manage/network.png" alt="" />
+              <h2>Network & Infrastructure</h2>
+              <p>
+                15% of UK businesses have been breached through hackers gaining
+                control of the network.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="cwm-box">
+              <img src="{%static ''%}img/manage/cloud service.png" alt="" />
+              <h2>Cloud Services</h2>
+              <p>
+                70% of businesses that stored data in big cloud vendors like
+                Amazon, Microsoft got exposed last year.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="cwm-box">
+              <img src="{%static ''%}img/manage/server and data center.png" alt="" />
+              <h2>Server & Data Centers</h2>
+              <p>
+                Recently, NTT Communications’ data center breached, resulting in the stealing of 621 companies’ information.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="wr-section">
+      <div class="container">
+        <div class="smb-line"></div>
+        <h2 class="wr-title">What we do</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="wed-box">
+              <img src="{%static ''%}img/manage/periodical risk assessment.png" alt="" />
+              <div>
+                <h2>Periodic Risk Assessment</h2>
+                <p class="text-justify">
+                  We divide our monthly or yearly risk assessment into two categories. Vulnerability assessment allows unknown security bugs to be detected, followed by data encryption implementation, whereas pen-test provides insights into WAF security policies and patch detected vulnerabilities.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="wed-box">
+              <img src="{%static ''%}img/manage/threat mitigation.png" alt="" />
+              <div>
+                <h2>Immediate Threat Mitigation</h2>
+                <p class="text-justify">
+                  It tasked security professionals with safeguarding companies’ security controls to evade large-scale attacks that come in different forms. Our managed cybersecurity services allow them to mitigate such threats and contain the danger of immediate responsive measures.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="wed-box">
+              <img src="{%static ''%}img/manage/conitnous monitoring.png" alt="" />
+              <div>
+                <h2>Continuous Monitoring</h2>
+                <p class="text-justify">
+                  We continuously monitor information security controls to
+                  comply with your organizational risk management decisions. Our
+                  evaluation helps companies find leaked credentials and exposed
+                  information even on the dark web. Without this, it’s mighty
+                  difficult to keep up with zero-day attacks.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="wed-box">
+              <img src="{%static ''%}img/manage/protect data.png" alt="" />
+              <div>
+                <h2>Protect Data & Privacy</h2>
+                <p class="text-justify">
+                  Our managed cybersecurity services protect personal data and expect future compliance obligations as we strive to deliver around-the-clock privacy strategies to offset threats. In 2019, the average cost of a data breach was $149,000 for small and medium-sized businesses.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="wed-box">
+              <img src="{%static ''%}img/manage/incident response.png" alt="" />
+              <div>
+                <h2>Incident Response</h2>
+                <p class="text-justify">
+                  Small businesses need to regain control and mitigate future
+                  risks in response to sudden cyberattacks. Our incident
+                  response team provides predetermined guidelines, threat
+                  detection, and endpoint analysis to support them in dire
+                  circumstances.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="wed-box">
+              <img src="{%static ''%}img/manage/continous consultation.png" alt="" />
+              <div>
+                <h2>Continuous Consultation</h2>
+                <p class="text-justify">
+                  Our clients can always reach us during a data breach scenario, even after the completion of our SMB service. We regularly arrange newsletters and webinars to further keep our clients up to date with the latest updates in this industry. It’s safer that you avoid taking measures without our consultation.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="wed-box">
+              <img src="{%static ''%}img/manage/monthly report.png" alt="" />
+              <div>
+                <h2>Monthly Report</h2>
+                <p class="text-justify">
+                  Our reporting schedule for SMBs is monthly. If you hire us, we
+                  are bound to report you periodically on your security system
+                  based on the ongoing changes in the cybersecurity arena.
+                  Especially during the COVID-19, businesses are advised to have
+                  regular assessments to stay on the safe side.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="wed-box">
+              <img src="{%static ''%}img/manage/backup.png" alt="" />
+              <div>
+                <h2>Backup and Disaster</h2>
+                <p class="text-justify">
+                  With a breach, often business employees lose their access to critical data as hackers encrypt, change, or even erase files to blackmail the business. To defend that, we provide avenues to back up the most essential assets to manage such disastrous scenarios.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="wr-section mr-section mt-0 pb-0">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="wr-box">
+              <div class="smb-line"></div>
+              <h2 class="wr-title">How we work with your team</h2>
+              <ul class="wr-list smb-list">
+                <li class="d-flex">
+                  <i class="fas fa-circle"></i>
+                  <div class="smb-list-box">
+                    <p>
+                      We discuss and assess client’s requirements and provide
+                      the best-fit solutions based on their pain points and
+                      business objectives
+                    </p>
+                  </div>
+                </li>
+                <li class="d-flex">
+                  <i class="fas fa-circle"></i>
+                  <div class="smb-list-box">
+                    <p>
+                      Our cybersecurity consultants will train your IT team in
+                      understanding and defending against present or imminent
+                      cyber-dangers.
+                    </p>
+                  </div>
+                </li>
+                <li class="d-flex">
+                  <i class="fas fa-circle"></i>
+                  <div class="smb-list-box">
+                    <p>
+                      In emergency cases, we can provide remote support to your
+                      security in-charge through secured video conference calls.
+                    </p>
+                  </div>
+                </li>
+                <li class="d-flex">
+                  <i class="fas fa-circle"></i>
+                  <div class="smb-list-box">
+                    <p>
+                      We deliver monthly reports as per the deal with individual
+                      businesses. Our hands-on solutions are always available to
+                      download.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="wr-img-box">
+              <img
+                src="{%static ''%}img/manage/how we work.png"
+                longdesc="How we work on managed cybersecurity service"
+                alt="managed-cybersecurity-services-information-management-services"
+                title="How We work With A team"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="smb-client">
+      <div class="container">
+        <div class="smb-line"></div>
+        <h2 class="smb-client-title">Our Valuable Clients</h2>
+      </div>
+      <hr />
+      <div class="container">
+        <div class="glide smb-glide">
+          <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
+              <li class="glide__slide">
+                <div class="ovc-img">
+                  <img src="{%static ''%}logos/ambient-tech.png" alt="ovc-img" />
+                </div>
+                <div class="ovc-img">
+                  <img src="{%static ''%}logos/Active-Adult-living.png" alt="ovc-img" />
+                </div>
+              </li>
+              <li class="glide__slide">
+                <div class="ovc-img">
+                  <img src="{%static ''%}logos/Forexnation-garzotto.png" alt="ovc-img" />
+                </div>
+                <div class="ovc-img">
+                  <img src="{%static ''%}logos/ACJ-Group.png" alt="ovc-img" />
+                </div>
+              </li>
+              <li class="glide__slide">
+                <div class="ovc-img">
+                  <img src="{%static ''%}logos/color-fuzion-kimberly.png" alt="ovc-img" />
+                </div>
+                <div class="ovc-img">
+                  <img
+                    src="{%static ''%}logos/ntuc-social-enterprise.png"
+                    alt="ovc-img"
+                  />
+                </div>
+              </li>
+              <li class="glide__slide">
+                <div class="ovc-img">
+                  <img src="{%static ''%}logos/RailMedia.png" alt="ovc-img" />
+                </div>
+                <div class="ovc-img">
+                  <img src="{%static ''%}logos/hoop-conultants-mike.png" alt="ovc-img" />
+                </div>
+              </li>
+              <li class="glide__slide">
+                <div class="ovc-img">
+                  <img src="{%static ''%}logos/Forexnation-garzotto.png" alt="ovc-img" />
+                </div>
+                <div class="ovc-img">
+                  <img
+                    src="{%static ''%}logos/Best-quality-power-solution.png"
+                    alt="ovc-img"
+                  />
+                </div>
+              </li>
+              <li class="glide__slide">
+                <div class="ovc-img">
+                  <img src="{%static ''%}logos/DCI-Consultancy.png" alt="ovc-img" />
+                </div>
+                <div class="ovc-img">
+                  <img
+                    src="{%static ''%}logos/cloud-academy-stefanno.png"
+                    alt="ovc-img"
+                  />
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="glide__arrows" data-glide-el="controls">
+            <button
+              class="glide__arrow glide__arrow--left smb-arrow smb-left"
+              data-glide-dir="<"
+            >
+              <img src="{%static ''%}img/smb/previous.png" alt="previous" />
+            </button>
+            <button
+              class="glide__arrow glide__arrow--right smb-arrow smb-right"
+              data-glide-dir=">"
+            >
+              <img src="{%static ''%}img/smb/next.png" alt="next" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="manage-client">
+      <div class="container">
+        <div class="mc-box">
+          <div class="mc-top">
+            <img
+              class="mc-top-img"
+              src="{%static ''%}img/manage/testimonial_image/Elsane-Guglielmino.png"
+              alt=""
+            />
+            <div>
+              <img src="{%static ''%}img/manage/quote.png" alt="" />
+              <h2>Elsane Guglielmino (France)</h2>
+              <i>Business Development, Technologies group</i>
+            </div>
+          </div>
+          <p>
+            They were really coooperative and patient with everything I asked.
+            And I asked a lof questions. In the end I am immensely satisfied
+            with the security I got for my applications. Good job!
+          </p>
+          <div class="story-btn">
+            <a href="{% url 'testimonial' %}" target="_blank"
+              >See all success stories</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="pt-cta">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div class="mtc-box">
+              <h2>Get exclusive business managed cybersecurity service</h2>
+              <p>
+                Looking forward to meeting you onsite to learn about your
+                business needs
+              </p>
+              <a href="{% host_url 'findus' host 'main' %}" target="_blank">Contact us Now</a>
+                            </div>
+                        </div>
+            </div>
+        </div>
+</section>
+<section class="pt-blog">
+    <div class="container">
+        <div class="smb-line"></div>
+        <h2 class="pt-title">important resources</h2>
+    </div>
+    <div class="pt-blog-row">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="pt-blog-box">
+                        <img src="{%static ''%}img/va/case1.png" title="Managed Cybersecurity Services Case Studies 1" alt="managed-cybersecurity-services-cyber-risk-management" longdesc="Managed cybersecurity service case study 1" />
+                        <div class="smb-line"></div>
+                        <h2 class="text-center">
+                            Cyber Attacks on Financial Institutions- Hackers Stealing Data, not Money
+                        </h2>
+                        <p class="text-justify">
+                            Financial institutions like Banks, brokerage firms, mortgage companies often become the target of hackers, who are after financial data to perform phishing attacks, DDOS, etc. Data is more valuable than money and such cyberattacks cost banks millions!
+                        </p>
+                        <div class="case-btn smbc-btn">
+                            <a href="https://blog.techforing.com/blogs/cyber-attacks-on-financial-services/" target="_blank">Read More</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="pt-blog-box">
+                <img
+                  src="{%static ''%}img/va/case2.png"
+                  title="Managed Cybersecurity Services Case Studies 2"
+                  longdesc="Managed cybersecurity service case study 2"
+                  alt="managed-cybersecurity-services-managed-it-services-management"
+                />
+                <div class="smb-line"></div>
+                <h2 class="text-center">
+                  Cybersecurity tips for work from home users - coping up with
+                  the new normal
+                </h2>
+                <p class="text-justify">
+                  Working from home makes life easy for hackers to infiltrate
+                  not so secure IT system used by the employees. Therefore,
+                  organizations' data security largely depends on how safely the
+                  coworkers can operate workplace digital assets. This blog has
+                  the right tips you can use!
+                </p>
+                <div class="case-btn smbc-btn">
+                  <a
+                    href="https://blog.techforing.com/blogs/cybersecurity-tips-for-work-from-home/"
+                    target="_blank"
+                    >Read More</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="pt-blog-box">
+                <img
+                  src="{%static ''%}img/va/case3.png"
+                  title="Managed Cybersecurity Services Case Studies 3"
+                  alt="managed-cybersecurity-services-managment-consulting"
+                  longdesc="Managed cybersecurity service case study 3"
+                />
+                <div class="smb-line"></div>
+                <h2 class="text-center">How to design a secure office network</h2>
+                <p class="text-justify">
+                  To ensure safe communications via routers, switches, servers,
+                  and hosts, defense-in-depth approach security is mandatory for
+                  each organization. This article provides a comprehensive view
+                  of designing a secure office network that you can implement in
+                  your workplace.
+                </p>
+                <div class="case-btn smbc-btn">
+                  <a
+                    href="https://blog.techforing.com/blogs/how-to-design-a-secure-office-network/"
+                    target="_blank"
+                    >Read More</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock content %}
+
+{% block customjs %}
+    <script src="{%static ''%}js/glide.js"></script>
+
+    <script>
+      new Glide(".smb-glide", {
+        type: "carousel",
+        perView: 6,
+        autoplay: 8000,
+        breakpoints: {
+          800: {
+            perView: 2,
+          },
+        },
+      }).mount();
+    </script>
+    <script>
+      new Glide(".glide", {
+        type: "carousel",
+        autoplay: 8000,
+      }).mount();
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#my-header").load("header.html");
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#my-footer").load("footer.html");
+      });
+    </script>
+{% endblock customjs %}

@@ -1,0 +1,476 @@
+{% extends 'base/base.html' %} {% load static %} {% load hosts %} {% block title %} Incident response service | Business Cybersecurity {% endblock title %} {% block meta %}
+
+<meta property="og:description" content="Our expert cyber incident response service is prompt in investigations, containment, and remediation. Our incident responder team collaborates with the in-house security experts and restore your data with a 100% protection guarantee."
+/>
+<meta name="description" content="Our expert cyber incident response service is prompt in investigations, containment, and remediation. Our incident responder team collaborates with the in-house security experts and restore your data with a 100% protection guarantee."
+/>
+<meta name="keywords" content="incident response service, security incident management, data breach response, incident responder, cyber security incident" /> {% endblock meta %} {% block headercss %}
+<link rel="stylesheet" href="{% static '' %}css/glide.core.css" />
+<link rel="stylesheet" href="{% static '' %}css/glide.theme.css" />
+<link rel="stylesheet" href="{% static '' %}css/style.css" /> {% endblock headercss %} {% block content %}
+
+<section class="incident-banner">
+    <div class="container">
+        <h2>Regain Control and Mitigate Future Risks</h2>
+    </div>
+</section>
+<section class="risk-slider">
+    <div class="container">
+        <div class="glide">
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    <li class="glide__slide">
+                        <div class="rs-outer-box">
+                            <div class="ir-inner-box">
+                                <h2 class="rs-title">Report, Guide & Tool</h2>
+                                <p class="rs-text">
+                                    A definitive guide to secure your business from external and internal cyberattacks.
+                                </p>
+                                <a href="{% host_url 'bcs_form' host 'main' %}" class="rs-btn" target="_blank">Download Now</a
+                    >
+                  </div>
+                </div>
+              </li>
+              <!-- <li class="glide__slide">
+                <div class="rs-outer-box">
+                  <div class="ir-inner-box">
+                    <h2 class="rs-title">Report, Guide & Tool</h2>
+                    <p class="rs-text">
+                      Assess your website for SQLI, XSS, CSRF and other common
+                      OWASP vulnerabilities, free tool.
+                    </p>
+                    <a
+                      href="https://thirdeye.techforing.com"
+                      class="rs-btn"
+                      target="_blank"
+                      >Run Assessment</a
+                    >
+                  </div>
+                </div>
+              </li> -->
+              <li class="glide__slide">
+                <div class="rs-outer-box">
+                  <div class="ir-inner-box">
+                    <h2 class="rs-title">Report, Guide & Tool</h2>
+                    <p class="rs-text">
+                      17 ways High Net Worth Individuals are being hacked & how
+                      to be safe.
+                    </p>
+                    <a
+                      href="https://personal.techforing.com/ebook"
+                      class="rs-btn"
+                      target="_blank"
+                      >Download Now</a
+                    >
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="glide__bullets rs-bullets" data-glide-el="controls[nav]">
+            <button class="glide__bullet" data-glide-dir="=0"></button>
+            <button class="glide__bullet" data-glide-dir="=1"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="is-provide">
+      <div class="container">
+        <div class="is-provide-box">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="is-box">
+                <div class="y-line"></div>
+                <h2 class="is-title">Services we provide</h2>
+                <p class="is-text text-justify">
+                  Company website, physical device, application, or data server
+                  got breached by an unknown entity? You need a security
+                  incident management team to identify the leaked link and take
+                  the necessary measures to recover the system to a secured
+                  operational state. Our incident response service also provides
+                  actionable recommendations to mitigate the threat-resurfacing
+                  possibility.
+                </p>
+                <ul class="is-list">
+                  <li><i class="fas fa-circle"></i> hack Recovery</li>
+                  <li>
+                    <i class="fas fa-circle"></i>malware & spyware removal
+                  </li>
+                  <li>
+                    <i class="fas fa-circle"></i>digital forensic investigation
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="isp-inner-img">
+                <img
+                  src="{% static '' %}img/incident/services we provide.jpg"
+                  title="Incident Response Service"
+                  alt="incident-response-service"
+                  longdesc="Techforing business incident response services we provide"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="is-section">
+      <div class="container">
+        <h2 class="is-title text-center">Incident Response We Deal With</h2>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="is-box-img">
+              <div class="y-img-box">
+                <img
+                  src="{% static '' %}img/incident/hack recoevery.jpg"
+                  longdesc="Techforing business incident response hack recovery service"
+                  title="Hack Recovery Incident Response"
+                  alt="incident-resposne-service-cyber-security-resonse-services"
+                />
+              </div>
+              <div class="y-line-mini"></div>
+              <h2 class="is-img-title">hack<br />Recovery</h2>
+              <p class="is-img-text text-justify">
+                Whether your organization’s server, network, cloud
+                infrastructure, data center, or website is hacked or an attack
+                is in progress, we can help. We detect the source, perform data
+                breach response, repair the damage, and secure the controls with
+                enterprise-grade tools and techniques. Our incident responder
+                team will analyze and ensure that all backdoors are locked to
+                keep any future threat out.
+              </p>
+              <div class="is-btn">
+                <a href="{% url 'hack_recovery_service' %}" target="_blank"
+                  >Explore More</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="is-box-img">
+              <div class="y-img-box">
+                <img
+                  src="{% static '' %}img/incident/digital forensic investigation.jpg"
+                  title="Digital Forensic Investigation"
+                  alt="incident-response-service-incident-resposne-service-provider"
+                  longdesc="Techforing business incident digital forensic service"
+                />
+              </div>
+              <div class="y-line-mini"></div>
+              <h2 class="is-img-title">digital forensic investigation</h2>
+              <p class="is-img-text text-justify">
+                We provide a structured investigation that includes memory
+                analysis, tracking the left-out traces, and revealing the
+                source’s whereabouts to uncover and interprete vital company
+                data compromised by a third party. Organized Financial crimes
+                and state-sponsored crimes put the victim into a cycle of legal
+                battles costing them severely. Our forensic experts deal with
+                law enforcement and save you from further hassle.
+              </p>
+              <div class="is-btn">
+                <a href="{% url 'digital_forensic_investigation' %}" target="_blank"
+                  >Explore More</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="is-box-img">
+              <div class="y-img-box">
+                <img
+                  src="{% static '' %}img/incident/malware and spyware removal.jpg"
+                  title="Malware and Spyware Incident Response"
+                  alt="incident-response-service-incident-resposne-investigation"
+                  longdesc="Techforing business incident response malware and spyware removal service"
+                />
+              </div>
+              <div class="y-line-mini"></div>
+              <h2 class="is-img-title">malware & spyware removal</h2>
+              <p class="is-img-text text-justify">
+                Office Servers, data centers, and websites are quite often
+                infected with different malware, spyware, or ransomware. We
+                detect the pathway, contain the damage, restore the affected
+                data, and run a thorough clean-up of the system. Most of the
+                malware cases are web-centric. Our incident response service is
+                about removing malware and securing and hardening the control
+                points to avoid any future threat.
+              </p>
+              <div class="is-btn">
+                <a href="{% url 'best_malware_removal' %}" target="_blank"
+                  >Explore More</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="isp-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="isp-box">
+              <h2 class="isp-percent text-center">$3.9 m</h2>
+              <p class="isp-text text-center">
+                Data breach on SMBs accross all over the world
+              </p>
+              <div class="b-line"></div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="isp-box">
+              <h2 class="isp-percent text-center">71%</h2>
+              <p class="isp-text text-center">
+                organizations experienced malware activity in 2019
+              </p>
+              <div class="b-line"></div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="isp-box">
+              <h2 class="isp-percent text-center">43%</h2>
+              <p class="isp-text text-center">of cyber attacks target small business</p>
+              <div class="b-line"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="ics-section">
+      <div class="container">
+        <div class="y-line-mini"></div>
+        <h2 class="ics-title">important client stories</h2>
+      </div>
+      <div class="ics-fluid">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="ics-img">
+                <img src="{% static '' %}img/incident/Khurram.png" alt="test img" />
+              </div>
+            </div>
+            <div class="col-md-9">
+              <div class="ics-box">
+                <img src="{% static '' %}img/incident/quote@1X.png" alt="" />
+                <p class="ics-text text-justify">
+                  I couldn't access My Joomla site as it was probably blocked by
+                  hosts due to hack. Techforing was a big help then. They were
+                  always available and helped me understand every bit of it.
+                  They did some malware removal and quickly resolved the issues.
+                  Good experience overall.
+                </p>
+                <h2 class="ics-name text-end">Khurram Suhrwardy (Canada)</h2>
+                <p class="ics-des text-end"><i>Director Creative, SB Productions</i></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="ig-section">
+      <div class="container">
+        <div class="ig-box">
+          <div class="ig-box-left">
+            <img
+              src="{% static '' %}img/incident/take a tour.jpg"
+              title="Take a Tour Incident Response"
+              alt="incident-response-service-security-incident-response-analyst"
+              longdesc="Techforing business incident response take a tour"
+            />
+          </div>
+          <div class="ig-box-right">
+            <div class="ym-line"></div>
+            <p class="igbr-sub">Get A Quote</p>
+            <h2 class="igbr-title">
+              Take A Tour to Our Incident Response Service
+            </h2>
+            <p class="igbr-text text-justify">
+              Thousands of Cyber security incidents go unrecorded every day.
+              In-house recovery attempts often fail to provide a permanent
+              solution. If you want to save time and money, give us a call or
+              book a free consultation hour. Our incident responders will get
+              your system back in no time!
+            </p>
+            <div class="text-right">
+              <a href="{% host_url 'get_start' host 'main' %}" target="_blank" class="igbr-btn"
+                >Get Started</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="container">
+        <div class="ym-line"></div>
+        <h2 class="case-title">Important Case Studies</h2>
+      </div>
+      <div class="case-box-fluid">
+        <div class="container">
+          <div class="case-box">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="case-img">
+                  <img
+                    src="{% static '' %}img/risk/cs1.png"
+                    title="Incident Response Case Studies 1"
+                    alt="incident-resposne-service-cyber-security-incident-management"
+                    longdesc="Techforing incident response case study 1"
+                  />
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="case-inner">
+                  <div class="case-inner-box">
+                    <h2 class="case-box-title">Vulnerability Assessment</h2>
+                    <p class="case-text text-justify">
+                      One of our clients needed their entire website hack-proof.
+                      which was involved in a partnership with a credit bureau.
+                      The information was extremely sensitive and it required
+                      detailed penetration and regression testing. How we went
+                      about it might interest you!
+                    </p>
+                    <div class="case-btn">
+                      <a
+                        href="https://blog.techforing.com/case_studies/vulnerability-assessment/"
+                        target="_blank"
+                        >Read More</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="case-box">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="case-img">
+                  <img
+                    src="{% static '' %}img/risk/cs-2.png"
+                    title="Incident Response Case Studies 2"
+                    alt="incident-response-service-privacy-incident-management"
+                    longdesc="Techforing incident response case study 2"
+                  />
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="case-inner">
+                  <div class="case-inner-box">
+                    <h2 class="case-box-title">Penetration Testing</h2>
+                    <p class="case-text text-justify">
+                      The client had an authentication engine. Due to the
+                      seriousness of this engine and multiple APIs being used,
+                      we had to carry out module based penetration testing. We
+                      evaluated if each authentication mechanism in the
+                      authentication engine had at least two-factor
+                      authentication.
+                    </p>
+                    <div class="case-btn">
+                      <a
+                        href="https://blog.techforing.com/case_studies/case-study-on-penetration-testing/"
+                        target="_blank"
+                        >Read More</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="case-box">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="case-img">
+                  <img
+                    src="{% static '' %}img/risk/cs-3.png"
+                    alt="incident-response-service-case-studies"
+                    title="Incident Response case Studies 3"
+                    longdesc="Techforing incident response case study 3"
+                  />
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="case-inner">
+                  <div class="case-inner-box">
+                    <h2 class="case-box-title">Infrustructure Audit</h2>
+                    <p class="case-text text-justify">
+                      A software service company had its services spread across
+                      various domains. So understanding the risks of each
+                      business domain and evaluating the software were some
+                      challenges we had to overcome. We used tools like
+                      Wireshark, TcpDump and many more.
+                    </p>
+                    <div class="case-btn">
+                      <a
+                        href="https://blog.techforing.com/case_studies/it-infrastructure-audit/"
+                        target="_blank"
+                        >Read More</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="he-section">
+      <div class="container">
+        <div class="he-line"></div>
+        <h2>Tell Us If You Are Interested</h2>
+        <p>
+          Our security experts will get in touch with you, understand your need
+          and will provide you the best solution and help to undertake the best
+          course of action needed as you or your organization required.
+        </p>
+        <form
+          action=""
+          accept-charset="utf-8"
+          method="post"
+        >
+          <input
+            type="email"
+            name="email"
+            class="he-input"
+            placeholder="Enter your email address"
+          />
+          <input type="hidden" name="campaign_token" value="okoVq" />
+          <input
+            type="hidden"
+            name="thankyou_url"
+            value="https://techforing.com/pages/thanks_subscriber.html"
+          />
+          <input type="hidden" name="start_day" value="0" />
+          <button class="he-input-btn" type="submit">Subscribe Now</button>
+        </form>
+      </div>
+    </section>
+
+{% endblock content %}
+
+{% block customjs %}
+    <script src="{% static '' %}js/glide.js"></script>
+
+    <script>
+      new Glide(".glide", {
+        type: "carousel",
+        autoplay: 8000,
+      }).mount();
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#my-header").load("header.html");
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#my-footer").load("footer.html");
+      });
+    </script>
+{% endblock customjs %}

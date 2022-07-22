@@ -1,0 +1,70 @@
+{% extends 'base/pcs_user_base.html' %}
+{% load static %}
+{% load hosts %}
+{% load my_filter %}
+{% block title %}
+    Reading List
+{% endblock title %}
+{% block content %}
+
+<section class="reading-list">
+    <h4 class="pt-3 fw-bold border-bottom border-gray pb-14p">Your Reading List</h4>
+    {% if readinglists.exists %}
+    <div class="table-responsive">
+        <table id="order-table" class="mt-5 table table-bordered">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Added On</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for readinglist in readinglists %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td><a target="_blank" href="{% host_url 'reading_list_post' host 'blog' %}{{ readinglist.id }}">
+                            {{ readinglist.post.title|truncatechars:50 }}</a></td>
+                    <td>{{ readinglist.post.category }}</td>
+                    <td>{{ readinglist.added_on }}</td>
+                    <td>{{ readinglist.status|capitalize }}</td>
+                    <td>
+                        <a class="text-danger" href="{% host_url 'add_reading_list' %}{{  readinglist.post.id }}">
+                            <i class="icofont-trash"></i>
+                            <span>Remove</span>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <h3 class="text-center text-gray my-5 py-5 h-100">Nothing on your reading list. <a target="_blank" class="btn btn-outline-navy btn-sm" href="{% host_url 'index' host 'blog' %}">Add Now</a></h3>
+    {% endif %}
+
+
+</section>
+
+{% endblock content %} {% block customjs %}
+
+<script>
+    $(document).ready(function() {
+        // console.log('data-table');
+        $("#order-table").DataTable({
+            scrollx: true,
+            scrollCollapse: true,
+            paging: false,
+            oLanguage: {
+                sSearch: `_INPUT_ <i class="icofont-search-2"></i>`,
+                sSearchPlaceholder: "Search...",
+            },
+            info: false,
+            sorting: false,
+        });;
+    });
+</script>
+{% endblock customjs %}

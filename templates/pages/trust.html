@@ -1,0 +1,71 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load hosts %}
+
+{% block title %}
+    Trust Center
+{% endblock title %}
+
+{% block headercss %}
+    <link rel="stylesheet" href="{% static '' %}tfcss/style.css" />
+{% endblock headercss %}
+
+{% block content %}
+    <section class="trust-banner">
+      <div class="container">
+        <h2>techforing trust center</h2>
+      </div>
+    </section>
+
+    <section class="trust-main">
+      <div class="container">
+        <h2>YOUR TRUSTED PARTNER IN CYBERSECURITY</h2>
+        <p class="text-justify">
+          For data security, we have made a reputation in providing long-term solutions for various Government and non-Government Agencies that are always under threat from cybercriminals. Our clients are bound with us in the Data Agreement Policy, having signed the NDA. Last, we are obligated by strict privacy policies. So you can be rest assured that your data is in safe hands.
+        </p>
+        <p class="text-justify">
+          We try our level best to stay consistent with industry best practices, considering all the disruptions to our employees, applications, vendors, and everything.
+        </p>
+      </div>
+    </section>
+
+    <section class="trust-cta">
+      <div class="container">
+        <div class="fran-bar"></div>
+        <h2>
+          Trust is foundational to our company and how we <br />
+          engage with our clients
+        </h2>
+        <div class="row justify-content-between">
+          <div class="col-md-5">
+            <div class="trust-box">
+              <h2>techforing privacy policy</h2>
+              <p class="text-justify">
+                We strictly maintain the key principles of transparency and
+                accountability, Reliable third parties, information integrity
+                and control, client and customer benefit.
+              </p>
+              <div class="cs-box-btn">
+                <a href="policy.html" target="_blank">Explore More</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="trust-box">
+              <h2>techforing terms of use</h2>
+              <p class="text-justify">
+                Please read these Terms and Conditions carefully before using our service. It conditioned your access to and use of the Service on your acceptance of and compliance with these terms.
+              </p>
+              <div class="cs-box-btn">
+                <a href="terms.html" target="_blank">Explore More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock content %}
+
+{% block customjs %}
+    <script src="{% static '' %}tfjs/career.js"></script>
+{% endblock customjs %}

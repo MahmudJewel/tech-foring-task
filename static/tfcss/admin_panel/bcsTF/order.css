@@ -1,0 +1,55 @@
+#order-table_filter {
+    margin-bottom: 2rem;
+    float: right;
+    width: 60%;
+}
+
+#order-table_filter label {
+    padding: .5rem 1rem;
+    width: 100%;
+    border: 1px solid #707070;
+}
+
+#order-table_filter input {
+    display: inline !important;
+    border-color: transparent;
+    width: 90%;
+    padding: 0 .75rem;
+}
+
+.order-info {
+    background-color: #182a59;
+    color: #fff;
+    padding-block: .8rem;
+    padding-inline: 1rem;
+}
+
+.services-type {
+    overflow: hidden;
+    text-align: center;
+}
+
+.services-type:before,
+.services-type:after {
+    background-color: #182f59;
+    content: "";
+    display: inline-block;
+    height: 2px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+}
+
+.services-type:last-child {
+    margin-top: 2.5rem;
+}
+
+.services-type:before {
+    right: 0.5em;
+    margin-left: -50%;
+}
+
+.services-type:after {
+    left: 0.5em;
+    margin-right: -50%;
+}

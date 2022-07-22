@@ -1,0 +1,108 @@
+{% extends 'base/main_admin_base.html' %} {% load static %}
+{% load crispy_forms_tags %}
+{% load hosts %}
+{% block title %} Events {% endblock title %} {% block headercss %}
+    <link rel="stylesheet" href="{% static 'tfcss/admin_panel/mainTF/eventWebinar.css' %}"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.2.8/css/rowReorder.dataTables.min.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+{% endblock headercss %} {% block content %}
+
+    <main>
+        {% if support_edit %}
+            <form action="" id="employeeAddForm" method="POST" class="d-flex flex-column">
+
+                <label for="user" style="font-weight: 700; margin-top: 1rem;">Permission*</label>
+                <select multiple required name="user_permission"
+                        class="form-control form-select admin_type">
+                    <option value="sales" {% if current_user.is_sales %}selected="selected"{% endif %}>Sales</option>
+                    <option value="blogger" {% if current_user.is_blogger %}selected="selected"{% endif %}>Blogger</option>
+                    <option value="bcs_head" {% if current_user.is_bcs_head %}selected="selected"{% endif %}>BCS Head</option>
+                    <option value="pcs_head" {% if current_user.is_pcs_head %}selected="selected"{% endif %}>PCS Head</option>
+                </select>
+
+                {% csrf_token %}
+                <button class="btn btn-primary" type="submit">Add Stuff</button>
+            </form>
+        {% else %}
+            <form action="" method="POST" enctype="multipart/form-data">
+                {{ form.media }}
+                {{ form|crispy }}
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.GET.next }}">
+                <button class="btn btn-primary" type="submit">Update</button>
+            </form>
+        {% endif %}
+
+    </main>
+{% endblock content %}
+{% block customjs %}
+    {% if support_edit %}
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <script>
+            // In your Javascript (external .js resource or <script> tag)
+            $(document).ready(function () {
+                $('.admin_type').select2()
+            });
+
+        </script>
+        <script>
+            let services = `{{ form|crispy }}`;
+            let initVal = $('.admin_type').val()[0];
+            if (initVal !== 'sales') {
+                $('.admin_type option[value="sales"]').prop('disabled', true);
+
+                if (document.querySelector('.servicesList'))
+                    document.querySelector('.servicesList').outerHTML = '';
+            } else {
+                $('.admin_type  option[value!="sales"]').prop('disabled', true);
+
+                if (!document.querySelector('.servicesList')) {
+                    document.querySelector('#employeeAddForm button[type="submit"]').insertAdjacentHTML('beforebegin', '<div class="servicesList">' + services + '</div>');
+                    $('.js-example-basic-multiple').select2()
+                }
+            }
+
+            $('.admin_type').on('select2:select', function (e) {
+                let data = e.params.data;
+
+                ($(this).select2('data')).forEach(item => {
+                    if (item.id == 'sales') {
+                        document.querySelectorAll('.select2-selection__rendered li').forEach(li => {
+                            if (li.title != 'Sales')
+                                li.outerHTML = '';
+                        })
+                    }
+                })
+                if (data.text !== 'Sales') {
+                    $('.admin_type option[value="sales"]').prop('disabled', true);
+
+                    if (document.querySelector('.servicesList'))
+                        document.querySelector('.servicesList').outerHTML = '';
+                } else {
+                    $(this).val(null).trigger('change');
+                    $(this).val('sales').trigger('change');
+                    $('.admin_type  option[value!="sales"]').prop('disabled', true);
+
+
+                    if (!document.querySelector('.servicesList')) {
+                        document.querySelector('#employeeAddForm button[type="submit"]').insertAdjacentHTML('beforebegin', '<div class="servicesList">' + services + '</div>');
+                        $('.js-example-basic-multiple').select2()
+                    }
+                }
+            });
+
+            $('.admin_type').on('change', function (e) {
+                if ($(this).find('option:selected').length === 0) {
+                    $('.admin_type  option').prop('disabled', false);
+                    if (document.querySelector('.servicesList'))
+                        document.querySelector('.servicesList').outerHTML = '';
+                }
+            });
+
+        </script>
+    {% endif %}
+    <script src="{% static 'tfjs/admin_panel/mainTF/eventWebinar.js' %}"></script>
+    <script src="https://cdn.datatables.net/rowreorder/1.2.8/js/dataTables.rowReorder.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+{% endblock customjs %}

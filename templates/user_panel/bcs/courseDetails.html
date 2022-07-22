@@ -1,0 +1,191 @@
+{% extends 'base/bcs_user_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load my_filter %}
+{% load hosts %}
+{% block headercss %}
+    <link rel="stylesheet" href="{% static 'tfcss/admin_panel/bcsTF/training.css' %}"/>
+
+{% endblock %}
+{% block title %}
+    Course Details
+{% endblock title %}
+{% block content %}
+    <style>
+        form label {
+            text-transform: capitalize;
+            margin-top: 8px
+        }
+
+        .package .info-btn {
+            border-radius: .3rem !important;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            background-color: #fff;
+            padding: .5rem .8rem;
+            margin-inline: auto;
+            margin-block-end: 10px;
+            box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;
+        }
+    </style>
+
+    <section class="services position-relative">
+        <div class="course-container mt-2 position-relative">
+            <div class="preview-course px-2">
+                <div class="d-flex justify-content-between">
+                    <h5 class="fw-bold pb-14p">{{ course.course_name }}</h5>
+                </div>
+                <hr>
+                {{ course.long_description|safe }}
+                <button type="button" data-bs-toggle="modal" data-bs-target="#viewPlanModal" class="viewPlanModalBtn btn btn-navy">View Plans</button>
+                <div class="mt-5 course-info">
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                        {% for section in sections %}
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="course-heading-1" style="display: flex;
+                        align-items: center;
+                        background-color: #E1E6F1;
+                        padding-inline-end: 1rem;">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#{{ section.section_name|replacespace }}"
+                                            aria-expanded="false"
+                                            aria-controls="{{ section.section_name|replacespace }}"
+                                            style="margin-block: 0;">
+                                        <table class="w-100" cellspacing="0">
+                                            <thead>
+                                            <tr>
+                                                <th class="title fw-bold" style="width: 40%;">{{ section.section_name }}
+                                                </th>
+                                                <th>{{ section.bcscontent_bcssection.all.count }} on demand videos</th>
+                                                <th class="text-center">{{ section.bcscontent_bcssection.all.count }}
+                                                    downloadable resources
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                    </button>
+                                </h2>
+                                <div id="{{ section.section_name|replacespace }}" class="accordion-collapse collapse"
+                                     aria-labelledby="course-heading-1" data-bs-parent="#accordionFlushExample"
+                                     style="">
+                                    <div class="accordion-body">
+                                        <table class="w-100" id="table">
+                                            <tbody class="fs-14">
+                                            {% for content in section.bcscontent_bcssection.all %}
+                                                <tr>
+                                                    <td class="col1" style="width: 40%;">
+                                                        <i class="icofont-ui-video-play"></i>
+                                                        <h6 class="d-inline ps-2 fw-bold">{{ content.lecture_name }}</h6>
+                                                    </td>
+                                                    <td class="d-flex justify-content-between align-items-center">
+                                                        <h6>{{ content.get_duration }}</h6>
+                                                        {% if content.preview_video %}
+                                                            <button class="btn bg-transparent preview-btn"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#preview-video{{ content.id }}">
+                                                                Preview
+                                                            </button>
+                                                        {% endif %}
+
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            {% for content in section.bcscontent_bcssection.all %}
+                                <div class="modal fade" id="preview-video{{ content.id }}" tabindex="-1"
+                                     aria-labelledby="trainingModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-xl">
+                                        <div class="modal-content border-0 bg-transparent">
+                                            <div class="modal-body p-3 bg-transparent">
+                                                {% if content.preview_video %}
+                                                    <video controls="" class="img-fluid d-block mx-auto"
+                                                           preload="metadata"
+                                                           type="video/mp4"
+                                                           src="{{ content.preview_video.url }}"></video>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for plug and play -->
+<div class="modal fade" id="viewPlanModal" tabindex="-1" aria-labelledby="viewPlanModalLabel"
+    aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered modal-xl">
+       <div class="modal-content">
+           <div class="modal-header">
+               <h5 class="modal-title fw-bold"></h5>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+           </div>
+           <div class="modal-body text-center">
+               <div class="package-details row mx-0">
+                  
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
+
+{% endblock content %}
+{% block customjs %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        const packageDetails = document.querySelector(".package-details")
+        let courseId = "{{course.id}}";
+        document.querySelector('.viewPlanModalBtn').addEventListener('click', e => {
+            packageDetails.innerHTML = '';
+
+            fetch(`${mainOrigin}/api/bcs/course_package/${courseId}/`,{
+                credentials: 'include'
+            })
+                .then(response => response.json())
+                .then(result => {
+                    document.querySelector('#viewPlanModal .modal-title').textContent = result[0].course;
+                    let divHtml;
+                    result.map(subscription => {
+                        const div = document.createElement("div")
+                        div.classList.add("package", "bg-lightgreen", "shadow", "p-3", "rounded", "col-md-3", "me-2", "d-flex", "flex-column", "justify-content-between")
+                        divHtml = `<h3 class="fw-bold fs-4">${subscription.package_name}</h3> <div>`
+                        subscription.packagefeature_coursepackage?.map((item, index) => {
+                            divHtml += `<div class="info-btn">
+                            <p class="mb-0">
+                            <i class="bi bi-box"></i> ${item.feature_name}
+                            </p>
+                            <p class="mb-0 fw-bold">${item.feature}</p>
+                            </div>`
+                        })
+                        divHtml += `<div class="mt-2 info-btn">
+                            <p class="mb-0"><i class="icofont-ui-user-group"></i> Max User</p>
+                            <p class="mb-0 fw-bold">${subscription.max_user}</p>
+                        </div>`
+                        divHtml += `<div class="mt-2 info-btn">
+                        <p class="mb-0">
+                        <i class="icofont-tag"></i> Price
+                        </p>
+                        <p class="mb-0 fw-bold">${subscription.price}$ <span class="fw-bolder">/${subscription.duration_type}</span>
+                        </p>
+                        </div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                        <a href="{% host_url 'bcs_user_course_payment' host 'main' %}${subscription.id}" class="mt-3 btn bg-navy px-5 py-1">Subscribe</a>
+                        </div>`
+                        div.innerHTML = divHtml
+                        packageDetails.appendChild(div)
+                    })
+                })
+        });
+    </script>
+{% endblock customjs %}

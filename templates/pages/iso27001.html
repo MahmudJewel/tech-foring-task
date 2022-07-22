@@ -1,0 +1,539 @@
+{% extends 'base/base.html' %} {% load static %} {% load hosts %} {% block title %} ISO 27001 Compliance Consulting | TechForing Limited {% endblock title %} {% block meta %}
+<meta property="og:description" content="ISO 27001 is an international standard deployed for the data protection of organizations. TechForing cybersecurity consults and advises up-to-date security measures IT companies need in order to get ISO 27001 certification."
+/>
+<meta name="description" content="ISO 27001 is an international standard deployed for the data protection of organizations. TechForing cybersecurity consults and advises up-to-date security measures IT companies need in order to get ISO 27001 certification."
+/>
+<meta name="keywords" content="iso 27001, iso 27001 consulting services,iso 27001 consulting,iso 27001 certification consultants,iso 27001 cyber security,iso 27001 certification process,iso 27001 requirements,iso 27001 compliance,iso certification process,iso certification 27001,iso 27001"
+/> {% endblock meta %} {% block headercss %}
+<link rel="stylesheet" href="{% static '' %}css/glide.core.css" />
+<link rel="stylesheet" href="{% static '' %}css/glide.theme.css" />
+<link rel="stylesheet" href="{% static '' %}css/style.css" /> {% endblock headercss %} {% block content %}
+<section class="iso-banner">
+    <div class="container">
+        <h2>ENSURE YOUR IT SECURITY COMPLIANCE WITH ISO 27001</h2>
+    </div>
+</section>
+<section class="comp-slider">
+    <div class="container">
+        <div class="glide">
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    <li class="glide__slide">
+                        <div class="c-outer-box">
+                            <div class="c-inner-box">
+                                <h2 class="rs-title">Report, Guide & Tool</h2>
+                                <p class="rs-text">
+                                    A definitive guide to secure your business from external and internal cyberattacks.
+                                </p>
+                                <a href="{% host_url 'bcs_form' host 'main' %}" class="rs-btn" target="_blank">Download Now</a
+                    >
+                  </div>
+                </div>
+              </li>
+              <!-- <li class="glide__slide">
+                <div class="c-outer-box">
+                  <div class="c-inner-box">
+                    <h2 class="rs-title">Report, Guide & Tool</h2>
+                    <p class="rs-text">
+                      Assess your website for SQLI, XSS, CSRF and other common
+                      OWASP vulnerabilities, free tool.
+                    </p>
+                    <a
+                      href="https://thirdeye.techforing.com"
+                      class="rs-btn"
+                      target="_blank"
+                      >Run Assessment</a
+                    >
+                  </div>
+                </div>
+              </li> -->
+              <li class="glide__slide">
+                <div class="c-outer-box">
+                  <div class="c-inner-box">
+                    <h2 class="rs-title">Report, Guide & Tool</h2>
+                    <p class="rs-text">
+                      17 ways High Net Worth Individuals are being hacked & how
+                      to be safe.
+                    </p>
+                    <a
+                      href="https://personal.techforing.com/ebook"
+                      class="rs-btn"
+                      target="_blank"
+                      >Download Now</a
+                    >
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="glide__bullets rs-bullets" data-glide-el="controls[nav]">
+            <button class="glide__bullet" data-glide-dir="=0"></button>
+            <button class="glide__bullet" data-glide-dir="=1"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="pt-about">
+      <div class="container">
+        <div class="pci-bar"></div>
+        <h2 class="pt-title">ISO 27001 Compliance</h2>
+        <p class="text-justify">
+          ISO 27001 comprises standards to help keep information assets secure and safe. This aids in organizing, managing, and maintaining the security of an organization’s assets; such as financial information, employee details, and intellectual property. ISO 27001 comprises a series of international standards compiled for information security and focuses on requirements against which an organization’s Information Security Management System (ISMS) can be audited. ISMS is a framework comprising policies and procedures, which includes an organization’s legal, technical, and physical controls in evaluating information risk management processes. <br /><br />
+           ISO 27001 is not mandatory; however, this certification helps to ensure best industry practices. Any organization, such as banks, hospitals, educational institutions, government, defense, and retail, can undergo ISO 27001 audits. ISO 27001 helps organizations to keep pace with security breaches, vulnerability threats, and business affects, allowing organizations to implement standard procedures.
+        </p>
+        <div class="row pcia-row ei-row-invers">
+          <div class="col-md-6">
+            <p class="isoa-col-text text-start">
+              ISO 27001 explicitly deals with the management of security processes involved in an organization. This caters to information security controls and needs to be evaluated in a timely manner. Not having ISO 27001 not only increases information security risks but also places an organization’s credibility at stake.
+            </p>
+            <div class="isoa-box">
+              <ul>
+                <li class="d-flex">
+                  <i class="fas fa-circle text-start"></i>
+                  ISO 27001 helps the organization to prove best security practices and procedures being followed
+                </li>
+                <li class="d-flex">
+                  <i class="fas fa-circle text-start"></i>
+                  It is important, from a compliance perspective, and additionally makes a strategic difference in the eyes of your customer
+                </li>
+                <li class="d-flex">
+                  <i class="fas fa-circle text-start"></i>
+                  Helps in placing your business in order and having regular security checks over the system
+                </li>
+                <li class="d-flex">
+                  <i class="fas fa-circle text-start"></i>
+                  Lowers your expenses by preventing a disruption of services and data leakage
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="pta-img">
+              <img
+                src="{% static ''%}img/iso/iso 27001 complaince.png"
+                title="ISO 27001 Compliance Consulting Services"
+                alt="iso-27001-iso-27001-compliance-services"
+                longdesc="Compliance consultancy iso 27001 consultancy service"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="pt-approch">
+      <div class="container">
+        <div class="pci-bar"></div>
+        <h2 class="pt-title">our approach</h2>
+        <p class="text-justify">
+          TechForing helps you in evaluating and successfully completing ISO 27001 audits. Our experts closely work with your teams to set up seamless processes and provide the required, well-documented evidence. We train the concerned stakeholders to prepare for audits and help organizations complete audit evaluation reports. <br /><br />
+          We break down every critical step into several sections and subsections, and take a methodical approach, as mentioned below:
+
+        </p>
+        <div class="row iso-row">
+          <div class="col-md-6">
+            <div class="iso-appr">
+              <h1>1</h1>
+              <h2>ISMS Policy</h2>
+              <p class="text-justify">
+                Based on an organization’s domain and the size of the organization, it is crucial to first setup the required and relevant ISMS policy definitions. These will revolve around best security practices and are critical for data security. There are several factors affecting ISMS policies; we will help you define the ISMS policies and identify which are best suited for your business aim, while maintaining support.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="iso-appr">
+              <h1>2</h1>
+              <h2>ISMS Scope</h2>
+              <p class="text-justify">
+                Once ISMS policies have been planned, we define the scope for
+                each of these ISMS policies. These could include business
+                continuity plan, system access controls, physical security,
+                environmental security, compliance, system acquisition, system
+                maintenance, information security incident management,
+                organization security, asset classification, security policies,
+                communication management, security training for employees, and
+                operations management. We provide help in segregating and
+                defining the scope for each of these ISMS policies in terms of
+                processes to be implemented.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row iso-row">
+          <div class="col-md-6">
+            <div class="iso-appr">
+              <h1>3</h1>
+              <h2>Security Risk Evaluation</h2>
+              <p class="text-justify">
+                On completion of the ISMS policies scope, we help you evaluate
+                security risk by using a defined method for security risk
+                assessment. This is based on complete organizational structuring
+                and implemented methodologies within the organization.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="iso-appr">
+              <h1>4</h1>
+              <h2>Remediation for Risks</h2>
+              <p class="text-justify">
+                Our team of qualified experts in ISO 27001 will work in
+                collaboration with your team to provide remediation for the
+                identified security risks.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row iso-row">
+          <div class="col-md-6">
+            <div class="iso-appr">
+              <h1>5</h1>
+              <h2>SOA – Statement of Applicability</h2>
+              <p class="text-justify">
+                For ISO 27001, SOA plays a crucial role and we guide you to prepare for SOA. This includes an organization’s statement of policies, detailed procedures, responsibility guides, identified roles, risk management plans, and authentication mechanisms.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="iso-appr">
+              <h1>6</h1>
+              <h2>Documentation and Risk Treatment</h2>
+              <p class="text-justify">
+                We help you provide documents for each of the controls and give a business justification for each of the risk mitigation plans. A formal process is established and managed, as per ISO 27001 compliance standards. We summarize a risk treatment plan to define how controls based on SOA are to be implemented.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row iso-row">
+          <div class="col-md-6">
+            <div class="iso-appr">
+              <h1>7</h1>
+              <h2>Quantify the Controls</h2>
+              <p class="text-justify">
+                We help you measure the effectiveness of each control and
+                measure the completion of control objectives.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="iso-appr">
+              <h1>8</h1>
+              <h2>Implement Controls</h2>
+              <p class="text-justify">
+                There is a list of mandatory and non-mandatory documents which
+                are required as part of the ISO audits. This is a core part of
+                the audit. Our team helps you implement these controls
+                effectively.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row iso-row">
+          <div class="col-md-6">
+            <div class="iso-appr">
+              <h1>9</h1>
+              <h2>Training</h2>
+              <p class="text-justify">
+                Once the controls are implemented, an organization also needs to
+                train its employees about the importance of new policies and
+                procedures.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="iso-appr">
+              <h1>10</h1>
+              <h2>Work on ISMS Controls</h2>
+              <p class="text-justify">
+                This is an operational part of the audit, and for each detail, a record or substantial evidence is required. We guide the entire organization on how to implement the new policies and procedures in the day-to-day working environment.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row iso-row">
+          <div class="col-md-12">
+            <div class="iso-appr">
+              <h1>11</h1>
+              <h2>Monitor and Reiterate</h2>
+              <p class="text-center">
+                For every ISO control, the organization needs to monitor and measure the ISMS controls, verify, and provide procedure correction based on the findings. We help you manage all of this.
+              </p>
+            </div>
+          </div>
+        </div>
+        <p class="mt-4">
+          <b class="text-center">
+            We also provide the required training to stakeholders responsible
+            for managing the ISO 27001 audit within the organization.</b
+          >
+        </p>
+      </div>
+    </section>
+    <section class="iso-import">
+      <div class="container">
+        <h2>The Importance of ISO 27001 to Todays Business:</h2>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="isoi-circle">
+              <svg
+                version="1.1"
+                baseProfile="full"
+                width="250"
+                height="250"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  class="iso-circle-base"
+                  cx="125"
+                  cy="125"
+                  r="100"
+                  fill="none"
+                />
+                <circle
+                  class="iso-circle1"
+                  cx="125"
+                  cy="125"
+                  r="100"
+                  fill="none"
+                />
+                <text x="92" y="140">69%</text>
+              </svg>
+
+              <p>Improve information security posture</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="isoi-circle">
+              <svg
+                version="1.1"
+                baseProfile="full"
+                width="250"
+                height="250"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  class="iso-circle-base"
+                  cx="125"
+                  cy="125"
+                  r="100"
+                  fill="none"
+                />
+                <circle
+                  class="iso-circle2"
+                  cx="125"
+                  cy="125"
+                  r="100"
+                  fill="none"
+                />
+                <text x="92" y="140">62%</text>
+              </svg>
+              <p>Align with information security best practice</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="isoi-circle">
+              <svg
+                version="1.1"
+                baseProfile="full"
+                width="250"
+                height="250"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  class="iso-circle-base"
+                  cx="125"
+                  cy="125"
+                  r="100"
+                  fill="none"
+                />
+                <circle
+                  class="iso-circle3"
+                  cx="125"
+                  cy="125"
+                  r="100"
+                  fill="none"
+                />
+                <text x="92" y="140">57%</text>
+              </svg>
+
+              <p>Gain a competitive advantage</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="isoi-circle">
+              <svg
+                version="1.1"
+                baseProfile="full"
+                width="250"
+                height="250"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  class="iso-circle-base"
+                  cx="125"
+                  cy="125"
+                  r="100"
+                  fill="none"
+                />
+                <circle
+                  class="iso-circle4"
+                  cx="125"
+                  cy="125"
+                  r="100"
+                  fill="none"
+                />
+                <text x="92" y="140">50%</text>
+              </svg>
+              <p>Ensure legal and regulatory Compliance</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="pt-why">
+      <div class="container">
+        <img
+          src="{% static ''%}img/iso/why us.png"
+          title="ISO 27001 Consulting Service-Why Us"
+          alt="iso-27001-iso-27001-certification-process"
+          longdesc="Why choose our techforing iso 27001 compliance consultancy service"
+        />
+        <div class="pci-bar"></div>
+        <h2 class="pt-title">why us</h2>
+        <div class="isow-box">
+          <ul>
+            <li class="d-flex">
+              <i class="fas fa-circle text-justify"></i>
+              It is important that a recognized accreditation body, which is a member of IAF–International Accreditation Forum, performs the ISO 27001. This requires identifying a valid accreditation body, as well as defining ISO 27001. For ISMS policy evaluation and risk identification, an organization requires skill sets to work continuously on ISMS related audits.
+            </li>
+            <li class="d-flex">
+              <i class="fas fa-circle text-justify"></i>
+              We are expert to deal with ISO 27001 audits. We have professionals constantly working with security evaluations, and who are trained to manage and handle ISO 27001 audits. TechForing follows a detailed and systematic approach when handling audits, and we understand the severity of ISO 27001 audits.
+            </li>
+            <li class="d-flex">
+              <i class="fas fa-circle text-justify"></i>
+              We aim to work with your team throughout the audit period, to ensure successful completion and acquisition of ISO 27001 compliance. Our team also helps with the renewal of ISO 27001 compliance. We cater to every detail, as per ISO 27001 standards, and make your ISO 27001 audit our top priority to ensure successful completion.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="pci-cta iso-cta">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div class="pcic-box">
+              <h2>WANT TO PROVE YOU ARE COMPLIANT?</h2>
+              <p>we are here to Help</p>
+              <a href="{% host_url 'get_start' host 'main' %}" target="_blank">Get Now</a>
+                            </div>
+                        </div>
+            </div>
+        </div>
+</section>
+
+<section class="pt-blog">
+    <div class="container">
+        <div class="pci-bar"></div>
+        <h2 class="pt-title">important resources</h2>
+    </div>
+    <div class="pt-blog-row">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="pt-blog-box">
+                        <img src="{% static ''%}img/va/case1.png" title="ISO 27001 Consulting Service Blog 1" alt="iso-27001-iso-27001-consulting" longdesc="ISO 27001 consultancy service blog 1" />
+                        <div class="pci-bar"></div>
+                        <h2 class="text-center">
+                            Cyber Attacks on Financial Institutions- Hackers Stealing Data, not Money
+                        </h2>
+                        <p class="text-justify">
+                            Financial institutions like Banks, brokerage firms, mortgage companies often become the target of hackers, who are after financial data to perform phishing attacks, DDOS, etc. Data is more valuable than money and such cyberattacks cost banks millions!
+                        </p>
+                        <div class="cs-box-btn">
+                            <a href="https://blog.techforing.com/blogs/cyber-attacks-on-financial-services/" target="_blank">Read More</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="pt-blog-box">
+                <img
+                  src="{% static ''%}img/va/case2.png"
+                  title="ISO 27001 Consulting Service Blog 2"
+                  alt="iso-27001-blog-1"
+                  longdesc="ISO 27001 consultancy service blog 2"
+                />
+                <div class="pci-bar"></div>
+                <h2 class="text-center">
+                  Cybersecurity tips for work from home users - coping up with
+                  the new normal
+                </h2>
+                <p class="text-justify">
+                  Working from home makes life easy for hackers to infiltrate
+                  not so secure IT system used by the employees. Therefore,
+                  organizations' data security largely depends on how safely the
+                  coworkers can operate workplace digital assets. This blog has
+                  the right tips you can use!
+                </p>
+                <div class="cs-box-btn">
+                  <a
+                    href="https://blog.techforing.com/blogs/cybersecurity-tips-for-work-from-home/"
+                    target="_blank"
+                    >Read More</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="pt-blog-box">
+                <img
+                  src="{% static ''%}img/va/case3.png"
+                  title="ISO 27001 Consulting Blog 2"
+                  alt="iso-27001-blog-2"
+                  longdesc="ISO 27001 consultancy service blog 3"
+                />
+                <div class="pci-bar"></div>
+                <h2 class="text-center">How to design a secure office network</h2>
+                <p class="text-justify">
+                  To ensure safe communications via routers, switches, servers,
+                  and hosts, defense-in-depth approach security is mandatory for
+                  each organization. This article provides a comprehensive view
+                  of designing a secure office network that you can implement in
+                  your workplace.
+                </p>
+                <div class="cs-box-btn">
+                  <a
+                    href="https://blog.techforing.com/blogs/how-to-design-a-secure-office-network/"
+                    target="_blank"
+                    >Read More</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock content %}
+
+{% block customjs %}
+    <script src="{% static ''%}js/custom.js"></script>
+    <script src="{% static ''%}js/glide.js"></script>
+    <script>
+      new Glide(".glide", {
+        type: "carousel",
+        autoplay: 8000,
+      }).mount();
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#my-header").load("header.html");
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#my-footer").load("footer.html");
+      });
+    </script>
+
+{% endblock customjs %}

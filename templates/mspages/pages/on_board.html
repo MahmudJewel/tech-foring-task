@@ -1,0 +1,133 @@
+{% extends 'base/msbase.html' %} {% load static %} {% load hosts %} {% block title %} On-Boarding with Techforing | Enjoy our White Gloves Service (Suggested On-Boarding | White Gloves Service | Techforing) {% endblock title %} {% block headercss %}
+<link rel="stylesheet" href="{% static '' %}css/glide.core.css" />
+<link rel="stylesheet" href="{% static '' %}css/glide.theme.css" /> {% endblock headercss %} {% block content %}
+<section class="o-banner">
+    <div class="container">
+        <h2>Get on Board Get Secured</h2>
+    </div>
+</section>
+<section class="ps-report-slider">
+    <div class="ps-report">
+        <div class="container">
+            <p>Report, Presentation & Free Test</p>
+            <h2>
+                17 ways High Net Worth Individuals are being hacked & how to be safe.
+            </h2>
+
+            <a href="https://personal.techforing.com/ebook" target="_blank" class="psr-btn">Download Now</a>
+        </div>
+    </div>
+</section>
+<section class="o-service">
+    <div class="container">
+        <h2 class="os-title">
+            Steps to Experience The White Gloves Service You Deserve
+        </h2>
+        <div class="row os-row">
+            <div class="col-md-3">
+                <div class="os-box">
+                    <div class="os-img os-img-left">
+                        <img data-src="{% static '' %}msimg/onboard/1.png" alt="Service 1" class="lazy" />
+                    </div>
+                    <p class="text-center">Explain Your Needs To Our Cyber Analyst</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="os-box">
+                    <div class="os-img">
+                        <img data-src="{% static '' %}msimg/onboard/2.png" alt="Service 2" class="lazy" />
+                    </div>
+                    <p class="text-center">Get A Quote For Your White-Glove Service</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="os-box">
+                    <div class="os-img">
+                        <img data-src="{% static '' %}msimg/onboard/3.png" alt="Service 2" class="lazy" />
+                    </div>
+                    <p class="text-center">Paperwork Formalities</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="os-box">
+                    <div class="os-img os-img-right">
+                        <img data-src="{% static '' %}msimg/onboard/4.png" alt="Service 2" class="lazy" />
+                    </div>
+                    <p class="text-center">
+                        Welcome! Enjoy Concierge Cybersecurity Service
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="o-agreement">
+    <div class="og-row">
+        <div class="og-img-box">
+            <img data-src="{% static '' %}msimg/onboard/agreeement-bg.png" alt="white-glove-service-client-agreement" title="techforing-onboard-service" class="lazy" />
+        </div>
+        <div class="og-box">
+            <h2>How we work with Our Clients</h2>
+            <p class="text-justify">
+                The basis of a healthy and productive relationship is trust. To establish that, we sign a Non-Disclosure Agreement (NDA) with all our clients. As a Techforing VIP, we give precedence to your satisfaction and go above and beyond to ensure your security
+                is tiptop. All our information security analysts are hired after a thorough background check and are taken through rigorous training procedures to ensure your data is safe with us. Our personalized support and watered-down demonstration
+                leave even a not so tech-savvy client with top to bottom understanding. If you are still unsure about something, we are just one phone call away, always ready to jump right in and clear your confusion.
+            </p>
+            <div class="og-link">
+                <a href="{% host_url 'findus' host 'main' %}" target="_blank">Connect with Us</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="o-protection">
+    <div class="container">
+        <h2>YOUR PERSONAL DIGITAL PROTECTION STARTS HERE</h2>
+        <p class="text-center">
+            Come and find out how our information security analysts help you navigate your specific security needs’ scope and complexity.
+        </p>
+        <a href="{% host_url 'get_start' host 'main' %}" target="_blank">Get Started</a>
+    </div>
+</section>
+<section class="o-expert lazy" title="on-boarding-cyber-solution" data-bg="{% static '' %}msimg/onboard/Team-Bg.png">
+    <div class="container">
+        <h2 class="oe-title">we have<br />the expertise</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="oe-left">
+                    <p class="text-justify">
+                        With in-house information security analysts, we engage a comprehensive approach, where all online financial security and individual data usage are thoroughly reviewed. Our client service ensures we are 24/7 ready to give you a cybercrime solution regardless
+                        of your location, the device, application, or platform you use. Like any Cyber Crime detective, we can investigate and get to the bottom of an IT problem as efficiently as any cybersecurity companies around.Our security specialists
+                        are holding industry top security certifications like C|EH, CHFI, CISA, CISSP, Security+
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="oe-right">
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="o-threat">
+    <div class="container">
+        <h2 class="text-center">
+            You are one step ahead of protection in opposition to cyber threats
+        </h2>
+        <p class="text-center">
+            It’s not like we will close your file right after providing your cyber solution and forget. Our partnership continues with monthly newsletters, periodic threat alerts, webinars, and direct communications.
+        </p>
+    </div>
+</section>
+<section class="o-cta lazy" data-bg="{% static '' %}msimg/onboard/CTA.png">
+    <div class="container">
+        <h2>Techforing is The Digital Security Team You Deserve</h2>
+        <p class="text-center">
+            Later than never, you have found us. Let’s collaborate and stand against all cyber threats. Make a perfectly safe digital cyberspace.
+        </p>
+        <a href="{% host_url 'get_start' host 'main' %}" target="_blank">Let Us Secure</a>
+    </div>
+</section>
+{% endblock content %} {% block customjs %}
+<script src="{%static ''%}msjs/custom.js"></script>
+{% endblock customjs %}

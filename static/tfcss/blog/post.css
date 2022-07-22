@@ -1,0 +1,203 @@
+.banner-1 .banner-bg {
+    color: white;
+    background-image: url("../tfimg/blog/classified_vulnerability.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-gray {
+    background-color: gainsboro;
+}
+
+.accordion-button:focus,
+.form-select:focus,
+.form-control:focus,
+.btn:focus {
+    border-color: black;
+    outline: 0;
+    box-shadow: none;
+    background-color: white;
+    color: black;
+}
+
+.accordion-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.accordion-header {
+    border-bottom: 2px solid gray;
+}
+
+.accordion-body a {
+    text-decoration: none;
+    color: var(--navy);
+    padding: 5px 0;
+}
+
+.banner-1 .menu-link {
+    padding: 5px;
+    background-color: white;
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+}
+
+.post-content {
+    border: 1px solid gray;
+    padding-right: 0;
+    padding-left: 0;
+    max-height: 350px;
+    overflow-y: scroll;
+}
+
+.post-content::-webkit-scrollbar {
+    width: 5px;
+    background-color: gray;
+}
+
+.post-content::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #182f59;
+}
+
+.main-post-container .sticky-top {
+    top: 100px;
+    z-index: 1;
+}
+
+.post-content .title {
+    border-bottom: 1px solid gainsboro;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px 0;
+}
+
+.tags a {
+    margin-right: 5px;
+    border: 1px solid gray;
+    border-radius: 50rem;
+    padding: 2px 5px;
+    font-size: 16px;
+}
+
+.add-to-list button {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 15px;
+    border-radius: 50rem;
+    background-color: #5bbc2e;
+    color: white;
+}
+
+.add-to-list button:hover {
+    color: var(--navy);
+    transform: scale(1.1);
+}
+
+.social-share-container {
+    background-color: #e0f0da;
+    top: -100px;
+    position: absolute;
+    padding: 10px 15px;
+}
+
+.share-btn {
+    border: none !important;
+    background-color: white;
+    color: var(--navy);
+    font-weight: bold;
+    border-radius: 25rem;
+}
+
+.share-btn:hover {
+    transform: scale(1.1);
+}
+
+.main-content .img-2:hover,
+.main-content .img-3:hover {
+    max-width: unset;
+    width: 400px !important;
+}
+
+.post-info {
+    margin-top: 2rem;
+    padding: 10px 5px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+.list-group-item {
+    border: none;
+    padding-left: 0.25rem;
+}
+
+.list-group-item.active {
+    color: rgb(0, 0, 0);
+    background-color: gainsboro;
+    border-color: transparent;
+}
+
+.thumb-tooltip {
+    position: absolute;
+    z-index: 3000;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    background: #FFFFFF no-repeat center padding-box;
+    border-radius: 6px;
+    box-shadow: 0 8px 16px -8px rgba(0, 0, 0, 0.25);
+}
+
+.thumb-tooltip-image {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    bottom: 5px;
+    left: 5px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.get-update-heading {
+    margin-top: 5rem;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.get-update-heading:before,
+.get-update-heading:after {
+    background-color: #182f59;
+    content: "";
+    display: inline-block;
+    height: 2px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+}
+
+.subscribe-form {
+    background: #6c757d75;
+    padding: 18px;
+}
+
+.subscribe-form .title {
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 5px;
+    border-bottom: 2px solid rgb(223, 222, 222);
+}
+
+@media only screen and (min-width: 768px) {
+    /* .post-content.col-md-2 {
+        width: 14.66666667%;
+    }
+    .main-content.col-md-7 {
+        width: 59.333333%;
+    } */
+}

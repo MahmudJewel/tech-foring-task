@@ -1,0 +1,251 @@
+:root {
+    --var-primary-color: #182f59;
+    --var-upcoming-subscriptions-color: #282867;
+    --var-primary-color-50: #37378f;
+    --var-primary-color-25: #4b55a3;
+    --var-sidebar-color: hsl(228, 24%, 96%);
+    --var-box-shadow-color: hsl(0, 0%, 85%);
+    --var-link-color: hsl(0, 0%, 0%);
+    --var-icon-color: hsl(101, 61%, 46%);
+    --var-detail-background: hsl(0, 0%, 92%);
+    --var-topbar-background-color: hsl(0, 0%, 100%);
+    --var-btn-background-purple: hsl(332, 71%, 50%);
+    --var-text-yellow: hsl(34, 100%, 50%);
+}
+
+p {
+    margin: 0;
+}
+
+.bg-saphire {
+    background-color: var(--var-upcoming-subscriptions-color);
+}
+
+.bg-primary-50 {
+    background-color: var(--var-primary-color-50);
+}
+
+.bg-primary-25 {
+    background-color: var(--var-primary-color-25);
+}
+
+.selectBox select {
+    width: 100%;
+    font-weight: 500;
+    padding: .5rem 1rem;
+}
+
+.overSelect {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+#checkboxes,
+#checkboxes2 {
+    position: absolute;
+    background: #fff;
+}
+
+.subscription-info {
+    color: var(--var-topbar-background-color);
+    padding: 1rem;
+}
+
+.subscription-info h3 {
+    font-size: 22px;
+}
+
+.subscription-info p {
+    font-size: 18px;
+}
+
+#subscription-list,
+#subscription-list td,
+#subscription-details,
+#subscription-details td {
+    border: .5px solid #707070;
+    font-size: 14px;
+}
+
+#subscription-list {
+    text-align: center;
+}
+
+#subscription-list td:nth-child(2) {
+    width: 150px;
+}
+
+#subscription-list td:nth-child(6) {
+    width: 100px;
+}
+
+
+
+#subscription-list thead,
+#subscription-details thead {
+    background: #182f5910;
+    text-align: center;
+}
+
+#subscription-list thead th,
+#subscription-details thead th {
+    border: 1px solid #707070;
+    font-size: 15px;
+}
+
+#subscription-list_filter {
+    margin-bottom: 2rem;
+    float: right;
+    width: 60%;
+}
+
+#subscription-list_filter label {
+    padding: .5rem 1rem;
+    width: 100%;
+    border: 1px solid #707070;
+}
+
+#subscription-list_filter input {
+    display: inline !important;
+    border-color: transparent;
+    width: 90%;
+    padding: 0 .75rem;
+}
+
+
+#subscription-details_filter input {
+    display: inline !important;
+    width: auto !important;
+}
+
+@media (max-width: 1241px) {
+    .subscription-info {
+        height: 140px;
+    }
+
+    #subscription-list_filter {
+        width: 100%;
+    }
+}
+
+
+
+/* subscription packages */
+
+.bg-lightgreen {
+    background-color: #e1e6f1;
+}
+
+.package table tr td:nth-child(2) {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.package table tr td {
+    text-align: left;
+    font-size: 15px;
+}
+
+.package .info-btn {
+    border-radius: .3rem !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    background-color: #fff;
+    padding: .5rem .8rem;
+    margin-inline: auto;
+    margin-block-end: 10px;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+}
+
+.bg-navy,
+.bg-navy:hover {
+    background-color: #182f59;
+    color: #fff;
+}
+
+.package-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+}
+
+.custom-info-listing {
+    list-style-type: none;
+    position: relative;
+}
+
+.custom-info-listing span {
+    margin-inline-start: 12px;
+}
+
+.custom-info-listing::before {
+    display: inline-block;
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: #182f59;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 3px;
+}
+
+@media (min-width: 1241px) {
+    .package-details {
+        grid-gap: 15px;
+    }
+}
+
+.input{
+    background-color: #F2F3F7;
+    align-items: center;
+    padding-block: .5rem;
+    padding-inline: .5rem;
+    grid-template-columns: 1fr 350px 1fr;
+    margin-bottom: .5rem;
+    box-shadow: 1px 1px 4px  #707070;
+}
+
+.featureInputDesabled {
+    display: block;
+    width: 100%;
+    margin-block: .5rem;
+    border: 0;
+    color: #000;
+}
+.heading button{
+    order: 1;
+}
+
+@media (max-width: 769px) {
+    .package-details {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .package-stat{
+        margin-bottom: 2rem;
+    }
+    .heading {
+        display: grid !important;
+        justify-content: center !important;
+    }
+    .heading button{
+        order: 0;
+        margin-bottom: 1rem;
+    }
+    .dataTables_scroll table thead th{
+        font-size: 14px;
+    }
+    .dataTables_scroll table tbody td{
+        font-size: 12px;
+    }
+}
+@media (max-width: 500px) {
+    .package-details {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

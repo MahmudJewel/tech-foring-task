@@ -1,0 +1,128 @@
+{% extends 'base/pcs_admin_base.html' %} {% load static %}
+{% load crispy_forms_tags %}
+{% load hosts %}
+
+{% block title %} BCS Subscription Packages
+{% endblock title %}
+
+{% block headercss %}
+    <link rel="stylesheet" href="{% static 'tfcss/admin_panel/bcsTF/dashboard.css' %}"/>
+    <link rel="stylesheet" href="{% static 'tfcss/admin_panel/bcsTF/subscription.css' %}"/>
+    <!-- charts js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+{% endblock headercss %}
+{% block content %}
+    <!-- main section starts -->
+    <main>
+        <section>
+            <div class="container">
+                <a href="{% host_url 'pcs_admin_subscription_packages' host 'mysecurity' %}" class="btn border-1 border-dark">Go
+                    Back</a>
+                <form action="" method="POST">
+                    {{ form|crispy }}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-md px-4 btn-success" name="package-btn">Edit</button>
+                </form>
+                <h3 class="fw-bolder">Feature List</h3>
+                {% for package_feature in package_features %}
+                    <div class="d-flex justify-content-between align-content-center">
+                        <span class="text-capitalize align-self-center fw-bold">{{ package_feature }}</span>
+                        <div class="btn-container">
+
+                            <button type="button" class="btn btn-primary text-capitalize" data-bs-toggle="modal"
+                                    data-bs-target="#edit-{{ package_feature.id }}">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                            <a href="
+
+
+                                    {% host_url 'pcs_admin_subscription_packages_feature_delete' host 'mysecurity' %}{{ package_feature.id }}"
+                               type="button" class="btn btn-danger text-capitalize">
+                                <i class="bi bi-trash2-fill"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="edit-{{ package_feature.id }}" tabindex="-1"
+                         ariant-belledby="subscribeModal-1Label" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header border-0">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="" class="needs-validation" method="POST">
+                                        <div class="d-flex justify-content-between">
+                                            <h4>Package Details</h4>
+                                            <h4>New Data</h4>
+                                        </div>
+                                        <div class="">
+                                            <input type="hidden" name="feature_id" value="{{ package_feature.id }}">
+
+
+                                            <div class="row gx-3 mx-0 form-group px-0">
+                                                <div class="col-md-6 ps-0">
+                                                    <label for="featureName" class="form-label">Feature Name</label>
+                                                    <input type="text" class="form-control" name="feature_name"
+                                                           id="featureName" required=""
+                                                           value="{{ package_feature.feature_name }}">
+                                                </div>
+                                                <div class="col-md-6 pe-0">
+                                                    <label for="feature" class="form-label">Feature</label>
+                                                    <input type="text" class="form-control" name="feature"
+                                                           id="feature" required=""
+                                                           value="{{ package_feature.feature }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-primary text-capitalize" name="feature-btn"
+                                                id="save-short-service">
+                                            Update
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                <button type="button" class="btn btn-primary text-capitalize" data-bs-toggle="modal"
+                        data-bs-target="#subscribeFeatureModal-1">
+                    <i class="bi bi-plus-circle"></i>
+                </button>
+                <!-- modal -->
+                <div class="modal fade" id="subscribeFeatureModal-1" tabindex="-1"
+                     aria-labelledby="subscribeModal-1Label"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header border-0">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="" class="needs-validation" method="POST">
+                                    <div class="d-flex justify-content-between">
+                                        <h4>Package Details</h4>
+                                        <h4>New Data</h4>
+                                    </div>
+                                    {{ form2|crispy }}
+                                    {% csrf_token %}
+                                    <button class="btn btn-primary text-capitalize" name="add-feature-btn"
+                                            id="save-short-service">
+                                        save
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- main section ends -->
+{% endblock content %}
+{% block customjs %}
+    <!-- custom scripts -->
+    <script src="{% static 'tfjs/admin_panel/bcsTF/subscription.js' %}"></script>
+{% endblock customjs %}

@@ -1,0 +1,1300 @@
+{% extends 'base/academy_user_base.html' %}
+{% load static %}
+{% load my_filter %}
+{% load hosts %}
+{% block title %} My Courses {% endblock title %}
+{% block content %}
+<div class="course-container mt-2 mb-4 position-relative">
+    <div class="courses">
+        <h4 class="fw-bold border-bottom border-gray pb-14p mb-4">My Courses</h4>
+
+        <h5 class="fw-bold mb-3">PROFESSIONAL</h5>
+        {% for course in business_courses %}
+            <div class="row mx-0 bg-lightgreen shadow py-3 mb-3 justify-content-between">
+            <div class="col-md-5 d-flex">
+                <div class="ps-2">
+                    <h6 class="fw-bold">{{ course.course_name }}</h6>
+                    <p class="mb-0 fs-14 text-justify">
+                        {{ course.short_description }}
+                    </p>
+                </div>
+            </div>
+{#            <div class="col-md-2 text-center">#}
+{#                <h6 class="fw-bold">Duration</h6>#}
+{#                <p>{{ course.duration|capitalize }}</p>#}
+{#            </div>#}
+            <div class="col-md-2 text-center">
+                <h6 class="fw-bold">Total Classes</h6>
+                <p>{{ course.id|classCount }} Classes</p>
+            </div>
+            <div class="col-md-3 d-flex align-items-center justify-content-evenly">
+                <a href="{% host_url 'academy_user_courses' host 'academy' %}{{ course.id }}" class="btn bg-green py-1 px-3">View</a>
+            </div>
+
+        </div>
+        {% endfor %}
+
+        <h5 class="fw-bold mb-3">PERSONAL</h5>
+        {% for course in personal_courses %}
+            <div class="row mx-0 bg-lightgreen shadow py-3 mb-3">
+            <div class="col-md-5 d-flex">
+                <div class="ps-2">
+                    <h6 class="fw-bold">{{ course.course_name }}</h6>
+                    <p class="mb-0 fs-14 text-justify">
+                        {{ course.short_description }}
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                <h6 class="fw-bold">Duration</h6>
+                <p>{{ course.duration|capitalize }}</p>
+            </div>
+            <div class="col-md-2 text-center">
+                <h6 class="fw-bold">Total Classes</h6>
+                <p>{{ course.id|classCount }} Classes</p>
+            </div>
+            <div class="col-md-3 d-flex align-items-center justify-content-evenly">
+                <a href="{% host_url 'academy_user_courses' host 'academy' %}{{ course.id }}" class="btn bg-green py-1 px-3">View</a>
+            </div>
+
+        </div>
+        {% endfor %}
+
+{% comment %}
+        <div class="row mx-0 bg-lightgreen shadow py-3 mb-3">
+            <div class="col-md-5 d-flex">
+
+                <div class="ps-2">
+                    <h6 class="fw-bold">CCSP Course For Professional</h6>
+                    <p class="mb-0 fs-14 text-justify">This eight-week course consists of instructional content and expert-led lab classes, which will be a massive boost to becoming certified cybersecurity professional.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                <h6 class="fw-bold">Duration</h6>
+                <p>2 Months</p>
+            </div>
+            <div class="col-md-2 text-center">
+                <h6 class="fw-bold">Total Classes</h6>
+                <p>30 Classes</p>
+            </div>
+            <div class="col-md-3 d-flex align-items-center justify-content-evenly">
+                <button class="view-btn btn bg-green py-1 px-3">View</button>
+            </div>
+
+        </div>
+{% endcomment %}
+
+        <!-- <h5 class="mt-5 fw-bold mb-3">CORPORATE</h5>
+        <div class="row mx-0 bg-lightgreen shadow py-3">
+            <div class="col-md-5 d-flex">
+                <div>
+                    <img src="./tfimg/services/user.png" alt="">
+                </div>
+                <div class="ps-2">
+                    <h6 class="fw-bold">Course Title</h6>
+                    <p class="mb-0 fs-14 text-justify">This eight-week course consists of instructional content and expert-led lab classes, which will be a massive boost to becoming certified cybersecurity professional.</p>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                <h6 class="fw-bold">Duration</h6>
+                <p>2 Months</p>
+            </div>
+            <div class="col-md-2 text-center">
+                <h6 class="fw-bold">Total Classes</h6>
+                <p>30 Classes</p>
+            </div>
+            <div class="col-md-3 d-flex align-items-center justify-content-evenly">
+                <button class="view-btn btn bg-green py-1 px-3">View</button>
+                <button class="btn bg-green py-1 px-3">Enroll</button>
+            </div>
+        </div>
+        <h5 class="mt-5 fw-bold mb-3">LAW INFORCEMENT AGENCY</h5>
+        <div class="row mx-0 bg-lightgreen shadow py-3">
+            <div class="col-md-5 d-flex">
+                <div>
+                    <img src="./tfimg/services/user.png" alt="">
+                </div>
+                <div class="ps-2">
+                    <h6 class="fw-bold">Course Title</h6>
+                    <p class="mb-0 fs-14 text-justify">This eight-week course consists of instructional content and expert-led lab classes, which will be a massive boost to becoming certified cybersecurity professional.</p>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                <h6 class="fw-bold">Duration</h6>
+                <p>2 Months</p>
+            </div>
+            <div class="col-md-2 text-center">
+                <h6 class="fw-bold">Total Classes</h6>
+                <p>30 Classes</p>
+            </div>
+            <div class="col-md-3 d-flex align-items-center justify-content-evenly">
+                <button class="view-btn btn bg-green py-1 px-3">View</button>
+                <button class="btn bg-green py-1 px-3">Enroll</button>
+            </div>
+        </div>
+        <h5 class="mt-5 fw-bold mb-3">EDUCATIONAL INSTITUTE</h5>
+        <div class="row mx-0 bg-lightgreen shadow py-3">
+            <div class="col-md-5 d-flex">
+                <div>
+                    <img src="./tfimg/services/user.png" alt="">
+                </div>
+                <div class="ps-2">
+                    <h6 class="fw-bold">Course Title</h6>
+                    <p class="mb-0 fs-14 text-justify">This eight-week course consists of instructional content and expert-led lab classes, which will be a massive boost to becoming certified cybersecurity professional.</p>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                <h6 class="fw-bold">Duration</h6>
+                <p>2 Months</p>
+            </div>
+            <div class="col-md-2 text-center">
+                <h6 class="fw-bold">Total Classes</h6>
+                <p>30 Classes</p>
+            </div>
+            <div class="col-md-3 d-flex align-items-center justify-content-evenly">
+                <button class="view-btn btn bg-green py-1 px-3">View</button>
+                <button class="btn bg-green py-1 px-3">Enroll</button>
+            </div>
+        </div> -->
+    </div>
+    <div class="d-none preview-course px-2">
+        <h5 class="fw-bold border-bottom border-gray pb-14p text-green">CCSP Course For Professional</h5>
+        <button id="back-btn" class="btn btn-outline-success btn-sm d-non position-absolute top-sm-0 end-0">
+            <i class="icofont-long-arrow-left"></i> Back to list
+        </button>
+
+        <h6 class="mt-4 fw-bold">Requirements</h6>
+        <ul>
+            <li>Lorem ipsum is simply dummy text of the printing and typesetting industry</li>
+            <li>Lorem ipsum is simply dummy text of the printing and typesetting industry</li>
+            <li>Lorem ipsum is simply dummy text of the printing and typesetting industry</li>
+        </ul>
+
+        <div class="learning-content mt-5 px-2">
+            <h6 class="fw-bold mb-3">What You Will Learn:</h6>
+            <div class="ps-2">
+                <p class="text-truncate">
+                    <i class="icofont-ui-check me-1"></i></i> Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum is simply dummy text of the printing and typesetting industry
+                </p>
+                <p class="text-truncate">
+                    <i class="icofont-ui-check me-1"></i></i> Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum is simply dummy text of the printing and typesetting industry
+                </p>
+                <p class="text-truncate">
+                    <i class="icofont-ui-check me-1"></i></i> Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum is simply dummy text of the printing and typesetting industry
+                </p>
+            </div>
+        </div>
+
+        <h6 class="mt-5 fw-bold">Who this course is for</h6>
+        <ul>
+            <li>Information security enthusiasts and those who are looking for a perfect start in Cyber Security</li>
+            <li>Those who are looking to change their field to Information Technology</li>
+            <li>Those who want to become a Security Professional</li>
+            <li>IT Security Consultants who want to refresh their knowledge</li>
+        </ul>
+
+        <div class="mt-5 row mx-0">
+            <div class="col-md-8 d-flex justify-content-between">
+                <h6 class="fw-bold">Course Content:</h6>
+                <h6>8 Sections</h6>
+                <h6>40 Lectures</h6>
+                <h6>8 Weeks</h6>
+            </div>
+        </div>
+
+        <div class="mt-5 course-info">
+            <!-- for large devices  -->
+            <div class="d-none d-md-block accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="course-heading-1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#course-1" aria-expanded="false" aria-controls="course-1">
+                            <table class="w-100" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th class="title fw-bold">INTRODUCTION TO ETHICAL HACKING</th>
+                                        <th>7 on demand videos</th>
+                                        <th class="text-center">5 downloadable resources</th>
+                                        <th class="fw-bold text-end">LECTURE 1</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </button>
+                    </h2>
+                    <div id="course-1" class="accordion-collapse collapse" aria-labelledby="course-heading-1" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <table class="w-100" id="table">
+                                <tbody class="fs-14">
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">Welcome and Introduction to the Instructor
+                                            </h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>50m</h6>
+                                            <button class="btn bg-transparent preview-btn" data-bs-toggle="modal" data-bs-target="#preview-video">Preview</button>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn p-0">
+                                                <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 1
+                                            </a>
+                                        </td>
+                                        <td class="text-center">Module 1</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">What is hacking? Who is a hacker?</h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>1h 20m</h6>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn p-0">
+                                                <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 2
+                                            </a>
+                                        </td>
+                                        <td class="text-center">Module 2</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">Skills of an ethical hacker, Types of hacker
+                                            </h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>40m</h6>
+
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn p-0">
+                                                <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 3
+                                            </a>
+                                        </td>
+                                        <td class="text-center">Module 3</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">Goals and learning objectives</h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>20m</h6>
+
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn p-0">
+                                                <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 4
+                                            </a>
+                                        </td>
+                                        <td class="text-center">Module 4</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">What is Ethical hacking?</h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>1h</h6>
+
+                                        </td>
+                                        <td>
+
+                                        </td>
+                                        <td class="text-center">Module 5</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">Why Ethical hacking is necessary?</h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>1h 10m</h6>
+
+                                        </td>
+                                        <td>
+
+                                        </td>
+                                        <td class="text-center">Module 6</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="course-heading-2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#course-2" aria-expanded="false" aria-controls="course-2">
+                            <table class="w-100" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th class="title fw-bold">RISK ASSESMENTS</th>
+                                        <th>7 on demand videos</th>
+                                        <th class="text-center">5 downloadable resources</th>
+                                        <th class="fw-bold text-end">LECTURE 1</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </button>
+                    </h2>
+                    <div id="course-2" class="accordion-collapse collapse" aria-labelledby="course-heading-2" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <table class="w-100" id="table">
+                                <tbody class="fs-14">
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">Welcome and Introduction to the Instructor
+                                            </h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>50m</h6>
+                                            <button class="btn bg-transparent preview-btn" data-bs-toggle="modal" data-bs-target="#preview-video">Preview</button>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn p-0">
+                                                <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 1
+                                            </a>
+                                        </td>
+                                        <td class="text-center">Module 1</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">What is hacking? Who is a hacker?</h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>1h 20m</h6>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn p-0">
+                                                <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 2
+                                            </a>
+                                        </td>
+                                        <td class="text-center">Module 2</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">Skills of an ethical hacker, Types of hacker
+                                            </h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>40m</h6>
+
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn p-0">
+                                                <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 3
+                                            </a>
+                                        </td>
+                                        <td class="text-center">Module 3</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">Goals and learning objectives</h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>20m</h6>
+
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn p-0">
+                                                <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 4
+                                            </a>
+                                        </td>
+                                        <td class="text-center">Module 4</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">What is Ethical hacking?</h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>1h</h6>
+
+                                        </td>
+                                        <td>
+
+                                        </td>
+                                        <td class="text-center">Module 5</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">Why Ethical hacking is necessary?</h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>1h 10m</h6>
+
+                                        </td>
+                                        <td>
+
+                                        </td>
+                                        <td class="text-center">Module 6</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="course-heading-3">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#course-3" aria-expanded="false" aria-controls="course-3">
+                            <table class="w-100" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th class="title fw-bold">MALWARE THREATS</th>
+                                        <th>7 on demand videos</th>
+                                        <th class="text-center">5 downloadable resources</th>
+                                        <th class="fw-bold text-end">LECTURE 1</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </button>
+                    </h2>
+                    <div id="course-3" class="accordion-collapse collapse" aria-labelledby="course-heading-3" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <table class="w-100" id="table">
+                                <tbody class="fs-14">
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">Welcome and Introduction to the Instructor
+                                            </h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>50m</h6>
+                                            <button class="btn bg-transparent preview-btn" data-bs-toggle="modal" data-bs-target="#preview-video">Preview</button>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn p-0">
+                                                <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 1
+                                            </a>
+                                        </td>
+                                        <td class="text-center">Module 1</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">What is hacking? Who is a hacker?</h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>1h 20m</h6>
+
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn p-0">
+                                                <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 2
+                                            </a>
+                                        </td>
+                                        <td class="text-center">Module 2</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">Skills of an ethical hacker, Types of hacker
+                                            </h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>40m</h6>
+
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn p-0">
+                                                <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 3
+                                            </a>
+                                        </td>
+                                        <td class="text-center">Module 3</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">Goals and learning objectives</h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>20m</h6>
+
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn p-0">
+                                                <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 4
+                                            </a>
+                                        </td>
+                                        <td class="text-center">Module 4</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">What is Ethical hacking?</h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>1h</h6>
+
+                                        </td>
+                                        <td>
+
+                                        </td>
+                                        <td class="text-center">Module 5</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">Why Ethical hacking is necessary?</h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>1h 10m</h6>
+
+                                        </td>
+                                        <td>
+
+                                        </td>
+                                        <td class="text-center">Module 6</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="course-heading-4">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#course-4" aria-expanded="false" aria-controls="course-4">
+                            <table class="w-100" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th class="title fw-bold">SOCIAL ENGINEERING</th>
+                                        <th>7 on demand videos</th>
+                                        <th class="text-center">5 downloadable resources</th>
+                                        <th class="fw-bold text-end">LECTURE 1</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </button>
+                    </h2>
+                    <div id="course-4" class="accordion-collapse collapse" aria-labelledby="course-heading-4" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <table class="w-100" id="table">
+                                <tbody class="fs-14">
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">Welcome and Introduction to the Instructor
+                                            </h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>50m</h6>
+                                            <button class="btn bg-transparent preview-btn" data-bs-toggle="modal" data-bs-target="#preview-video">Preview</button>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn p-0">
+                                                <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 1
+                                            </a>
+                                        </td>
+                                        <td class="text-center">Module 1</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">What is hacking? Who is a hacker?</h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>1h 20m</h6>
+
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn p-0">
+                                                <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 2
+                                            </a>
+                                        </td>
+                                        <td class="text-center">Module 2</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">Skills of an ethical hacker, Types of hacker
+                                            </h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>40m</h6>
+
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn p-0">
+                                                <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 3
+                                            </a>
+                                        </td>
+                                        <td class="text-center">Module 3</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">Goals and learning objectives</h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>20m</h6>
+
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn p-0">
+                                                <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 4
+                                            </a>
+                                        </td>
+                                        <td class="text-center">Module 4</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">What is Ethical hacking?</h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>1h</h6>
+
+                                        </td>
+                                        <td>
+
+                                        </td>
+                                        <td class="text-center">Module 5</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">Why Ethical hacking is necessary?</h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>1h 10m</h6>
+
+                                        </td>
+                                        <td>
+
+                                        </td>
+                                        <td class="text-center">Module 6</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="course-heading-5">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#course-5" aria-expanded="false" aria-controls="course-5">
+                            <table class="w-100" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th class="title fw-bold">DIVING DEEP TO CYBERSECURITY</th>
+                                        <th>7 on demand videos</th>
+                                        <th class="text-center">5 downloadable resources</th>
+                                        <th class="fw-bold text-end">LECTURE 1</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </button>
+                    </h2>
+                    <div id="course-5" class="accordion-collapse collapse" aria-labelledby="course-heading-5" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <table class="w-100" id="table">
+                                <tbody class="fs-14">
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">Welcome and Introduction to the Instructor
+                                            </h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>50m</h6>
+                                            <button class="btn bg-transparent preview-btn" data-bs-toggle="modal" data-bs-target="#preview-video">Preview</button>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn p-0">
+                                                <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 1
+                                            </a>
+                                        </td>
+                                        <td class="text-center">Module 1</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">What is hacking? Who is a hacker?</h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>1h 20m</h6>
+
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn p-0">
+                                                <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 2
+                                            </a>
+                                        </td>
+                                        <td class="text-center">Module 2</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">Skills of an ethical hacker, Types of hacker
+                                            </h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>40m</h6>
+
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn p-0">
+                                                <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 3
+                                            </a>
+                                        </td>
+                                        <td class="text-center">Module 3</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">Goals and learning objectives</h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>20m</h6>
+
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn p-0">
+                                                <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 4
+                                            </a>
+                                        </td>
+                                        <td class="text-center">Module 4</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">What is Ethical hacking?</h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>1h</h6>
+
+                                        </td>
+                                        <td>
+
+                                        </td>
+                                        <td class="text-center">Module 5</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">Why Ethical hacking is necessary?</h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>1h 10m</h6>
+
+                                        </td>
+                                        <td>
+
+                                        </td>
+                                        <td class="text-center">Module 6</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="course-heading-6">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#course-6" aria-expanded="false" aria-controls="course-6">
+                            <table class="w-100" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th class="title fw-bold">FUNDAMENTAL OF SECURITY MANAGEMENT</th>
+                                        <th>7 on demand videos</th>
+                                        <th class="text-center">5 downloadable resources</th>
+                                        <th class="fw-bold text-end">LECTURE 1</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </button>
+                    </h2>
+                    <div id="course-6" class="accordion-collapse collapse" aria-labelledby="course-heading-6" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <table class="w-100" id="table">
+                                <tbody class="fs-14">
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">Welcome and Introduction to the Instructor
+                                            </h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>50m</h6>
+                                            <button class="btn bg-transparent preview-btn" data-bs-toggle="modal" data-bs-target="#preview-video">Preview</button>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn p-0">
+                                                <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 1
+                                            </a>
+                                        </td>
+                                        <td class="text-center">Module 1</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">What is hacking? Who is a hacker?</h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>1h 20m</h6>
+
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn p-0">
+                                                <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 2
+                                            </a>
+                                        </td>
+                                        <td class="text-center">Module 2</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">Skills of an ethical hacker, Types of hacker
+                                            </h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>40m</h6>
+
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn p-0">
+                                                <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 3
+                                            </a>
+                                        </td>
+                                        <td class="text-center">Module 3</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">Goals and learning objectives</h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>20m</h6>
+
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn p-0">
+                                                <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 4
+                                            </a>
+                                        </td>
+                                        <td class="text-center">Module 4</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">What is Ethical hacking?</h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>1h</h6>
+
+                                        </td>
+                                        <td>
+
+                                        </td>
+                                        <td class="text-center">Module 5</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">Why Ethical hacking is necessary?</h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>1h 10m</h6>
+
+                                        </td>
+                                        <td>
+
+                                        </td>
+                                        <td class="text-center">Module 6</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="course-heading-7">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#course-7" aria-expanded="false" aria-controls="course-7">
+                            <table class="w-100" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th class="title fw-bold">DIVING DEEP TO CYBERSECURITY</th>
+                                        <th>7 on demand videos</th>
+                                        <th class="text-center">5 downloadable resources</th>
+                                        <th class="fw-bold text-end">LECTURE 1</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </button>
+                    </h2>
+                    <div id="course-7" class="accordion-collapse collapse" aria-labelledby="course-heading-7" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <table class="w-100" id="table">
+                                <tbody class="fs-14">
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">Welcome and Introduction to the Instructor
+                                            </h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>50m</h6>
+                                            <button class="btn bg-transparent preview-btn" data-bs-toggle="modal" data-bs-target="#preview-video">Preview</button>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn p-0">
+                                                <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 1
+                                            </a>
+                                        </td>
+                                        <td class="text-center">Module 1</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">What is hacking? Who is a hacker?</h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>1h 20m</h6>
+
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn p-0">
+                                                <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 2
+                                            </a>
+                                        </td>
+                                        <td class="text-center">Module 2</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">Skills of an ethical hacker, Types of hacker
+                                            </h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>40m</h6>
+
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn p-0">
+                                                <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 3
+                                            </a>
+                                        </td>
+                                        <td class="text-center">Module 3</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">Goals and learning objectives</h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>20m</h6>
+
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn p-0">
+                                                <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 4
+                                            </a>
+                                        </td>
+                                        <td class="text-center">Module 4</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">What is Ethical hacking?</h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>1h</h6>
+
+                                        </td>
+                                        <td>
+
+                                        </td>
+                                        <td class="text-center">Module 5</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col1">
+                                            <i class="icofont-ui-video-play"></i>
+                                            <h6 class="d-inline ps-2 fw-bold">Why Ethical hacking is necessary?</h6>
+                                        </td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <h6>1h 10m</h6>
+
+                                        </td>
+                                        <td>
+
+                                        </td>
+                                        <td class="text-center">Module 6</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- for mobile devices  -->
+            <div class="d-block d-md-none accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            <span class="title fw-bold">INTRODUCTION TO ETHICAL HACKING</span>
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body text-center p-0">
+
+                            <div class="bg-white p-2 my-2">
+                                <h6 class="fw-bold mt-2">
+                                    <i class="bi bi-play-btn"></i> Welcome and Introduction to the Instructor
+                                </h6>
+                                <div class="mt-2 d-flex align-items-center justify-content-center">
+                                    <h6 class="me-4">50m</h6>
+                                    <button class="btn bg-transparent p-0 text-green">Preview</button>
+                                </div>
+                                <a class="btn p-0 mt-2">
+                                    <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 1
+                                </a>
+                                <h6 class="mt-2">Module 1</h6>
+                            </div>
+
+                            <div class="bg-white p-2 my-2">
+                                <h6 class="fw-bold mt-2">
+                                    <i class="bi bi-play-btn"></i> What is hacking? Who is a hacker?
+                                </h6>
+                                <div class="mt-2 d-flex align-items-center justify-content-center">
+                                    <h6 class="me-4">50m</h6>
+                                </div>
+                                <a class="btn p-0 mt-2">
+                                    <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 2
+                                </a>
+                                <h6 class="mt-2">Module 2</h6>
+                            </div>
+
+                            <div class="bg-white p-2 my-2">
+                                <h6 class="fw-bold mt-2">
+                                    <i class="bi bi-play-btn"></i> Skills of an ethical hacker, Types of hacker
+                                </h6>
+                                <div class="mt-2 d-flex align-items-center justify-content-center">
+                                    <h6 class="me-4">50m</h6>
+                                </div>
+                                <a class="btn p-0 mt-2">
+                                    <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 3
+                                </a>
+                                <h6 class="mt-2">Module 3</h6>
+                            </div>
+
+                            <div class="bg-white p-2 my-2">
+                                <h6 class="fw-bold mt-2">
+                                    <i class="bi bi-play-btn"></i> Goals and learning objectives
+                                </h6>
+                                <div class="mt-2 d-flex align-items-center justify-content-center">
+                                    <h6 class="me-4">50m</h6>
+                                </div>
+                                <a class="btn p-0 mt-2">
+                                    <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 4
+                                </a>
+                                <h6 class="mt-2">Module 4</h6>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            <span class="title fw-bold">RISK ASSESMENTS</span>
+                        </button>
+                    </h2>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body text-center p-0">
+
+                            <div class="bg-white p-2 my-2">
+                                <h6 class="fw-bold mt-2">
+                                    <i class="bi bi-play-btn"></i> Welcome and Introduction to the Instructor
+                                </h6>
+                                <div class="mt-2 d-flex align-items-center justify-content-center">
+                                    <h6 class="me-4">50m</h6>
+                                    <button class="btn bg-transparent p-0 text-green">Preview</button>
+                                </div>
+                                <a class="btn p-0 mt-2">
+                                    <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 1
+                                </a>
+                                <h6 class="mt-2">Module 1</h6>
+                            </div>
+
+                            <div class="bg-white p-2 my-2">
+                                <h6 class="fw-bold mt-2">
+                                    <i class="bi bi-play-btn"></i> What is hacking? Who is a hacker?
+                                </h6>
+                                <div class="mt-2 d-flex align-items-center justify-content-center">
+                                    <h6 class="me-4">50m</h6>
+                                </div>
+                                <a class="btn p-0 mt-2">
+                                    <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 2
+                                </a>
+                                <h6 class="mt-2">Module 2</h6>
+                            </div>
+
+                            <div class="bg-white p-2 my-2">
+                                <h6 class="fw-bold mt-2">
+                                    <i class="bi bi-play-btn"></i> Skills of an ethical hacker, Types of hacker
+                                </h6>
+                                <div class="mt-2 d-flex align-items-center justify-content-center">
+                                    <h6 class="me-4">50m</h6>
+                                </div>
+                                <a class="btn p-0 mt-2">
+                                    <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 3
+                                </a>
+                                <h6 class="mt-2">Module 3</h6>
+                            </div>
+
+                            <div class="bg-white p-2 my-2">
+                                <h6 class="fw-bold mt-2">
+                                    <i class="bi bi-play-btn"></i> Goals and learning objectives
+                                </h6>
+                                <div class="mt-2 d-flex align-items-center justify-content-center">
+                                    <h6 class="me-4">50m</h6>
+                                </div>
+                                <a class="btn p-0 mt-2">
+                                    <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 4
+                                </a>
+                                <h6 class="mt-2">Module 4</h6>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                            <span class="title fw-bold">MALWARE THREATS</span>
+                        </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body text-center p-0">
+
+                            <div class="bg-white p-2 my-2">
+                                <h6 class="fw-bold mt-2">
+                                    <i class="bi bi-play-btn"></i> Welcome and Introduction to the Instructor
+                                </h6>
+                                <div class="mt-2 d-flex align-items-center justify-content-center">
+                                    <h6 class="me-4">50m</h6>
+                                    <button class="btn bg-transparent p-0 text-green">Preview</button>
+                                </div>
+                                <a class="btn p-0 mt-2">
+                                    <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 1
+                                </a>
+                                <h6 class="mt-2">Module 1</h6>
+                            </div>
+
+                            <div class="bg-white p-2 my-2">
+                                <h6 class="fw-bold mt-2">
+                                    <i class="bi bi-play-btn"></i> What is hacking? Who is a hacker?
+                                </h6>
+                                <div class="mt-2 d-flex align-items-center justify-content-center">
+                                    <h6 class="me-4">50m</h6>
+                                </div>
+                                <a class="btn p-0 mt-2">
+                                    <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 2
+                                </a>
+                                <h6 class="mt-2">Module 2</h6>
+                            </div>
+
+                            <div class="bg-white p-2 my-2">
+                                <h6 class="fw-bold mt-2">
+                                    <i class="bi bi-play-btn"></i> Skills of an ethical hacker, Types of hacker
+                                </h6>
+                                <div class="mt-2 d-flex align-items-center justify-content-center">
+                                    <h6 class="me-4">50m</h6>
+                                </div>
+                                <a class="btn p-0 mt-2">
+                                    <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 3
+                                </a>
+                                <h6 class="mt-2">Module 3</h6>
+                            </div>
+
+                            <div class="bg-white p-2 my-2">
+                                <h6 class="fw-bold mt-2">
+                                    <i class="bi bi-play-btn"></i> Goals and learning objectives
+                                </h6>
+                                <div class="mt-2 d-flex align-items-center justify-content-center">
+                                    <h6 class="me-4">50m</h6>
+                                </div>
+                                <a class="btn p-0 mt-2">
+                                    <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 4
+                                </a>
+                                <h6 class="mt-2">Module 4</h6>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- preview course video  -->
+        <div class="modal fade" id="preview-video" tabindex="-1" aria-labelledby="trainingModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content border-0 bg-transparent">
+                    <!-- <div class="modal-header border-0 h-0">
+                        <button type="button" class="btn-close rounded-circle bg-green" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div> -->
+                    <div class="modal-body p-3 bg-transparent">
+                        <video controls class="img-fluid d-block mx-auto" preload="metadata" type="video/mp4" src="{%static ''%}videos/academy/Rabiul Islam - Cybersecurity Specialist _ Ethical Hacker.mp4#t=0.5"></video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %} {% block customjs %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    let previewCourse = document.querySelectorAll('.preview-course');
+    let courses = document.querySelector('.course-container .courses');
+
+    document.querySelectorAll('.course-container .courses .view-btn').forEach((btn, index) => {
+        btn.addEventListener('click', (e) => {
+            courses.classList.toggle('d-none');
+            previewCourse[index].classList.toggle('d-none');
+        });
+    });
+
+    document.querySelectorAll('.learning-content p').forEach(item => {
+        item.addEventListener('click', () => {
+            item.classList.toggle('text-truncate');
+        });
+    });
+
+    document.querySelectorAll('.accordion table tr').forEach((tr, index) => {
+        tr.children[0].style.width = '40%';
+    });
+    document.getElementById('back-btn').addEventListener('click', e => {
+        courses.classList.toggle('d-none');
+        previewCourse.forEach(course => {
+            course.classList.add('d-none');
+        });
+    });
+
+    $(function() {
+        $('#preview-video').modal({
+            show: false
+        }).on('hidden.bs.modal', function() {
+            $(this).find('video')[0].pause();
+        });
+    });
+</script>
+{% endblock customjs %}

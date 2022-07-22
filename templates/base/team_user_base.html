@@ -1,0 +1,263 @@
+<!DOCTYPE html> {% load static %}
+{% load hosts %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> {% block meta %} {% endblock meta %}
+    <!-- CSS -->
+    <link rel="stylesheet" href="{%static ''%}tfcss/icofont/icofont.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous"> {% block headercss %} {% endblock headercss %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{%static ''%}tfcss/user_panel/team/style.css" />
+
+    <title>
+        {% block title %} {% endblock title %}
+    </title>
+    <link rel="icon" href="{%static ''%}tfimg/user_panel/Techforing-Icon.png" type="image/x-icon" />
+</head>
+
+<body>
+    <!-- Header Start -->
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-0">
+            <div class="container-fluid d-flex justify-content-lg-around px-1 px-md-5">
+                <a class="navbar-brand pt-2" href="/">
+                    <img src="{% static '' %}tfimg/user_panel/logo.png" width="125" height="60" alt="Logo">
+                </a>
+                <button class="navbar-toggler d-block d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center fw-bolder">
+                        <li class="nav-item me-4">
+                            <form class="d-flex">
+                                <input class="form-control me-2 rounded-pill shadow-sm fontAwesome" type="search" placeholder="&#xf002; Search..." aria-label="Search">
+                            </form>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ user }}
+                                <img class="ms-2 rounded-circle" src="{% static '' %}tfimg/user_panel/anjelina.jpg"
+                                    width="40" height="40" alt="">
+                            </a>
+                            <ul class="dropdown-menu border-0 shadow" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a class="dropdown-item text-center" href="{% host_url 'user_profile' %}">
+                                        <i class="icofont-ui-user me-2"></i> My Profile</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item text-center" href="{% host_url 'change_password' %}">
+                                        <i class="icofont-edit me-2"></i> Change Password
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <button class="btn btn-sm px-3 btn-outline-primary mx-auto mb-5 d-block d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                                <i class="icofont-long-arrow-right"></i>
+                            </button>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Menubar</h5>
+        </div>
+        <div class="offcanvas-body pt-0">
+            <ul class="menubar">
+                <li>
+                    <a href="{% url 'bcs_app:team_user_services' %}">
+                        <i class="icofont-cubes"></i> Services
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'bcs_app:team_user_my_team' %}">
+                        <i class="icofont-people"></i> My Team
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'bcs_app:team_user_subscriptions' %}">
+                        <i class="icofont-dollar"></i> Subscriptions
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'bcs_app:team_user_events' %}">
+                        <i class="icofont-ui-calendar"></i> Events & Webinars
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'bcs_app:team_user_notifications' %}">
+                        <i class="icofont-notification"></i> Notifications
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'bcs_app:team_user_settings' %}">
+                        <i class="icofont-options"></i> Settings
+                    </a>
+                </li>
+                <a href="{% url 'account_app:logout' %}" class="logout-btn ms-3 btn btn-outline-navy px-4">Log Out</a>
+            </ul>
+        </div>
+    </div>
+    <div class="w-20 h-100 position-fixed bg-white shadow-sm px-1 pt-2 d-none d-lg-block">
+        <ul class="menubar">
+            <li>
+                <a href="{% url 'bcs_app:team_user_services' %}">
+                    <i class="icofont-cubes"></i> Services
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'bcs_app:team_user_my_team' %}">
+                    <i class="icofont-people"></i> My Team
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'bcs_app:team_user_subscriptions' %}">
+                    <i class="icofont-dollar"></i> Subscriptions
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'bcs_app:team_user_events' %}">
+                    <i class="icofont-ui-calendar"></i> Events & Webinars
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'bcs_app:team_user_notifications' %}">
+                    <i class="icofont-notification"></i> Notifications
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'bcs_app:team_user_settings' %}">
+                    <i class="icofont-options"></i> My Profile
+                </a>
+            </li>
+            <a href="{% url 'account_app:logout' %}" class="logout-btn ms-3 btn btn-outline-navy px-4">Log Out</a>
+        </ul>
+    </div>
+
+
+    <main class="w-80 overflow-hidden">
+        <div class="bg-main ps-2 ps-lg-3 py-3 pe-2">
+            {% block content %} {% endblock content %}
+
+
+        </div>
+
+        <footer id="footer-small" class="bg-blue p-2 pt-4 p-md-5 pb-md-2">
+            <div class="d-flex justify-content-center mb-4">
+                <a href="" class="me-5">PRIVACY POLICY</a>
+                <a href="">TERMS OF USE</a>
+            </div>
+            <div class="d-flex justify-content-center align-items-center">
+                <a href="https://www.facebook.com/techforing/">
+                    <img src="{% static '' %}tfimg/user_panel/facebook.png" class="me-3" alt="">
+                </a>
+                <a href="https://www.linkedin.com/company/techforingltd./">
+                    <img src="{% static '' %}tfimg/user_panel/linkedin.png" class="me-3" alt="">
+                </a>
+                <a href="https://twitter.com/techforingltd?lang=en">
+                    <img src="{% static '' %}tfimg/user_panel/twitter.png" class="me-3" alt="">
+                </a>
+                <a href="https://www.instagram.com/techforingltd/">
+                    <img src="{% static '' %}tfimg/user_panel/Instagram.png" alt="">
+                </a>
+            </div>
+
+            <div class="p-3 p-md-4 pb-2 text-center text-white ">
+                <p class="pt-4 border-top border-light">Copyright &copy; 2022 Techforing Ltd.
+                </p>
+            </div>
+        </footer>
+    </main>
+    <footer id="footer-large" class="position-sticky d-none bg-blue p-2 pt-4 p-md-5 pb-md-2">
+        <div class="d-flex justify-content-center mb-4">
+            <a href="" class="me-5">PRIVACY POLICY</a>
+            <a href="">TERMS OF USE</a>
+        </div>
+
+        <div class="d-flex justify-content-center align-items-center">
+            <a href="https://www.facebook.com/techforing/">
+                <img src="{% static '' %}tfimg/user_panel/facebook.png" class="me-3" alt="">
+            </a>
+            <a href="https://www.linkedin.com/company/techforingltd./">
+                <img src="{% static '' %}tfimg/user_panel/linkedin.png" class="me-3" alt="">
+            </a>
+            <a href="https://twitter.com/techforingltd?lang=en">
+                <img src="{% static '' %}tfimg/user_panel/twitter.png" class="me-3" alt="">
+            </a>
+            <a href="https://www.instagram.com/techforingltd/">
+                <img src="{% static '' %}tfimg/user_panel/Instagram.png" alt="">
+            </a>
+        </div>
+
+        <div class="p-3 p-md-4 pb-2 text-center text-white ">
+            <p class="pt-4 border-top border-light">Copyright &copy; 2022 Techforing Ltd.
+            </p>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script src="{%static ''%}tfjs/user_panel/team/menubar.js"></script>
+    <script>
+        let activeIndex = 1;
+        menuItemsName.forEach((item, index) => {
+            if (url.includes(item))
+                activeIndex = index + 1;
+        });
+        window.onscroll = function(ev) {
+            let styleElem = document.head.appendChild(document.createElement("style"));
+            let logoutBtn = document.querySelector('.w-20 .menubar .logout-btn');
+            let footerSmall = document.getElementById('footer-small');
+            let footerLarge = document.getElementById('footer-large');
+            let sideMenubar = document.querySelector('.w-20 .menubar');
+
+            let changeSidebarStyle = type => {
+                let menubarPadding = type == 'large' ? 0 : 10;
+                let menubarLiPadding = type == 'large' ? 2 : 10;
+                let menubarLiChildSize = type == 'large' ? 20 : 30;
+                let menubarLiFirstChildSize = type == 'large' ? 12 : 25;
+                let logoutBtnPaddingY = type == 'large' ? 0.2 : 0.3;
+                let logoutBtnMarginTop = type == 'large' ? 0.5 : 1;
+                let iconFontSize = type == 'large' ? 15 : 18;
+
+                if (type == 'large') {
+                    footerSmall.classList.add('d-none');
+                    footerLarge.classList.remove('d-none');
+                } else {
+                    footerSmall.classList.remove('d-none');
+                    footerLarge.classList.add('d-none');
+                }
+
+                sideMenubar.style.padding = `${menubarPadding}px`;
+                sideMenubar.style.paddingLeft = '0';
+
+                document.querySelectorAll('.w-20 .menubar li').forEach(li => {
+                    li.style.paddingTop = `${menubarLiPadding}px`;
+                    li.style.paddingBottom = `${menubarLiPadding}px`;
+                    li.children[0].children[0].style.width = `${menubarLiChildSize}px`;
+                    li.children[0].children[0].style.height = `${menubarLiChildSize}px`;
+                    li.children[0].children[0].style.fontSize = `${iconFontSize}px`;
+                });
+                styleElem.innerHTML = `.w-20 .menubar li:nth-child(${activeIndex})::after {width:${menubarLiFirstChildSize}px; 
+                                                                            top: ${menubarLiFirstChildSize}px;};`
+                logoutBtn.style.marginTop = `${logoutBtnMarginTop}rem`;
+                logoutBtn.style.paddingTop = `${logoutBtnPaddingY}rem`;
+                logoutBtn.style.paddingBottom = `${logoutBtnPaddingY}rem`;
+
+            }
+            window.innerHeight > document.body.offsetHeight - window.scrollY - 10 ?
+                changeSidebarStyle('large') : changeSidebarStyle('small');
+
+        };
+    </script>
+    {% block customjs %} {% endblock customjs %}
+</body>
+
+</html>

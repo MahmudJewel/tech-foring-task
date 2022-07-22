@@ -1,0 +1,290 @@
+<form class="bg-white p-2 concierge-cybersecurity-service">
+    <div class="mt-5 information-form">
+        <h5 class="fw-bold text-center border-bottom border-gray p-2">Please Provide Necessary Informations for Concierge CyberSecurity Service:
+        </h5>
+
+        <!-- device information  -->
+        <div class="mt-5 info-type">
+            <div class="row row-cols-sm-2 g-3">
+
+                <div class="col d-flex align-items-end">
+                    <div class="dropdown mt-3">
+                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Number of Your Devices
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <!-- level #2 -->
+                            <div class="dropdown dropend">
+                                <a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mobile</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown-layouts">
+                                    <span class="dropdown-item">
+                                        <div class="form-check" onclick="showInputField(this,'android-device')">
+                                            <input class="form-check-input" type="checkbox" name="" id="device-1">
+                                            <label class="form-check-label" for="device-1">Android</label>
+                                        </div>
+                                        <input id="android-device" class="d-none mt-2 form-control form-control-sm"
+                                            type="number" name="" placeholder="no. of devices">
+                                    </span>
+                                    <span class="dropdown-item">
+                                        <div class="form-check" onclick="showInputField(this,'ios-device')">
+                                            <input class="form-check-input" type="checkbox" name="" id="device-2">
+                                            <label class="form-check-label" for="device-2">IOS</label>
+                                        </div>
+                                        <input id="ios-device" class="d-none mt-2 form-control form-control-sm"
+                                            type="number" name="" placeholder="no. of devices">
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- /level #2 -->
+                            <div class="dropdown dropend">
+                                <a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Computer</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown-layouts">
+                                    <span class="dropdown-item">
+                                        <div class="form-check" onclick="showInputField(this,'windows-device')">
+                                            <input class="form-check-input" type="checkbox" name="" id="device-1">
+                                            <label class="form-check-label" for="device-1">Windows</label>
+                                        </div>
+                                        <input id="windows-device" class="d-none mt-2 form-control form-control-sm"
+                                            type="number" name="" placeholder="no. of devices">
+                                    </span>
+                                    <span class="dropdown-item">
+                                        <div class="form-check" onclick="showInputField(this,'linux-device')">
+                                            <input class="form-check-input" type="checkbox" name="" id="device-2">
+                                            <label class="form-check-label" for="device-2">Linux</label>
+                                        </div>
+                                        <input id="linux-device" class="d-none mt-2 form-control form-control-sm"
+                                            type="number" name="" placeholder="no. of devices">
+                                    </span>
+                                    <span class="dropdown-item">
+                                        <div class="form-check" onclick="showInputField(this,'mac-device')">
+                                            <input class="form-check-input" type="checkbox" name="" id="device-2">
+                                            <label class="form-check-label" for="device-2">Mac</label>
+                                        </div>
+                                        <input id="mac-device" class="d-none mt-2 form-control form-control-sm"
+                                            type="number" name="" placeholder="no. of devices">
+                                    </span>
+                                </div>
+                            </div>
+                            <span class="dropdown-item">
+                                <div class="form-check" onclick="showInputField(this,'smart-tv')">
+                                    <input class="form-check-input" type="checkbox" name="" id="smart-tv-2">
+                                    <label class="form-check-label" for="smart-tv-2">Smart TV</label>
+                                </div>
+                                <input id="smart-tv" class="d-none mt-2 form-control form-control-sm" type="number"
+                                    name="" placeholder="no. of devices">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- social accounts  -->
+                <div class="col d-flex align-items-end">
+                    <div class="dropdown">
+                        <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            Number of social accounts
+                        </a>
+                        <ul class="dropdown-menu p-2" aria-labelledby="dropdownMenuLink">
+                            <li>
+                                <div class="form-check" onclick="showInputField(this,'facebook')">
+                                    <input class="form-check-input" type="checkbox" name="" id="acc-1">
+                                    <label class="form-check-label" for="acc-1">Facebook</label>
+                                </div>
+                                <input id="facebook" class="d-none mt-2 form-control form-control-sm" type="number" name="">
+                            </li>
+                            <li>
+                                <div class="form-check" onclick="showInputField(this,'twitter')">
+                                    <input class="form-check-input" type="checkbox" name="" id="acc-2">
+                                    <label class="form-check-label" for="acc-2">Twitter</label>
+                                </div>
+                                <input id="twitter" class="d-none mt-2 form-control form-control-sm" type="number" name="">
+                            </li>
+                            <li>
+                                <div class="form-check" onclick="showInputField(this,'instagram')">
+                                    <input class="form-check-input" type="checkbox" name="" id="acc-3">
+                                    <label class="form-check-label" for="acc-3">Instagram</label>
+                                </div>
+                                <input id="instagram" class="d-none mt-2 form-control form-control-sm" type="number" name="">
+                            </li>
+                            <li>
+                                <div class="form-check" onclick="showInputField(this,'linkedin')">
+                                    <input class="form-check-input" type="checkbox" name="" id="acc-4">
+                                    <label class="form-check-label" for="acc-4">Linkedin</label>
+                                </div>
+                                <input id="linkedin" class="d-none mt-2 form-control form-control-sm" type="number" name="">
+                            </li>
+                            <li>
+                                <div class="form-check" onclick="showInputField(this,'pinterest')">
+                                    <input class="form-check-input" type="checkbox" name="" id="acc-5">
+                                    <label class="form-check-label" for="acc-5">Pinterest</label>
+                                </div>
+                                <input id="pinterest" class="d-none mt-2 form-control form-control-sm" type="number" name="">
+                            </li>
+                            <li>
+                                <div class="form-check" onclick="showInputField(this,'youtube')">
+                                    <input class="form-check-input" type="checkbox" name="" id="acc-6">
+                                    <label class="form-check-label" for="acc-6">YouTube</label>
+                                </div>
+                                <input id="youtube" class="d-none mt-2 form-control form-control-sm" type="number" name="">
+                            </li>
+                            <li>
+                                <div class="form-check" onclick="showInputField(this,'snapchat')">
+                                    <input class="form-check-input" type="checkbox" name="" id="acc-7">
+                                    <label class="form-check-label" for="acc-7">Snapchat</label>
+                                </div>
+                                <input id="snapchat" class="d-none mt-2 form-control form-control-sm" type="number" name="">
+                            </li>
+                            <li>
+                                <div class="form-check" onclick="showInputField(this,'whatsapp')">
+                                    <input class="form-check-input" type="checkbox" name="" id="acc-8">
+                                    <label class="form-check-label" for="acc-8">Whatsapp</label>
+                                </div>
+                                <input id="whatsapp" class="d-none mt-2 form-control form-control-sm" type="number" name="">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- email accounts  -->
+                <div class="col d-flex align-items-end">
+                    <div class="dropdown">
+                        <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            Number of Emails
+                        </a>
+                        <ul class="dropdown-menu p-2" aria-labelledby="dropdownMenuLink">
+                            <li>
+                                <div class="form-check" onclick="showInputField(this,'yahoo')">
+                                    <input class="form-check-input" type="checkbox" name="" id="email-1">
+                                    <label class="form-check-label" for="email-1">Yahoo</label>
+                                </div>
+                                <input id="yahoo" class="d-none mt-2 form-control form-control-sm" type="number" name="">
+                            </li>
+                            <li>
+                                <div class="form-check" onclick="showInputField(this,'gmail')">
+                                    <input class="form-check-input" type="checkbox" name="" id="email-2">
+                                    <label class="form-check-label" for="email-2">Gmail</label>
+                                </div>
+                                <input id="gmail" class="d-none mt-2 form-control form-control-sm" type="number" name="">
+                            </li>
+                            <li>
+                                <div class="form-check" onclick="showInputField(this,'hotmail')">
+                                    <input class="form-check-input" type="checkbox" name="" id="email-3">
+                                    <label class="form-check-label" for="email-3">Hotmail</label>
+                                </div>
+                                <input id="hotmail" class="d-none mt-2 form-control form-control-sm" type="number" name="">
+                            </li>
+                            <li>
+                                <div class="form-check" onclick="showInputField(this,'outlook')">
+                                    <input class="form-check-input" type="checkbox" name="" id="email-4">
+                                    <label class="form-check-label" for="email-4">Outlook</label>
+                                </div>
+                                <input id="outlook" class="d-none mt-2 form-control form-control-sm" type="number" name="">
+                            </li>
+                            <li>
+                                <div class="form-check" onclick="showInputField(this,'custom-mail')">
+                                    <input class="form-check-input" type="checkbox" name="" id="email-5">
+                                    <label class="form-check-label" for="email-5">Custom Mail</label>
+                                </div>
+                                <input id="custom-mail" class="d-none mt-2 form-control form-control-sm" type="number" name="">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- cloud accounts  -->
+                <div class="col d-flex align-items-end">
+                    <div class="dropdown">
+                        <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            Number of Cloud Account
+                        </a>
+                        <ul class="dropdown-menu p-2" aria-labelledby="dropdownMenuLink">
+                            <li>
+                                <div class="form-check" onclick="showInputField(this,'icloud')">
+                                    <input class="form-check-input" type="checkbox" name="" id="cloud-acc-1">
+                                    <label class="form-check-label" for="cloud-acc-1">iCloud</label>
+                                </div>
+                                <input id="icloud" class="d-none mt-2 form-control form-control-sm" type="number" name="">
+                            </li>
+                            <li>
+                                <div class="form-check" onclick="showInputField(this,'google-cloud')">
+                                    <input class="form-check-input" type="checkbox" name="" id="cloud-acc-2">
+                                    <label class="form-check-label" for="cloud-acc-2">Google Cloud</label>
+                                </div>
+                                <input id="google-cloud" class="d-none mt-2 form-control form-control-sm" type="number" name="">
+                            </li>
+                            <li>
+                                <div class="form-check" onclick="showInputField(this,'dropbox')">
+                                    <input class="form-check-input" type="checkbox" name="" id="cloud-acc-3">
+                                    <label class="form-check-label" for="cloud-acc-3">Dropbox</label>
+                                </div>
+                                <input id="dropbox" class="d-none mt-2 form-control form-control-sm" type="number" name="">
+                            </li>
+                            <li>
+                                <div class="form-check" onclick="showInputField(this,'google-drive')">
+                                    <input class="form-check-input" type="checkbox" name="" id="cloud-acc-4">
+                                    <label class="form-check-label" for="cloud-acc-4">Google Drive</label>
+                                </div>
+                                <input id="google-drive" class="d-none mt-2 form-control form-control-sm" type="number" name="">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- payment gateway  -->
+                <div class="col d-flex align-items-end">
+                    <div class="dropdown">
+                        <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            Payment Gateway
+                        </a>
+                        <ul class="dropdown-menu p-2" aria-labelledby="dropdownMenuLink">
+                            <li>
+                                <div class="form-check" onclick="showInputField(this,'paypal')">
+                                    <input class="form-check-input" type="checkbox" name="" id="cloud-acc-1">
+                                    <label class="form-check-label" for="cloud-acc-1">Paypal Wallet</label>
+                                </div>
+                                <input id="paypal" class="d-none mt-2 form-control form-control-sm" type="number" name="">
+                            </li>
+                            <li>
+                                <div class="form-check" onclick="showInputField(this,'skrill')">
+                                    <input class="form-check-input" type="checkbox" name="" id="cloud-acc-2">
+                                    <label class="form-check-label" for="cloud-acc-2">Skrill</label>
+                                </div>
+                                <input id="skrill" class="d-none mt-2 form-control form-control-sm" type="number" name="">
+                            </li>
+                            <li>
+                                <div class="form-check" onclick="showInputField(this,'visa')">
+                                    <input class="form-check-input" type="checkbox" name="" id="cloud-acc-3">
+                                    <label class="form-check-label" for="cloud-acc-3">Visa Card</label>
+                                </div>
+                                <input id="visa" class="d-none mt-2 form-control form-control-sm" type="number" name="">
+                            </li>
+                            <li>
+                                <div class="form-check" onclick="showInputField(this,'bank-deposite')">
+                                    <input class="form-check-input" type="checkbox" name="" id="cloud-acc-4">
+                                    <label class="form-check-label" for="cloud-acc-4">Bank Deposite</label>
+                                </div>
+                                <input id="bank-deposite" class="d-none mt-2 form-control form-control-sm" type="number" name="">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- number of wifi  -->
+                <div class="col d-flex align-items-end">
+                    <div class="dropdown">
+                        <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            Number of WiFi
+                        </a>
+                        <ul class="dropdown-menu p-2" aria-labelledby="dropdownMenuLink">
+                            <li>
+                                <input class="mt-2 form-control form-control-sm" placeholder="enter the value" type="number" name="">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="mt-5 d-flex justify-content-center">
+        <button type="submit" class="btn btn-navy py-2">Submit <i class="icofont-long-arrow-right"></i></button>
+    </div>
+</form>

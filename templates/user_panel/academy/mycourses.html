@@ -1,0 +1,118 @@
+{% extends 'base/academy_user_base.html' %}
+{% load static %}
+{% load hosts %}
+{% block headercss %}
+    <style>
+        .course-card {
+            max-height: 175px;
+            margin-block: 1.3rem;
+        }
+
+        .course-card img {
+            width: 100%;
+        }
+    </style>
+{% endblock headercss %}
+{% block title %} My Files {% endblock title %}
+{% block content %}
+    <section class="my-files-container ">
+        <div class="container-fluid">
+            <h4 class="fw-bold border-bottom border-gray pb-14p">My Courses</h4>
+            <div class="row">
+                {% for course in business_courses %}
+                    <div class="col-md-6">
+                        <div class="card course-card">
+                            <div class="row g-0">
+                                <div class="col-md-12">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ course.subscription_order.course.course_name }}</h5>
+                                        <p>{{ course.subscription_order.course.short_description }} </p>
+                                        <a href="{% host_url 'academy_user_files' host 'academy' %}{{ course.subscription_order.course.id }}"
+                                           class="btn btn-navy text-capitalize">go to course <i
+                                                class="bi bi-arrow-bar-left"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+            <div class="row">
+                {% for course in personal_courses %}
+                    <div class="col-md-6">
+                        <div class="card course-card">
+                            <div class="row g-0">
+                                <div class="col-md-12">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ course.course.course_name }}</h5>
+                                        <p>{{ course.course.short_description }} </p>
+                                        <a href="{% host_url 'academy_user_files' host 'academy' %}{{ course.course.id }}"
+                                           class="btn btn-navy text-capitalize">go to course <i
+                                                class="bi bi-arrow-bar-left"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+    </section>
+{% endblock content %} {% block customjs %}
+    <script>
+        if (window.location.pathname.includes('0')) {
+            window.location.pathname = window.location.pathname.replace('0', '1');
+        }
+
+
+        const sectionNo = parseInt('{{section_no}}');
+        const moduleNo = parseInt('{{module_no}}');
+
+        document.getElementById(`section-collapse-${sectionNo}`).classList.add('show');
+        document.getElementById(`material-${sectionNo}-${moduleNo}`).classList.add('show');
+
+        // let updateActiveModule = (slide) => {
+        //     modules.forEach((row, index) => {
+        //         row.classList.add('d-none');
+        //         if (row.classList.contains('slide-right'))
+        //             row.classList.remove('slide-right');
+        //         if (row.classList.contains('slide-left'))
+        //             row.classList.remove('slide-left');
+
+        //         document.getElementById(`material-${index + 1}`).classList.remove('show');
+        //     });
+        //     if (activeState >= modules.length || activeState < 0) {
+        //         activeState = 0;
+        //     }
+        //     modules[activeState].classList.remove('d-none');
+        //     document.getElementById(`material-${activeState + 1}`).classList.add('show');
+
+        //     if (slide == 'right') {
+        //         modules[activeState].classList.add('slide-right');
+        //         modules[activeState + 1].classList.add('slide-right');
+        //     } else if (slide == 'left') {
+        //         modules[activeState].classList.add('slide-left');
+        //         modules[activeState + 1].classList.add('slide-left');
+        //     }
+
+        // }
+
+        // let modules = document.querySelectorAll('.materials .module-video');
+        // let prev = document.getElementById('prev-btn');
+        // let next = document.getElementById('next-btn');
+        // let activeState = 0;
+
+        // //updateActiveModule('right');
+        // next.addEventListener('click', () => {
+        //     activeState++;
+        //     updateActiveModule('right');
+        // });
+        // prev.addEventListener('click', () => {
+        //     activeState--;
+        //     updateActiveModule('left');
+        // });
+    </script>
+{% endblock customjs %}

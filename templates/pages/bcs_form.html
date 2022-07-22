@@ -1,0 +1,149 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load hosts %}
+
+{% block title %}
+BCS Form
+{% endblock title %}
+
+{% block headercss %}
+<link rel="stylesheet" href="{% static '' %}css/telephone.css" />
+<link rel="stylesheet" href="{% static '' %}css/style.css" />
+{% endblock headercss %}
+
+{% block content %}
+<section class="baf-banner">
+  <div class="container">
+    <div class="va-line vag-line"></div>
+    <h2>
+      Free Business Cybersecurity <br />
+      Ebook
+    </h2>
+    <p class="text-justify">
+      This Ebook covers Cybersecurity and its global impact on businesses,
+      security vulnerabilities, and exploitation by intruders, necessary
+      protection measures, and how TechForing can get you out of trouble.
+    </p>
+  </div>
+</section>
+<section class="form-section">
+  <div class="container">
+    <div class="row vaf-row">
+      <div class="col-md-6">
+        <p class="vaf-text text-justify">
+          Industry-leading security experts are here to help your business
+          perform security assessments on business websites, workstations,
+          accounts, data centers, and networks. Financial, healthcare,
+          educational, any institute with IT infrastructure have got plenty
+          to gain from this free giveaway guide (due to the COVID-19).
+        </p>
+        <ul class="vaf-list">
+          <h2 class="vaf-title">What’s Inside</h2>
+          <li>
+            <i class="fas fa-check-circle"></i>Global Impact of cyberattacks
+            on businesses:
+            <p>Financial, reputational, legal are few to say the least</p>
+          </li>
+          <li>
+            <i class="fas fa-check-circle"></i>Future Threat Measurement and
+            its Complex Nature
+            <p>
+              Where the next attack lies and how much it can cost your
+              business
+            </p>
+          </li>
+          <li>
+            <i class="fas fa-check-circle"></i>Security Policies Your
+            business can’t Ignore
+            <p>Brief overview of ISO 27001, GDPR, PCI DSS, HIPAA</p>
+          </li>
+          <li>
+            <i class="fas fa-check-circle"></i>Protection Audit Tools &
+            Usefulness
+            <p>DS, IPS, SIEM, Firewall, etc</p>
+          </li>
+          <li>
+            <i class="fas fa-check-circle"></i>Most renowned vulnerabilities
+            affecting businesses
+            <p>
+              SQL injection, XSS, RCE, CSRF, IDOR, brute-force attack, MITM
+              attack, etc
+            </p>
+          </li>
+          <li>
+            <i class="fas fa-check-circle"></i>Mandatory security measurements that should be performed
+            <p>
+              Including Incident Response, Risk Assessments, digital forensic investigation, etc.
+            </p>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-5">
+        <h2 class="vaf-title">Simply fill out the form and download it</h2>
+        <div class="d-none">
+          <!-- Get Response Form -->
+          <form id="form-res" method="post" action="https://app.getresponse.com/add_subscriber.html"
+            accept-charset="utf-8">
+            <input type="text" name="email" id="email-res" required />
+            <!-- List token -->
+            <input type="hidden" name="thankyou_url" value="https://techforing.com/pages/thanks_ebook.html" />
+            <input type="hidden" name="campaign_token" value="oOJFV" />
+            <input type="hidden" name="start_day" value="0" />
+          </form>
+        </div>
+        <!-- Site Form -->
+        <form class="va-form" id="ebook-form" method="post" action="">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="vaf-group">
+                <label for="fullname">Full Name:</label>
+                <input type="text" name="name" id="fullname" required />
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="vaf-group">
+                <label for="email">Business Email:</label>
+                <input type="email" name="email" id="email" onchange="emailValue()" required />
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="vaf-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tell" name="phone" id="phone" value="+1" required />
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="vaf-group">
+                <label for="compname">Company Name:</label>
+                <input type="text" name="company" id="comp" required />
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="vaf-group">
+                <label for="position">Position:</label>
+                <input type="text" name="position" id="position" required />
+              </div>
+            </div>
+          </div>
+
+          <div class="vaf-group">
+            <input type="checkbox" id="newsletter" name="newsletter" value="newsletter" />
+            <input type="hidden" id="token" name="token">
+            <label for="newsletter" class="newsletter">Yes, I would also like to sign up for the promotional offers
+              & newsletter.</label><br />
+          </div>
+          <!-- <button type="submit" name="submit" id="submit-btn">Download</button> -->
+        </form>
+        <button id="submit-btn" type="button">Download</button>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}
+
+{% block customjs %}
+
+{% endblock customjs %}

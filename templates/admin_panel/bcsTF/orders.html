@@ -1,0 +1,102 @@
+{% extends 'base/bcs_admin_base.html' %}{% load hosts %} {% load my_filter %} {% load static %} {% block title %}
+    {{ message }} {% endblock title %}
+{% block headercss %}
+    <link rel="stylesheet" href="{% static 'tfcss/admin_panel/bcsTF/order.css' %}"/> {% endblock headercss %}
+{% block content %}
+    <main>
+        <div class="d-flex justify-content-between align-items-center pb-5">
+            <h3>{{ message }} List</h3>
+            {% if message == 'Orders' %}
+                <a href="{% host_url 'bcs_admin_new_order' %}" class="btn btn-primary">Create New Order</a>
+            {% endif %}
+
+        </div>
+
+        <div class="table-responsive">
+            <table id="order-table" class="table table-bordered">
+
+                {% if message == 'Subscriptions' %}
+                    <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>{{ message }} ID</th>
+                        <th>user</th>
+                        <th>service</th>
+                        <th>package</th>
+                        <th>price</th>
+                        <th>status</th>
+                        <th>View</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for order in orders %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ order.id }}</td>
+                            <td>{{ order.user }}</td>
+                            <td>{{ order.subscription_service.service_title }}</td>
+                            <td>{{ order.subscription_package.package_name }}</td>
+                            <td>$ {{ order.subscription_package.price }}</td>
+                            <td>{% if order.is_active == True %} Active {% else %} Deactivate {% endif %}</td>
+                            <td><a href="{% host_url 'bcs_admin_subscription_detail' %}{{ order.id }}"><i
+                                    class="bi bi-eye-fill"></i></a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                {% else %}
+                    <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>{{ message }} ID</th>
+                        <th>service</th>
+                        <th>user</th>
+                        <th>status</th>
+                        <th>assigned to</th>
+                        <th>View</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for order in orders %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ order.id }}</td>
+                            <td>{{ order.service.service_title }}</td>
+                            <td>{{ order.user }}</td>
+                            {% if order.order_status == 'new' %}
+                                <td><p class="badge bg-primary">{{ order.order_status|capitalize }}</p></td>
+                            {% elif order.order_status == 'assigned' %}
+                                <td><p class="badge bg-secondary">{{ order.order_status|capitalize }}</p></td>
+                            {% elif order.order_status == 'agreed_to_quotation' %}
+                                <td><p class="badge bg-success">{{ order.order_status|capitalize }}</p></td>
+                            {% elif order.order_status == 'agreed_to_nda_nca' %}
+                                <td><p class="badge bg-success">{{ order.order_status|capitalize }}</p></td>
+                            {% elif order.order_status == 'attending' %}
+                                <td><p class="badge bg-warning text-dark">{{ order.order_status|capitalize }}</p></td>
+                            {% elif order.order_status == 'on_progress' %}
+                                <td><p class="badge bg-info text-dark">{{ order.order_status|capitalize }}</p></td>
+                            {% elif order.order_status == 'completed' %}
+                                <td><p class="badge bg-success">{{ order.order_status|capitalize }}</p></td>
+                            {% elif order.order_status == 'canceled' %}
+                                <td><p class="badge bg-danger">{{ order.order_status|capitalize }}</p></td>
+                            {% endif %}
+                            <td>
+                                {% if order.orderstaff_order.count < 1 %}
+                                    None
+                                {% else %}
+                                    {% for staff in order.orderstaff_order.all %}
+                                        {{ staff.staff }}
+                                    {% endfor %}
+                                {% endif %}
+                            </td>
+                            <td><a href="{% host_url 'bcs_admin_order_detail' %}{{ order.id }}"><i
+                                    class="bi bi-eye-fill"></i></a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                {% endif %}
+            </table>
+        </div>
+    </main>
+{% endblock content %} {% block customjs %}
+    <script src="{% static 'tfjs/admin_panel/bcsTF/order.js' %}"></script>
+{% endblock customjs %}

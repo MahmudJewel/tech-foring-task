@@ -1,0 +1,1533 @@
+<style>
+    .hack-form {
+        display: flex;
+        justify-content: center;
+        padding: 5px;
+        min-height: 85vh;
+    }
+    
+    .hack-form .g-form {
+        width: 100%;
+        /* border-radius: 4px;
+        border: 1px solid rgba(0, 0, 0, 0.5); */
+        margin: 15px 0px 0px 0px;
+        padding: 20px;
+    }
+    
+    .selected-account {
+        margin: 10px 0;
+    }
+    
+    .set-ques-title h2,
+    .ques-title h2 {
+        font-weight: 400;
+        font-size: 16px;
+        margin: 10px 0;
+    }
+    
+    .ques {
+        position: relative;
+        border: 1px solid rgb(180, 180, 180);
+        background-color: #f4f6f8;
+        border-radius: 4px;
+        padding: 0px 50px 0px 10px;
+        transition: 0.2s;
+        overflow: hidden;
+        margin-bottom: 20px;
+        z-index: 0;
+    }
+    
+    .ques-title {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .ques i {
+        position: absolute;
+        top: 12px;
+        right: 20px;
+        transition: 0.5s;
+    }
+    
+    .account-type {
+        border-top: 1px solid rgb(180, 180, 180);
+        max-height: 0;
+        opacity: 0;
+        transition: 0.5s;
+    }
+    
+    .type-input-group {
+        margin: 15px 0px;
+        z-index: 1;
+    }
+    
+    .type-input-group input,
+    .type-input-group label {
+        cursor: pointer;
+    }
+    
+    .account-ques {
+        display: none;
+    }
+    
+    .ques-category {
+        display: none;
+    }
+    
+    .set-ques {
+        padding-right: 10px;
+    }
+    
+    .set-ques-title {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .set-ques-title h2 {
+        display: flex;
+    }
+    
+    .set-ques-title h2 span {
+        margin-right: 5px;
+    }
+    
+    .set-ques-type {
+        border-top: 1px solid rgb(180, 180, 180);
+        padding: 10px 0px;
+        display: flex;
+        justify-content: space-evenly;
+        align-content: center;
+    }
+    
+    .set-ques-type label {
+        cursor: pointer;
+    }
+    
+    .d-block {
+        display: block;
+    }
+    
+    .main-ques-category {
+        display: none;
+    }
+    
+    .ques .list-point {
+        position: static;
+        font-size: 16px;
+    }
+    
+    .submit-btn {
+        text-decoration: none;
+        border: 2px solid #182f59;
+        background-color: #182f59;
+        color: white;
+        text-transform: uppercase;
+        font-size: 18px;
+        padding: 8px 35px;
+        border-radius: 3px;
+        transition: 0.5s;
+    }
+    /*Form-tab*/
+    
+    .form-tab {
+        width: 100%;
+        height: 55px;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 86px auto 0 auto;
+        background-color: white;
+    }
+    
+    .form-tab {
+        position: fixed;
+        z-index: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .form-tab .tab-list {
+        font-size: 18px;
+        margin: 0;
+        flex: 1;
+        text-align: center;
+    }
+    
+    .tab-progres {
+        height: 4px;
+        width: 100%;
+        background-color: rgb(231, 231, 231);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        display: flex;
+    }
+    
+    .progres {
+        flex: 1;
+        transition: 0.5s;
+    }
+    /*User-Banner-form*/
+    
+    .banner-form {
+        width: 100%;
+        border-radius: 4px;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        margin: 145px 0px 40px 0px;
+        padding: 20px;
+    }
+    
+    .banner-form h2 {
+        color: white;
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: 600;
+        margin: 0;
+    }
+    
+    .form-group {
+        margin-bottom: 15px;
+    }
+    
+    .banner-form input {
+        width: 100%;
+        height: 40px;
+        padding-left: 35px;
+    }
+    
+    .banner-form textarea {
+        width: 100%;
+        padding-left: 9px;
+        height: 120px;
+    }
+    
+    .banner-form .form-group {
+        position: relative;
+    }
+    
+    .form-group .phone-select {
+        position: absolute;
+        border: none;
+        top: 8px;
+        left: 33px;
+        width: auto;
+        z-index: 1;
+    }
+    
+    .banner-form .phone_input {
+        padding-left: 120px;
+    }
+    
+    .form-group i {
+        color: #5bbc2e;
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        font-size: 20px;
+        transform: translateY(-50%);
+    }
+    
+    .banner-form input::placeholder {
+        color: black;
+        opacity: 1;
+    }
+    
+    .banner-form textarea::placeholder {
+        color: black;
+        opacity: 1;
+    }
+    
+    .banner-form button {
+        border: 2px solid #182f59;
+        background-color: #182f59;
+        color: white;
+        text-transform: uppercase;
+        font-size: 18px;
+        padding: 8px 35px;
+        border-radius: 3px;
+        transition: 0.5s;
+    }
+    
+    .banner-form button:hover {
+        cursor: pointer;
+        background-color: white;
+        color: #182f59;
+    }
+    /*Cart Part*/
+    
+    .cart-form {
+        width: 100%;
+        border-radius: 4px;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        margin: 145px 0px 40px 0px;
+        padding: 20px;
+    }
+    
+    .cart-details {
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        padding: 10px;
+    }
+    
+    .cart-details h2 {
+        font-size: 16px;
+        margin-bottom: 2px;
+        text-transform: uppercase;
+    }
+    
+    .cart-details p:nth-last-child(1) {
+        margin-bottom: 0;
+    }
+    
+    .cart-payment {
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        padding: 10px;
+        height: 100%;
+    }
+    
+    .cart-payment-type {
+        margin-top: 5px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .cart-payment-type label {
+        color: black;
+        margin-left: 5px;
+        cursor: pointer;
+    }
+    
+    .cart-box {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+    
+    .cart-box button {
+        border: 2px solid #182f59;
+        background-color: #182f59;
+        color: white;
+        text-transform: uppercase;
+        font-size: 15px;
+        padding: 5px 15px;
+        border-radius: 3px;
+        transition: 0.5s;
+    }
+    
+    .cart-box button:hover {
+        cursor: pointer;
+        background-color: white;
+        color: #182f59;
+    }
+    
+    .fill-progress {
+        background-color: #5bbc2e;
+        display: block;
+    }
+    
+    .more-account {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .more-account li {
+        display: flex;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        background-color: lightgoldenrodyellow;
+        border-radius: 2px;
+        padding: 7px 15px 3px 15px;
+        margin-right: 20px;
+    }
+    
+    .more-account li i {
+        margin-top: 3px;
+        margin-right: 5px;
+        cursor: pointer;
+    }
+</style>
+
+<form class="bg-white p-2">
+    <div class="row">
+        <div class="col-md-4 sub-services shadow">
+            <h5 class="fw-bold">Hack Recovery Service for:</h5>
+            <div class="ques border-0">
+                <div class="ques-title">
+                </div>
+                <div class="account-type" style="border:0; opacity: 1 !important;max-height: initial !important;">
+                    <div class="form-check main-input">
+                        <input class="form-check-input" type="radio" name="sa" id="acc-sub-1">
+                        <label class="form-check-label" for="acc-sub-1">1. Social Account</label>
+                    </div>
+                    <div class="form-check main-input">
+                        <input class="form-check-input" type="radio" name="sa" id="acc-sub-2">
+                        <label class="form-check-label" for="acc-sub-2">2. Email Account</label>
+                    </div>
+                    <div class="form-check main-input">
+                        <input class="form-check-input" type="radio" name="sa" id="acc-sub-3">
+                        <label class="form-check-label" for="acc-sub-3">3. Other Account</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="d-none information-form">
+                <h5 class="fw-bold text-center border-bottom border-gray p-2">Please Provide Necessary Informations:
+                </h5>
+                <div class="hack-form">
+                    <div class="form-wrapper">
+                        <ul class="more-account"></ul>
+                        <div class="g-form service-form">
+
+                            <div class="ques account-ques">
+                                <div class="ques-title">
+                                    <h2>Choose Social Media</h2>
+                                    <p class="selected-account init-select"></p>
+                                </div>
+                                <div class="account-type">
+                                    <div class="type-input-group ques-input">
+                                        <input type="radio" name="social-input" class="account-input" value="Facebook" id="facebook-input" />
+                                        <label for="facebook-input">Facebook</label>
+                                    </div>
+                                    <div class="type-input-group ques-input">
+                                        <input type="radio" name="social-input" class="account-input" value="Instagram" id="instagram-input" />
+                                        <label for="instagram-input">Instagram</label>
+                                    </div>
+                                    <div class="type-input-group ques-input">
+                                        <input type="radio" name="social-input" class="account-input" value="Linkedin" id="linkedin-input" />
+                                        <label for="linkedin-input">Linkedin</label>
+                                    </div>
+                                    <div class="type-input-group ques-input">
+                                        <input type="radio" name="social-input" class="account-input" value="Twitter" id="twitter-input" />
+                                        <label for="twitter-input">Twitter</label>
+                                    </div>
+                                    <div class="type-input-group ques-input">
+                                        <input type="radio" name="social-input" class="account-input" value="Snapchat" id="snapchat-input" />
+                                        <label for="snapchat-input">Snapchat</label>
+                                    </div>
+                                    <div class="type-input-group ques-input">
+                                        <input type="radio" name="social-input" class="account-input" value="Tiktok" id="tiktok-input" />
+                                        <label for="tiktok-input">Tiktok</label>
+                                    </div>
+                                </div>
+                                <i class="icofont-simple-down"></i>
+                            </div>
+                            <div class="ques account-ques">
+                                <div class="ques-title">
+                                    <h2>Choose Email Services</h2>
+                                    <p class="selected-account init-select"></p>
+                                </div>
+                                <div class="account-type">
+                                    <div class="type-input-group ques-input">
+                                        <input type="radio" name="email-input" class="account-input" value="Gmail" id="gmail-input" />
+                                        <label for="gmail-input">Gmail</label>
+                                    </div>
+                                    <div class="type-input-group ques-input">
+                                        <input type="radio" name="email-input" class="account-input" value="Gsuit" id="gsuit-input" />
+                                        <label for="gsuit-input">Gsuit</label>
+                                    </div>
+                                    <div class="type-input-group ques-input">
+                                        <input type="radio" name="email-input" class="account-input" value="Yahoo" id="yahoo-input" />
+                                        <label for="yahoo-input">Yahoo</label>
+                                    </div>
+                                    <div class="type-input-group ques-input">
+                                        <input type="radio" name="email-input" class="account-input" value="Amazon" id="amazon-input" />
+                                        <label for="amazon-input">Amazon</label>
+                                    </div>
+                                    <div class="type-input-group ques-input">
+                                        <input type="radio" name="email-input" class="account-input" value="Hotmail" id="hotmail-input" />
+                                        <label for="hotmail-input">Hotmail</label>
+                                    </div>
+                                    <div class="type-input-group ques-input">
+                                        <input type="radio" name="email-input" class="account-input" value="AOL" id="aol-input" />
+                                        <label for="aol-input">AOL</label>
+                                    </div>
+                                </div>
+                                <i class="icofont-simple-down"></i>
+                            </div>
+                            <div class="ques account-ques">
+                                <div class="ques-title">
+                                    <h2>Choose Other Services</h2>
+                                    <p class="selected-account init-select"></p>
+                                </div>
+                                <div class="account-type">
+                                    <div class="type-input-group ques-input">
+                                        <input type="radio" name="other-input" class="account-input" value="Apple ID" id="apple-input" />
+                                        <label for="apple-input">Apple ID</label>
+                                    </div>
+                                    <div class="type-input-group ques-input">
+                                        <input type="radio" name="other-input" class="account-input" value="Skype" id="skype-input" />
+                                        <label for="skype-input">Skype</label>
+                                    </div>
+                                    <div class="type-input-group ques-input">
+                                        <input type="radio" name="other-input" class="account-input" value="Zoom" id="zoom-input" />
+                                        <label for="zoom-input">Zoom</label>
+                                    </div>
+                                    <div class="type-input-group ques-input">
+                                        <input type="radio" name="other-input" class="account-input" value="Hangout" id="hangout-input" />
+                                        <label for="hangout-input">Hangout</label>
+                                    </div>
+                                    <div class="type-input-group ques-input">
+                                        <input type="radio" name="other-input" class="account-input" value="Dropbox" id="dropbox-input" />
+                                        <label for="dropbox-input">Dropbox</label>
+                                    </div>
+                                    <div class="type-input-group ques-input">
+                                        <input type="radio" name="other-input" class="account-input" value="Other" id="other-inputs" />
+                                        <label for="other-inputs">Other</label>
+                                    </div>
+                                </div>
+                                <i class="icofont-simple-down"></i>
+                            </div>
+                            <!-- Social Media Questions Start -->
+                            <div class="main-ques-category">
+                                <div class="ques-category">
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>1.</span> Did you set trusted contacts to your account?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="fb-trusted-contact" id="fb1" />
+                                                <label for="fb1">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="fb-trusted-contact" id="fb2" />
+                                                <label for="fb2">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>2.</span> Does your profile name and birthdate match with your photo id(Driving license,Passport,National Id etc)?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="fb-match" id="fb3" />
+                                                <label for="fb3">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="fb-match" id="fb4" />
+                                                <label for="fb4">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>3.</span> Do you often login to your network from same device and network?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="fb-login" id="fb5" />
+                                                <label for="fb5">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="fb-login" id="fb6" />
+                                                <label for="fb6">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>4.</span> Have you set security questions for your account?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="fb-ques" id="fb7" />
+                                                <label for="fb7">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="fb-ques" id="fb8" />
+                                                <label for="fb8">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>5.</span> Is your account currently disbaled?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="fb-disable" id="fb9" />
+                                                <label for="fb9">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="fb-disable" id="fb10" />
+                                                <label for="fb10">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ques-category">
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>1.</span> Did you use your Facebook account to log in to Instagram? If yes, do you have access to your facebook account that linked with instgram?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="insta-fb-login" id="insta1" />
+                                                <label for="insta1">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="insta-fb-login" id="insta2" />
+                                                <label for="insta2">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>2.</span> Did you use only your phone or other devices to log in your instagram?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="insta-other-login" id="insta3" />
+                                                <label for="insta3">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="insta-other-login" id="insta4" />
+                                                <label for="insta4">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>3.</span> Do you have a access to your two-factor authentication phone number or app?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="insta-two-factor" id="insta5" />
+                                                <label for="insta5">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="insta-two-factor" id="insta6" />
+                                                <label for="insta6">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ques-category">
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>1.</span> Does your user name and birthdate match the information on your photo identification (driving license, passport, national ID, etc.)?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="link-match" id="link1" />
+                                                <label for="link1">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="link-match" id="link2" />
+                                                <label for="link2">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>2.</span> Do you use "Sign in with google" or Username and Password to log in ?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="link-google" id="link3" />
+                                                <label for="link3">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="link-google" id="link4" />
+                                                <label for="link4">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ques-category">
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>1.</span> Did you use only your phone or other devices to log in your Twitter?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="twitter-login" id="twit1" />
+                                                <label for="twit1">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="twitter-login" id="twit2" />
+                                                <label for="twit2">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>2.</span> Did you get any email from twitter on your email account about password or email have been changed or reset?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="twitter-email" id="twit3" />
+                                                <label for="twit3">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="twitter-email" id="twit4" />
+                                                <label for="twit4">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ques-category">
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>1.</span> Have you created any recovery code earlier?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="snapchat-recovery" id="snap1" />
+                                                <label for="snap1">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="snapchat-recovery" id="snap2" />
+                                                <label for="snap2">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>2.</span> Do you have access of any device earlier linked with your account?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="snapchat-device-access" id="snap3" />
+                                                <label for="snap3">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="snapchat-device-access" id="snap4" />
+                                                <label for="snap4">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>3.</span> Do you use authentication app for generating security code of your account?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="snapchat-code" id="snap5" />
+                                                <label for="snap5">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="snapchat-code" id="snap6" />
+                                                <label for="snap6">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ques-category">
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>1.</span> Did your Tiktok link to your mobile phone ?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="tiktok-link" id="tiktok1" />
+                                                <label for="tiktok1">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="tiktok-link" id="tiktok2" />
+                                                <label for="tiktok2">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>2.</span> Do you have Log-in with varification feature enable?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="tiktok-login" id="tiktok3" />
+                                                <label for="tiktok3">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="tiktok-login" id="tiktok4" />
+                                                <label for="tiktok4">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Social Media Questions End -->
+                            <!-- Email Account Question Start-->
+                            <div class="main-ques-category">
+                                <div class="ques-category">
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>1.</span> Did you enable account activity alert?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="gmail-alert" id="gmail1" />
+                                                <label for="gmail1">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="gmail-alert" id="gmail2" />
+                                                <label for="gmail2">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>2.</span> Do you have a secondary email adress on your compromized gmail?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="gmail-secondary" id="gmail3" />
+                                                <label for="gmail3">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="gmail-secondary" id="gmail4" />
+                                                <label for="gmail4">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ques-category">
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>1.</span> Did you buy workspace from reseller?( For administrator only)
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="gsuit-workspace" id="gsuit1" />
+                                                <label for="gsuit1">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="gsuit-workspace" id="gsuit2" />
+                                                <label for="gsuit2">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>2.</span> Who has the admin acces?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="gsuit-admin" id="gsuit3" />
+                                                <label for="gsuit3">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="gsuit-admin" id="gsuit4" />
+                                                <label for="gsuit4">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>3.</span> Have your admin turned on password recovery option?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="gsuit-password" id="gsuit5" />
+                                                <label for="gsuit5">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="gsuit-password" id="gsuit6" />
+                                                <label for="gsuit6">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>4.</span> Did your admin suspend your account?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="gsuit-suspend" id="gsuit7" />
+                                                <label for="gsuit7">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="gsuit-suspend" id="gsuit8" />
+                                                <label for="gsuit8">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ques-category">
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>1.</span> Do you have set any security Question? And do you remember that?"
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="yahoo-question" id="yahoo1" />
+                                                <label for="yahoo1">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="yahoo-question" id="yahoo2" />
+                                                <label for="yahoo2">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>2.</span> Did you use account key feature on your yahoo?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="yahoo-key" id="yahoo3" />
+                                                <label for="yahoo3">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="yahoo-key" id="yahoo4" />
+                                                <label for="yahoo4">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ques-category">
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>1.</span> Have you notified amazon?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="amazon-notify" id="amazon1" />
+                                                <label for="amazon1">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="amazon-notify" id="amazon2" />
+                                                <label for="amazon2">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>2.</span> Have you checked the authenticator app’s enabled on your account?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="amazon-app" id="amazon3" />
+                                                <label for="amazon3">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="amazon-app" id="amazon4" />
+                                                <label for="amazon4">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>3.</span> Did you try to sign in with a registered backup method or from a trusted device?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="amazon-method" id="amazon5" />
+                                                <label for="amazon5">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="amazon-method" id="amazon6" />
+                                                <label for="amazon6">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ques-category">
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>1.</span> Did you set security contact info?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="hotmail-security" id="hotmail1" />
+                                                <label for="hotmail1">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="hotmail-security" id="hotmail2" />
+                                                <label for="hotmail2">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>2.</span> Is your account connect with your windows operating system?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="hotmail-connect" id="hotmail3" />
+                                                <label for="hotmail3">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="hotmail-connect" id="hotmail4" />
+                                                <label for="hotmail4">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ques-category">
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>1.</span> Did you get login notifications from unexpected location?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="aol-login" id="aol1" />
+                                                <label for="aol1">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="aol-login" id="aol2" />
+                                                <label for="aol2">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>2.</span> Did you call technical support of AOL mail?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="aol-call" id="aol3" />
+                                                <label for="aol3">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="aol-call" id="aol4" />
+                                                <label for="aol4">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Email Account Question End -->
+                            <!-- Other Account Question Start -->
+                            <div class="main-ques-category">
+                                <div class="ques-category">
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>1.</span> Did you receive an email or notification that your Apple ID was used to sign in to a device you don't recognize?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="apple-notify" id="apple1" />
+                                                <label for="apple1">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="apple-notify" id="apple2" />
+                                                <label for="apple2">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>2.</span> Did you use Apple pay with this account?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="apple-pay" id="apple3" />
+                                                <label for="apple3">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="apple-pay" id="apple4" />
+                                                <label for="apple4">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ques-category">
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>1.</span> Have you received emails from Skype/Microsoft that your account's security information were changed?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="skype-email" id="skype1" />
+                                                <label for="skype1">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="skype-email" id="skype2" />
+                                                <label for="skype2">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>2.</span> Have you received a message “Help us secure your account” when trying to sign in to Skype eariler?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="skype-help" id="skype3" />
+                                                <label for="skype3">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="skype-help" id="skype4" />
+                                                <label for="skype4">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>3.</span> Was your account locked by Microsoft?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="skype-lock" id="skype5" />
+                                                <label for="skype5">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="skype-lock" id="skype6" />
+                                                <label for="skype6">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ques-category">
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>1.</span> Is your zoom account is locked?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="zoom-lock" id="zoom1" />
+                                                <label for="zoom1">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="zoom-lock" id="zoom2" />
+                                                <label for="zoom2">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>2.</span> Did you use personal metting id to host public event?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="zoom-host" id="zoom3" />
+                                                <label for="zoom3">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="zoom-host" id="zoom4" />
+                                                <label for="zoom4">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>3.</span> Did you click any unverified link that may appear in your chat window during zoom meeting?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="zoom-click" id="zoom5" />
+                                                <label for="zoom5">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="zoom-click" id="zoom6" />
+                                                <label for="zoom6">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>4.</span> Are you using Zoom latest version?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="zoom-version" id="zoom7" />
+                                                <label for="zoom7">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="zoom-version" id="zoom8" />
+                                                <label for="zoom8">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>5.</span> Do you set a passcode when arranging meetings and webinars?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="zoom-passcode" id="zoom9" />
+                                                <label for="zoom9">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="zoom-passcode" id="zoom10" />
+                                                <label for="zoom10">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ques-category">
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>1.</span> Did you give any personal information to any unknown person while chatting?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="hangout-info" id="hang1" />
+                                                <label for="hang1">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="hangout-info" id="hang2" />
+                                                <label for="hang2">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>2.</span> Did you give athourization to any third party apps?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="hangout-app" id="hang3" />
+                                                <label for="hang3">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="hangout-app" id="hang4" />
+                                                <label for="hang4">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>3.</span> Did you download Hangout application from official app store?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="hangout-download" id="hang5" />
+                                                <label for="hang5">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="hangout-download" id="hang6" />
+                                                <label for="hang6">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ques-category">
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>1.</span> Are you using Dropbox pc or mobile?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="dropbox-use" id="drop1" />
+                                                <label for="drop1">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="dropbox-use" id="drop2" />
+                                                <label for="drop2">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>2.</span> Did you use any Thirdparty encryption?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="dropbox-encryp" id="drop3" />
+                                                <label for="drop3">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="dropbox-encryp" id="drop4" />
+                                                <label for="drop4">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>3.</span> Did you use same password in multiple service you use?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="dropbox-multiple" id="drop5" />
+                                                <label for="drop5">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="dropbox-multiple" id="drop6" />
+                                                <label for="drop6">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>4.</span> Did you sign in to Dropbox on a non-personal device?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type">
+                                            <div>
+                                                <input type="radio" value="Yes" class="final-ques" name="dropbox-sign" id="drop7" />
+                                                <label for="drop7">Yes</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" value="No" class="final-ques" name="dropbox-sign" id="drop8" />
+                                                <label for="drop8">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ques-category">
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>1.</span> What's the account service name you've lost?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type d-block">
+                                            <div>
+                                                <input type="text" name="other-account" style="width: 100%; height: 35px" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ques set-ques">
+                                        <div class="set-ques-title">
+                                            <h2>
+                                                <span>2.</span> What is it for?
+                                            </h2>
+                                        </div>
+                                        <div class="set-ques-type d-block">
+                                            <div>
+                                                <textarea name="other-for" style="width: 100%; height: 80px"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- General Ques Start -->
+                            <div class="ques set-ques">
+                                <div class="set-ques-title">
+                                    <h2 class="general-ques-title">
+                                        When was your account hacked?
+                                    </h2>
+                                </div>
+                                <div class="set-ques-type d-block">
+                                    <div>
+                                        <textarea name="when-hack" class="general-ques" style="width: 100%; height: 80px"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ques set-ques">
+                                <div class="set-ques-title">
+                                    <h2 class="general-ques-title">
+                                        <!-- <span><i class="far fa-arrow-alt-circle-right list-point"></i></span> -->How did you lose your account?
+                                    </h2>
+                                </div>
+                                <div class="set-ques-type d-block">
+                                    <div>
+                                        <textarea name="how-lose" class="general-ques" style="width: 100%; height: 80px"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ques set-ques">
+                                <div class="set-ques-title">
+                                    <h2 class="general-ques-title">
+                                        <!-- <span><i class="far fa-arrow-alt-circle-right list-point"></i></span> -->Did hacker change email and phone number?
+                                    </h2>
+                                </div>
+                                <div class="set-ques-type d-block">
+                                    <div>
+                                        <textarea name="when-hack" class="general-ques" style="width: 100%; height: 80px"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ques set-ques">
+                                <div class="set-ques-title">
+                                    <h2 class="general-ques-title">
+                                        <!-- <span><i class="far fa-arrow-alt-circle-right list-point"></i></span> -->Do you have access to connected email and phone number?
+                                    </h2>
+                                </div>
+                                <div class="set-ques-type d-block">
+                                    <div>
+                                        <textarea name="email-phone-access" class="general-ques" style="width: 100%; height: 80px"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ques set-ques">
+                                <div class="set-ques-title">
+                                    <h2 class="general-ques-title">
+                                        <!-- <span><i class="far fa-arrow-alt-circle-right list-point"></i></span> -->Do you remeber your last login password?
+                                    </h2>
+                                </div>
+                                <div class="set-ques-type d-block">
+                                    <div>
+                                        <textarea name="remember-pass" class="general-ques" style="width: 100%; height: 80px"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ques set-ques">
+                                <div class="set-ques-title">
+                                    <h2 class="general-ques-title">
+                                        <!-- <span><i class="far fa-arrow-alt-circle-right list-point"></i></span> -->Do you remeber your last login device name and model?
+                                    </h2>
+                                </div>
+                                <div class="set-ques-type d-block">
+                                    <div>
+                                        <textarea name="remember-device" class="general-ques" style="width: 100%; height: 80px"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ques set-ques">
+                                <div class="set-ques-title">
+                                    <h2 class="general-ques-title">
+                                        <!-- <span><i class="far fa-arrow-alt-circle-right list-point"></i></span> -->When did you last login to your account?
+                                    </h2>
+                                </div>
+                                <div class="set-ques-type d-block">
+                                    <div>
+                                        <textarea name="when-last-login" class="general-ques" style="width: 100%; height: 80px"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ques set-ques">
+                                <div class="set-ques-title">
+                                    <h2 class="general-ques-title">
+                                        <!-- <span><i class="far fa-arrow-alt-circle-right list-point"></i></span> -->Did you set 2FA for account?
+                                    </h2>
+                                </div>
+                                <div class="set-ques-type d-block">
+                                    <div>
+                                        <textarea name="when-hack" class="general-ques" style="width: 100%; height: 80px"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ques set-ques">
+                                <div class="set-ques-title">
+                                    <h2 class="general-ques-title">
+                                        <!-- <span><i class="far fa-arrow-alt-circle-right list-point"></i></span> -->Have you got any message/email from hacker?
+                                    </h2>
+                                </div>
+                                <div class="set-ques-type d-block">
+                                    <div>
+                                        <textarea name="got-message" class="general-ques" style="width: 100%; height: 80px"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ques set-ques">
+                                <div class="set-ques-title">
+                                    <h2 class="general-ques-title">
+                                        <!-- <span><i class="far fa-arrow-alt-circle-right list-point"></i></span> -->Do you have a access to your two-factor authentication phone number or app?
+                                    </h2>
+                                </div>
+                                <div class="set-ques-type d-block">
+                                    <div>
+                                        <textarea name="access-2fa" class="general-ques" style="width: 100%; height: 80px"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ques set-ques">
+                                <div class="set-ques-title">
+                                    <h2 class="general-ques-title">
+                                        <!-- <span><i class="far fa-arrow-alt-circle-right list-point"></i></span> -->Have you tried to recover your account? How and what was the exact result?
+                                    </h2>
+                                </div>
+                                <div class="set-ques-type d-block">
+                                    <div>
+                                        <textarea name="try-recover" class="general-ques" style="width: 100%; height: 80px"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Other Account Question End -->
+                            <small style="display: none; color: red" id="small-error">Please fill all necessary
+                                field</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-navy py-2">Submit <i
+                            class="icofont-long-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>

@@ -1,0 +1,235 @@
+{% extends 'base/blog_base.html' %} {% load static %} {% load hosts %}{% load my_filter %} {% block title %} Home {% endblock title %} {% block headercss %}
+<link rel="stylesheet" href="{% static 'tfcss/blog/index.css' %}"> {% endblock headercss %} {% block content %}
+    <link rel="stylesheet" href="https://npmcdn.com/tootik@1.0.2/css/tootik.min.css">
+    <style>
+      [data-tootik]:after {
+          white-space: initial
+      }
+    </style>
+<section class="row mx-0 banner-1">
+    <div class="col-md-7 col-lg-7 col-xl-8 pe-2 banner-bg">
+        <div class="d-flex flex-column justify-content-center h-100">
+            <h4>TECHFORING CYBERHUB</h4>
+            <h5>A Dynamic Platform for Learning and Knowledge Sharing</h5>
+        </div>
+    </div>
+    <div class="col-md-5 col-lg-5 col-xl-4 px-0 px-md-2">
+        <div class="bg-gray px-3 py-5">
+            <h5 class="border-bottom border-secondary text-center fw-bold pb-2 mb-3">CATEGORIES</h5>
+
+            {% for category in categories %} {% if category.subcategory_category.count %}
+            <div class="accordion accordion-flush" id="accordionFlush">
+                <div class="accordion-item mt-2">
+                    <h2 class="accordion-header" id="flush-headingTwo">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#{{ category|replacespace }}" aria-expanded="false" aria-controls="{{ category|replacespace }}">
+                                        {{ category }}
+                                    </button>
+                    </h2>
+
+                    <div id="{{ category|replacespace }}" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlush">
+                        <div class="accordion-body overflow-auto">
+                            {% for category_subcategory in category.subcategory_category.all %}
+
+                            <a class="fw-bold" href="{% host_url 'category' host 'blog' %}{{category|replacespace}}/{{category_subcategory|replacespace}}">{{ category_subcategory }}</a> {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="accordion-item mt-2">
+                <a class="btn menu-link fw-bold" href="{% host_url 'category' host 'blog' %}{{ category|lower }}">{{ category }}</a>
+            </div>
+            {% endif %} {% endfor %}
+
+        </div>
+    </div>
+</section>
+
+
+<section class="case-studies-container mt-4">
+
+    <a href="{% host_url 'category' host 'blog' %}case_studies" class="container-heading">RECENT CASE STUDIES</a>
+
+    <div class="row post">
+        <div class="col-md-6 ps-md-0">
+            {% for post in case_studies %} {% if forloop.counter == 1 %}
+            <div>
+                <img src="{{post.feature_image.url}}" class="img-fluid w-100" alt="">
+            </div>
+            <div class="d-flex flex-column py-2">
+                <a href="{% host_url 'case_studies' host 'blog' %}{{post.post_url}}">
+                    <h5 class="title">{{post.title}}</h5>
+                </a>
+                <div class="position-relative">
+                    <span class=" p-0 me-3 text-green ">
+                        <i class=" bi bi-calendar "></i>
+                        {{post.date|date}}
+                    </span>
+                    <span class="p-0 me-3 text-green" title="Reading Time">
+                        <i class="bi bi-stopwatch"></i>
+                        {{post.reading_time}}
+                    </span>
+                    
+                            {% if post.id not in reading_lists %}
+                            <a href="{% host_url 'add_to_reading_list' host 'blog' %}{{ post.id }}"
+                                class="p-0 me-3 text-green" title="Add Reading List">
+                                <i class="bi bi-plus-circle"></i>
+                                Add
+                            </a>
+                        {% else %}
+                        <a href="{% host_url 'add_to_reading_list' host 'blog' %}{{ post.id }}"
+                            class="p-0 me-3 text-danger" title="Remove From Reading List">
+                            <i class="bi bi-dash-circle"></i>
+                            Remove
+                        </a>
+                        {% endif %}
+                </div>
+                <p class="mt-2">{{post.short_description}}</p>
+            </div>
+            {% endif %} {% endfor %}
+        </div>
+        <div class="col-md-6 pe-md-0">
+            {% for post in case_studies %} {% if forloop.counter != 1 %}
+            <div class="row {% if forloop.counter != 2 %}mt-3{% endif %} mx-0 bg-lightnavy" data-tootik="{{post.title}}" data-tootik-conf="top">
+                <div class="col-12 col-md-5 p-2 d-flex align-items-center">
+                    <img src="{{post.feature_image.url}}" class="img-fluid " alt="... ">
+                </div>
+                <div class="col-12 col-md-7 py-2 ps-md-0 pe-1 d-flex align-items-center">
+                    <div>
+                        <a href="{% host_url 'articles' host 'blog' %}{{post.post_url}}">
+                            <h6 class="fw-bold">{{post.title|truncatechars:68}}</h6>
+                        </a>
+                        <div class="info-area">
+                            <span class="p-0 me-3 text-green">
+                                <i class="bi bi-calendar"></i>
+                                {{post.date|date}}
+                            </span>
+                            <span class="p-0 me-3 text-green" title="Reading Time">
+                                <i class="bi bi-stopwatch"></i>
+                                {{post.reading_time}}
+                            </span>
+                                            
+                                {% if post.id not in reading_lists %}
+                                <a href="{% host_url 'add_to_reading_list' host 'blog' %}{{ post.id }}"
+                                    class="p-0 me-3 text-green" title="Add Reading List">
+                                    <i class="bi bi-plus-circle"></i>
+                                    Add
+                                </a>
+                            {% else %}
+                            <a href="{% host_url 'add_to_reading_list' host 'blog' %}{{ post.id }}"
+                                class="p-0 me-3 text-danger" title="Remove From Reading List">
+                                <i class="bi bi-dash-circle"></i>
+                                Remove
+                            </a>
+                            {% endif %}
+                            
+                        </div>
+                        <p class="mt-1 mb-0 fs-7 lh-sm">{{post.short_description|truncatechars:92}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endif %} {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- blogs container  -->
+<section class="blogs-container mt-4">
+
+    <a href="{% host_url 'category' host 'blog' %}blogs" class="container-heading">RECENT ARTICLES</a>
+
+    <div class="row post">
+        <div class="col-md-6 ps-md-0">
+            {% for post in articles %} {% if forloop.counter == 1 %}
+            <div>
+                <img src="{{post.feature_image.url}}" class="img-fluid" alt="">
+            </div>
+            <div class="d-flex flex-column py-2">
+                <a href="{% host_url 'articles' host 'blog' %}{{post.post_url}}">
+                    <h5 class="title">{{post.title}}</h5>
+                </a>
+                <div class="position-relative">
+                    <span class=" p-0 me-5 text-green ">
+                        <i class=" bi bi-calendar "></i>
+                        {{post.date|date}}
+                    </span>
+                    <span class="p-0 me-5 text-green" title="Reading Time">
+                        <i class="bi bi-stopwatch"></i>
+                        {{post.reading_time}}
+                    </span>
+
+                {% if post.id not in reading_lists %}
+                    <a href="{% host_url 'add_to_reading_list' host 'blog' %}{{ post.id }}"
+                        class="p-0 me-3 text-green" title="Add Reading List">
+                        <i class="bi bi-plus-circle"></i>
+                        Add
+                    </a>
+                {% else %}
+                <a href="{% host_url 'add_to_reading_list' host 'blog' %}{{ post.id }}"
+                    class="p-0 me-3 text-danger" title="Remove From Reading List">
+                    <i class="bi bi-dash-circle"></i>
+                    Remove
+                </a>
+                {% endif %}
+                    
+                </div>
+                <p class="mt-2">{{post.short_description}}</p>
+            </div>
+            {% endif %} {% endfor %}
+        </div>
+        <div class="col-md-6 pe-md-0">
+            {% for post in articles %} {% if forloop.counter != 1 %}
+            <div class="row {% if forloop.counter != 2 %}mt-3{% endif %} mx-0 bg-lightnavy" data-tootik="{{post.title}}" data-tootik-conf="top">
+                <div class="col-12 col-md-5 p-2 d-flex align-items-center ">
+                    <img src="{{post.feature_image.url}}" class="img-fluid " alt="... ">
+                </div>
+                <div class="col-12 col-md-7 py-2 ps-md-0 pe-1 d-flex align-items-center">
+                    <div>
+                        <a href="{% host_url 'articles' host 'blog' %}{{post.post_url}}">
+                            <h6 class="fw-bold">{{post.title|truncatechars:68}}</h6>
+                        </a>
+                        <div class="info-area">
+                            <span class="p-0 me-3 text-green">
+                                <i class="bi bi-calendar"></i>
+                                {{post.date|date}}
+                            </span>
+                            <span class="p-0 me-3 text-green" title="Reading Time">
+                                <i class="bi bi-stopwatch"></i>
+                                {{post.reading_time}}
+                            </span>
+                                            
+                                {% if post.id not in reading_lists %}
+                                <a href="{% host_url 'add_to_reading_list' host 'blog' %}{{ post.id }}"
+                                    class="p-0 me-3 text-green" title="Add Reading List">
+                                    <i class="bi bi-plus-circle"></i>
+                                    Add
+                                </a>
+                            {% else %}
+                            <a href="{% host_url 'add_to_reading_list' host 'blog' %}{{ post.id }}"
+                                class="p-0 me-3 text-danger" title="Remove From Reading List">
+                                <i class="bi bi-dash-circle"></i>
+                                Remove
+                            </a>
+                            {% endif %}
+                            
+                        </div>
+                        <p class="mt-1 mb-0 fs-7 lh-sm">{{post.short_description|truncatechars:92}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endif %} {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %} {% block customjs %}
+<script src=" https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+
+</script>
+{% endblock customjs %}

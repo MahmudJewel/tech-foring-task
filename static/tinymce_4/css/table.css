@@ -1,0 +1,32 @@
+@import './settings.css';
+
+table {
+  border-collapse: collapse;
+  margin: 0 0 1em 0;
+  & tr {
+    color: #444;
+    & th {
+      font: bold 13px var(--font);
+      text-align: left;
+      padding: 5px 15px;
+      background: #eee;
+      & p {
+        font: bold 13px var(--font);
+        padding: 0;
+        margin: 0;
+      }
+    }
+    & td {
+      font: bold 13px/20px var(--font);
+      color: #444;
+      padding: 5px 15px;
+      vertical-align: top;
+      & p {
+        font: 14px/20px var(--font);
+        color: #444;
+        padding: 0;
+        margin: 0;
+      }
+    }
+  }
+}

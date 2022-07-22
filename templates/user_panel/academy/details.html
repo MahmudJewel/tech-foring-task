@@ -1,0 +1,451 @@
+{% extends 'base/academy_user_base.html' %} {% load static %} {% load my_filter %} {% load hosts %} {% block title %} My
+    Courses {% endblock title %} {% block content %}
+    <div class="course-container mt-2 mb-4 position-relative">
+
+        <div class="preview-course px-2">
+            <h5 class="fw-bold border-bottom border-gray pb-14p text-green">{{ course.course_name }}</h5>
+
+
+            <h6 class="mt-4 fw-bold">Requirements</h6>
+            {{ course.long_description|safe }}
+
+            {% if course_type == 'pcs' %}
+                <div class="mt-5 row mx-0">
+                    <div class="col-md-8 d-flex justify-content-between">
+                        <h6 class="fw-bold">Course Content:</h6>
+                        <h6>{{ course.section_course.count }} Sections</h6>
+                        <h6>{{ course.id|classCount }} Lectures</h6>
+                        <h6>{{ course.duration|capitalize }}</h6>
+                    </div>
+                </div>
+
+                <div class="mt-5 course-info">
+                    <!-- for large devices  -->
+                    <div class="d-none d-md-block accordion accordion-flush" id="accordionFlushExample">
+                        {% for section in course.section_course.all %}
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="course-heading-{{ section|replacespace }}">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#course-{{ section|replacespace }}" aria-expanded="false"
+                                            aria-controls="course-{{ section|replacespace }}">
+                                        <table class="w-100" cellspacing="0">
+                                            <thead>
+                                            <tr>
+                                                <th class="title fw-bold">{{ section }}</th>
+                                                <th>{{ section.content_section.count }} on demand videos</th>
+                                                <th class="text-center">{{ section.content_section.count }} downloadable
+                                                    resources
+                                                </th>
+                                                <th class="fw-bold text-end">LECTURE {{ forloop.counter }}</th>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                    </button>
+                                    <div id="course-{{ section|replacespace }}" class="accordion-collapse collapse"
+                                         aria-labelledby="course-heading-{{ section|replacespace }}"
+                                         data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <table class="w-100" id="table">
+                                                <tbody class="fs-14">
+                                                {% for content in section.content_section.all %}
+                                                    <tr>
+                                                        <td class="col1">
+                                                            <i class="icofont-ui-video-play"></i>
+                                                            <h6 class="d-inline ps-2 fw-bold">
+                                                                {{ content.lecture_name }}
+                                                            </h6>
+                                                        </td>
+                                                        <td class="d-flex justify-content-between align-items-center">
+                                                            <h6>{{ content.get_duration }}</h6>
+                                                            {% if content.preview_video %}
+                                                                <button class="btn bg-transparent preview-btn"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#preview-video{{ content.id }}">
+                                                                    Preview
+                                                                </button>
+                                                            {% endif %}
+                                                        </td>
+
+                                                        <td class="text-center">Module {{ forloop.counter }}</td>
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </h2>
+
+                            </div>
+                            <!-- preview course video  -->
+                            {% for content in section.content_section.all %}
+                                <div class="modal fade" id="preview-video{{ content.id }}" tabindex="-1"
+                                     aria-labelledby="trainingModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-xl">
+                                        <div class="modal-content border-0 bg-transparent">
+
+                                            <div class="modal-body p-3 bg-transparent">
+                                                {% if content.preview_video %}
+                                                    <video controls="" class="img-fluid d-block mx-auto"
+                                                           preload="metadata"
+                                                           type="video/mp4"
+                                                           src="{{ content.preview_video.url }}"></video>
+                                                {% endif %}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+
+
+                    </div>
+
+                    <!-- for mobile devices  -->
+                    <div class="d-block d-md-none accordion accordion-flush" id="accordionFlushExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                        aria-controls="flush-collapseOne">
+                                    <span class="title fw-bold">INTRODUCTION TO ETHICAL HACKING</span>
+                                </button>
+                            </h2>
+                            <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                 aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body text-center p-0">
+
+                                    <div class="bg-white p-2 my-2">
+                                        <h6 class="fw-bold mt-2">
+                                            <i class="bi bi-play-btn"></i> Welcome and Introduction to the Instructor
+                                        </h6>
+                                        <div class="mt-2 d-flex align-items-center justify-content-center">
+                                            <h6 class="me-4">50m</h6>
+                                            <button class="btn bg-transparent p-0 text-green">Preview</button>
+                                        </div>
+                                        <a class="btn p-0 mt-2">
+                                            <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 1
+                                        </a>
+                                        <h6 class="mt-2">Module 1</h6>
+                                    </div>
+
+                                    <div class="bg-white p-2 my-2">
+                                        <h6 class="fw-bold mt-2">
+                                            <i class="bi bi-play-btn"></i> What is hacking? Who is a hacker?
+                                        </h6>
+                                        <div class="mt-2 d-flex align-items-center justify-content-center">
+                                            <h6 class="me-4">50m</h6>
+                                        </div>
+                                        <a class="btn p-0 mt-2">
+                                            <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 2
+                                        </a>
+                                        <h6 class="mt-2">Module 2</h6>
+                                    </div>
+
+                                    <div class="bg-white p-2 my-2">
+                                        <h6 class="fw-bold mt-2">
+                                            <i class="bi bi-play-btn"></i> Skills of an ethical hacker, Types of hacker
+                                        </h6>
+                                        <div class="mt-2 d-flex align-items-center justify-content-center">
+                                            <h6 class="me-4">50m</h6>
+                                        </div>
+                                        <a class="btn p-0 mt-2">
+                                            <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 3
+                                        </a>
+                                        <h6 class="mt-2">Module 3</h6>
+                                    </div>
+
+                                    <div class="bg-white p-2 my-2">
+                                        <h6 class="fw-bold mt-2">
+                                            <i class="bi bi-play-btn"></i> Goals and learning objectives
+                                        </h6>
+                                        <div class="mt-2 d-flex align-items-center justify-content-center">
+                                            <h6 class="me-4">50m</h6>
+                                        </div>
+                                        <a class="btn p-0 mt-2">
+                                            <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 4
+                                        </a>
+                                        <h6 class="mt-2">Module 4</h6>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                        aria-controls="flush-collapseTwo">
+                                    <span class="title fw-bold">RISK ASSESMENTS</span>
+                                </button>
+                            </h2>
+                            <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                 aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body text-center p-0">
+
+                                    <div class="bg-white p-2 my-2">
+                                        <h6 class="fw-bold mt-2">
+                                            <i class="bi bi-play-btn"></i> Welcome and Introduction to the Instructor
+                                        </h6>
+                                        <div class="mt-2 d-flex align-items-center justify-content-center">
+                                            <h6 class="me-4">50m</h6>
+                                            <button class="btn bg-transparent p-0 text-green">Preview</button>
+                                        </div>
+                                        <a class="btn p-0 mt-2">
+                                            <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 1
+                                        </a>
+                                        <h6 class="mt-2">Module 1</h6>
+                                    </div>
+
+                                    <div class="bg-white p-2 my-2">
+                                        <h6 class="fw-bold mt-2">
+                                            <i class="bi bi-play-btn"></i> What is hacking? Who is a hacker?
+                                        </h6>
+                                        <div class="mt-2 d-flex align-items-center justify-content-center">
+                                            <h6 class="me-4">50m</h6>
+                                        </div>
+                                        <a class="btn p-0 mt-2">
+                                            <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 2
+                                        </a>
+                                        <h6 class="mt-2">Module 2</h6>
+                                    </div>
+
+                                    <div class="bg-white p-2 my-2">
+                                        <h6 class="fw-bold mt-2">
+                                            <i class="bi bi-play-btn"></i> Skills of an ethical hacker, Types of hacker
+                                        </h6>
+                                        <div class="mt-2 d-flex align-items-center justify-content-center">
+                                            <h6 class="me-4">50m</h6>
+                                        </div>
+                                        <a class="btn p-0 mt-2">
+                                            <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 3
+                                        </a>
+                                        <h6 class="mt-2">Module 3</h6>
+                                    </div>
+
+                                    <div class="bg-white p-2 my-2">
+                                        <h6 class="fw-bold mt-2">
+                                            <i class="bi bi-play-btn"></i> Goals and learning objectives
+                                        </h6>
+                                        <div class="mt-2 d-flex align-items-center justify-content-center">
+                                            <h6 class="me-4">50m</h6>
+                                        </div>
+                                        <a class="btn p-0 mt-2">
+                                            <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 4
+                                        </a>
+                                        <h6 class="mt-2">Module 4</h6>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                        aria-controls="flush-collapseThree">
+                                    <span class="title fw-bold">MALWARE THREATS</span>
+                                </button>
+                            </h2>
+                            <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                 aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body text-center p-0">
+
+                                    <div class="bg-white p-2 my-2">
+                                        <h6 class="fw-bold mt-2">
+                                            <i class="bi bi-play-btn"></i> Welcome and Introduction to the Instructor
+                                        </h6>
+                                        <div class="mt-2 d-flex align-items-center justify-content-center">
+                                            <h6 class="me-4">50m</h6>
+                                            <button class="btn bg-transparent p-0 text-green">Preview</button>
+                                        </div>
+                                        <a class="btn p-0 mt-2">
+                                            <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 1
+                                        </a>
+                                        <h6 class="mt-2">Module 1</h6>
+                                    </div>
+
+                                    <div class="bg-white p-2 my-2">
+                                        <h6 class="fw-bold mt-2">
+                                            <i class="bi bi-play-btn"></i> What is hacking? Who is a hacker?
+                                        </h6>
+                                        <div class="mt-2 d-flex align-items-center justify-content-center">
+                                            <h6 class="me-4">50m</h6>
+                                        </div>
+                                        <a class="btn p-0 mt-2">
+                                            <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 2
+                                        </a>
+                                        <h6 class="mt-2">Module 2</h6>
+                                    </div>
+
+                                    <div class="bg-white p-2 my-2">
+                                        <h6 class="fw-bold mt-2">
+                                            <i class="bi bi-play-btn"></i> Skills of an ethical hacker, Types of hacker
+                                        </h6>
+                                        <div class="mt-2 d-flex align-items-center justify-content-center">
+                                            <h6 class="me-4">50m</h6>
+                                        </div>
+                                        <a class="btn p-0 mt-2">
+                                            <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 3
+                                        </a>
+                                        <h6 class="mt-2">Module 3</h6>
+                                    </div>
+
+                                    <div class="bg-white p-2 my-2">
+                                        <h6 class="fw-bold mt-2">
+                                            <i class="bi bi-play-btn"></i> Goals and learning objectives
+                                        </h6>
+                                        <div class="mt-2 d-flex align-items-center justify-content-center">
+                                            <h6 class="me-4">50m</h6>
+                                        </div>
+                                        <a class="btn p-0 mt-2">
+                                            <i class="bi bi-file-earmark-pdf"></i> Cybersecurity Introduction Guide 4
+                                        </a>
+                                        <h6 class="mt-2">Module 4</h6>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            {% elif course_type == 'bcs' %}
+
+                <div class="mt-5 row mx-0">
+                    <div class="col-md-8 d-flex justify-content-between">
+                        <h6 class="fw-bold">Course Content:</h6>
+                        <h6>{{ course.bcssection_bcscourse.count }} Sections</h6>
+                        <h6>{{ course.id|classCount }} Lectures</h6>
+                    </div>
+                </div>
+
+                <div class="mt-5 course-info">
+                    <!-- for large devices  -->
+                    <div class="d-none d-md-block accordion accordion-flush" id="accordionFlushExample">
+                        {% for section in course.bcssection_bcscourse.all %}
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="course-heading-{{ section|replacespace }}">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#course-{{ section|replacespace }}" aria-expanded="false"
+                                            aria-controls="course-{{ section|replacespace }}">
+                                        <table class="w-100" cellspacing="0">
+                                            <thead>
+                                            <tr>
+                                                <th class="title fw-bold">{{ section }}</th>
+                                                <th>{{ section.bcscontent_bcssection.count }} on demand videos</th>
+                                                <th class="text-center">{{ section.bcscontent_bcssection.count }} downloadable
+                                                    resources
+                                                </th>
+                                                <th class="fw-bold text-end">LECTURE {{ forloop.counter }}</th>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                    </button>
+                                    <div id="course-{{ section|replacespace }}" class="accordion-collapse collapse"
+                                         aria-labelledby="course-heading-{{ section|replacespace }}"
+                                         data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <table class="w-100" id="table">
+                                                <tbody class="fs-14">
+                                                {% for content in section.bcscontent_bcssection.all %}
+                                                    <tr>
+                                                        <td class="col1">
+                                                            <i class="icofont-ui-video-play"></i>
+                                                            <h6 class="d-inline ps-2 fw-bold">
+                                                                {{ content.lecture_name }}
+                                                            </h6>
+                                                        </td>
+                                                        <td class="d-flex justify-content-between align-items-center">
+                                                            <h6>{{ content.get_duration }}</h6>
+                                                            {% if content.preview_video %}
+                                                                <button class="btn bg-transparent preview-btn"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#preview-video{{ content.id }}">
+                                                                    Preview
+                                                                </button>
+                                                            {% endif %}
+                                                        </td>
+
+                                                        <td class="text-center">Module {{ forloop.counter }}</td>
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </h2>
+
+                            </div>
+                            <!-- preview course video  -->
+                            {% for content in section.bcscontent_bcssection.all %}
+                                <div class="modal fade" id="preview-video{{ content.id }}" tabindex="-1"
+                                     aria-labelledby="trainingModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-xl">
+                                        <div class="modal-content border-0 bg-transparent">
+
+                                            <div class="modal-body p-3 bg-transparent">
+                                                {% if content.preview_video %}
+                                                    <video controls="" class="img-fluid d-block mx-auto"
+                                                           preload="metadata"
+                                                           type="video/mp4"
+                                                           src="{{ content.preview_video.url }}"></video>
+                                                {% endif %}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+
+
+                    </div>
+
+                </div>
+            {% endif %}
+
+
+        </div>
+    </div>
+{% endblock content %} {% block customjs %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        let previewCourse = document.querySelectorAll('.preview-course');
+        let courses = document.querySelector('.course-container .courses');
+
+        document.querySelectorAll('.course-container .courses .view-btn').forEach((btn, index) => {
+            btn.addEventListener('click', (e) => {
+                courses.classList.toggle('d-none');
+                previewCourse[index].classList.toggle('d-none');
+            });
+        });
+
+        document.querySelectorAll('.learning-content p').forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('text-truncate');
+            });
+        });
+
+        document.querySelectorAll('.accordion table tr').forEach((tr, index) => {
+            tr.children[0].style.width = '40%';
+        });
+        document.getElementById('back-btn').addEventListener('click', e => {
+            courses.classList.toggle('d-none');
+            previewCourse.forEach(course => {
+                course.classList.add('d-none');
+            });
+        });
+
+        $(function () {
+            $('#preview-video').modal({
+                show: false
+            }).on('hidden.bs.modal', function () {
+                $(this).find('video')[0].pause();
+            });
+        });
+    </script>
+{% endblock customjs %}

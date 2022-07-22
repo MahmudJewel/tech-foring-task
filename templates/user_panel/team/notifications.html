@@ -1,0 +1,206 @@
+{% extends 'base/team_user_base.html' %} {% load static %} {% block title %} Notifications {% endblock title %} {% block content %}
+
+<section class="position-relative px-2">
+    <h4 class="fw-bold border-bottom border-gray pb-14p">Your Notifications
+    </h4>
+
+    <div class="row d-flex justify-content-between px-2">
+        <div class="col-auto d-flex">
+            <h6 class="fw-light bg-navy py-2 px-4 rounded today">24 Aug</h6>
+        </div>
+
+        <div class="col-auto">
+            <button class="clear-new btn btn-sm px-3 py-1 bg-green shadow rounded-pill">&#x24E7; Clear
+                All</button>
+        </div>
+    </div>
+
+    <div class="notifications-container px-4 mt-4">
+        <div class="new">
+            <div class="row notification">
+                <div class="col-11">
+                    <div class="row">
+                        <div class="col-auto icon icon-bg-green">
+                            <i class="icofont-heart"></i>
+                        </div>
+                        <div class="col-auto">
+                            <h6>You have subscribed to CONCIEREGE CYBERSECURITY </h6>
+                            <i class="icofont-clock-time"></i> 3m
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1 d-flex flex-column align-items-end">
+                    <button class="btn remove-notification" title="Remove This">&#x24E7;</button>
+                    <button class="btn mark-read" title="Mark as Read"><i class="icofont-check-circled"></i></button>
+                </div>
+            </div>
+            <div class="row notification">
+                <div class="col-11">
+                    <div class="row">
+                        <div class="col-auto icon icon-bg-gray">
+                            <i class="icofont-envelope-open"></i>
+                        </div>
+                        <div class="col-auto">
+                            <h6>You have invited Afsana Khan as a moderator </h6>
+                            <i class="icofont-clock-time"></i> 3m
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1 d-flex flex-column align-items-end">
+                    <button class="btn remove-notification" title="Remove This">&#x24E7;</button>
+                    <button class="btn mark-read" title="Mark as Read"><i class="icofont-check-circled"></i></i></button>
+                </div>
+            </div>
+            <div class="row notification">
+                <div class="col-11">
+                    <div class="row">
+                        <div class="col-auto icon icon-bg-blue">
+                            <i class="icofont-dollar"></i>
+                        </div>
+                        <div class="col-auto">
+                            <h6>Congratulations! You have upgraded your subscription in concierge cybersecurity </h6>
+                            <i class="icofont-clock-time"></i> 10m
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1 d-flex flex-column align-items-end">
+                    <button class="btn remove-notification" title="Remove This">&#x24E7;</button>
+                    <button class="btn mark-read" title="Mark as Read"><i class="icofont-check-circled"></i></i></button>
+                </div>
+            </div>
+            <div class="row notification">
+                <div class="col-11">
+                    <div class="row">
+                        <div class="col-auto icon icon-bg-blue">
+                            <i class="icofont-bell-alt"></i>
+                        </div>
+                        <div class="col-auto">
+                            <h6>We have audited your device just at 10.30 PM </h6>
+                            <i class="icofont-clock-time"></i> 1h
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1 d-flex flex-column align-items-end">
+                    <button class="btn remove-notification" title="Remove This">&#x24E7;</button>
+                    <button class="btn mark-read" title="Mark as Read"><i class="icofont-check-circled"></i></i></button>
+                </div>
+            </div>
+        </div>
+
+        <h5 class="prev-heading mt-5">Previous Notifications</h5>
+        <div class="d-flex justify-content-end">
+            <button class="clear-old btn btn-sm">&#x24E7; Clear
+                All</button>
+        </div>
+
+        <div class="old mb-3 mt-3">
+            <div class="row notification">
+                <div class="col-11">
+                    <div class="row">
+                        <div class="col-auto icon icon-bg-green">
+                            <i class="icofont-heart"></i>
+                        </div>
+                        <div class="col-auto">
+                            <h6>You have subscribed to CONCIEREGE CYBERSECURITY </h6>
+                            <i class="icofont-clock-time"></i> 3m
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1 d-flex flex-column align-items-end">
+                    <button class="btn remove-notification" title="Remove This">&#x24E7;</button>
+                    <button class="btn mark-read" title="Mark as Read"><i class="icofont-check-circled"></i></i></button>
+                </div>
+            </div>
+            <div class="row notification">
+                <div class="col-11">
+                    <div class="row">
+                        <div class="col-auto icon icon-bg-gray">
+                            <i class="icofont-envelope-open"></i>
+                        </div>
+                        <div class="col-auto">
+                            <h6>You have invited Afsana Khan as a moderator </h6>
+                            <i class="icofont-clock-time"></i> 3m
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1 d-flex flex-column align-items-end">
+                    <button class="btn remove-notification" title="Remove This">&#x24E7;</button>
+                    <button class="btn mark-read" title="Mark as Read"><i class="icofont-check-circled"></i></i></button>
+                </div>
+            </div>
+            <div class="row notification">
+                <div class="col-11">
+                    <div class="row">
+                        <div class="col-auto icon icon-bg-blue">
+                            <i class="icofont-heart"></i>
+                        </div>
+                        <div class="col-auto">
+                            <h6>You have subscribed to CONCIEREGE CYBERSECURITY </h6>
+                            <i class="icofont-clock-time"></i> 3m
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1 d-flex flex-column align-items-end">
+                    <button class="btn remove-notification" title="Remove This">&#x24E7;</button>
+                    <button class="btn mark-read" title="Mark as Read"><i class="icofont-check-circled"></i></i></button>
+                </div>
+            </div>
+            <div class="row notification">
+                <div class="col-11">
+                    <div class="row">
+                        <div class="col-auto icon icon-bg-blue">
+                            <i class="icofont-envelope-open"></i>
+                        </div>
+                        <div class="col-auto">
+                            <h6>You have invited Afsana Khan as a moderator </h6>
+                            <i class="icofont-clock-time"></i> 3m
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1 d-flex flex-column align-items-end">
+                    <button class="btn remove-notification" title="Remove This">&#x24E7;</button>
+                    <button class="btn mark-read" title="Mark as Read"><i class="icofont-check-circled"></i></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %} {% block customjs %}
+<script>
+    let d = new Date();
+    let day = d.getDate();
+    let month = d.getMonth();
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    document.querySelector('.today').textContent = day + ' ' + months[d.getMonth()];
+
+    let allNotifications = document.querySelectorAll('.notifications-container .notification');
+    let newNotifications = document.querySelectorAll('.notifications-container .new .notification');
+    let oldNotifications = document.querySelectorAll('.notifications-container .old .notification');
+    let removeButtons = document.querySelectorAll('.notifications-container .remove-notification');
+    let readButtons = document.querySelectorAll('.notifications-container .mark-read');
+
+    removeButtons.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+            allNotifications[index].classList.add('d-none');
+        });
+    });
+    readButtons.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+            allNotifications[index].style.backgroundColor = 'white';
+        });
+    });
+
+    document.querySelector('.clear-new').addEventListener('click', () => {
+        newNotifications.forEach(notification => {
+            notification.classList.add('d-none');
+        })
+    });
+    document.querySelector('.clear-old').addEventListener('click', (e) => {
+        oldNotifications.forEach(notification => {
+            notification.classList.add('d-none');
+        });
+        e.target.parentNode.classList.add('d-none');
+        document.querySelector('.prev-heading').classList.add('d-none');
+    });
+</script>
+{% endblock customjs %}

@@ -1,0 +1,153 @@
+.banner-1 .banner-bg {
+    /* padding: 4rem 1rem; */
+    color: white;
+    background-image: url("../../tfimg/blog/blogs_banner.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.row.banner-1 {
+    height: 300px;
+}
+
+.banner-1 .menu-link {
+    padding: 5px;
+    background-color: white;
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+}
+
+.banner-1 .menu-link:hover {
+    background-color: transparent;
+    border: 1px solid;
+}
+
+.dropdown-menu .dropdown-item:active {
+    background-color: var(--navy);
+}
+
+.dropdown-menu li:hover {
+    border-left: 4px solid rgb(130, 190, 40);
+}
+
+.container-heading {
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.container-heading::before {
+    display: inline-block;
+    content: '';
+    background-color: var(--navy);
+    width: 100%;
+    height: 3px;
+}
+
+.important-blogs .more-importants .post {
+    padding-left: 100px;
+}
+
+.important-blogs .more-importants .post img {
+    left: 50px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+}
+
+.important-blogs .more-importants .post .desc {
+    padding: 0.25rem 0;
+    display: flex;
+    align-items: center;
+    padding-left: 130px;
+}
+
+.important-blogs .card {
+    height: 330px;
+    box-shadow: 1px 1px 3px 1px #707070;
+    border: 5px solid #182f59a1;
+}
+
+.important-blogs .card-body {
+    background-image: linear-gradient(to bottom, #182f59bd, #182f5963);
+}
+
+.important-blogs .card:hover .card-body {
+    background-image: linear-gradient(to bottom, #182f59, #182f59);
+}
+
+.important-blogs .more-importants .post {
+    height: 155px;
+}
+
+.info-area {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.post .title h6 {
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.post p {
+    font-size: 15px;
+    line-height: 1.2;
+    margin-bottom: 0;
+    margin-top: 2px;
+}
+
+.get-update-heading {
+    margin-top: 5rem;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.get-update-heading:before,
+.get-update-heading:after {
+    background-color: #182f59;
+    content: "";
+    display: inline-block;
+    height: 2px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+}
+
+.get-updates label {
+    font-weight: bold;
+}
+
+.get-updates input {
+    border-bottom: 2px solid gray;
+    border-radius: 5px;
+    padding: 0.5rem;
+}
+
+
+/* 
+.get-updates label {
+    padding: 0 10px;
+    position: absolute;
+    top: 0.75rem;
+    right: 1rem;
+} */
+
+
+/* place inside media query for large device */
+
+.post.col-md-4:nth-child(3n-2) {
+    padding-left: 0;
+    padding-right: 1.5rem;
+}
+
+.post.col-md-4:nth-child(3n) {
+    padding-left: 1.5rem;
+    padding-right: 0;
+}

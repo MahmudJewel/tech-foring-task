@@ -1,0 +1,129 @@
+{% extends 'base/pcs_admin_base.html' %}
+{% load hosts %}
+{% load crispy_forms_tags %}
+{% load my_filter %}
+{% load static %}
+{% block title %}
+    Orders {% endblock title %}
+{% block headercss %}
+
+    <link rel="stylesheet" href="{% static 'tfcss/admin_panel/bcsTF/order.css' %}"/>
+
+    <style>
+
+        .fixed-top {
+            z-index: unset;
+        }
+
+        .card-body {
+            max-height: 220px;
+            overflow-y: scroll;
+        }
+
+        .card-body::-webkit-scrollbar {
+            width: 5px;
+            background-color: gray;
+        }
+
+        .card-body::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+            background-color: #182f59;
+        }
+    </style>
+
+{% endblock headercss %}
+{% block content %}
+    <main>
+        <div class="order-info">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Order ID: {{ current_order.id }}</h3>
+                        <p>User: <span class="text-bold">{{ current_order.user }}</span></p>
+                        <p>User Phone: <span class="text-bold">{{ current_order.user.phone_number }}</span></p>
+                        <p>User Email: <span class="text-bold">{{ current_order.user.email }}</span></p>
+                        <p>Order Date: <span class="text-bold">{{ current_order.create_time|date }}</span></p>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid mb-5 px-5">
+            <h4 class="mt-3 fw-bolder services-type">{{ current_order.subscription_package.package_name }}</h4>
+            <div class="package bg-lightgreen shadow p-3 rounded px-5">
+                {% for package in current_order.subscription_package.feature_subscription.all %}
+                    <div class="info-btn d-flex justify-content-between">
+                        <p class="mb-3">
+                            <i class="bi bi-box"></i> {{ package.feature_name }}
+                        </p>
+                        <p class="mb-0 fw-bold">{{ package.feature }}</p>
+                    </div>
+                {% endfor %}
+
+                <div class="mt-2 info-btn d-flex justify-content-between">
+                    <p class="mb-0">
+                        <i class="icofont-tag"></i> Price
+                    </p>
+                    <p class="mb-0 fw-bold">$ {{ current_order.subscription_package.price }} <span
+                            class="fw-bolder">/ {{ current_order.subscription_package.duration_type }}</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}
+{% block customjs %}
+    <script src="{% static 'tfjs/admin_panel/bcsTF/order.js' %}"></script>
+    <script>
+        console.log(document.querySelectorAll('.card-title.trash').length)
+        document.querySelectorAll('.card-title.trash').forEach(elem => {
+            elem.parentNode.parentNode.parentNode.outerHTML = '';
+        })
+    </script>
+    <script>
+        const inputItem = document.querySelectorAll('.items');
+        inputItem.forEach((item, index) => {
+            if (item.innerHTML.includes('/media/')) {
+                let image = item.innerHTML;
+
+                item.innerHTML = `<a type="button" class="p-0 text-success" data-bs-toggle="modal" data-bs-target="#imageModal${index}">View</a>`;
+
+                console.log(item.parentNode.parentNode)
+                document.querySelector('main').insertAdjacentHTML('beforeend', `<div class="modal fade" id="imageModal${index}" tabindex="-1" aria-labelledby="imageModal${index}Label" aria-hidden="true">
+                                      <div class="modal-dialog">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Media File</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                          </div>
+                                          <div class="modal-body">
+                                            <img src="${image}" class="img-fluid" alt="">
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>`);
+
+            }
+        })
+    </script>
+    <script src="{% static 'tfjs/user_panel/html2pdf.bundle.min.js' %}"></script>
+    <script>
+
+        function generatePDF(btn) {
+            btn.classList.add('d-none');
+            // Choose the element that our invoice is rendered in.
+            const element = document.getElementById('invoice');
+            // Choose the element and save the PDF for our user.
+            html2pdf().from(element).save();
+        }
+
+        console.log(document.querySelectorAll('.orders .view-btn'))
+        document.querySelector('.order-info button').addEventListener('click', () => {
+            document.querySelector('.invoice-btn').classList.remove('d-none');
+        });
+
+    </script>
+{% endblock customjs %}

@@ -1,0 +1,15 @@
+{% extends 'base/bcs_user_base.html' %} {% load static %} {% load hosts %} {% block title %} Thank You! {% endblock title %} {% block content %}
+<!--Thanks Section-->
+<section class="thank-section">
+    <h2>Thank You!</h2>
+    <i class="fa fa-check-square"></i>
+    <p>
+        We've received your quotation. We'll get back to you as soon as possible. Typical response time 12 hours.
+    </p>
+    <div class="container mt-5 d-flex mx-auto justify-content-evenly">
+        <a class="btn bg-navy" target="_blank" href="{% host_url 'home'%}">Home Page</a>
+        <a class="btn bg-navy" href="{% host_url 'bcs_user_services' host 'main' %}">Get Another Quotation</a>
+        <a class="btn bg-navy" href="{% host_url 'bcs_user_dashboard' host 'main' %}">Dashboard</a>
+    </div>
+</section>
+{% endblock content %}

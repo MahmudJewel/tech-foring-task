@@ -1,0 +1,48 @@
+{% load i18n %}
+
+{% block headercss %}
+<style>
+    .email_list {
+        background: #fff;
+        border-radius: 5px;
+        z-index: 3;
+        padding-bottom: 1rem;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+    }
+</style>
+{% endblock headercss %}
+
+<div class="container px-4 pt-3">
+    {% for emailaddress in user.emailaddress_set.all %}
+        {% if not emailaddress.verified %}
+            {% if user.emailaddress_set.all %}
+                <form action="{% url 'account_email' %}" class="email_list text-danger" method="post">
+                    {% csrf_token %}
+                    <fieldset class="blockLabels">
+                        {% for emailaddress in user.emailaddress_set.all %}
+                            <label for="email_radio_{{ forloop.counter }}"
+                                   class="{% if emailaddress.primary %}primary_email{% endif %}">
+
+                                <input id="email_radio_{{ forloop.counter }}" type="radio" name="email"
+                                       {% if emailaddress.primary or user.emailaddress_set.count == 1 %}checked="checked" {% endif %}
+                                       value="{{ emailaddress.email }}" hidden/>
+                            </label>
+                        {% endfor %}
+
+
+                        <div class="buttonHolder">
+                            Please verify your mail. Check your email inbox/spam folder for verification link. Or,
+                            <button class="btn btn-navy" type="submit"
+                                    name="action_send">{% trans 'Re-send Verification' %}</button>
+                        </div>
+                    </fieldset>
+                </form>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+
+</div>

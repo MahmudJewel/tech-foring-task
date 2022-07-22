@@ -1,0 +1,638 @@
+{% extends 'base/msbase.html' %} {% load static %} {% load hosts %} {% block title %} Concierge CyberSecurity | Techforing Ltd. - Shaping Tomorrow's Cyber Security {% endblock title %} {% block headercss %}
+<link rel="stylesheet" href="{% static '' %}css/mscss/glide.core.css" />
+<link rel="stylesheet" href="{% static '' %}css/mscss/glide.theme.css" /> {% endblock headercss %} {% block content %}
+<section class="banner banner-v2 lazy" data-bg="{%static ''%}msimg/PCS--header.png">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="banner-box">
+                    <h2>Secure your digital life</h2>
+                    <p class="text-justify">
+                        We protect High-Net-Worth Individuals, Corporate Executives & Their household with White-Glove Cybersecurity & Threat Detection Solutions. <br />
+                    </p>
+                    <div class="call-chat-btn">
+                        <button id="video-open-btn">Watch Service Intro</button><br />
+                        <a href="{% host_url 'get_start' %}" target="_blank">
+                            <button>Get in Touch</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ps-report-slider">
+    <div class="ps-report">
+        <div class="container">
+            <p>Report, Presentation & Free Test</p>
+            <h2>
+                17 ways High Net Worth Individuals are being hacked & how to be safe.
+            </h2>
+
+            <a href="https://personal.techforing.com/ebook?r_done=1" target="_blank" class="psr-btn">Download Now</a>
+        </div>
+    </div>
+</section>
+<section class="video-modal" id="video-modal">
+    <a href="{% host_url 'my_security_home' host 'mysecurity' %}"><i class="fas fa-window-close"></i></a>
+    <iframe src="https://www.youtube.com/embed/LRwOC1QXH_I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</section>
+
+<section class="intro">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="intro-img">
+                <img data-src="{%static ''%}msimg/intro.jpg" class="lazy" alt="concierge-cybersecurity-hnwi-digital-assets-protection" title="personal-data-protection-service" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="intro-box">
+                <h2>Concierge Cybersecurity</h2>
+                <img data-src="{%static ''%}msimg/intro-line.png" class="lazy" alt="intro line img" />
+                <p class="text-justify">
+                    High-end Personal Cyber Security Service for the most influential people. We identify, secure, and enlighten you on potential threats to your devices, social media, email, and private data.
+                </p>
+                <div class="intro-btn-box">
+                    <a href="{% host_url 'concierge_cybersecurity' host 'mysecurity' %}" target="_blank" class="intro-btn" aria-describedby="Learn more about concierge cybersecurity">Learn
+            More <i class="fas fa-arrow-right"></i>
+          </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="intro-border-box"></div>
+</section>
+<section class="guard lazy" data-bg="{%static ''%}msimg/guard.png">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="guard-box">
+                <h2>Cyber Investigation</h2>
+                <div class="guard-box-inner">
+                    <img data-src="{%static ''%}msimg/shape.png" alt="" class="lazy" />
+                    <ul>
+                        <li class="text-justify">
+                            Our Cyber Crime units confederate with Law Enforcement Agencies and scrutinize illegal monitoring, cyber harassment, online scamming, cyberbullying, and hacking.
+                        </li>
+
+                        <li class="text-justify">
+                            Extract invaluable tricky-to-find-on-net information about any individual through Osint investigations.
+                        </li>
+                    </ul>
+                    <a href="{% host_url 'cyber_investigation' host 'mysecurity' %}" target="_blank" class="guard-btn-a" aria-describedby="Learn more about cyber investigation"><button
+              class="guard-btn">
+              Learn More <i class="fas fa-arrow-right"></i></button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="serve">
+    <div class="container">
+        <div class="serve-header" id="serve">
+            <h2>Whom we serve</h2>
+            <p class="text-center">
+                Are you on bad terms with someone or have something to lose, a reputation to uphold, too busy with other things to be a tech-nerd? We have your back. We serve high-net-worth individuals, celebrities, CEOs, CFOs, corporate executives, politicians, and
+                businessmen, who might be targeted by ex-partners, stalkers, hacking groups, private investigators, foreign governments, and journalists.
+            </p>
+        </div>
+        <div class="serve-tab">
+            <div id="horizontalTab">
+                <ul>
+                    <li>
+                        <a href="#tab-1">High-net-worth <br />individuals <br />
+              <img data-src="{%static ''%}msimg/down-arrow.png" alt="down arrow" class="down-arrow-img-sm lazy" /></a>
+                        <a href="#tab-1">
+                            <img data-src="{%static ''%}msimg/down-arrow.png" alt="down arrow" class="down-arrow-img lazy" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#tab-2">business <br />
+              executives <br />
+              <img data-src="{%static ''%}msimg/down-arrow.png" alt="down arrow" class="down-arrow-img-sm lazy" /></a>
+                        <a href="#tab-2">
+                            <img data-src="{%static ''%}msimg/down-arrow.png" alt="down arrow" class="down-arrow-img lazy" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#tab-3">political <br />
+              leaders <br />
+              <img data-src="{%static ''%}msimg/down-arrow.png" alt="down arrow" class="down-arrow-img-sm lazy" /></a>
+                        <a href="#tab-3">
+                            <img data-src="{%static ''%}msimg/down-arrow.png" alt="down arrow" class="down-arrow-img lazy" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#tab-4">Celebrities & Media<br />
+              Personalities <br />
+              <img data-src="{%static ''%}msimg/down-arrow.png" alt="down arrow" class="down-arrow-img-sm lazy" /></a>
+                        <a href="#tab-4">
+                            <img data-src="{%static ''%}msimg/down-arrow.png" alt="down arrow" class="down-arrow-img lazy" />
+                        </a>
+                    </li>
+                </ul>
+
+                <div id="tab-1">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="tab-img">
+                                <img data-src="{%static ''%}msimg/High-Net-worth.png" class="lazy" alt="concierge-cybersecurity-online-protection-for-hnwi" title="hnwi-cybersecurity-service" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="tab-box">
+                                <h2>High-net-worth <br />individuals</h2>
+                                <p class="text-justify">
+                                    Owing to your reputation and very often - fame, you can be a go-to target to cybercriminals. Our trained team of Cybersecurity Specialists provide the best-in-breed cybersecurity solution in a Concierge package to ensure you can go about your daily business
+                                    anxiety-free. Our comprehensive approach reviews all your online financial security and individual data usage which are the most vulnerable.
+                                </p>
+                                <a href="{% host_url 'vip_cyber_defense' host 'mysecurity' %}" target="_blank" aria-describedby="Learn more about VIP Cyber defense"><button>
+                    Learn More <i class="fas fa-arrow-right"></i></button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab-2">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="tab-img">
+                                <img data-src="{%static ''%}msimg/Business-executives.png" class="lazy" alt="concierge-cybersecurity-vips-cyber-defence" title="execuitve-cybersecurity-protection" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="tab-box">
+                                <h2>business executives</h2>
+                                <p class="text-justify">
+                                    Techforing shields C-suite executives from any industry be it financial, chemicals, medical, retail, IT, banking, etc. Our trained team of Cybersecurity Analysts provides the best-in-breed cybersecurity solution in a Concierge package to ensure CEOs,
+                                    CFOs, CXOs, CIOs, CMOs, CBOs, CCOs can have a piece of mind.
+                                </p>
+                                <a href="{% host_url 'executive_protection' host 'mysecurity' %}" target="_blank" aria-describedby="Learn more about executive"><button>
+                    Learn More <i class="fas fa-arrow-right"></i></button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="tab-img">
+                                <img data-src="{%static ''%}msimg/Political-Leaders.png" class="lazy" alt="" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="tab-box">
+                                <h2>political leaders</h2>
+                                <p class="text-justify">
+                                    People who are involved in politics or having political affiliations can be targeted by opposition parties, who pay huge sums on cybercriminals to get what they need. We provide them and their families essential data security and educate them at every
+                                    step necessary.
+                                </p>
+                                <a href="{% host_url 'cyber_security_for_government' host 'mysecurity' %}" target="_blank" aria-describedby="Learn more about cybersecurity for governments"><button>
+                    Learn More <i class="fas fa-arrow-right"></i></button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab-4">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="tab-img">
+                                <img data-src="{%static ''%}msimg/Celebreties-And-Media-Personalities-2.png" class="lazy" alt="concierge-cybersecurity-private-client-cybersecurity" title="media-personel-cybersecurity-service" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="tab-box">
+                                <h2>
+                                    Celebrities & Media<br /> Personalities
+                                </h2>
+                                <p class="text-justify">
+                                    Afraid of Journalists and paparazzi? Our team of professional cyber investigators can protect all the devices, cloud accounts and social media platforms of you and your family members. If your privacy is hacked or you need to erase unwanted information
+                                    from the internet, we have special packages at your service.
+                                </p>
+                                <a href="{% host_url 'media_celebrities' host 'mysecurity' %}" target="_blank" aria-describedby="Learn more about media celebrities"><button>
+                    Learn More <i class="fas fa-arrow-right"></i></button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="serve-sm">
+    <div class="container">
+        <div id="tab-link1">
+            <p class="tab-link">
+                High-net-worth <br />individuals <br />
+                <img data-src="{%static ''%}msimg/down-arrow.png" alt="down arrow" class="down-arrow-img-sm lazy" />
+            </p>
+        </div>
+        <div id="tab-pan1">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="tab-img">
+                        <img data-src="{%static ''%}msimg/High-Net-worth.png" alt="concierge-cybersecurity-online-protection-for-hnwi" class="lazy" title="hnwi-cybersecurity-service" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="tab-box tab-box-sm">
+                        <h2>High-net-worth <br />individuals</h2>
+                        <p class="text-justify">
+                            Owing to your reputation and very often - fame, you can be a go-to target to cybercriminals. Our trained team of Cybersecurity Specialists provide the best-in-breed cybersecurity solution in a Concierge package to ensure you can go about your daily business
+                            anxiety-free. Our comprehensive approach reviews all your online financial security and individual data usage which are the most vulnerable.
+                        </p>
+                        <a href="{% host_url 'vip_cyber_defense' host 'mysecurity' %}" target="_blank" aria-describedby="Learn more about VIP Cyber defense"><button>Learn More <i
+                  class="fas fa-arrow-right"></i></button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tab-link2">
+            <p class="tab-link">
+                business <br /> executives <br />
+                <img data-src="{%static ''%}msimg/down-arrow.png" alt="down arrow" class="down-arrow-img-sm lazy" />
+            </p>
+        </div>
+        <div id="tab-pan2">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="tab-img">
+                        <img data-src="{%static ''%}msimg/Business-executives.png" alt="concierge-cybersecurity-vips-cyber-defence" title="execuitve-cybersecurity-protection" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="tab-box tab-box-sm">
+                        <h2>business executives</h2>
+                        <p class="text-justify">
+                            Techforing shields C-suite executives from any industry be it financial, chemicals, medical, retail, IT, banking, etc. Our trained team of Cybersecurity Analysts provides the best-in-breed cybersecurity solution in a Concierge package to ensure CEOs,
+                            CFOs, CXOs, CIOs, CMOs, CBOs, CCOs can have a piece of mind.
+                        </p>
+                        <a href="{% host_url 'executive_protection' host 'mysecurity' %}" target="_blank" aria-describedby="Learn more about executive protection"><button>Learn More <i
+                  class="fas fa-arrow-right"></i></button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tab-link3">
+            <p class="tab-link">
+                political <br /> leaders <br />
+                <img data-src="{%static ''%}msimg/down-arrow.png" alt="down arrow" class="down-arrow-img-sm lazy" />
+            </p>
+        </div>
+        <div id="tab-pan3">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="tab-img">
+                        <img data-src="{%static ''%}msimg/Political-Leaders.png" alt="" class="lazy" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="tab-box tab-box-sm">
+                        <h2>political leaders</h2>
+                        <p class="text-justify">
+                            People who are involved in politics or having political affiliations can be targeted by opposition parties, who pay huge sums on cybercriminals to get what they need. We provide them and their families essential data security and educate them at every
+                            step necessary.
+                        </p>
+                        <a href="{% host_url 'cyber_security_for_government' host 'mysecurity' %}" target="_blank" aria-describedby="Learn more about cyber security for government"><button>Learn
+                More <i class="fas fa-arrow-right"></i></button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tab-link4">
+            <p class="tab-link">
+                Celebreties & media<br /> personalities <br />
+                <img data-src="{%static ''%}msimg/down-arrow.png" alt="down arrow" class="down-arrow-img-sm lazy" />
+            </p>
+        </div>
+        <div id="tab-pan4">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="tab-img">
+                        <img data-src="{%static ''%}msimg/Celebreties-And-Media-Personalities-2.png" alt="concierge-cybersecurity-private-client-cybersecurity" class="lazy" title="media-personel-cybersecurity-service" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="tab-box tab-box-sm">
+                        <h2>
+                            Celebreties & media<br /> personalities
+                        </h2>
+                        <p class="text-justify">
+                            Afraid of Journalists and paparazzi? Our team of professional cyber investigators can protect all the devices, cloud accounts and social media platforms of you and your family members. If your privacy is hacked or you need to erase unwanted information
+                            from the internet, we have special packages at your service.
+                        </p>
+                        <a href="{% host_url 'media_celebrities' host 'mysecurity' %}" target="_blank" aria-describedby="Learn more about media celebrities"><button>Learn More <i
+                  class="fas fa-arrow-right"></i></button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="discover">
+    <div class="d-border-box"></div>
+    <div class="d-solid-box"></div>
+    <div class="container">
+        <div class="row discover-row">
+            <div class="col-md-6">
+                <div class="discover-box">
+                    <h2>Incident Response</h2>
+                    <div class="lime"></div>
+                    <p>
+                        Hackers attack in every 39 seconds, on average 2,244 times a day.
+                    </p>
+                    <ul>
+                        <li>
+                            <i class="fas fa-circle"></i> Remove unwanted data and links from the internet
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>Remove virus and malware from your device
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i> Recover and restore control of your hacked accounts and devices
+                        </li>
+                        <div class="intro-btn-box">
+                            <a href="{% host_url 'incident_response_service' host 'mysecurity' %}" target="_blank" class="intro-btn discover-btn" aria-describedby="Learn more about incident response service">Learn More <i class="fas fa-arrow-right"></i>
+              </a>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="discover-img">
+                    <img data-src="{%static ''%}msimg/Why-Us-Graphics.png" alt="Doscover img" class="lazy" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="provide">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-md-5">
+                <div class="provide-box-left">
+                    <h3>We provide</h3>
+                    <h2>
+                        personal information security to stay steps ahead of threats.
+                    </h2>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="provide-box-right">
+                    <p>Your Digital data protection is our responsibility.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="count">
+    <div class="container">
+        <h1>WE DISTRIBUTE CYBERSECURITY ALL OVER THE WORLD</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-3">
+                <div class="count-box">
+                    <div class="d-flex justify-content-center">
+                        <i class="far fa-comment-alt"></i>
+                        <h2><span>1.6</span>k</h2>
+                    </div>
+                    <h3>Positive Reviews</h3>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="count-box">
+                    <div class="d-flex justify-content-center">
+                        <i class="far fa-user"></i>
+                        <h2><span>20</span>k</h2>
+                    </div>
+                    <h3>Total Clients</h3>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="count-box count-last">
+                    <div class="d-flex justify-content-center">
+                        <i class="fas fa-heart"></i>
+                        <h2><span>99</span>%</h2>
+                    </div>
+
+                    <h3>Satisfied Clients</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="happy-client">
+    <div class="container">
+        <h2>Thousands of <span>Happy Clients</span></h2>
+        <p class="text-center">
+            To this day, Cybersecurity is the #1 corporate governance challenge- yet 87 percent of business professionals and board members lack confidence in their company’s cyber resilience. We take this challenge wholeheartedly and have successfully delivered
+            to thousands of clients. Some of them are gracious enough to give us their precious feedback.
+        </p>
+    </div>
+</section>
+<section class="client-slider">
+    <div class="container">
+        <div class="glide">
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    <li class="glide__slide">
+                        <div class="inner-slide">
+                            <div class="client-box">
+                                <div class="details d-flex">
+                                    <img src="{% static ''%}msimg/virus/enrico-garzotto.jpg" alt="client img" class="lazy" />
+                                    <div class="name">
+                                        <h2>Enrico Garzotto (Italy)</h2>
+                                        <h3>CEO & Founder, Enrico Garzotto</h3>
+                                    </div>
+                                </div>
+                                <img data-src="{%static ''%}msimg/quote.png" alt="" class="quot-img lazy" />
+                                <p class="text-justify">
+                                    One morning, I woke up getting calls from everywhere. Somebody sent suspicious inbox messages from my social media profile to all my friends and foes. I asked my assistant to look into it. He found out about this cybersecurity team. They did something
+                                    to help me get my login access back. Overall, a very professional job! Fast and reliable.
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="inner-slide">
+                            <div class="client-box">
+                                <div class="details d-flex">
+                                    <img src="{% static ''%}msimg/Dan-Carnation.jpg" class="lazy" alt="client img" />
+                                    <div class="name">
+                                        <h2>Dan Carnation (USA)</h2>
+                                        <h3>Sr. Loanologist, BIMort</h3>
+                                    </div>
+                                </div>
+                                <img data-src="{%static ''%}msimg/quote.png" alt="" class="quot-img lazy" />
+                                <p class="text-justify">
+                                    I needed a cybersecurity expert who could encrypt financial data then transfer to another place securedly. The guy from This team seemed to be a Pro at it. With his help I believe my project is safeguarded enough. They was great to work with. Will hire
+                                    again for next phase of project.
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="inner-slide">
+                            <div class="client-box">
+                                <div class="details d-flex">
+                                    <img src="{% static ''%}msimg/shawn-bowman.jpg" class="lazy" alt="client img" />
+                                    <div class="name">
+                                        <h2>Shawn Bowman (USA)</h2>
+                                        <h3>
+                                            President, IdeaSeat Marketing and Advertising, LLC
+                                        </h3>
+                                    </div>
+                                </div>
+                                <img data-src="{%static ''%}msimg/quote.png" alt="" class="quot-img lazy" />
+                                <p class="text-justify">
+                                    My PC's acting strangely of late. Applications kept shutting down on me, was losing data left and right. decided to install a virus guard, hired Techforing Engineers. They setup Kaspersky remotely. Now, I'm running it for 3 days as smooth as a new car!
+                                    gotta say- Great Work, you guys are really Focused on getting the project done right.
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="inner-slide">
+                            <div class="client-box">
+                                <div class="details d-flex">
+                                    <img src="{% static ''%}msimg/Brandan-S..jpg" class="lazy" alt="client img" />
+                                    <div class="name">
+                                        <h2>Brendan Swan (USA)</h2>
+                                        <h3>Principle, Brooks Consulting, LLC</h3>
+                                    </div>
+                                </div>
+                                <img data-src="{%static ''%}msimg/quote.png" alt="" class="quot-img lazy" />
+                                <p class="text-justify">
+                                    I have depended on this cybersecurity company for a number of projects and they never fail to deliver. Hired them to create secure network (VPN/Proxy). They did a fine job as always!
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="inner-slide">
+                            <div class="client-box">
+                                <div class="details d-flex">
+                                    <img src="{% static ''%}msimg/Christine-Carter.png" class="lazy" alt="client img" />
+                                    <div class="name">
+                                        <h2>Christine Carter (USA)</h2>
+                                        <h3>Writer, christinecarter.com</h3>
+                                    </div>
+                                </div>
+                                <img data-src="{%static ''%}msimg/quote.png" alt="" class="quot-img lazy" />
+                                <p class="text-justify">
+                                    This team did a fantastic job for us and provided the highest quality 'Data Security' work. They truly are some experts in this field. We will use them again and again whenever we need assistance with security issues.
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="inner-slide">
+                            <div class="client-box">
+                                <div class="details d-flex">
+                                    <img src="{% static ''%}msimg/John-Surie.jpg" class="lazy" alt="client img" />
+                                    <div class="name">
+                                        <h2>JOHN SURIE (USA)</h2>
+                                        <h3>Owner, Fire Shaper</h3>
+                                    </div>
+                                </div>
+                                <img data-src="{%static ''%}msimg/quote.png" alt="" class="quot-img lazy" />
+                                <p class="text-justify">
+                                    A colleague of mine mistakenly emailed a client's file in error to a different department. We needed someone to interfere and provide data security to stop it from happening. These guys helped me do it. They're very knowledgeable. All the best!
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="glide__arrows" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
+          <img data-src="{%static ''%}msimg/Right-Sliding-Icon.png" class="left-slide-img lazy" alt="left icon" />
+        </button>
+                <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
+          <img data-src="{%static ''%}msimg/Left-Sliding-Icon.png" class="right-slide-img lazy" alt="right icon" />
+        </button>
+            </div>
+            <div class="glide__bullets home-glide-bullets" data-glide-el="controls[nav]">
+                <button class="glide__bullet" data-glide-dir="=0"></button>
+                <button class="glide__bullet" data-glide-dir="=1"></button>
+                <button class="glide__bullet" data-glide-dir="=2"></button>
+                <button class="glide__bullet" data-glide-dir="=3"></button>
+                <button class="glide__bullet" data-glide-dir="=4"></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="hcase-section">
+    <div class="container">
+        <div class="home-bar"></div>
+        <h2 class="hcase-title">Important Case Studies</h2>
+        <div class="row hcase-row">
+            <div class="col-md-4">
+                <div class="hcase-outer">
+                    <div class="hcase-box hcase1 lazy" data-bg="{% static '' %}msimg/case1.jpg">
+                        <div class="hcase-top">
+                            <h2>Cyber Investigation</h2>
+                            <div class="hcase-bar"></div>
+                        </div>
+                        <div class="hcase-bottom">
+                            <h2>Online Scam -Love Trap</h2>
+                            <p class="text-justify">
+                                People get picked up regularly on dating apps by scammers. A seemingly sweet person can unravel as a con-man and can destroy a person's personal life in a matter of moments. We faced a case where an American man started having things for a young lady,
+                                who seemed innocent at first...
+                            </p>
+                            <a href="https://blog.techforing.com/case_studies/online-dating-scam-love-trap/" target="_blank">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="hcase-outer">
+                    <div class="hcase-box hcase2 lazy" data-bg="{% static '' %}msimg/case2.jpg">
+                        <div class="hcase-top">
+                            <h2>Incident Response</h2>
+                            <div class="hcase-bar"></div>
+                        </div>
+                        <div class="hcase-bottom">
+                            <h2>Privacy Compromised- Social Media got Hacked</h2>
+                            <p class="text-justify">
+                                A genuinely harmless individual can also be a victim of social media hackers. We had a client who was unaware of how some of her harmless actions could rub someone in the wrong way to the extent that they could go on to destroy her private life. Read
+                                to find out how it all started.
+                            </p>
+                            <a href="https://blog.techforing.com/case_studies/social-media-got-hacked/" target="_blank">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="hcase-outer">
+                    <div class="hcase-box hcase3 lazy" data-bg="{% static '' %}msimg/case3.jpg">
+                        <div class="hcase-top">
+                            <h2>Cyber Investigation</h2>
+                            <div class="hcase-bar"></div>
+                        </div>
+                        <div class="hcase-bottom">
+                            <h2>Online Harassment</h2>
+                            <p class="text-justify">
+                                A school teacher's life was turned upside down by a stalker who kept on harassing her in various ways. Cybercrimes like these are quite common among individuals and lead to cases of paranoia. We investigate such cases using forensic evidence and try to
+                                give closure to the victim.
+                            </p>
+                            <a href="https://blog.techforing.com/case_studies/online-harassment-saving-nine/" target="_blank">Read
+                More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="protect lazy" data-bg="{%static ''%}msimg/Contact-Us-Bg.png">
+    <div class="container">
+        <h2>Ready to protect your cyberspace?</h2>
+        <p>Find out how WE can help you</p>
+        <a href="{% host_url 'get_start' %}" target="_blank">
+            <button>Get On Board</button></a>
+    </div>
+</section>
+{% endblock content %} {% block customjs %}
+<script src="{%static ''%}msjs/custom.js"></script>
+<script src="{%static ''%}msjs/custom_tab.js"></script>
+{% endblock customjs %}

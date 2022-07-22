@@ -1,0 +1,198 @@
+{% extends 'base/base.html' %} {% load static %} {% load hosts %} {% block title %} Become a partner {% endblock title %} {% block headercss %}
+<link rel="stylesheet" href="{% static '' %}tfcss/glide.core.css" />
+<link rel="stylesheet" href="{% static '' %}tfcss/glide.theme.css" />
+<link rel="stylesheet" href="{% static '' %}tfcss/style.css" />
+<link rel="stylesheet" href="{% static '' %}css/telephone.css" />
+<!-- style for bitrix form  -->
+<style>
+    .iti__selected-flag {
+        border-right: none;
+    }
+    
+    .b24-form-field-phone .b24-form-control-label {
+        top: 10px !important;
+        font-size: 14px !important;
+    }
+    
+    input[type='tel'] {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    
+    .b24-form {
+        font-family: "Roboto Slab", serif !important;
+    }
+    
+    .b24-form-header-padding {
+        padding: 0 !important;
+    }
+    
+    .b24-form-padding-side {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    
+    form .b24-form-field {
+        width: 50% !important;
+        display: inline-block !important;
+    }
+    
+    .b24-form-field:nth-child(2n+1) {
+        padding-right: 10px !important;
+    }
+    
+    .b24-form-field:nth-child(2n) {
+        padding-left: 10px !important;
+    }
+    
+    .b24-form-btn {
+        background-color: #182f59 !important;
+        color: white !important;
+        font-family: "Roboto Slab", serif !important;
+        text-transform: uppercase !important;
+        border-radius: 0 !important;
+        font-weight: 400 !important;
+        font-size: 18px !important;
+        padding: 0 30px !important;
+        width: auto !important;
+        display: block !important;
+        margin: 0 auto !important;
+    }
+    
+    .b24-form-btn:hover {
+        background-color: #182f59 !important;
+        padding: 0 40px !important;
+    }
+    
+    .b24-form-control-string .b24-form-control {
+        background-color: #ffffff99 !important;
+    }
+    
+    .b24-form-control-label {
+        opacity: 1 !important;
+    }
+    
+    .b24-form-control {
+        border-radius: 0 !important;
+    }
+    
+    .b24-form-field {
+        margin-bottom: 10px !important;
+    }
+    
+    .b24-form-control-alert {
+        margin-bottom: 10px;
+    }
+    
+    .b24-form-field-phone {
+        top: -8px;
+        position: relative;
+    }
+    
+    .b24-form-field-phone input {
+        margin-top: 0;
+    }
+</style>
+{% endblock headercss %} {% block content %}
+<!--Banner Section-->
+<section class="bpartner-banner"></section>
+
+<section class="bform">
+    <div class="container">
+        <h2>Become a techforing Partner</h2>
+        <p>Please tell us a bit about yourself by filling out the form</p>
+        <div class="bform-row row row-inverse">
+            <div class="col-md-7">
+                <div class="bform-main">
+                    <div id="mybForm">
+                        <script data-b24-form="inline/78/b1kxql" data-skip-moving="true">
+                            (function(w, d, u) {
+                                var s = d.createElement('script');
+                                s.async = true;
+                                s.src = u + '?' + (Date.now() / 180000 | 0);
+                                var h = d.getElementsByTagName('script')[0];
+                                h.parentNode.insertBefore(s, h);
+                            })(window, document, 'https://cdn.bitrix24.com/b15773863/crm/form/loader_78.js');
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="bform-img">
+                    <img src="{% static '' %}tfimg/bpartner/1.png" alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %} {% block customjs %}
+
+<script src="{% static '' %}tfjs/glide.js"></script>
+
+<script src="{% static '' %}js/telephone.js"></script>
+<script>
+    if (localStorage.hasOwnProperty('b24-form-field-stored-values'))
+        localStorage.removeItem('b24-form-field-stored-values');
+
+    let timer = 0;
+    let country = 'us';
+    let countryData;
+
+    fetch('https://reallyfreegeoip.org/json/')
+        .then(res => res.json())
+        .then(data => {
+            country = data.country_code.toLowerCase();
+            ipLocation();
+        });
+
+    function ipLocation() {
+        function addCode() {
+
+            let input = document.querySelectorAll("input[type='tel']");
+
+            input.forEach(elem => {
+                let currInput = intlTelInput(elem, {
+                    initialCountry: country
+                });
+
+                countryData = currInput.getSelectedCountryData();
+                elem.value = '+' + countryData.dialCode;
+
+                let dialCode = '+' + countryData.dialCode;
+                document.addEventListener('click', e => {
+                    let elemClass = e.target.classList;
+                    if (elemClass.contains('iti__country')) {
+                        dialCode = e.target.children[2].innerHTML;
+                        elem.value = dialCode;
+                    } else if (elemClass.contains('iti__flag-box') ||
+                        elemClass.contains('iti__country-name') ||
+                        elemClass.contains('iti__dial-code')) {
+                        dialCode = e.target.parentNode.children[2].innerHTML;
+                        elem.value = dialCode;
+                    }
+                });
+            });
+            timer++;
+            if (timer > 30)
+                clearInterval(interval);
+        }
+
+        let interval = setInterval(addCode, 500);
+
+        document.querySelectorAll('.bitrix-form-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                timer = 0;
+                interval = setInterval(addCode, 500);
+            });
+        });
+
+        let classes = ['b24-form', 'b24-form-control', 'iti__flag', 'iti__arrow', 'iti__selected-flag'];
+        document.body.addEventListener('click', e => {
+            if (classes.includes(e.target.classList[0]))
+                clearInterval(interval);
+        });
+    }
+</script>
+
+
+{% endblock customjs %}

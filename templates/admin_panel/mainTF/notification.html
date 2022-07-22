@@ -1,0 +1,218 @@
+{% extends 'base/main_admin_base.html' %}
+{% load static %}
+{% load hosts %}
+{% load crispy_forms_tags %}
+{% block title %} Notifications
+{% endblock title %}
+{% block headercss %}
+    <link rel="stylesheet" href="{% static 'tfcss/admin_panel/mainTF/notification.css' %}"/>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+    <style>
+        #notification-table_filter {
+            margin-bottom: 2rem;
+            float: right;
+            width: 60%;
+        }
+
+        #notification-table_filter label {
+            padding: 0.5rem 1rem;
+            width: 100%;
+            border: 1px solid #707070;
+        }
+
+        #notification-table_length label {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            width: 26%;
+        }
+
+        #notification-table_length .form-select {
+            width: 200px;
+        }
+
+        #notification-table_filter input {
+            display: inline !important;
+            border-color: transparent;
+            width: 90%;
+            padding: 0 0.75rem;
+        }
+
+        @media (min-width: 1000px) {
+            .notification-table {
+                width: 1400x !important;
+            }
+        }
+    </style>
+{% endblock headercss %}
+{% block content %}
+
+    <main class="mb-5">
+        <div class="container">
+            <div class="row my-3">
+                <h3 class="text-uppercase">Select Category</h3>
+                <select name="notification_type" id="notification_type" class="form-select mb-3">
+                    <option value="individual">Individual</option>
+                    <option value="business">Business</option>
+                    <option value="collective">Collective</option>
+                    <option value="interest">Interest</option>
+                    <option value="date_range">Date Range</option>
+                </select>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <h3 class="text-uppercase">send Notification</h3>
+                    {{ form.media }}
+                    {{ form|crispy }}
+                    <div class="">
+                        <button name="instant-btn" class="btn btn-primary fw-bolder text-uppercase float-end sendBtn"
+                                type="submit">
+                            send
+                        </button>
+                    </div>
+                </form>
+            </div>
+            {% comment %}
+            <div class="row my-3">
+                <h3 class="text-uppercase">auto Notification</h3>
+                <hr class="my-4"/>
+                <h5 class="text-uppercase mb-3">create notification</h5>
+                <textarea name="send-notification" id="" cols="30" rows="10" placeholder="write here"
+                          style="height:60px; width:95%; margin-inline-start: 1rem;" class="addNotification"></textarea>
+                <span class="d-none text-danger addError fw-bolder">Notification cannot be empty!</span>
+                <div class="row my-3">
+                    <div class="col-md-3">
+                        <select class="form-select" aria-label="Default select">
+                            <option>Select target users</option>
+                            <option value="">New User</option>
+                            <option value="">New Subscribe User</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select" aria-label="Default select">
+                            <option>
+                                Select target users by interest list
+                            </option>
+                            <option value="">Concierge Cybersecurity</option>
+                            <option value="">Security Compliance</option>
+                            <option value="">Training Program</option>
+                        </select>
+                    </div>
+                    <div class="col-md-5 d-flex align-center">
+                        <label for="notificationRange" class="notificationRange">Select Date & time: </label>
+                        <input type="datetime-local" class="form-control" placeholder="Select a Date and Time"
+                               id="notificationRange"/>
+                    </div>
+                    <div class="col-md-1">
+                        <button class="btn btn-primary text-uppercase float-end addBtn">
+                            add
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% endcomment %}
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table notification-table" id="notification-table">
+                        <thead class="text-center text-uppercase">
+                        <tr>
+                            <th>notification text</th>
+                            <th>target user</th>
+                            <th>time</th>      
+                            <th>Action</th>             
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for notification in notifications %}
+                            <tr class="">
+                                <td>{{ notification.notification|safe }}</td>
+                                <td>{{ notification.category_choice|upper }}</td>
+                                <td class="text-center">{{ notification.notification_time }}</td>
+                                <td><a href="{% host_url 'main_admin_notification_delete' id=notification.id %}"
+                                           class="btn trash">
+                                            <i class="bi bi-trash-fill text-danger rounded-circle activites-icon"></i>
+                                            Delete
+                                        </a></td>
+                                {% comment %} <td>{{ notification.notification_time }}</td> {% endcomment %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}
+{% block customjs %}
+    <script src="{% static 'tfjs/admin_panel/mainTF/notification.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        let categoryChoice = document.getElementById('id_category_choice');
+        fetch(`${mainOrigin}/api/main/individual/`)
+            .then(res => res.json())
+            .then(data => {
+                let categoryField = `<select id="id_category_choice" class="form-control" name="category_choice">`;
+                data.response.forEach(option => {
+                    categoryField += `<option value="${option.toLowerCase().replace(' ', '_')}">${option}</option>`;
+                });
+                categoryField += '</select>';
+                categoryChoice.outerHTML = categoryField;
+
+                $('#id_category_choice').select2();
+            })
+
+        document.getElementById('notification_type').addEventListener('change', e => {
+            categoryChoice = document.getElementById('id_category_choice');
+            if (e.target.value !== 'date_range') {
+                fetch(`${mainOrigin}/api/main/${e.target.value}/`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (document.querySelector('#daterange')) {
+                            document.querySelector('#daterange').remove()
+                            const daterangeLabel = document.querySelector("#div_id_category_choice label")
+                            daterangeLabel.textContent = "Category choice*"
+                            let categoryField = `<select id="id_category_choice" class="form-control" name="category_choice">`;
+                            data.response.forEach(option => {
+                                categoryField += `<option value="${option.toLowerCase()}">${option}</option>`;
+                            });
+                            categoryField += '</select>';
+                            categoryChoice.outerHTML = categoryField;
+
+                            $('#id_category_choice').select2();
+                        } else {
+                            let categoryField = `<select id="id_category_choice" class="form-control" name="category_choice">`;
+                            data.response.forEach(option => {
+                                categoryField += `<option value="${option.toLowerCase()}">${option}</option>`;
+                            });
+                            categoryField += '</select>';
+                            categoryChoice.outerHTML = categoryField;
+
+                            $('#id_category_choice').select2();
+                        }
+
+                    })
+            } else {
+                document.querySelector('.select2').remove()
+                const daterange = document.querySelector("#div_id_category_choice")
+                const daterangeLabel = document.querySelector("#div_id_category_choice label")
+                daterangeLabel.textContent = "Select a Date range*"
+                const dateInput = document.createElement("input")
+                dateInput.setAttribute("type", "text")
+                dateInput.setAttribute("name", "datetimes")
+                dateInput.setAttribute("id", "daterange")
+                dateInput.setAttribute("class", "form-select")
+                dateInput.setAttribute("name", "date_range")
+                daterange.appendChild(dateInput)
+                $('#daterange').daterangepicker({
+                    opens: 'right'
+                }, function (start, end, label) {
+                    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+                });
+            }
+        });
+    </script>
+    <script>
+        $(function () {
+            $("#id_notification_time").datetimepicker();
+        });
+    </script>
+{% endblock customjs %}

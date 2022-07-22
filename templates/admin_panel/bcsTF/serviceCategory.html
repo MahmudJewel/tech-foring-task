@@ -1,0 +1,114 @@
+{% extends 'base/bcs_admin_base.html' %}
+{% load static %}
+{% load hosts %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    BCS Admin Services Category
+{% endblock title %}
+
+{% block headercss %}
+    <link rel="stylesheet" href="{% static 'tfcss/admin_panel/bcsTF/service.css' %}" />
+{% endblock headercss %}
+
+{% block content %}
+    <!-- main section starts -->
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn border-1 servicesBtn float-end my-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Add Service Category
+                        <i class="bi bi-plus-circle-fill"></i></button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12" style="margin-bottom: 15rem;">
+                    <h2 class="text-capitalize my-4">service category list</h2>
+                    <table id="service-list" class="table table-bordered display" style="width: 100%">
+                        <thead>
+                            <tr>
+                                <th>SL</th>
+                                <th>Service Name</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for category in categories %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>
+                                    {{ category.category_name }}
+                                </td>
+                                <td>
+                                    <a href="{% host_url 'bcs_admin_services_category_edit' id=category.id %}" class="btn">
+                                        <i class="icofont-edit text-primary rounded-circle activites-icon"></i>
+                                    </a>
+                                    <a href="{% host_url 'bcs_admin_services_category_delete' id=category.id %}" class="btn trash">
+                                        <i class="bi bi-trash-fill text-danger rounded-circle activites-icon"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" method="POST">
+                            {{ form|crispy }}
+                            {% csrf_token %}
+                            <div class="d-flex justify-content-between">
+                                <button type="submit" class="btn btn-primary">
+                                    Save
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="">
+                            <div class="col-auto mb-3">
+                                <label for="serviceName">Service Name</label>
+                                <input type="text" class="form-control" id="serviceName"
+                                    placeholder="Enter Service Name" />
+                            </div>
+                            <div class="col-auto mb-3">
+                                <label for="description">Description</label>
+                                <textarea name="description" id="description" class="form-control" cols="30" rows="10"></textarea>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <!-- <button type="button" class="btn btn-primary">
+                                    Save and add another
+                                </button> -->
+                                <button type="button" class="btn btn-primary">
+                                    Update
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- main section ends -->
+{% endblock content %}
+{% block customjs %}
+{% endblock customjs %}

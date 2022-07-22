@@ -1,0 +1,252 @@
+{% extends 'base/pcs_admin_base.html' %} {% load static %}
+{% load hosts %}
+{% block title %} PCS Admin List
+{% endblock title %}
+
+{% block headercss %}
+    <!-- custom style -->
+    <link rel="stylesheet" href="{% static 'tfcss/admin_panel/bcsTF/users.css' %}" />
+    <!-- charts js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+{% endblock headercss %}
+{% block content %}
+    <!-- main section starts -->
+    <main>
+        <section class="subscription-count mb-5">
+            <div class="container">
+                <div class="row">
+                    <h2 class="float-start text-uppercase mb-4">total client</h2>
+                    <div class="col-md-3">
+                        <div class="subscription-info bg-primary-dark">
+                            <h3>TOTAL ADMIN</h3>
+                            <p class="fw-bolder">
+                                <i class="bi bi-person"></i> <span style="font-size: 25px;">8</span> users
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="subscription-info bg-primary-25">
+                            <h3>TOTAL MODERATOR</h3>
+                            <p class="fw-bolder">
+                                <i class="bi bi-person"></i> <span style="font-size: 25px;">3</span> users
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="subscription-info bg-primary-50">
+                            <h3>TOTAL EDITOR</h3>
+                            <p class="fw-bolder">
+                                <i class="bi bi-person"></i> <span style="font-size: 25px;">2</span> users
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="subscription-info" style="background-color: #3869C1;">
+                            <h3>TOTAL CONTRIBUTOR</h3>
+                            <p class="fw-bolder">
+                                <i class="bi bi-person"></i> <span style="font-size: 25px;">3</span> users
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <button class="btn text-uppercase btn-primary mt-5" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">Add new user</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="subscription-control">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 " style="margin-block-end: 15rem;">
+                        <h2 class="text-uppercase">User List</h2>
+                        <table id="admin-list" class="table table-bordered display" style="width: 100%">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Role</th>
+                                    <th>Designation</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="{% host_url 'pcs_admin_profile' %}">
+                                            Azharul
+                                        </a>
+                                    </td>
+                                    <td>user@techforing.com</td>
+                                    <td>01XXXXXXXXX</td>
+                                    <td>Modaretor</td>
+                                    <td>Developer</td>
+                                    <td>
+                                        <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                                            <i class="icofont-edit text-primary rounded-circle activites-icon"></i>
+                                        </button>
+                                        <button class="btn trash">
+                                            <i class="bi bi-trash-fill text-danger rounded-circle activites-icon"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="{% host_url 'pcs_admin_profile' %}">
+                                            Shomit
+                                        </a>
+                                    </td>
+                                    <td>user@techforing.com</td>
+                                    <td>01XXXXXXXXX</td>
+                                    <td>Modaretor</td>
+                                    <td>Developer</td>
+                                    <td>
+                                        <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                                            <i class="icofont-edit text-primary rounded-circle activites-icon"></i>
+                                        </button>
+                                        <button class="btn trash">
+                                            <i class="bi bi-trash-fill text-danger rounded-circle activites-icon"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="{% host_url 'pcs_admin_profile' %}">
+                                            Sabbir
+                                        </a>
+                                    </td>
+                                    <td>user@techforing.com</td>
+                                    <td>01XXXXXXXXX</td>
+                                    <td>Modaretor</td>
+                                    <td>Developer</td>
+                                    <td>
+                                        <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                                            <i class="icofont-edit text-primary rounded-circle activites-icon"></i>
+                                        </button>
+                                        <button class="btn trash">
+                                            <i class="bi bi-trash-fill text-danger rounded-circle activites-icon"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="{% host_url 'pcs_admin_profile' %}">
+                                            Mili
+                                        </a>
+                                    </td>
+                                    <td>user@techforing.com</td>
+                                    <td>01XXXXXXXXX</td>
+                                    <td>Modaretor</td>
+                                    <td>Developer</td>
+                                    <td>
+                                        <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                                            <i class="icofont-edit text-primary rounded-circle activites-icon"></i>
+                                        </button>
+                                        <button class="btn trash">
+                                            <i class="bi bi-trash-fill text-danger rounded-circle activites-icon"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="{% host_url 'pcs_admin_profile' %}">
+                                            Azharul
+                                        </a>
+                                    </td>
+                                    <td>user@techforing.com</td>
+                                    <td>01XXXXXXXXX</td>
+                                    <td>Modaretor</td>
+                                    <td>Developer</td>
+                                    <td>
+                                        <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                                            <i class="icofont-edit text-primary rounded-circle activites-icon"></i>
+                                        </button>
+                                        <button class="btn trash">
+                                            <i class="bi bi-trash-fill text-danger rounded-circle activites-icon"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title w-100 text-center" id="exampleModalLabel">Add User</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control w-100" id="Name" placeholder="Enter Name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control w-100" id="email" placeholder="name@mail.com">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Role Name</label>
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected="">Select Role</option>
+                                    <option value="1">Super Admin</option>
+                                    <option value="2">Admin</option>
+                                    <option value="3">Moderator</option>
+                                    <option value="3">Editor</option>
+                                </select>
+                            </div>
+                            <button type="button" class="btn btn-primary">Add</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title w-100 text-center" id="exampleModalLabel">Add User</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control w-100" id="Name" placeholder="Enter Name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control w-100" id="email" placeholder="name@mail.com">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Role Name</label>
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected="">Select Role</option>
+                                    <option value="1">Super Admin</option>
+                                    <option value="2">Admin</option>
+                                    <option value="3">Moderator</option>
+                                    <option value="3">Editor</option>
+                                </select>
+                            </div>
+                            <button type="button" class="btn btn-primary">Update</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- main section ends -->
+    {% endblock content %}
+    {% block customjs %}
+    <!-- custom scripts -->
+    <script src="{% static '' %}tfjs/admin_panel/bcsTF/userProfile.js"></script>
+{% endblock customjs %}

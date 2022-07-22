@@ -1,0 +1,351 @@
+{% extends 'base/pcs_user_base.html' %} {% load static %} {% load hosts %} {% block title %} My Profile {% endblock title %} {% block content %}
+
+<div class="profile-area pe-md-3 mt-3">
+    <section class="profile-banner">
+        <h6 class="pt-3 text-green text-end">Your profile is 30% complete now</h6>
+        <div class="row d-flex justify-content-between mx-0 ps-2 py-1 text-white text-center">
+            <div class="col-md-8 py-3">
+                <div class="row d-flex">
+                    <div class="col-md-auto me-md-4 d-flex justify-content-center">
+                        <form method="post" enctype="multipart/form-data" action="/upload_image/" id="image_form">
+                            <div class="profile-img">
+                                <div class="img-edit">
+                                    <input type="file" class="d-none" name="image" id="imageUpload" accept="image/*" required>
+                                    <label for="imageUpload"></label>
+                                </div>
+                                <div class="img-preview mx-auto">
+                                    <div id="imagePreview" style="background-image: url();">
+                                        <i class="icofont-camera"></i>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn mt-3 btn-outline-light btn-sm mt-1">Upload
+                                    your image</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-auto mt-3 mt-md-0 d-flex flex-column justify-content-center">
+                        <h5>Afsana Communication</h5>
+                        <p class="mb-0">afsana@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex justify-content-end align-items-start">
+                <button class="btn btn-sm edit-btn btn-light">Edit Profile
+                    <i class="ms-1 icofont-edit"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="mt-3">
+        <form action="" class="profile-info mt-3 shadow bg-whitegreen p-1 p-md-4">
+            <h5 class="ms-0 ms-sm-3">PERSONAL INFORMATION</h5>
+            <div class="row d-flex justify-content-between mt-3">
+                <div class="col-md-6 d-flex">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Name:</td>
+                                <td class="info-value">
+                                    <input type="text" name="" value="Afsana Communication">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Address:</td>
+                                <td class="info-value">
+                                    <input type="text" name="" value="-------">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Country:</td>
+                                <td>
+                                    <select class="w-100 bg-transparent" name="" id="">
+                                        <option value="">USA</option>
+                                        <option value="">UK</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Birthdate:</td>
+                                <td>
+                                    <input type="date" class="w-100" name="" value="2021-09-29">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Gender:</td>
+                                <td>
+                                    <select name="" id="" class="w-100 bg-transparent">
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="others">Others</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6 d-flex">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Registration Date:</td>
+                                <td class="text-danger">
+                                    21th, December 2021
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Phone Number:</td>
+                                <td class="info-value">
+                                    <input type="text" name="" value="+88010102255">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Email:</td>
+                                <td class="info-value">
+                                    <input type="email" name="" value="yourmail@gmail.com">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Password:</td>
+                                <td class="">
+                                    <div class="d-none" id="pw-input">
+                                        <div class="info-value">
+                                            <input type="password" name="" placeholder="Old Password">
+                                        </div>
+                                        <div class="info-value my-2">
+                                            <input type="password" name="" placeholder="New Password">
+                                        </div>
+                                        <button type="button" onclick="this.parentNode.parentNode.children[1].style.display='block';this.parentNode.classList.add('d-none')" class="btn w-100 btn-sm btn-outline-navy">Save</button>
+                                    </div>
+                                    <button type="button" onclick="showElement('#pw-input');this.style.display='none'" class="btn w-100 btn-sm btn-outline-navy">Change</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mt-5">
+                <button type="submit" class="d-none btn save-btn bg-navy text-white px-3 py-1">Update
+                    Information</button>
+            </div>
+        </form>
+    </section>
+    <hr class="mt-4">
+    <section class="selection-area row d-flex justify-content-center mt-4 pe-md-3">
+        <div class="col-lg-6">
+            <h5 class="ms-md-3">Area of Interest</h5>
+            <h6 class="ms-md-3 fw-bold">Select your interested topics</h6>
+            <div class="row gx-0 mt-4 d-flex justify-content-center">
+                <div class="col-md-5 me-lg-5">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Risk Assessment
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Risk Assessment
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Risk Assessment
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Risk Assessment
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Risk Assessment
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Risk Assessment
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Risk Assessment
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Risk Assessment
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Risk Assessment
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Risk Assessment
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <button class="ms-md-3 btn bg-navy text-white px-4 py-1 mt-3">Save</button>
+
+        </div>
+        <div class="col-lg-6 mt-4 mt-lg-0">
+            <h5 class="ms-md-3">Notification & preference</h5>
+            <h6 class="ms-md-3 fw-bold">Select your preference list</h6>
+            <div class="row gx-0 mt-4 d-flex justify-content-center">
+                <div class="col-md-5 me-lg-5">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Newsletter Notification
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Email Notification
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            New Article Notification
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Regular Blog Notification
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Risk Assessment
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Push Notification
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            New Article Notification
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Events & Webinar Notification
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            New Service Notification
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            General Notification
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <button class="ms-md-3 btn bg-navy text-white px-4 py-1 mt-3">Save</button>
+
+        </div>
+
+
+    </section>
+
+</div>
+{% endblock content %} {% block customjs %}
+<script>
+    let infoValues = document.querySelectorAll('.profile-info .info-value');
+    let profileInputs = document.querySelectorAll('.profile-info input, .profile-info select, .profile-info button');
+    let passwordInput = document.getElementById('pw-input');
+
+    profileInputs.forEach(input => {
+        input.disabled = true;
+    });
+
+    document.querySelector('.edit-btn').addEventListener('click', (e) => {
+        infoValues.forEach(info => {
+            info.classList.toggle('input-as-text');
+        });
+
+        profileInputs.forEach(input => {
+            input.disabled = false;
+        });
+
+        document.querySelector('.save-btn').classList.toggle('d-none');
+        e.target.classList.toggle('d-none');
+    });
+    document.querySelector('.save-btn').addEventListener('click', (e) => {
+        infoValues.forEach(info => {
+            info.classList.toggle('input-as-text');
+        });
+
+        profileInputs.forEach(input => {
+            input.disabled = true;
+        });
+        passwordInput.classList.add('d-none');
+        passwordInput.parentNode.children[1].style.display = 'block';
+        //hideElement('#current-pw-input');
+        document.querySelector('.edit-btn').classList.toggle('d-none');
+        e.target.classList.toggle('d-none');
+    });
+
+    let showElement = (elem) => {
+        document.querySelector(elem).classList.remove('d-none');
+    }
+    let hideElement = (elem) => {
+        document.querySelector(elem).classList.add('d-none');
+    }
+
+    document.getElementById("imageUpload").addEventListener("change", function(e) {
+        if ((this.files[0].type).slice(0, 5) != "image") {
+            document.getElementById("image_form").reset();
+            alert('Invalid Image File!');
+        } else {
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    document.querySelector('#imagePreview').style.backgroundImage = 'url(' + e.target.result + ')';
+                }
+                reader.readAsDataURL(this.files[0]);
+                var fileInput = document.getElementById('imageUpload');
+                var filename = fileInput.files[0].name;
+                document.querySelector('.fa-camera').classList.add('d-none');
+            }
+        }
+    });
+
+    document.querySelectorAll('.selection-area label').forEach(label => {
+        label.classList.add('text-truncate');
+    });
+</script>
+{% endblock customjs %}

@@ -1,0 +1,243 @@
+{% extends 'base/pcs_admin_base.html' %} {% load static %} {% load hosts %}
+{% block title %} PCS Admin-User Panel
+{% endblock title %}
+
+{% block headercss %}
+    <!-- custom style -->
+    <link rel="stylesheet" href="{% static 'tfcss/admin_panel/bcsTF/users.css' %}"/>
+    <!-- charts js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+{% endblock headercss %}
+{% block content %}
+    <!-- main section starts -->
+    <main>
+        <div class="container-fluid">
+            <div class="row info-container">
+                <div class="col-12 col-md-6 short-info">
+                    <div style="width:200px;height:200px" class="mt-5 mb-2" >
+                        <img src="{{ current_user.profile_pic.url }}" alt="" class="avatar w-100 h-100">
+                    </div>
+                    <div class="info-body">
+                        <p class="text-primary fs-2">{{ current_user.full_name }}</p>
+                        <p class="text-primary fs-6">Registration Date: {{ current_user.date_joined|date }}</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 py-5">
+                    <h3 class="mb-4">Personal Details</h3>
+                    <div class="d-grid gap-2">
+                        <div>
+                            <i class="bi bi-telephone-fill details-icon"></i>
+                            <span class="ms-1">Phone:</span>
+                            <span class="ms-2">{{ current_user.phone_number }}</span>
+                        </div>
+                        <div>
+                            <svg class="details-icon" xmlns="http://www.w3.org/2000/svg" width="16.414" height="18"
+                                    viewBox="0 0 16.414 18">
+                                <path id="birthday-cake"
+                                        d="M16.539,8.442h-4.03V4.924H11.19a3.13,3.13,0,0,0,.624-1.889A3,3,0,0,0,10.564.552l-.327-.22-.327.22A3,3,0,0,0,8.659,3.035a3.13,3.13,0,0,0,.625,1.889H7.819V8.442H4.375A2.128,2.128,0,0,0,2.25,10.567V17.16a1.174,1.174,0,0,0,1.172,1.172H17.492a1.174,1.174,0,0,0,1.172-1.172V10.567a2.128,2.128,0,0,0-2.125-2.125Zm-6.3-6.614a1.937,1.937,0,0,1,.405,1.207,1.936,1.936,0,0,1-.405,1.207,1.937,1.937,0,0,1-.405-1.207A1.937,1.937,0,0,1,10.237,1.828ZM8.992,6.1h2.345V8.442H8.992Zm-5.569,4.47a.954.954,0,0,1,.953-.953H16.539a.954.954,0,0,1,.953.953v1.157l-.792.349a1.219,1.219,0,0,1-.982,0l-1.377-.607-1.378.608a1.219,1.219,0,0,1-.982,0L10.6,11.466l-1.378.608a1.219,1.219,0,0,1-.982,0l-1.377-.608-1.377.608a1.219,1.219,0,0,1-.982,0l-1.084-.478ZM17.492,17.16H3.422V12.876l.611.269a2.394,2.394,0,0,0,1.929,0l.9-.4.9.4a2.394,2.394,0,0,0,1.929,0l.9-.4.9.4a2.394,2.394,0,0,0,1.929,0l.9-.4.9.4a2.394,2.394,0,0,0,1.929,0l.318-.141V17.16Z"
+                                        transform="translate(-2.25 -0.332)" fill="#5bbc2e"/>
+                            </svg>
+                            <span class="ms-1">Birthday:</span>
+                            <span class="ms-2">{{ current_user.birth_date }}</span>
+                        </div>
+                        <div>
+                            <i class="bi bi-envelope-fill details-icon"></i>
+                            <span class="ms-1">Email:</span>
+                            <span class="ms-2"><a href="mailto:{{ current_user.email }}">{{ current_user.email }}</a></span>
+                        </div>
+                        <div>
+                            <i class="bi bi-gender-male details-icon"></i>
+                            <span class="ms-1">Gender:</span>
+                            <span class="ms-2">{{ current_user.gender }}</span>
+                        </div>
+                        <div>
+                            <i class="bi bi-map-fill details-icon"></i>
+                            <span class="ms-1">Country:</span>
+                            <span class="ms-2">{{ current_user.country }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% comment %} <div class="info-container">
+                <div class="short-info">
+                    <div style="width:200px;height:200px" class="mt-5 mb-2" >
+                        <img src="{{ current_user.profile_pic.url }}" alt="" class="avatar w-100 h-100">
+                    </div>
+                    <div class="info-body">
+                        <p class="text-primary fs-2">{{ current_user.full_name }}</p>
+                        <p class="text-primary fs-6">Registration Date: {{ current_user.date_joined|date }}</p>
+                    </div>
+                </div>
+                <div class="details">
+                    <h3>Personal Details</h3>
+                    <div class="d-grid" style="grid-template-columns: 1.8fr 1fr 1fr;">
+
+                        <div class="">
+                            <div>
+                                <i class="bi bi-telephone-fill"></i>
+                                <span>{{ current_user.phone_number }}</span>
+                            </div>
+                            <div>
+                                <svg class="details-icon" xmlns="http://www.w3.org/2000/svg" width="16.414" height="18"
+                                     viewBox="0 0 16.414 18">
+                                    <path id="birthday-cake"
+                                          d="M16.539,8.442h-4.03V4.924H11.19a3.13,3.13,0,0,0,.624-1.889A3,3,0,0,0,10.564.552l-.327-.22-.327.22A3,3,0,0,0,8.659,3.035a3.13,3.13,0,0,0,.625,1.889H7.819V8.442H4.375A2.128,2.128,0,0,0,2.25,10.567V17.16a1.174,1.174,0,0,0,1.172,1.172H17.492a1.174,1.174,0,0,0,1.172-1.172V10.567a2.128,2.128,0,0,0-2.125-2.125Zm-6.3-6.614a1.937,1.937,0,0,1,.405,1.207,1.936,1.936,0,0,1-.405,1.207,1.937,1.937,0,0,1-.405-1.207A1.937,1.937,0,0,1,10.237,1.828ZM8.992,6.1h2.345V8.442H8.992Zm-5.569,4.47a.954.954,0,0,1,.953-.953H16.539a.954.954,0,0,1,.953.953v1.157l-.792.349a1.219,1.219,0,0,1-.982,0l-1.377-.607-1.378.608a1.219,1.219,0,0,1-.982,0L10.6,11.466l-1.378.608a1.219,1.219,0,0,1-.982,0l-1.377-.608-1.377.608a1.219,1.219,0,0,1-.982,0l-1.084-.478ZM17.492,17.16H3.422V12.876l.611.269a2.394,2.394,0,0,0,1.929,0l.9-.4.9.4a2.394,2.394,0,0,0,1.929,0l.9-.4.9.4a2.394,2.394,0,0,0,1.929,0l.9-.4.9.4a2.394,2.394,0,0,0,1.929,0l.318-.141V17.16Z"
+                                          transform="translate(-2.25 -0.332)" fill="#5bbc2e"/>
+                                </svg>
+                                <span>{{ current_user.birth_date }}</span>
+                            </div>
+                        </div>
+                        <div class="">
+
+                            <div>
+                                <i class="bi bi-envelope-fill"></i>
+                                <span><a href="mailto:{{ current_user.email }}">{{ current_user.email }}</a></span>
+                            </div>
+                            <div>
+                                <i class="bi bi-gender-male"></i>
+                                <span>{{ current_user.gender }}</span>
+                            </div>
+                        </div>
+                        <div class="">
+                            <div>
+                                <i class="bi bi-map-fill"></i>
+                                <span>{{ current_user.country }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> {% endcomment %}
+
+            <div class="row">
+                <div class="col-lg-12" style="margin-top: 5rem;margin-bottom: 10rem; position: relative;">
+                    <div class="float-start heading mb-3 position-absolute" style="z-index: 1;">
+                        <h2 class=" text-uppercase d-inline me-5">SERVICE LIST</h2>
+                    </div>
+                    <table id="individual-user-info" class="table table-bordered display service nowrap"
+                           style="width:100%">
+                        <thead>
+                        <tr>
+                            <th>SL</th>
+                            <th>Service Category Name</th>
+                            <th>Service Name</th>
+                            <th>Order Date</th>
+                            <th>Payment</th>
+                            <th>Order Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for order in orders %}
+                            <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td class="service">{{ order.service.category }}</td>
+                            <td>{{ order.service.service_title }}</td>
+                            <td>{{ order.order_date|date }}</td>
+                            <td>${{ order.orderprice_order.price }}</td>
+                            <td>{{ order.order_status|upper }}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered expanded-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Edit Overview</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="">
+                            <div class="col-auto mb-3">
+                                <label for="subServiceName">Last Monitoring time</label>
+                                <input type="text" class="form-control" id="subServiceName"
+                                       placeholder="Enter Last Monitoring time"/>
+                            </div>
+                            <div class="col-auto mb-3">
+                                <label for="subServiceName">Next Monnitoring time</label>
+                                <input type="text" class="form-control" id="subServiceName"
+                                       placeholder="Enter Next Monnitoring time"/>
+                            </div>
+                            <div class="col-auto mb-3">
+                                <label for="subServiceName">Last Update Time</label>
+                                <input type="text" class="form-control" id="subServiceName"
+                                       placeholder="Enter Last Update Time "/>
+                            </div>
+                            <div class="col-auto mb-3">
+                                <label for="subServiceName">Next Update Time</label>
+                                <input type="text" class="form-control" id="subServiceName"
+                                       placeholder="Enter Next Update Time"/>
+                            </div>
+                            <div class="col-auto mb-3">
+                                <label for="subServiceName">Last Audit Time</label>
+                                <input type="text" class="form-control" id="subServiceName"
+                                       placeholder="Last Audit Time"/>
+                            </div>
+                            <div class="col-auto mb-3">
+                                <label for="subServiceName">Next Audit Time</label>
+                                <input type="text" class="form-control" id="subServiceName"
+                                       placeholder="Enter Next Audit Time"/>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <!-- <button type="button" class="btn btn-primary">
+                                    Save and add another
+                                </button> -->
+                                <button type="button" class="btn btn-primary">
+                                    Update
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabe2" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered expanded-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Edit Service list</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="">
+                            <div class="col-auto mb-3">
+                                <label for="subServiceName">Payment Status</label>
+                                <select class="form-select" name="serviceName" id="serviceName">
+                                    <option selected disabled value="">Select Payment Status</option>
+                                    <option value="paid">Paid</option>
+                                    <option value="proccessing">Proccessing</option>
+                                </select>
+                            </div>
+                            <div class="col-auto mb-3">
+                                <label for="subServiceName">Order Status</label>
+                                <select class="form-select" name="serviceName" id="serviceName">
+                                    <option selected disabled value="">Select Order Status</option>
+                                    <option value="active">Completed</option>
+                                    <option value="deactive">Hold</option>
+                                    <option value="canceled">Proccessing</option>
+                                </select>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <!-- <button type="button" class="btn btn-primary">
+                                    Save and add another
+                                </button> -->
+                                <button class="btn btn-primary">
+                                    Update
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- main section ends -->
+{% endblock content %}
+{% block customjs %}
+    <!-- custom scripts -->
+    <script src="{% static '' %}tfjs/admin_panel/bcsTF/userProfile.js"></script>
+{% endblock customjs %}

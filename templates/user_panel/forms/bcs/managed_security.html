@@ -1,0 +1,217 @@
+<form class="bg-white p-2 managed-security-service">
+
+    <div class="mt-5 information-form">
+        <h5 class="fw-bold text-center border-bottom border-gray p-2">Please Provide Necessary Informations for Managed Security Service:
+        </h5>
+
+        <!-- website information  -->
+        <div class="mt-5 info-type">
+            <div class="row row-cols-sm-2 row-cols-md-3 g-3">
+
+                <div class="col">
+                    <label for="">Number of Websites?</label>
+                    <input type="number" class="form-control" id="" placeholder="Enter the value">
+                </div>
+                <div class="col">
+                    <label for="">Number of Servers?</label>
+                    <input type="number" class="form-control" id="" placeholder="Enter the value">
+                </div>
+                <div class="col">
+                    <label for="">Number of Workstations?</label>
+                    <input type="number" class="form-control" id="" placeholder="Enter the value">
+                </div>
+                <div class="col">
+                    <label for="">Number of Databases?</label>
+                    <input type="number" class="form-control" id="" placeholder="Enter the value">
+                </div>
+                <div class="col">
+                    <label for="formFile">Please attach network diagram</label>
+                    <input class="form-control" type="file" id="formFile">
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- server information  -->
+        <div class="mt-5 d-none info-type">
+            <h6 class="heading">Server Information</h6>
+
+            <div class="col-auto">
+                <h6>Choose your cloud platform:</h6>
+                <div class="mt-3 btn-group d-block" id="cloud-platform" role="group" aria-label="cloud platform">
+                    <input type="radio" class="btn-check" name="btnradio" id="btn-1" autocomplete="off" checked>
+                    <label onclick="takeOthersPlatformInput('others-platform-input',false)" class="btn btn-outline-navy" for="btn-1">AWS</label>
+
+                    <input type="radio" class="btn-check" name="btnradio" id="btn-2" autocomplete="off">
+                    <label onclick="takeOthersPlatformInput('others-platform-input',false)" class="btn btn-outline-navy" for="btn-2">Google Cloud</label>
+
+                    <input type="radio" class="btn-check" name="btnradio" id="btn-3" autocomplete="off">
+                    <label onclick="takeOthersPlatformInput('others-platform-input',false)" class="btn btn-outline-navy" for="btn-3">Microsoft Azure</label>
+
+                    <input type="radio" class="btn-check" name="btnradio" id="btn-4" autocomplete="off">
+                    <label onclick="takeOthersPlatformInput('others-platform-input',false)" class="btn btn-outline-navy" for="btn-4">GoDaddy</label>
+
+                    <input type="radio" class="btn-check" name="btnradio" id="btn-5" autocomplete="off">
+                    <label onclick="takeOthersPlatformInput('others-platform-input',false)" class="btn btn-outline-navy" for="btn-5">Linode</label>
+
+                    <input type="radio" class="btn-check" name="btnradio" id="btn-6" autocomplete="off">
+                    <label onclick="takeOthersPlatformInput('others-platform-input',true)" class="btn btn-outline-navy" for="btn-6">Others</label>
+
+                    <div id="others-platform-input" class="d-none mt-3 col-7">
+                        <input type="text" class="form-control" placeholder="Enter your platform name" aria-describedby="customPlatform">
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-3 row g-3">
+                <div class="col-auto">
+                    <h6>Types of Server:</h6>
+                    <div class="d-flex">
+                        <div class="form-check me-3">
+                            <input class="form-check-input" onclick="noOfServer('linux-server-input')" type="checkbox" name="" id="server-1">
+                            <label class="form-check-label" for="server-1">Linux</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" onclick="noOfServer('windows-server-input')" type="checkbox" name="" id="server-2">
+                            <label class="form-check-label" for="server-2">Windows</label>
+                        </div>
+                    </div>
+                    <input id="linux-server-input" type="number" class="d-none form-control mt-3 w-50" placeholder="no. of linux server">
+                    <input id="windows-server-input" type="number" class="d-none form-control mt-3 w-50" placeholder="no. of windows server">
+                </div>
+
+                <div class="col-auto">
+                    <label for="">Are there any website hosted on the server?</label>
+
+                    <div class="d-flex align-items-end mt-2">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" onclick="hostedWebsite('.hosted-website',true);" type="radio" name="hostedWebsite" id="inlineRadio1" value="option1">
+                            <label class="form-check-label" for="inlineRadio1">Yes</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" onclick="hostedWebsite('.hosted-website',false);" type="radio" name="hostedWebsite" id="inlineRadio2" value="option2">
+                            <label class="form-check-label" for="inlineRadio2">No</label>
+                        </div>
+                    </div>
+                    <div class="d-none hosted-website">
+                        <input type="number" class="form-control" id="" placeholder="how many websites are hosted?">
+                    </div>
+                </div>
+
+                <div class="col-auto d-flex align-items-end">
+                    <div class="dropdown">
+                        <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            Please tick any technology that is present on the server
+                        </a>
+                        <ul class="dropdown-menu p-2" aria-labelledby="dropdownMenuLink">
+                            <li>
+                                <input class="form-check-input" type="checkbox" name="" id="server-tech-1">
+                                <label class="form-check-label" for="server-tech-1">Apache</label>
+                            </li>
+                            <li>
+                                <input class="form-check-input" type="checkbox" name="" id="server-tech-2">
+                                <label class="form-check-label" for="server-tech-2">NGINX</label>
+                            </li>
+                            <li>
+                                <input class="form-check-input" type="checkbox" name="" id="server-tech-3">
+                                <label class="form-check-label" for="server-tech-3">IIS</label>
+                            </li>
+                            <li>
+                                <input class="form-check-input" type="checkbox" name="" id="server-tech-4">
+                                <label class="form-check-label" for="server-tech-4">FTP Server</label>
+                            </li>
+                            <li>
+                                <input class="form-check-input" type="checkbox" name="" id="server-tech-5">
+                                <label class="form-check-label" for="server-tech-5">Email Server</label>
+                            </li>
+                            <li>
+                                <input class="form-check-input" type="checkbox" name="" id="server-tech-6">
+                                <label class="form-check-label" for="server-tech-6">Docker</label>
+                            </li>
+                            <li>
+                                <input class="form-check-input" type="checkbox" name="" id="server-tech-7">
+                                <label class="form-check-label" for="server-tech-7">Kubernate</label>
+                            </li>
+                            <li>
+                                <input class="form-control form-control-sm" type="text" name="" placeholder="Others">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-auto d-flex align-items-end">
+                    <div class="dropdown">
+                        <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            Please tick the requested services
+                        </a>
+                        <ul class="dropdown-menu p-2" aria-labelledby="dropdownMenuLink">
+                            <li>
+                                <input class="form-check-input" type="checkbox" name="" id="req-service-1">
+                                <label class="form-check-label" for="req-service-1">Malware
+                                    Removal</label>
+                            </li>
+                            <li>
+                                <input class="form-check-input" type="checkbox" name="" id="req-service-2">
+                                <label class="form-check-label" for="req-service-2">Secure the
+                                    website</label>
+                            </li>
+                            <li>
+                                <input class="form-check-input" type="checkbox" name="" id="req-service-3">
+                                <label class="form-check-label" for="req-service-3">Collect digital
+                                    evidence</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- workstations information  -->
+
+        <div class="mt-5 d-none info-type">
+            <h6 class="heading">Workstation Information</h6>
+            <div class="row g-3">
+                <div class="col-auto">
+                    <label>Types of Workstation</label>
+                    <select class="form-select" aria-label="Default select example">
+                        <option value="Windows7">Windows 7</option>
+                        <option value="Windows10">Windows 10</option>
+                        <option value="linux">Linux</option>
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <label for="">How many workstations are infected?</label>
+                    <input type="number" class="form-control" id="" placeholder="Enter the value">
+                </div>
+                <div class="col-auto d-flex align-items-end">
+                    <div class="dropdown">
+                        <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            Please tick the requested services
+                        </a>
+                        <ul class="dropdown-menu p-2" aria-labelledby="dropdownMenuLink">
+                            <li>
+                                <input class="form-check-input" type="checkbox" name="" id="req-service-1">
+                                <label class="form-check-label" for="req-service-1">Malware
+                                    Removal</label>
+                            </li>
+                            <li>
+                                <input class="form-check-input" type="checkbox" name="" id="req-service-2">
+                                <label class="form-check-label" for="req-service-2">Secure the
+                                    website</label>
+                            </li>
+                            <li>
+                                <input class="form-check-input" type="checkbox" name="" id="req-service-3">
+                                <label class="form-check-label" for="req-service-3">Collect digital
+                                    evidence</label>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-5 d-flex justify-content-center">
+        <button type="submit" class="btn btn-navy py-2">Submit <i class="icofont-long-arrow-right"></i></button>
+    </div>
+</form>

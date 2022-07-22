@@ -1,0 +1,550 @@
+{% extends 'base/pcs_user_base.html' %}
+{% load static %}
+{% load hosts %}
+{% load my_filter %}
+{% block title %}
+    Subscriptions
+{% endblock title %}
+{% block content %}
+
+    <div class="subscription-container position-relative px-0 px-md-2 row-md">
+
+        <h4 class="mt-5 fw-bold">All Subscriptions</h4>
+
+
+        <div class="col-md-6 mt-4 mb-5 subscription-list d-flex flex-column align-items-start">
+            {% for service in services %}
+                <button class="btn border-0 fs-5 bg-navy w-100 mb-2"
+                        onclick="handleSubscriptionNotice({{ service.id }})"
+                        data-bs-toggle="modal"
+                        data-bs-target="#{{ service.service_title|replacespace }}">
+                    <i class="icofont-cubes"></i>
+                    {{ service.service_title|upper }}
+                </button>
+            {% endfor %}
+        </div>
+        {% for service in services %}
+            <!-- Modal -->
+            <div class="modal fade" id="{{ service.service_title|replacespace }}" tabindex="-1"
+                 aria-labelledby="trainingModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header border-0">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body p-5 text-center noPurchaseNotice">
+                            <h4 class="fw-bold">First you need to make an one time purchase for
+                                your {{ service.service_title|capitalize }} service only then you will be eligible for
+                                monthly subscription</h4>
+                            <a href="{% host_url 'pcs_user_services' host 'mysecurity' %}" class="btn fs-5 mt-3 text-green">Please go
+                                to the
+                                service menu</a>
+                        </div>
+                        <div class="modal-body p-5 text-center">
+                            <div class="row g-3 showSubscriptionDetails">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+        {% comment %}
+    <div class="border-bottom border-gray pb-1">
+        <!-- if user has not subscribed any package  -->
+        <div class="d-block">
+            <h4 class="fw-bold">THE SUBSCRIPTION PACKAGE IS ONLY APPLICABLE FOR</h4>
+            <h4 class="fw-bold text-green">CONCIERGE CYBERSECURITY</h4>
+            <h5 class="fw-bold fs-4">Please first purchase a one time fixed price only then you would be eligible for a subscription
+            </h5>
+        </div>
+    </div>
+
+    <section class="package-details mt-4">
+        <div class="row mx-0 d-flex justify-content-center justify-content-sm-between">
+            <div class="package col-9 col-sm-4 col-md-3 col-xl-auto bg-lightgreen shadow p-3 rounded">
+                <h3 class="fw-bold fs-4">BASIC</h3>
+                <table class="mx-auto mb-3">
+                    <tr>
+                        <td>Social Media Security
+                        </td>
+                        <td>&check;</td>
+                    </tr>
+                    <tr>
+                        <td>Email Security
+
+                        </td>
+                        <td>&check;</td>
+                    </tr>
+
+                    <tr>
+                        <td>Phone Security
+
+                        </td>
+                        <td>&check;</td>
+                    </tr>
+                    <tr>
+                        <td>PC/ MAC Security
+
+                        </td>
+                        <td>&check;</td>
+                    </tr>
+                    <tr>
+                        <td>Network Security
+
+                        </td>
+                        <td>&check;</td>
+                    </tr>
+                    <tr>
+                        <td>Monthly Reporting
+
+                        </td>
+                        <td>&check;</td>
+                    </tr>
+                    <tr>
+                        <td>Incident Response
+
+                        </td>
+                        <td>&#9679;</td>
+                    </tr>
+                    <tr>
+                        <td>Web History Audit
+
+                        </td>
+                        <td>&check;</td>
+                    </tr>
+                    <tr>
+                        <td>On-Premise Support
+
+                        </td>
+                        <td>&#9679;</td>
+                    </tr>
+                </table>
+
+                <div class="info-btn">
+                    <p class="mb-0">
+                        <i class="icofont-laptop fw-bold"></i> Max Device
+                    </p>
+                    <p class="mb-0 fw-bold">5</p>
+                </div>
+                <div class="mt-2 info-btn">
+                    <p class="mb-0">
+                        <i class="icofont-tag"></i> Price
+                    </p>
+                    <p class="mb-0 fw-bold">500$
+                    </p>
+                </div>
+                <button class="mt-3 btn bg-navy px-3 py-1" data-bs-toggle="modal" data-bs-target="#subscribeModal-1">Subscribe</button>
+            </div>
+            <div class="package d-none d-sm-block col-9 col-sm-4 col-md-3 col-xl-auto bg-lightgreen shadow p-3 rounded">
+                <h3 class="fw-bold fs-4">MEDIUM</h3>
+                <table class="mx-auto mb-3">
+                    <tr>
+                        <td>Social Media Security
+                        </td>
+                        <td>&check;</td>
+                    </tr>
+                    <tr>
+                        <td>Email Security
+
+                        </td>
+                        <td>&check;</td>
+                    </tr>
+
+                    <tr>
+                        <td>Phone Security
+
+                        </td>
+                        <td>&check;</td>
+                    </tr>
+                    <tr>
+                        <td>PC/ MAC Security
+
+                        </td>
+                        <td>&check;</td>
+                    </tr>
+                    <tr>
+                        <td>Network Security
+
+                        </td>
+                        <td>&check;</td>
+                    </tr>
+                    <tr>
+                        <td>Monthly Reporting
+
+                        </td>
+                        <td>&check;</td>
+                    </tr>
+                    <tr>
+                        <td>Incident Response
+
+                        </td>
+                        <td>&#9679;</td>
+                    </tr>
+                    <tr>
+                        <td>Web History Audit
+
+                        </td>
+                        <td>&check;</td>
+                    </tr>
+                    <tr>
+                        <td>On-Premise Support
+
+                        </td>
+                        <td>&#9679;</td>
+                    </tr>
+                </table>
+
+                <div class="info-btn">
+                    <p class="mb-0">
+                        <i class="icofont-laptop fw-bold"></i> Max Device
+                    </p>
+                    <p class="mb-0 fw-bold">5</p>
+                </div>
+                <div class="mt-2 info-btn">
+                    <p class="mb-0">
+                        <i class="icofont-tag"></i> Price
+                    </p>
+                    <p class="mb-0 fw-bold">1000$
+                    </p>
+                </div>
+                <button class="mt-3 btn bg-navy px-3 py-1" data-bs-toggle="modal" data-bs-target="#subscribeModal-1">Subscribe</button>
+            </div>
+            <div class="package d-none d-md-block col-9 col-sm-4 col-md-3 col-xl-auto bg-lightgreen shadow p-3 rounded">
+                <h3 class="fw-bold fs-4">PREMIUM</h3>
+                <table class="mx-auto mb-3">
+                    <tr>
+                        <td>Social Media Security
+                        </td>
+                        <td>&check;</td>
+                    </tr>
+                    <tr>
+                        <td>Email Security
+
+                        </td>
+                        <td>&check;</td>
+                    </tr>
+
+                    <tr>
+                        <td>Phone Security
+
+                        </td>
+                        <td>&check;</td>
+                    </tr>
+                    <tr>
+                        <td>PC/ MAC Security
+
+                        </td>
+                        <td>&check;</td>
+                    </tr>
+                    <tr>
+                        <td>Network Security
+
+                        </td>
+                        <td>&check;</td>
+                    </tr>
+                    <tr>
+                        <td>Monthly Reporting
+
+                        </td>
+                        <td>&check;</td>
+                    </tr>
+                    <tr>
+                        <td>Incident Response
+
+                        </td>
+                        <td>&#9679;</td>
+                    </tr>
+                    <tr>
+                        <td>Web History Audit
+
+                        </td>
+                        <td>&check;</td>
+                    </tr>
+                    <tr>
+                        <td>On-Premise Support
+
+                        </td>
+                        <td>&#9679;</td>
+                    </tr>
+                </table>
+
+                <div class="info-btn">
+                    <p class="mb-0">
+                        <i class="icofont-laptop fw-bold"></i> Max Device
+                    </p>
+                    <p class="mb-0 fw-bold">5</p>
+                </div>
+                <div class="mt-2 info-btn">
+                    <p class="mb-0">
+                        <i class="icofont-tag"></i> Price
+                    </p>
+                    <p class="mb-0 fw-bold">1100$
+                    </p>
+                </div>
+                <button class="mt-3 btn bg-navy px-3 py-1" data-bs-toggle="modal" data-bs-target="#subscribeModal-1">Subscribe</button>
+            </div>
+            <div class="package d-none d-xl-block col-9 col-sm-4 col-md-3 col-xl-auto bg-lightgreen shadow p-3 rounded">
+                <h3 class="fw-bold fs-4">MAXIMUM</h3>
+                <table class="mx-auto mb-3">
+                    <tr>
+                        <td>Social Media Security
+                        </td>
+                        <td>&check;</td>
+                    </tr>
+                    <tr>
+                        <td>Email Security
+
+                        </td>
+                        <td>&check;</td>
+                    </tr>
+
+                    <tr>
+                        <td>Phone Security
+
+                        </td>
+                        <td>&check;</td>
+                    </tr>
+                    <tr>
+                        <td>PC/ MAC Security
+
+                        </td>
+                        <td>&check;</td>
+                    </tr>
+                    <tr>
+                        <td>Network Security
+
+                        </td>
+                        <td>&check;</td>
+                    </tr>
+                    <tr>
+                        <td>Monthly Reporting
+
+                        </td>
+                        <td>&check;</td>
+                    </tr>
+                    <tr>
+                        <td>Incident Response
+
+                        </td>
+                        <td>&#9679;</td>
+                    </tr>
+                    <tr>
+                        <td>Web History Audit
+
+                        </td>
+                        <td>&check;</td>
+                    </tr>
+                    <tr>
+                        <td>On-Premise Support
+
+                        </td>
+                        <td>&#9679;</td>
+                    </tr>
+                </table>
+
+                <div class="info-btn">
+                    <p class="mb-0">
+                        <i class="icofont-laptop fw-bold"></i> Max Device
+                    </p>
+                    <p class="mb-0 fw-bold">5</p>
+                </div>
+                <div class="mt-2 info-btn">
+                    <p class="mb-0">
+                        <i class="icofont-tag"></i> Price
+                    </p>
+                    <p class="mb-0 fw-bold">2000$
+                    </p>
+                </div>
+                <button class="mt-3 btn bg-navy px-3 py-1" data-bs-toggle="modal" data-bs-target="#subscribeModal-1">Subscribe</button>
+            </div>
+        </div>
+
+        <!-- if user has not subscribed any package -->
+        <button class="mt-5 d-inline-block d-xl-none btn btn-outline-success px-3 fs-5" id="package-change">
+            <i class="icofont-exchange"></i>
+        </button>
+
+    </section>
+
+    <!-- Modal for all package -->
+    <div class="modal fade" id="subscribeModal-1" tabindex="-1" aria-labelledby="subscribeModal-1Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h5 class="fs-3 fw-bold">First you need to make an one time purchase for your data & privacy only then you will eligible for monthly subscription
+                    </h5>
+                    <h6 class="fs-4 text-green">Please go to the service menu
+                    </h6>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <section class="faq text-start mt-5">
+        <h3 class="fw-bold">Frequently asked Qustions
+        </h3>
+        <h5>If your question is not covered here, please check our
+            <a href="{% host_url 'findus' %}" target="_blank" class="text-green">Support
+                Center or contact us.</a>
+        </h5>
+
+        <div class="accordion accordion-flush mt-3" id="accordionFlushExample">
+
+            <div class="row d-flex justify-content-between">
+                <div class="col-md-5">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-heading-1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-1" aria-expanded="false" aria-controls="flush-collapse-1">
+                                <span class="text">What payment methods do you accept?
+                                </span>
+                            </button>
+                        </h2>
+                        <div id="flush-collapse-1" class="accordion-collapse collapse" aria-labelledby="flush-heading-1" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae vero voluptatum nesciunt. Placeat velit corrupti quibusdam voluptas voluptatum, unde blanditiis.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item mt-4">
+                        <h2 class="accordion-header" id="flush-heading-2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-2" aria-expanded="false" aria-controls="flush-collapse-2">
+                                <span class="text">What payment methods do you accept?
+                                </span>
+                            </button>
+                        </h2>
+                        <div id="flush-collapse-2" class="accordion-collapse collapse" aria-labelledby="flush-heading-2" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae vero voluptatum nesciunt. Placeat velit corrupti quibusdam voluptas voluptatum, unde blanditiis.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-heading-3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-3" aria-expanded="false" aria-controls="flush-collapse-3">
+                                <span class="text">What payment methods do you accept?
+                                </span>
+                            </button>
+                        </h2>
+                        <div id="flush-collapse-3" class="accordion-collapse collapse" aria-labelledby="flush-heading-3" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae vero voluptatum nesciunt. Placeat velit corrupti quibusdam voluptas voluptatum, unde blanditiis.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item mt-4">
+                        <h2 class="accordion-header" id="flush-heading-4">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-4" aria-expanded="false" aria-controls="flush-collapse-4">
+                                <span class="text">What payment methods do you accept?
+                                </span>
+                            </button>
+                        </h2>
+                        <div id="flush-collapse-4" class="accordion-collapse collapse" aria-labelledby="flush-heading-4" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae vero voluptatum nesciunt. Placeat velit corrupti quibusdam voluptas voluptatum, unde blanditiis.</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endcomment %}
+
+    </div>
+{% endblock content %}
+{% block customjs %}
+    <script>
+        const handleSubscriptionNotice = id => {
+            fetch(`${mainOrigin}/api/bcs/package/${id}/`, {
+                credentials: 'include'
+            })
+                .then(response => response.json())
+                .then(result => {
+                    const packagesList = result;
+
+                    fetch(`${mainOrigin}/api/subscription_order_check/`, {
+                        credentials: 'include'
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            const subscribedPackages = data.result;
+                            const purchaseAvailable = packagesList.filter(package => subscribedPackages.includes(package.id));
+                            if (purchaseAvailable.length) {
+                                $(".noPurchaseNotice").addClass("d-none");
+                                $(".showSubscriptionDetails").empty();
+                                $(".showSubscriptionDetails").removeClass("d-none");
+                                let divHtml;
+                                packagesList.map(subscription => {
+                                    const container = document.createElement("div")
+                                    const div = document.createElement("div")
+                                    container.classList.add("col-md-4")
+                                    div.classList.add("package", "bg-lightgreen", "shadow", "p-3", "rounded", "col-md-12", "d-flex", "flex-column", "justify-content-between")
+                                    divHtml = `<h3 class="fw-bold fs-4">${subscription.package_name}</h3> <div>`
+                                    subscription.feature_subscription?.map((item, index) => {
+                                        divHtml += `<div class="info-btn">
+                                    <p class="mb-0">
+                                    <i class="bi bi-box"></i> ${item.feature_name}
+                                    </p>
+                                    <p class="mb-0 fw-bold">${item.feature}</p>
+                                    </div>`
+                                    })
+                                    divHtml += `<div class="mt-2 info-btn">
+                                <p class="mb-0">
+                                <i class="icofont-tag"></i> Price
+                                </p>
+                                <p class="mb-0 fw-bold">${subscription.price}$ <span class="fw-bolder">/${subscription.duration_type}</span>
+                                </p>
+                                </div>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                <a href="{% host_url 'pcs_subscription_payment' host 'mysecurity' %}${subscription.id}" class="mt-3 btn bg-navy px-5 py-1 ${(subscribedPackages.includes(subscription.id)) && "d-none"}">Subscribe</a>
+                                <a href="{% host_url 'pcs_subscription_cancel' host 'mysecurity' %}${subscription.id}" class="mt-3 btn btn-danger px-5 py-1 ${!(subscribedPackages.includes(subscription.id)) && "d-none"}">Cancel</a>
+                                </div>`
+                                    div.innerHTML = divHtml;
+                                    container.appendChild(div)
+                                    $(".showSubscriptionDetails").append(container);
+                                })
+                            } else {
+                                $(".noPurchaseNotice").removeClass("d-none");
+                                $(".showSubscriptionDetails").addClass("d-none");
+                            }
+                        })
+                })
+        }
+    </script>
+    {% comment %} <script>
+        let activeState = 1;
+        let main = document.querySelector('.package-details .row');
+        let packages = document.querySelectorAll('.package-details .row .package');
+
+        document.getElementById('package-change').addEventListener('click', () => {
+
+            packages.forEach(package => {
+                if (!package.classList.contains('d-none')) {
+                    package.classList.add('d-none');
+                }
+            });
+
+            let width = document.body.offsetWidth;
+
+            if (692 < width && width < 1170) {
+                packages[activeState].classList.remove('d-none');
+                packages[activeState + 1].classList.remove('d-none');
+                packages[activeState + 2].classList.remove('d-none');
+                main.innerHTML = packages[activeState].outerHTML + packages[activeState + 1].outerHTML + packages[activeState + 2].outerHTML;
+            } else if (560 < width && width < 692) {
+                packages[activeState + 1].classList.remove('d-none');
+                packages[activeState + 2].classList.remove('d-none');
+                main.innerHTML = packages[activeState + 1].outerHTML + packages[activeState + 2].outerHTML;
+            } else if (width < 560) {
+                if (activeState > packages.length - 1)
+                    activeState = 0;
+                packages[activeState].classList.remove('d-none');
+                activeState++;
+            }
+        });
+    </script> {% endcomment %}
+{% endblock customjs %}

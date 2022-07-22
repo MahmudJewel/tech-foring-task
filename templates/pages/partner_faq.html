@@ -1,0 +1,254 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load hosts %}
+
+{% block title %}
+    
+{% endblock title %}
+
+{% block headercss %}
+    <link rel="stylesheet" href="{% static '' %}css/glide.core.css" />
+    <link rel="stylesheet" href="{% static '' %}css/glide.theme.css" />
+    <link rel="stylesheet" href="{% static '' %}css/style.css" />
+{% endblock headercss %}
+
+{% block content %}
+        <section class="pf-banner">
+      <div class="container">
+        <h2>How can we help you?</h2>
+        <p>
+          In case you still don't find what you're looking for You can always
+          get in touch with our support team
+        </p>
+        <!-- This section will come back -->
+        <!-- <div class="fsearch-box">
+          <input type="text" placeholder="Search for answers" />
+        </div> -->
+      </div>
+    </section>
+    <div class="container">
+      <section class="faq-section">
+        <h2 class="faq-title">
+          MOST FREQUENTLY ASKED QUESTIONS BY OUR Partners
+        </h2>
+        <div class="row justify-content-between faq-row">
+          <div class="col-md-4">
+            <div class="faq-category">
+              <h2>Program Overview</h2>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="ques-list">
+              <button class="accordion">What is TechForing Partnership?</button>
+              <div class="fpanel">
+                <p>
+                  It's a program between TechForing and another entity to
+                  collaborate in business for potential growth, together.
+                </p>
+              </div>
+
+              <button class="accordion">What are partner benefits?</button>
+              <div class="fpanel">
+                <p>
+                  TechForing partner enjoys an additional revenue stream, free
+                  enterprise-grade cybersecurity, expert advice, training,
+                  access to global networks and resources.
+                </p>
+              </div>
+
+              <button class="accordion">
+                What kind of partnership options are available now?
+              </button>
+              <div class="fpanel">
+                <p>Only TechForing service and product reselling.</p>
+              </div>
+              <button class="accordion">
+                How does TechForing's Partnership Program work?
+              </button>
+              <div class="fpanel">
+                <p>
+                  1. You become our partner. <br />
+                  2. We provide you with the guideline and training. <br />
+                  3. You refer us to your existing and future clients or add our service on top of your service/ product. <br />
+                  4. We share an agreed commission. <br />
+                  5. You enjoy all TechForing benefits after fulfilling each milestone.
+                </p>
+              </div>
+              <button class="accordion">
+                What are the requirements to become a Partner?
+              </button>
+              <div class="fpanel">
+                <p>
+                  We assess each entity individually. Please apply with all the information.
+                </p>
+              </div>
+              <button class="accordion">
+                How TechForing is different from other MSSPs?
+              </button>
+              <div class="fpanel">
+                <p>
+                  We put our partners before everything else. We educate, guide,
+                  and mentor our partners to add value to their existing
+                  business and show how to leverage the partnership program to
+                  penetrate the market better.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-between faq-row">
+          <div class="col-md-4">
+            <div class="faq-category">
+              <h2>Partnership Process</h2>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="ques-list">
+              <button class="accordion">
+                What are the startup costs for partners?
+              </button>
+              <div class="fpanel">
+                <p>There is no cost involved.</p>
+              </div>
+
+              <button class="accordion">
+                What services will be included in this Partnership Program?
+              </button>
+              <div class="fpanel">
+                <p>Partners are free to choose any service and product.</p>
+              </div>
+
+              <button class="accordion">
+                How is client data stored and protected?
+              </button>
+              <div class="fpanel">
+                <p>
+                  Please find more info
+                  <a href="{% url 'trust' %}" target="_blank"> here</a>
+                </p>
+              </div>
+              <button class="accordion">
+                What will happen if we want to cancel our agreement and how
+                should it be done?
+              </button>
+              <div class="fpanel">
+                <p>
+                  Partners can cancel the partnership agreement anytime with
+                  written notice.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-between faq-row">
+          <div class="col-md-4">
+            <div class="faq-category">
+              <h2>Financial Options</h2>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="ques-list">
+              <button class="accordion">
+                Who will bill the end customers?
+              </button>
+              <div class="fpanel">
+                <p>
+                  It can be TechForing or Partner. By conducting a manual discussion, it will be decided.
+                </p>
+              </div>
+
+              <button class="accordion">
+                What will be the financial benefit ratio?
+              </button>
+              <div class="fpanel">
+                <p>Upon mutual discussion, it will be decided.</p>
+              </div>
+
+              <button class="accordion">
+                Is my pricing to my end customer controlled by TechForing?
+              </button>
+              <div class="fpanel">
+                <p>
+                  TechForing doesn’t directly control their partner’s pricing policy, but we have our pricing policy that partners are adhering to.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-between faq-row">
+          <div class="col-md-4">
+            <div class="faq-category">
+              <h2>Support</h2>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="ques-list">
+              <button class="accordion">
+                What kind of support me or my client will get from you?
+              </button>
+              <div class="fpanel">
+                <p>
+                  Techforing takes the responsibility of providing the full
+                  technical support to partner's clients. As for the partner,
+                  they enjoy all the mentioned partner benefits.
+                </p>
+              </div>
+
+              <button class="accordion">
+                Does TechForing provide on-premise support if necessity arise?
+              </button>
+              <div class="fpanel">
+                <p>Yes, we provide on-premise support across 54+ countries.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <section class="pt-cta ft-cta">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div class="ftc-box">
+              <h2>STILL NEED HELP? SEND US A NOTE</h2>
+              <a href="{% host_url 'get_start' host 'main' %}" target="_blank">Let Us Secure</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock content %}
+   
+{% block customjs %}
+     <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      var acc = document.getElementsByClassName("accordion");
+      var i;
+
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+          this.classList.toggle("factive");
+          var panel = this.nextElementSibling;
+          if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+          } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+          }
+        });
+      }
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#my-header").load("header.html");
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#my-footer").load("footer.html");
+      });
+    </script>
+{% endblock customjs %}
