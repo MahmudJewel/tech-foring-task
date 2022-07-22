@@ -7,6 +7,12 @@ This is a recruitment task for a reputed company in Bangladesh as a Django devel
 ####  But it should be
 	https://blog.techforing.com/cybersecurity-case-studies/
 
+# Solution process
+1. Set the local development server as techforingg.com and blog.techforingg.com
+2. set up Django-host packages & modified according to requirements.
+3. Change path('category/<name>/', views.categoryView, name='category'), to path('cybersecurity-<str:name>/', views.categoryView, name='cybersecurity'),
+4. pass the string on the templates like href="{% host_url 'cybersecurity' name='case-studies' host 'blog' %}">
+
 # Some Screenshots
 
 ## Blog page
