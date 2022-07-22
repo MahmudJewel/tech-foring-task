@@ -1,9 +1,11 @@
-﻿This is a recruitment task for a reputed company in Bangladesh as a Django developer. This task is about changing the sub-domain & customize the url.
-The previous url is 
+﻿# Problem statement:
+This is a recruitment task for a reputed company in Bangladesh as a Django developer. This task is about changing the sub-domain & customize the url.
+#### The previous url is 
 	https://techforing.com/category/case_studies/ (present)
 	https://blog.techforing.com/category/case_studies/ (what it becomes)
-& the present url will be
-	But it should be https://blog.techforing.com/cybersecurity-case-studies/
+
+####  But it should be
+	https://blog.techforing.com/cybersecurity-case-studies/
 
 # Some Screenshots
 
